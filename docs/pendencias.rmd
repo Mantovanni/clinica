@@ -6,7 +6,8 @@ mudar nome das chaves estrangeiras da tabela movimentacoes
 
 --------------------------------------------------
 
-
+quando fazer um receituario, remover do estque os medicamentos que tem em estoque
+e os que nao tem nao remover mais ficar no receituario
 
 
 
