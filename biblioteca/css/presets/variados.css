@@ -1,0 +1,83 @@
+
+
+
+
+
+
+
+
+
+/* CSS de Atalhos - classlist*/
+/* =========================================================================================== */
+/* =========================================================================================== */
+
+/* Display----------------------------------------------------- */
+.mostrar {
+    /* Trocar nos Htmls pelo mostrar-flex */
+    display: flex !important;
+}
+
+.mostrar-flex {
+    display: flex !important;
+
+    /* visibility: visible !important; */
+    /* animation: modal-opacity 0.5s; */
+    /* transition-delay: 1.5s */
+    /* transition: all 2s ease; */
+    /* pointer-events: all; */
+}
+
+.mostrar-block {
+    display: block !important;
+
+}
+
+.esconder {
+    display: none !important;
+}
+
+
+
+
+/* Align----------------------------------------------------------- */
+.align-left{
+    text-align: left;;
+    
+}
+.align-right{
+    text-align: right;;
+}
+.align-center{
+    text-align: center;;
+}
+
+
+
+
+/* Variados-------------------------------------------------------- */
+.pintar {
+    background-color: chartreuse !important;
+}
+
+
+.zero-opacidade {
+    opacity: 0 !important;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+
+
+/* POSITION-------------------------------------------------------- */
+.position-relative{
+    position: relative;
+}
+.position-initial{
+    position: initial;
+}
+
+/* ===================================================================================== */
+
+

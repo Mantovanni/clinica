@@ -1,0 +1,101 @@
+
+/* Controle do checked
+================================================================================================ */
+
+/* Esconder o checked --------------*/
+.tab > input[type="radio"] {
+  position: absolute;
+  left: -200vw;
+}
+
+/* Esconder o os paineis -----------*/
+.tab .tab-panel {
+  display: none;
+  
+}
+
+/* Regras para exibir cada painel -----------*/
+.tab > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+.tab > input:nth-child(2):checked ~ .tab-panels > .tab-panel:nth-child(2),
+.tab > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(3),
+.tab > input:nth-child(4):checked ~ .tab-panels > .tab-panel:nth-child(4),
+.tab > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(5),
+.tab > input:nth-child(6):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+  display: block;
+}
+
+
+
+
+/* Laytout */
+/* ================================================================================================ */
+
+/* .tab-menu */
+/* --------------------------------------------------------------------------------- */
+.tab .tab-menu{
+  display: flex;
+}
+
+/* Labels Menus */
+/* -------------------------------------- */
+.tab-menu label {
+  display: inline-block;
+  padding: 10px 35px 10px 35px;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  cursor: pointer;
+  font-weight: 600;
+
+  border-top: solid 1px #ddd;
+  border-left: solid 1px #ddd;
+  border-right: solid 1px #ddd;
+
+  background-color:#eee;
+
+  transition: background 0.4s;
+
+}
+
+/* Label Hover--------------------------- */
+.tab-menu  label:hover,
+.tab-menu  input:focus + label {
+  background-color: #ddd;
+  /* color: #06c; */
+}
+
+
+/* Label selecionado---------------------- */
+.tab > input:first-child:checked ~ .tab-menu > label:first-child,
+.tab > input:nth-child(2):checked ~ .tab-menu > label:nth-child(2),
+.tab > input:nth-child(3):checked ~ .tab-menu > label:nth-child(3) 
+{
+  background-color: rgb(255, 255, 255);
+  margin-bottom: -1px; /* Retira a borda de baixo */
+}
+
+
+
+/* .tab-panel */
+/* --------------------------------------------------------------------------------- */
+.tab .tab-panels {
+  border: 1px solid #ddd;
+}
+.tab .tab-panel {
+  padding: 20px 15px;
+  animation: tab-opacity 0.5s;
+}
+
+
+
+
+
+/* ================================================================================================ */
+@keyframes tab-opacity {
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
+  }
+}

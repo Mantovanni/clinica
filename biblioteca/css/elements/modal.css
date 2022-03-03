@@ -1,0 +1,383 @@
+/* ==========================================================================================================*/
+/* Trabalha com o JAvaScript ../../js/geral/modaljs  ========================================================*/
+/* ==========================================================================================================*/
+
+
+
+
+
+/* MODAL Janela*/
+/* //============================================================================ */
+
+
+
+/* Fundo preto---------------------------------------------- */
+.modal-fundo {
+    /* visibility: hidden; */
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    width: 100vw;
+    height: 100%;
+    /* height: calc(var(--vh, 1vh) * 100); */
+
+    background: rgba(0, 0, 0, 0.5);
+    /* transition: all 2s; */
+
+    animation: modal-opacity 0.5s;
+
+    /* opacity: 1; */
+    transition: opacity 0.4s;
+
+    overflow-y: scroll;
+
+}
+
+
+
+
+/* Janela----------------------------------------------------- */
+.modal-window-default {
+   
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+
+    /* tamanho fixo de 1000px */
+    max-width: 1000px;
+    width: 60vw;
+    min-height: 30vh;
+    /* overflow: scroll; */
+
+    background: white;
+    border-radius: 6px;
+    position: absolute;
+    top: 50px;
+
+    animation: modal-opacity 0.5s, modal-translated 0.5s;
+    /* border-bottom: 1000px solid rgba(0, 0, 0, 0); */
+
+
+
+}
+
+.modal-window-custom {
+    background: white;
+    border-radius: 6px;
+    position: absolute;
+    /* top: 13%; */
+    top: 50px;
+    animation: modal-opacity 0.5s, modal-translated 0.5s;
+}
+
+
+/* Titulo--------------------------------------------------- */
+.modal-window__title {
+    /* width: 100%; */
+    display: flex;
+    align-items: center;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    /* border-top: 60px solid steelblue; */
+    color: white;
+    background-color: rgb(80, 95, 109);
+    /* background-color: steelblue; */
+    height: 50px;
+    padding-left: 15px;
+}
+
+/* Conteudo--------------------------------------------------- */
+.modal-window__content {
+    padding: 20px 25px;
+}
+
+/* Botao Fechar X ----------------*/
+.btn-fechar-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-weight: 900;
+    /* outline: 0px auto ; */
+
+}
+
+
+
+
+/* MEDIA
+----------------------------------------------------------- */
+@media screen and (max-width: 1000px) {
+
+    /* MODAL */
+    .modal-window-default {
+        width: 92%;
+        /* width: 85vw; */
+    }
+
+    /* Conteudo--------------------------------------------------- */
+    .modal-window__content {
+        padding: 20px 10px;
+    }
+}
+
+/* ============================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MODAL  - Confirmação */
+/* ==================================================================================== */
+
+/* CONFIRMAR-------------------------------------------------------- */
+.modal-fundo--confirmar {
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.5);
+    animation: modal-opacity .5s;
+
+    transition: opacity 0.4s;
+
+}
+
+
+.modal-window--confirmar {
+
+    width: 380px;
+    /* height: 140px; */
+
+    background: rgb(248, 248, 248);
+
+    border-radius: 5px;
+
+    /* mantem o botão de fecahr dentro dessa div */
+    position: fixed;
+    top: 20%;
+
+    animation: modal-opacity 0.5s, modal-translated 0.5s;
+
+}
+
+/*DIV Mensagem----------------------------- */
+.modal-window--confirmar__mensagem {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+    /* padding : 15px; */
+
+
+}
+
+.modal-window--confirmar__mensagem span {
+    text-align: center;
+    width: 90%;
+    padding-top: 18px;
+    font-size: 18px;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.179);
+
+}
+
+
+
+/* DIV Botoes--------------------------- */
+.modal-window--confirmar__botoes {
+    background: rgb(221, 221, 230);
+
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    width: 100%;
+    height: 50px;
+
+    padding: 9px;
+
+}
+
+.modal-window--confirmar__botoes button {
+    float: right;
+    width: 90px;
+    height: 100%;
+    border-radius: 4px;
+    border: none;
+    margin-right: 15px;
+    color: white;
+    box-shadow: 1px 1px 4px -1px black;
+    opacity: 0.80;
+    outline: none;
+    font-size: 14px;
+    /* text-transform: uppercase; */
+    transition: opacity .2s ease-in-out;
+
+
+}
+
+.modal-window--confirmar__botoes button:hover {
+    opacity: 1;
+}
+
+.modal-window--confirmar__botoes button:active {
+    box-shadow: inset 1px 1px 7px -1px black;
+    /* box-shadow: none; */
+    font-size: 13.7px;
+}
+
+.confirmar__botoes-btn-cancelar {
+
+    background-color: rgb(99, 37, 37);
+
+}
+
+.confirmar__botoes-btn-confirmar {
+    /* background-color: rgb(46, 134, 46); */
+    background-color: rgb(24, 105, 24);
+    /* background-color: #56a845; */
+}
+
+/* ============================================================ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MODAL  - Mensagens */
+/* ==================================================================================== */
+.modal-alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 15px;
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+
+    width: 410px;
+    height: 70px;
+    border-radius: 5px;
+
+    position: absolute;
+    left: calc(50vw - 205px);
+    /* Metade da largura */
+    top: 5%;
+
+    text-align: center;
+    /* evita que o usuário possa clicar no objeto enquanto ele ainda está transicionando. */
+    pointer-events: none;
+    animation: modal-opacity-alert 6s forwards, modal-translated 0.5s;
+
+}
+
+.modal-alert span {
+    margin-left: 12px;
+}
+
+.alert--sucesso {
+    color: rgb(6, 95, 11);
+    background-color: rgb(125, 216, 33);
+    border: 1px solid rgb(85, 161, 8);
+    box-shadow: 0 0 10px 1px rgb(85, 161, 8);
+
+}
+
+.alert--erro {
+    background-color: rgb(216, 33, 33);
+    border: 1px solid rgb(161, 8, 8);
+    box-shadow: 0 0 10px 1px rgb(161, 8, 8);
+}
+
+@media screen and (max-width: 800px) {
+    .modal-alert {
+
+        font-size: 14px;
+        width: 250px;
+        /* height: 70px; */
+        left: calc(50vw - 125px);
+        /* left: 100vw; */
+        /* top: 5%; */
+
+    }
+
+}
+
+
+@keyframes modal-opacity-alert {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

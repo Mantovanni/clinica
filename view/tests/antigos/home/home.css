@@ -1,0 +1,294 @@
+
+
+/* Container Geral */
+/* ================================================================ */
+.container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 190px 1fr;
+    grid-template-rows: 57px 1fr;
+    grid-template-areas:
+        "header header"
+        "sidebar main";
+
+
+
+}
+
+/* ================================================================ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* HEADER */
+/* ================================================================ */
+.header {
+    position: relative; /* Mantem o header por cima para que a combra apareça */
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    /* box-shadow: 10px 20px 11px 01px black; */
+    box-shadow: 10px -2px 11px 1px black !important;
+    /* border: 5px solid brown; */
+    /* height: 57px; */
+
+}
+
+/* Header Esquerda----------------------------------- */
+.header__esquerda {
+    display: flex;
+}
+
+
+.menu-checkbox-button {
+    display: none;
+    margin-left: 28px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+
+.header__esquerda-logo {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    font-size: 21px;
+    font-weight: 900;
+}
+
+
+
+/* Header Direita----------------------------------- */
+.header__direita {
+    display: flex;
+}
+
+.header__direita-usuario {
+    display: flex;
+    align-items: center;
+
+    margin-right: 20px;
+}
+
+/* ================================================================ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SIDEBAR */
+/* ================================================================ */
+
+.sidebar {
+    position: relative;  /* Mantem  por cima para que a combra apareça no main */
+    grid-area: sidebar;
+    /* width: 190px;    */
+    /* height: calc(100vh - 57px); */
+    height: 100%;
+
+    /* min-height: 500px; */
+    /* largura de tela toda menos o header */
+    background-color: #363740;
+    /* background-color: white; */
+    box-shadow: -1px 6.0px 11px 1px black;
+}
+
+/* Sidebar Top----------------------------------- */
+
+.sidebar__nav-top {
+    height: 110px;
+    display: flex;
+    align-items: center;
+    padding-left: 35px;
+}
+
+.nav-top__title {
+    color: rgba(255, 255, 255, 0.637);
+    font-size: 26px;
+    font-weight: 900;
+}
+
+/* Sidebar Menu----------------------------------- */
+/* ul */
+.sidebar__nav-menu {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: teal; */
+    /* height: 100vh; */
+
+
+}
+
+
+.sidebar__nav-menu a {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    width: 190px;
+    border-top: 1px solid rgba(0, 0, 0, 0.301);
+    color: rgba(255, 255, 255, 0.637);
+    font-size: 15px;
+    /* font-weight: 900; */
+}
+
+.sidebar__nav-menu a:hover {
+    background-color: #9fa2b44d;
+    opacity: 80%;
+    transition: .2s;
+    /* border-left: 5px solid white; */
+    padding-left: 32px;
+}
+
+.sidebar__nav-menu a.active {
+    background-color: #9fa2b44d;
+    opacity: 80%;
+    border-left: 5px solid white;
+    padding-left: 32px;
+}
+/* .sidebar__nav-menu a:active {
+    background-color: #9fa2b44d;
+    opacity: 80%;
+    border-left: 5px solid white;
+    padding-left: 32px;
+} */
+
+
+/* ================================================================ */
+
+
+
+
+
+
+
+
+
+/* MAIN */
+/* ================================================================ */
+
+
+.main {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    padding: 18px;
+    background-color: #b6c0cf;
+    /* min-height: 500px; */
+    /* width: auto; */
+    /* box-shadow: 1px 5px 11px 1px black; */
+    /* background-color: #E5E5E5; */
+    /* background-color: #c0b6cf; */
+
+    overflow: auto;
+
+}
+
+.main__container {
+    /* width: 800px; */
+    /* width: calc(100% - 48px); */
+    width: 100%;
+    max-width: 1000px;
+    /* height: 100%; */
+    /* background-color: violet; */
+    /* max-width: 80%; */
+   
+    
+    /* background-color: #b6c0cf; */
+    /* min-height: 500px; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Regras no fundo porque eu venho sobrescrevendo as regras acima */
+/* REGRAS PARA TELA MENOR Celular----------------------------------- */
+/* ================================================================ */
+/* input */
+.menu-checkbox {
+    display: none;
+}
+
+@media(max-width: 650px) {
+
+    .container {
+        grid-template-areas:
+            "header header"
+            "main main";
+    }
+
+
+    /* SIDEBAR----------------------------------- */
+    /* Mostra o botao para chamar a side bar */
+    .menu-checkbox-button {
+        display: block;
+        /* transition: .5s; */
+    }
+
+    .sidebar {
+        /* esconde a sidebar no canto esquerdo */
+        position: fixed;
+        left: -100vw;
+        top: 58px;
+        transition: all .5s;
+    }
+
+    /* Caso o botao seja apertado  */
+    .menu-checkbox:checked~.sidebar {
+        left: 0px;
+    }
+
+    /* Menu Logo----------------------------------- */
+
+    .header__esquerda-logo {
+        font-size: 14px;
+    }
+
+
+}

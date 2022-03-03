@@ -1,0 +1,186 @@
+<!--Mudar para  form-modal -->
+<form class="form-geral" id="form-modal" autocomplete="off">
+
+
+    <div class="form__main">
+        <!-- Mudar nome para form__main // Corrigir no CSS form.css-->
+
+
+
+
+
+        <!-- ID Invisivel para o editar -->
+        <div class="col-md-6 esconder">
+            <div class="grupo-label-input">
+                <label for="adicionar-id" class="label-adicionar-id">Id</label>
+                <input type="text" name="id" id="adicionar-id" autocomplete="off" data-type="text">
+            </div>
+        </div>
+
+
+        <div class="col-md-6 esconder">
+            <div class="grupo-label-input">
+                <label for="produtos_id" class="label-produtos_id">produtos_id</label>
+                <input type="text" name="produtos_id" id="produto_id" autocomplete="off" data-type="text">
+            </div>
+        </div>
+
+
+        <!-- Campos -->
+        <!-- ================================================================================================= -->
+
+        <!-- linha --------------------------------------------------------------------------------------- -->
+
+
+        <div class="col-md-12">
+
+
+
+            <!-- <div class="col-md-6">
+                <div class="grupo-label-input">
+                    <label for="">Operação</label>
+                    <select id="operacao" name="operacao" required>
+                        <option value="">-</option>
+                        <option value="Compra">Compra</option>
+                        <option value="Transferencia">Transferência</option>
+                        <option value="Manual">Manual</option>
+
+                    </select>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div> -->
+
+
+            <!-- <div class="col-md-6" id="tipo-div">
+                <div class="grupo-label-input">
+                    <label for="tipo">Movimentação</label>
+                    <select id="tipo" name="tipo" required>
+                        <option value="Entrada">Entrada</option>
+                        <option value="Saida">Saida</option>
+
+                    </select>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div> -->
+
+
+
+
+            <!-- Data esta oculto, remover futuramente adicionar direito do javascript-->
+            <div class="col-md-6 esconder">
+                <div class="grupo-label-input">
+                    <label for="data">Data</label>
+
+                    <input type="date" name="data" id="data" placeholder="Data" autocomplete="off" required disabled>
+
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- linha --------------------------------------------------------------------------------------- -->
+
+
+        <div class="col-md-12">
+
+            <div class="col-md-6" id="origem-div">
+                <div class="grupo-label-input" >
+                    <label for="origem">Estoque Origem</label>
+                    <select id="origem" name="origem" required>
+                       
+                        
+              
+                        <optgroup label="Estoques">
+                            <option value=""></option>
+                            <option value="3">Rouparia</option>
+                            <option value="4">Recepção</option>
+                            <!-- <option value="5">Apartamentos</option> -->
+                            <option value="6">Lavanderia</option>
+                        </optgroup>
+                       
+
+                    </select>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+            <div class="col-md-6" id="destino-div">
+                <div class="grupo-label-input">
+                    <label for="destino" id="destino-div-label">Estoque Destino</label>
+                    <select id="destino" name="destino" required>
+                        <optgroup label="Estoques">
+                            <option value=""></option>
+                            <option value="3">Rouparia</option>
+                            <option value="4">Recepção</option>
+                            <!-- <option value="5">Apartamentos</option> -->
+                            <option value="6">Lavanderia</option>
+                        </optgroup>      
+
+                    </select>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- linha --------------------------------------------------------------------------------------- -->
+
+
+
+        <div class="col-md-12">
+
+
+
+            <div class="col-md-6">
+                <div class="grupo-label-input">
+                    <label for="quantidade">Quantidade</label>
+
+                    <input name="quantidade" id="quantidade" placeholder="0" autocomplete="off" data-type="quantia" inputmode="numeric"
+                        required>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+            <!-- <div class="col-md-6" id="valor-div">
+                <div class="grupo-label-input">
+                    <label for="valor">Preço</label>
+
+                    <input type="text" min="0" name="valor" id="valor" placeholder="R$0,00" autocomplete="off" inputmode="numeric"
+                        data-type="coin" required>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div> -->
+
+        </div>
+        <!-- linha --------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+
+
+        <!-- linha --------------------------------------------------------------------------------------- -->
+        <!-- <div class="col-md-12">
+            <div class="grupo-label-input">
+                <label for="observacao">Observações</label>
+                <textarea id="observacao" name="observacao" cols="30" rows="3"></textarea>
+                <span class="mensagem-validacao"></span>
+            </div>
+        </div> -->
+
+
+    </div>
+
+    <!-- ================================================================================================= -->
+    <div class="form__footer">
+
+        <button type="reset" class="btn-cancelar" id="btn-cancelar-modal" data-class='fechar-modal'>Cancelar</button>
+        <button type="submit" class="btn-salvar" id="btn-salvar-modal">Salvar</button>
+    </div>
+
+
+</form>

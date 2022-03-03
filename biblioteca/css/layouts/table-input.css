@@ -1,0 +1,171 @@
+.table-input {
+    width: 100%;
+    /* padding: 0px 9px; */
+    /* font-size: 13px; */
+
+}
+
+/* Titulos----------------------------------------- */
+.table-input_titulo {
+    color: cornflowerblue;
+    font-size: 22px;
+    margin-top: 20px;
+    padding: 10px 4px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.315);
+    margin-bottom: 15px;
+}
+
+/* Botao Adicionar--------------------------------- */
+.table-input_adicionar {
+    padding: 0px 4px;
+    /* height: 35px;
+  
+    font-size: 15px; */
+}
+
+
+
+/* TABELA---------------------------------------------------------- */
+.table-input_tabela {
+    margin-top: 15px;
+    /* transition: all 1s; */
+}
+
+
+
+/* Cabeçalho TH------------------------------*/
+.table-input_tabela th {
+    font-weight: 400;
+    text-align: left;
+    color: cornflowerblue;
+}
+
+
+/* Linhas----------------------------------- */
+.table-input_tabela tr {
+    height: 32px;
+}
+
+
+/* Celulas TD---------------------------------- */
+.table-input_tabela input {
+    height: 30px;
+    /* margin: 5px;  */
+    border-radius: 2px;
+    font-size: 13px;
+
+
+    width: 100%;
+
+    outline: none;
+    border: 1px solid #ccc;
+
+    padding-left: 0.7rem;
+}
+
+
+.table-input_tabela .produto-nome {
+    width: 80% !important;
+}
+
+/* .table-input_tabela .produto-quantidade {
+    width: 10%;
+}
+
+.table-input_tabela .produto-valor {
+    width: 15%;
+} */
+
+.table-input_tabela .produto-total {
+    width: 15%;
+}
+
+.table-input_tabela .produto-acoes {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    width: 10%;
+}
+
+
+
+/* Imputs============================================= */
+.table-input_tabela input {
+    height: 30px;
+    /* margin: 5px;  */
+    border-radius: 3px;
+    font-size: 13px;
+
+}
+
+
+
+/* .teste{
+    background-color: chartreuse;
+    width: 20px;
+    height: 20px;
+} */
+
+
+
+
+
+
+
+
+
+
+/* ================================================================================= */
+@media screen and (max-width: 1000px) {
+
+    /* tabela */
+    /* ===================================================== */
+    /* linhas */
+    .table-input_tabela  tr {
+        height: 38px;
+    }
+
+    /* INPUTS ITENS------------------------------------*/
+    .table-input_tabela input {
+        height: 34px;
+    }
+
+    .table-input_tabela .produto-nome {
+        width: 75%;
+    }
+
+    .table-input_tabela .produto-quantidade {
+        width: 25%;
+    }
+
+    .table-input_tabela .produto-custo {
+        display: none;
+    }
+
+    .table-input_tabela .produto-total {
+        display: none;
+    }
+
+
+
+
+
+    /* FOTERR============================= */
+
+
+    /* .form__footer button {
+     
+    } */
+
+    .table-input_tabela .btn-excluir-linha {
+        width: 25px;
+        height: 25px;
+    }
+
+    .table-input_tabela svg {
+        /* height: 100%; */
+        width: 100%;
+
+    }
+}

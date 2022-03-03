@@ -1,0 +1,66 @@
+
+
+
+/* Layouts padrões/default  */
+/* ================================================================ */
+@import './layouts/main.css';
+@import './layouts/form.css';
+@import './layouts/cards.css';
+@import './layouts/area.css';
+@import './layouts/table-input.css';
+/* @import './layouts/dashboard.css'; */
+
+
+
+
+
+
+
+
+/* CSS dos layouts das paginas */ 
+/* ================================================================ */
+@import '../../app/app.css';
+
+
+/* cafe -----------------------------------------------*/
+@import '../../view/dashboard/main/dashboard.css';
+
+
+/* cafe -----------------------------------------------*/
+@import '../../view/cafe/cafes/main/cafes-cafe.css';
+@import '../../view/cafe/cafes/form/form-cafes-cafe.css';
+@import '../../view/cafe/cafes/detalhes/detalhes-cafes-cafe.css';
+
+/* ITENS -----------------------------------------------*/
+@import '../../view/itens/main/itens.css';
+@import '../../view/itens/adicionar/adicionar-itens.css';
+
+/* PRODUTOS -----------------------------------------------*/
+@import '../../view/produtos/main/produtos.css';
+@import '../../view/produtos/adicionar/adicionar-produtos.css';
+
+/* Estoques -----------------------------------------------*/
+@import '../../view/estoques/main/estoques.css';
+/* @import '../../view/estoques/form/form-estoques.css'; */
+
+/* Movimentações -----------------------------------------------*/
+/* @import '../../view/estoque/movimentacoes/movimentacoes.css';
+@import '../../view/estoque/movimentacoes/form/adicionar-movimentacoes.css'; */
+
+
+/* Rouparia Movimentar -----------------------------------------------*/
+/* @import '../../view/rouparia/movimentar/movimentar.css'; */
+
+
+/* Apartamentos -----------------------------------------------*/
+@import '../../view/rouparia/apartamentos/main/apartamentos-rouparia.css';
+
+
+
+
+
+
+
+
+
+

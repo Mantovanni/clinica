@@ -1,0 +1,95 @@
+/* Conteudo--------------------------------------------------- */
+/* .adicionar__content {
+    transition: 1s;
+} */
+
+/* Titulo--------------------------------------------------- */
+.form__title {
+    /* width: 100%; */
+    display: flex;
+    align-items: center;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    /* border-top: 60px solid steelblue; */
+    color: white;
+    background-color: rgb(80, 95, 109);
+    /* background-color: steelblue; */
+    height: 50px;
+    padding-left: 15px;
+}
+
+/* Main-------------------------------------------------- */
+.form__main {/* REmover */
+    /* padding: 15px 25px; */
+}
+
+
+/* Footer-------------------------------------------------- */
+.form__footer {
+    display: flex;
+    justify-content: flex-end;
+    /* float: right; */
+    padding: 60px 0px 25px 25px;
+  
+
+
+}
+
+.form__footer button {
+    width: 120px;
+    margin-right: 10px;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+/* ================================================================================= */
+@media screen and (max-width: 650px) {
+
+    /* Main-------------------------------------------------- */
+    .form__main {
+        /* padding: 15px 5px; */
+    }
+
+    /* grupo-label-input */
+    .form__main .grupo-label-input {
+        padding: 4px 5px;
+    }
+
+    /* inputs */
+    .form__main input,
+    .form__main select {
+        height: 31px;
+
+
+    }
+
+    .form__main label {
+        font-size: 12px;
+
+    }
+
+
+    .form__footer {
+        margin-top: 40px;
+        padding: 12px 0px;
+      
+    }
+    /* Botao Salvar, Cancelar */
+    .form__footer button {
+        width: 100%;
+        margin: 0px 4px;
+        /* width: 85px; */
+    }
+
+
+}

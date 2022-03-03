@@ -1,0 +1,269 @@
+/* Titulo--------------------------------------------------- */
+
+
+
+.c-view__title .data-cafe {
+    margin-left: 10px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+
+/* Main-------------------------------------------------- */
+.form__main {
+    /* padding: 15px 25px; */
+}
+
+
+
+
+
+/* Clientes============================================ */
+.c-cafe-clientes{
+    margin-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.336);
+}
+
+/* Corrigir o padding clientes */
+.form-geral-cafe .grupo-label-input{
+    padding-left: 0px;
+    margin: 10px 0px;
+}
+
+.form-geral-cafe .grupo-label-input label{
+    font-size: 20px;
+    font-weight: 600;
+}
+.form-geral-cafe .grupo-label-input input{
+    font-size: 20px;
+    /* width: 15%; */
+    width: 100px;
+}
+
+
+
+
+
+
+/* Relação de Itens do Café */
+/* ======================================================================================== */
+
+.form-cafe-itens input {
+    border: 1px solid rgba(0, 0, 0, 0.199);
+
+}
+
+.form-cafe-itens {
+    /* padding: 0px 9px; */
+    /* font-size: 13px; */
+
+}
+
+/* Titulos----------------------------------------- */
+.form-cafe-itens_titulo {
+    color: cornflowerblue;
+    font-size: 22px;
+    margin-top: 20px;
+    padding: 10px 5px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.315);
+    margin-bottom: 15px;
+}
+
+/* Botao Adicionar--------------------------------- */
+.form-cafe-itens_acoes {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.form-cafe-itens_acoes button {
+margin-right: 15px;
+    /* height: 35px;
+    padding: 0px 10px;
+    font-size: 15px; */
+}
+
+
+
+/* TABELA
+============================================================================================== */
+.form-geral .cafe-itens_tabela {
+
+    margin-top: 15px;
+    /* transition: all 1s; */
+}
+
+/* Linhas---------------------------------------------- */
+.form-geral  .cafe-itens_tabela tr {
+    height: 32px;
+
+
+}
+.form-geral  .cafe-itens_tabela tr:hover {
+   /* background-color: aqua; */
+
+
+}
+
+/* Cabeçalho TH-------------------------------*/
+.form-geral  .cafe-itens_tabela th {
+    font-weight: 400;
+    text-align: left;
+    color: cornflowerblue;
+}
+
+
+
+
+
+
+
+/* Imputs-----------------------------------------------*/
+.cafe-itens_tabela input {
+    height: 30px;
+    /* margin: 5px;  */
+    border-radius: 2px;
+    font-size: 13px;
+
+
+    width: 100%;
+
+    outline: none;
+    border: 1px solid #ccc;
+
+    padding-left: 0.7rem;
+    /* transition: border-color 0.9s ease; */
+
+}
+
+.cafe-itens_tabela input:focus {
+    border: 2px solid #5984b6;
+}
+
+/* BOtao excluir Linha-----------------------------------*/
+.cafe-itens_tabela .btn-excluir-linha {
+    height: 30px;
+    margin-left: 5px;
+
+    padding: 5px 12px;
+    background-color: rgb(189, 36, 36);
+    color: white;
+    font-size: 13px;
+
+    border: none;
+    border-radius: 4px;
+
+    outline-style: none;
+    box-shadow: 2px 2px 5px -3px black;
+    line-height: 1px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* Footer
+============================================================================================== */
+.form__footer-item {
+    margin-top: 25px;
+    /* float: right; */
+    /* padding: 12px 40px 25px 25px; */
+    /* display: flex; */
+
+}
+.form__footer-item button {
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================================================================= */
+@media screen and (max-width: 1000px) {
+
+    /* tabela */
+    /* ===================================================== */
+    /* linhas */
+    .form-geral  .cafe-itens_tabela tr {
+        height: 38px;
+    }
+
+
+
+    /* INPUTS ITENS------------------------------------*/
+    .cafe-itens_tabela input {
+        height: 34px;
+    }
+
+    .cafe-itens_tabela .item-nome{
+        width: 75%;
+    }
+    .cafe-itens_tabela .item-quantidade{
+        width: 25%;
+    }
+    .cafe-itens_tabela .item-custo{
+       display: none;
+    }
+    .cafe-itens_tabela .item-total{
+        display: none;
+    }
+
+
+    .cafe-itens_tabela input {
+     
+        /* font-size: 11px; */
+    
+    }
+
+
+    /* FOTERR============================= */
+
+    .form__footer-item {
+        margin-top: 80px;
+   
+    
+    }
+    .form__footer-item button {
+        width: 100%;
+    }
+
+    .cafe-itens_tabela .btn-excluir-linha {
+        width: 50%;
+        height: 50%;
+    }
+
+    .cafe-itens_tabela svg {
+        /* height: 100%; */
+        width: 100%;
+
+    }
+}
+
+
+
+
+

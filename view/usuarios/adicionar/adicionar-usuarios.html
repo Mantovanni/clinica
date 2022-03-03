@@ -1,0 +1,85 @@
+
+
+
+
+    <form class="form-geral" id="form-modal">
+
+
+        <div class="form__main">
+
+
+            <button type="reset" class="btn-fechar-modal" id="btn-fechar-modal" data-class='fechar-modal'>X</button>
+
+            <!-- ID Invisivel para o editar -->
+            <div class="col-md-6 esconder">
+                <div class="grupo-label-input">
+                    <label for="adicionar-id" class="label-adicionar-id">Id</label>
+                    <input type="text" name="id" id="adicionar-id" autocomplete="off" data-type="text">
+                </div>
+            </div>
+
+            <!-- Campos -->
+            <!-- ================================================================================================= -->
+
+
+
+
+            <div class="col-md-12">
+                <div class="grupo-label-input">
+                    <label for="adicionar-usuario-usuario" class="label-adicionar-usuario-usuario">Usuário</label>
+
+                    <input type="text" name="usuario" id="adicionar-usuario-usuario" placeholder="Nome do usuário"
+                        autocomplete="off" required>
+
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-md-6">
+                <div class="grupo-label-input">
+                    <label for="adicionar-usuario-senha">Senha</label>
+
+                    <input type="password" name="senha" id="adicionar-usuario-senha" placeholder="*******"
+                        autocomplete="off" required>
+
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-6">
+                <div class="grupo-label-input">
+                    <label for="adicionar-usuario-repetir-senha">Repetir Senha</label>
+
+                    <input type="password" name="repetir-senha" id="adicionar-usuario-repetir-senha"
+                        placeholder="*******" autocomplete="off" data-type="ignore" required>
+
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+        <!-- =================================================================================================== -->
+        <div class="form__footer">
+
+            <button type="reset" class="btn-cancelar" id="btn-cancelar-modal"
+                data-class='fechar-modal'>Cancelar</button>
+            <button type="submit" class="btn-salvar" id="btn-salvar-modal">Salvar</button>
+        </div>
+
+
+    </form>
+
+
+
+
+

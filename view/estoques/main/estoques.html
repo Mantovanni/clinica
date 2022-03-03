@@ -1,0 +1,162 @@
+<div class="c-view estoques">
+
+
+    <div class="c-view__title">
+        <h1>Estoques</h1>
+    </div>
+
+
+
+
+
+
+    <!-- CARDS==================================================================================================================== -->
+    <div class="c-cards">
+
+        <div class="col-md-3">
+            <div class="card ">
+                <div class="card-valor" id="card-valor_estoque">
+                    R$ 0,00
+                </div>
+                <div class="card-texto">
+                    Valor em estoques
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <!-- //tabs ================================================================================================================= -->
+
+
+    <div class="tab">
+        <input type="radio" name="tabgroup" id="tab1" checked>
+        <input type="radio" name="tabgroup" id="tab2">
+        <!-- <input type="radio" name="tabgroup" id="tab3" aria-controls="dunkles"> -->
+
+        <div class="tab-menu">
+            <label for="tab1">Produtos</label>
+            <label for="tab2">Estoques</label>
+        </div>
+
+
+        <div class="tab-panels">
+
+
+
+
+            <!-- //section PRODUTOS ================================================= -->
+            <section class="tab-panel" id="tab-produtos">
+
+
+                <div class="c-view__acoes">
+
+                    <div class="c-view__acoes-botoes">
+                        <button class="btn-adicionar" id="btn-transferir">Transferir</button>
+                    </div>
+
+                    <div class="c-view__acoes-pesquisa">
+                        <!-- <span>Busca</span> -->
+                        <input class="input-default acoes__buscar" id="acoes__buscar-produtos" placeholder="Pesquisar">
+                    </div>
+
+                </div>
+
+
+
+                <div class="c-view__tabela">
+
+                    <table class="tabela-default cursor-pointer" id="tabela-central-produtos">
+                        <thead>
+                            <tr>
+                                <th data-name="id">Código</th>
+                                <!-- <th data-name="origem">Origem</th> -->
+                                <th data-name="nome">Nome</th>
+
+                                <!-- <th data-name="tipo">Movimentação</th> -->
+                                <th data-name="quantidade">Quantidade</th>
+                                <th data-name="custo" data-format="coin-real">Custo</th>
+                                <th data-name="total" data-format="coin-real">Total</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-central-produtos">
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+
+            </section>
+
+            <!-- //section ESTOQUES ================================================= -->
+            <section class="tab-panel" id="tab-estoques">
+
+                <div class="c-view__acoes">
+
+                    <div class="c-view__acoes-botoes">
+                        <!-- <button class="btn-adicionar" id="btn-adicionar">Adicionar</button> -->
+
+                    </div>
+
+                    <div class="c-view__acoes-pesquisa">
+                        <!-- <span>Busca</span> -->
+                        <input class="input-default acoes__buscar" id="acoes__buscar-estoques" placeholder="Pesquisar">
+                    </div>
+
+                </div>
+
+
+
+                <div class="c-view__tabela">
+
+                    <table class="tabela-default cursor-pointer" id="tabela-central-estoques">
+                        <thead>
+                            <tr>
+                                <th data-name="id" data-class="w-12">Código</th>
+                                <th class="align-left" data-name="nome" data-class="align-left">Nome</th>
+                                <th data-name="categoria">Grupo</th>                  
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-central-estoques">
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </section>
+
+
+
+
+
+
+        </div><!-- tab panels-->
+
+    </div><!-- tab -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div> <!-- c-view -->

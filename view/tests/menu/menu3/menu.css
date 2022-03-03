@@ -1,0 +1,66 @@
+
+
+
+/* define a fixed width for the entire menu */
+.navigation {
+  width: 250px;
+}
+
+/* Esconder o checked --------------*/
+.navigation input[type="checkbox"] {
+  position: absolute;
+  left: -200vw;
+}
+
+
+/* Main Menu ================================================================= */
+
+/* Link "a" dentro da Ul------------------------------------------------ */
+.mainmenu a,
+.mainmenu label {
+  display: block;
+  background-color: #CCC;
+  text-decoration: none;
+  padding: 10px;
+  color: #000;
+  cursor: pointer;
+}
+
+/* add hover behaviour */
+.mainmenu label:hover,
+.mainmenu a:hover {
+  background-color: #C5C5C5;
+}
+
+
+
+
+/* Sub Menu ================================================================= */
+/* Regras para exibir cada painel -----------*/
+.navigation > input:first-child:checked ~ .mainmenu  ul:first-child ,
+.navigation > input:nth-child(2):checked ~ .mainmenu  li:nth-child(2) .submenu,
+.navigation > input:nth-child(3):checked ~ .mainmenu  li:nth-child(3) .submenu,
+.navigation > input:nth-child(4):checked ~ .mainmenu  li:nth-child(4) .submenu,
+.navigation > input:nth-child(5):checked ~ .mainmenu  li:nth-child(5) .submenu,
+.navigation > input:nth-child(6):checked ~ .mainmenu  li:nth-child(6) .submenu
+
+{
+  display: block;
+  max-height: 200px;
+}
+
+
+
+.submenu a {
+  background-color: #999;
+}
+
+.submenu a:hover {
+  background-color: #666;
+}
+
+.submenu {
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.5s ease-out;
+}

@@ -1,0 +1,124 @@
+<!-- <div class="c-itens-view"> -->
+<div class="c-view">
+
+
+    <div class="c-view__title">
+        <h2 id="c-view__title-text">Estoque -</h2>
+    </div>
+
+
+
+
+
+
+    <!-- CARDS==================================================================================================================== -->
+    <div class="c-cards col-md-12">
+
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-valor" id="card-quantidade_estoques">
+                    0,00
+                </div>
+                <div class="card-texto">
+                    Quantidade nos Estoques
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-valor" id="card-valor_estoque">
+                    R$ 0,00
+                </div>
+                <div class="card-texto">
+                    Valor em estoque
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="c-view__acoes">
+        <div class="c-view__acoes-botoes">
+
+            <select name="" class="estoques-select default" id="estoques-select">
+                <option value="%">Estoques</option>
+                <optgroup label="Café da Manha">
+                    <option value="2">Almoxerifado</option>
+                    <option value="1">Produção</option>
+                </optgroup>
+                <optgroup label="Rouparia">
+                    <option value="3">Rouparia</option>
+                    <option value="4">Recepção</option>
+                    <option value="5">Apartamentos</option>
+                    <option value="6">Lavanderia</option>
+                </optgroup>     
+            </select>
+
+            <button class="btn-adicionar c-view__acoes-botoes-adicionar btn-movimentar" id="acoes__button-adicionar">
+                Movimentar Estoque</button>
+
+
+
+
+            <!-- <button class="btn-adicionar c-view__acoes-botoes-lancar_compra" id="acoes__button-lancar_compra">
+                Lançar Compra</button>
+            <button class="btn-adicionar c-view__acoes-botoes-transferir_estoque" id="acoes__button-transferir_estoque">
+                Transferir Estoque</button> -->
+        </div>
+
+        <div class="c-view__acoes-pesquisa">
+            <!-- <span>Busca</span> -->
+            <input class="input-default acoes__buscar" id="acoes__buscar" placeholder="Pesquisar">
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="c-view__tabela">
+
+        <table class="tabela-default" id="tabela-central">
+            <thead>
+                <tr>
+                    <th data-name="data" data-format="date">Data</th>                  
+                    <th data-name="operacao">Operação</th>
+                    <th data-name="tipo">Movimentação</th>
+                    <th data-name="estoques_nome">Estoque</th>
+                    <th data-name="quantidade">Quantidade</th>
+                    <th data-name="valor">Valor</th>
+                    <th data-name="total" data-format="coin-real">Total</th>
+                    <th data-format="action">Ações</th>    
+                </tr>
+            </thead>
+            <tbody id="tbody-central">
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+</div>

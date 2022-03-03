@@ -1,0 +1,210 @@
+/* CSS dos layouts das paginas */
+/* ================================================================ */
+@import '../biblioteca/css/global.css';
+
+
+
+html, body{
+    height: 100%;
+}
+
+
+
+/* FUNDO */
+/*====================================================== */
+.login-fundo {
+    height: 100%;
+    /* height: 100vh; */
+
+    min-height: 450px;
+    /* background-image: linear-gradient(to right, rgb(59, 91, 194), rgb(106, 55, 224)); */
+    background-image: linear-gradient(to right, rgb(73, 73, 73), rgb(45, 43, 51));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+
+
+
+
+
+
+
+/* CENTRO*/
+/*====================================================== */
+.login-centro {
+
+
+    background-color: rgb(238, 238, 241);
+    /* background-color: center -898px no-repeat #212121; */
+    display: flex;
+    flex-direction: column;
+
+    width: 450px;
+    height: 270px;
+
+    /* min-height: ; */
+
+    margin-top: 80px;
+
+   
+    border-radius: 6px;
+    box-shadow: 0px 0px 12px -1px black;
+}
+
+
+/* CENTRO TITULO */
+/*-------------------------------------------------*/
+.login-centro__titulo{
+    display: flex;
+    align-items: center;
+    color: rgb(249, 251, 255);
+    background-color: rgb(79, 116, 238);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.301);
+
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+
+    font-size: 22px;
+    /* text-align: center; */
+
+    padding-left: 15px;
+    font-weight: 400;
+
+    height: 60px;
+}
+
+
+
+
+
+/* CENTRO FORM */
+/*------------------------------------------------ */
+.login-centro__form {
+
+    padding: 25px 60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* INPUT */
+/*====================================================== */
+.login-centro  input {
+
+    width: 100%;
+    height: 35px;
+    outline: none;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    /* font-size: 1rem !important; */
+    padding-left: 0.7rem;
+    transition: border-color 0.9s ease;
+
+    margin: 10px 0px;
+
+
+}
+
+.login-centro  input:focus {
+    border: 1px solid #5984b6;
+}
+
+/* BOTAO */
+/* ====================================================== */
+.login-centro  button {
+    float: right;
+    margin-top: 15px;
+
+    width: 115px;
+    height: 38px;
+
+    padding: 10px 20px;
+    background-color: rgb(37, 119, 167);
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    outline-style: none;
+    box-shadow: 2px 2px 5px -3px black;
+}
+
+
+.login-centro  button:hover {
+    background-color: rgba(37, 119, 167, 0.842);
+}
+
+.login-centro  button:active {
+    background-color: rgb(37, 119, 167);
+    font-size: 15px;
+}
+
+
+
+
+
+/* =================================================================== */
+.login-direitos{
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 700px) {
+    .login-centro {
+
+        width: 90vw;
+        max-width: 500px;
+
+        /* height: 300px; */
+        /* margin-top: 20vh; */
+        
+    }
+
+  
+
+
+    .login-centro__form {
+
+        padding: 15px 30px;
+    }
+
+
+
+    .login-direitos{
+        font-size: 14px;
+    }
+
+
+
+}

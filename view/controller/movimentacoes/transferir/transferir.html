@@ -1,0 +1,122 @@
+<div class="transferir">
+
+
+    <form class="form-geral" id="form-modal" autocomplete="off">
+
+
+        <div class="form__main">
+
+            <!-- Necessario para o autocomplete off funcionar no nome do produto -->
+            <input class="esconder" type="text" name="nomeAutoCompleteOff">
+
+            <div class="col-md-12">
+
+                <!-- Campos -->
+                <!-- ================================================================================================= -->
+
+                <!-- linha --------------------------------------------------------------------------------------- -->
+                <div class="col-md-12">
+
+                    <div class="col-md-6" id="origem-div">
+                        <div class="grupo-label-input">
+                            <label for="origem">Origem</label>
+                            <select class="" id="origem" name="origem" required="required">
+
+
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6" id="destino-div">
+                        <div class="grupo-label-input">
+                            <label for="destino" id="destino-div-label">Destino</label>
+                            <select class="" id="destino" name="destino" required>
+
+
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- linha --------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+                <!-- PRODUTOS -->
+                <!-- //==================================================================================================================== -->
+
+                <div class="table-input">
+
+                    <div class="table-input_titulo">
+                        <span class="table-input_titulo-texto">Itens</span>
+                    </div>
+
+                    <div class="table-input_adicionar">
+                        <button class="btn-adicionar" id="btn-adicionar-item-produto" type="button">+ Adicionar
+                            Item</button>
+                        <button class="btn-adicionar" id="btn-limpar-item-produto" type="button">Limpar
+                            Lista</button>
+                    </div>
+
+
+                    <table class="table-input_tabela">
+                        <thead class="">
+                            <th data-name="produtos_id" data-type="esconder" class="esconder"></th>
+                            <th data-name="nome" data-type="autocomplete" data-ignore="true" data-class="w-50">Nome</th>
+                            <th data-name="estoque_atual" data-format="coin" data-attr="disabled" data-class="w-20"
+                                data-ignore="true">Qtd Atual.</th>
+                            <th data-name="quantidade" data-format="coin" data-class="w-20">Qtd.</th>
+                            <th data-name="" data-type="action" data-class="w-5"></th>
+                            <!-- <th class="produto-custo">Custo</th>
+                    <th class="produto-total">Total</th> -->
+
+
+                        </thead>
+
+
+                        <tbody class="table-input_tbody" id="table-input_tbody">
+
+                        </tbody>
+
+                    </table>
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+            <div class="form__footer">
+
+                <button type="reset" class="btn-cancelar" id="btn-cancelar-modal-item"
+                    data-class='fechar-modal'>Cancelar</button>
+                <button type="submit" class="btn-salvar" id="btn-salvar-modal-item">Salvar</button>
+            </div>
+
+
+
+    </form>
+
+</div>

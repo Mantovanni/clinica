@@ -1,0 +1,142 @@
+<!-- <div class="c-itens-view"> -->
+<div class="c-view">
+
+
+    <div class="c-view__title">
+        <h2 id="c-view__title-text">Estoque -</h2>
+    </div>
+
+
+
+
+
+
+    <!-- CARDS==================================================================================================================== -->
+    <div class="c-cards col-md-12">
+
+
+        
+        
+        
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-valor" id="card-lavanderia">
+                    0,00
+                </div>
+                <div class="card-texto">
+                    Lavanderia
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-valor" id="card-recepcao">
+                    0,00
+                </div>
+                <div class="card-texto">
+                    Recepção
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-valor" id="card-apartamentos">
+                    0,00
+                </div>
+                <div class="card-texto">
+                    Apartamentos
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-valor" id="card-rouparia">
+                    0,00
+                </div>
+                <div class="card-texto">
+                    Rouparia
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="c-view__acoes">
+        <div class="c-view__acoes-botoes">
+
+            <!-- <select name="" class="estoques-select default" id="estoques-select">
+                <option value="%">Estoques</option>
+                <option value="2">Almoxerifado</option>
+                <option value="1">Produção</option>
+            </select> -->
+
+            <button class="btn-adicionar c-view__acoes-botoes-adicionar btn-movimentar" id="acoes__button-adicionar">
+                Movimentar Estoque</button>
+
+
+
+
+            <!-- <button class="btn-adicionar c-view__acoes-botoes-lancar_compra" id="acoes__button-lancar_compra">
+                Lançar Compra</button>
+            <button class="btn-adicionar c-view__acoes-botoes-transferir_estoque" id="acoes__button-transferir_estoque">
+                Transferir Estoque</button> -->
+        </div>
+
+        <div class="c-view__acoes-pesquisa">
+            <!-- <span>Busca</span> -->
+            <input class="input-default acoes__buscar" id="acoes__buscar" placeholder="Pesquisar">
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="c-view__tabela">
+
+        <table class="tabela-default" id="tabela-central">
+            <thead>
+                <tr>
+                    <th data-name="data" data-format="date">Data</th>
+                    <th data-name="usuario">Usuário</th>
+                    <!-- <th data-name="operacao">Operação</th> -->
+                    <th data-name="tipo" data-format="span">Movimentação</th>
+                    <th data-name="estoques_nome">Estoque</th>
+                    <th data-name="quantidade">Quantidade</th>
+                    <!-- <th data-name="valor">Valor</th> -->
+                    <!-- <th data-name="total" data-format="coin-real">Total</th> -->
+                </tr>
+            </thead>
+            <tbody id="tbody-central">
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+</div>

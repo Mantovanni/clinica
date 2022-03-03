@@ -1,0 +1,223 @@
+<div class="modal-window__content">
+
+
+
+
+    <div class="adicionar__title">
+
+        <h3 id="adicionar__title-texto">
+            Adicionar Item
+        </h3>
+
+    </div>
+
+    <!-- id="form-adicionar-item" usado pela função validarForm() -->
+    <form class="form-geral" id="form-adicionar">
+
+
+        <div class="adicionar__main">
+
+            <!-- <div class="m-adicionar-item"> -->
+
+            <button type="reset" class="btn-fechar-modal" id="btn-fechar-modal-item"
+                data-class='fechar-modal'>X</button>
+
+            <div class="col-md-12">
+
+
+                <!-- ID Invisivel para o editar / é removido no DAO-->
+                <div class="col-md-6 esconder">
+                    <div class="grupo-label-input">
+                        <label for="adicionar-item-id" class="label-adicionar-item-id">Id</label>
+                        <input type="text" name="id" id="adicionar-item-id" autocomplete="off" data-type="text">
+                    </div>
+                </div>
+
+
+                <!-- Campos -->
+                <!-- ================================================================================================= -->
+
+                <!-- linha --------------------------------------------------------------------------------------- -->
+
+                <div class="col-md-6">
+                    <div class="grupo-label-input ">
+                        <label for="nome">Nome</label>
+
+
+                        <input type="text" name="nome" id="nome" placeholder="Nome do item" autocomplete="off"
+                            data-type="text" required data-type="ignore">
+
+
+
+                        <!-- <span class="mensagem-validacao"></span> -->
+                    </div>
+                </div>
+
+
+                <!-- <div class="autoComplete_wrapper">
+
+                    <input type="text" name="" id="autoComplete">
+                </div> -->
+                <!-- 
+                <div class="col-md-3">
+                    <div class="grupo-label-input">
+                        <label for="">nome-produto</label>
+                        <select id="nome-produto" name="nome-produto"  dropdownstyle="dropdown"
+                            autoCompleteMode="SuggestAppend">
+                            <option value="">-</option>
+                            <option value="a">aaaa</option>
+                            <option value="b">bbb</option>
+                          
+                        </select>
+
+                    </div>
+                </div> -->
+
+
+
+
+                <div class="col-md-3">
+                    <div class="grupo-label-input">
+                        <label for="custo">Custo</label>
+                        <input type="text" step="any" min="0" name="custo" id="custo" placeholder="R$0,00"
+                            autocomplete="off" data-type="coin" required disabled>
+                        <span class="mensagem-validacao"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="grupo-label-input">
+                        <label for="quantidade">Quantidade</label>
+                        <input type="number" name="quantidade" step="any" min="0" id="quantidade" placeholder="0"
+                            autocomplete="off" data-type="float" required disabled>
+                        <span class="mensagem-validacao"></span>
+                        <!-- <input className="center-align" type="text" pattern="(^[0-9]{0,2}$)|(^[0-9]{0,2}\.[0-9]{0,5}$)" step="any"
+                            maxlength="7" validate="true"> -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- linha --------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <div class="grupo-label-input">
+                        <label for="">Categoria</label>
+                        <select id="adicionar-item-categoria" name="categoria">
+                            <option value="">-</option>
+                            <!-- <option value="Salgados">Salgados</option> -->
+                        </select>
+                        <span class="mensagem-validacao"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="grupo-label-input">
+                        <label for="">SubCategoria</label>
+                        <select id="adicionar-item-subcategoria" name="subcategoria">
+                            <option value="">-</option>
+                            <!-- <option value="Tortas">Tortas</option>
+                            <option value="Doces">Doces</option> -->
+                        </select>
+                        <span class="mensagem-validacao"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- linha --------------------------------------------------------------------------------------- -->
+
+
+            <!-- <div class="grupo-label-input">
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" name="descricao" rows="3"></textarea>
+                <span class="mensagem-validacao"></span>
+            </div> -->
+
+            <!-- linha --------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- PRODUTOS -->
+            <!-- //==================================================================================================================== -->
+
+            <div class="itens-produtos">
+
+                <div class="itens-produtos_titulo">
+                    <span class="itens-produtos_titulo-texto">Produtos / Ingredientes</span>
+                </div>
+
+                <div class="itens-produtos_adicionar">
+                    <button class="btn-adicionar" id="btn-adicionar-item-produto" type="button">+ Adicionar Produto</button>
+                </div>
+
+
+                <table class="itens-produtos_tabela ">
+                    <thead class="">
+                        <th>Produto</th>
+                        <th>Qtd.</th>
+                        <th>Valor</th>
+                        <th>Total</th>
+                        <th></th>
+                    </thead>
+
+
+                    <tbody class="itens-produtos_tbody" id="itens-produtos_tbody">
+
+                    </tbody>
+
+                </table>
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+        <div class="adicionar__footer">
+
+            <button type="reset" class="btn-cancelar" id="btn-cancelar-modal-item"
+                data-class='fechar-modal'>Cancelar</button>
+            <button type="submit" class="btn-salvar" id="btn-salvar-modal-item">Salvar</button>
+        </div>
+
+
+
+    </form>
+
+
+
+
+
+</div><!-- modal-window__content -->

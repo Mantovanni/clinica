@@ -1,0 +1,118 @@
+<div class="main__container">
+
+
+
+
+    <div class="c-view">
+
+
+        <div class="c-view__title">
+            <h1 id="c-view__title-text">Café</h1>
+        </div>
+
+
+
+
+        <!-- CARDS==================================================================================================================== -->
+        <div class="c-cards col-md-12">
+
+            <div class="col-md-3">
+                <div class="card ">
+                    <div class="card-valor" id="card-custo_hospede_total">
+                        R$ 0,00
+                    </div>
+                    <div class="card-texto">
+                        Custo por Hospede Total
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card ">
+                    <div class="card-valor" id="card-custo_total">
+                        R$ 0,00
+                    </div>
+                    <div class="card-texto">
+                        Custo Total
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="c-view__acoes">
+            <div class="c-view__acoes-botoes">
+
+                <button class="btn-adicionar c-view__acoes-botoes-adicionar" id="acoes__button-adicionar">
+                    Lançar Café</button>
+
+                <button class="btn-print" id="btn-print-cafes" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-printer-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z" />
+                        <path
+                            d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
+                    </svg>
+                    Imprimir
+                </button>
+
+
+            </div>
+
+            <div class="c-view__acoes-pesquisa">
+                <!-- <span>Busca</span> -->
+                <input class="input-default acoes__buscar" id="acoes__buscar" placeholder="Pesquisar">
+            </div>
+
+        </div>
+
+
+
+
+        <div class="c-view__tabela">
+
+            <table class="tabela-default " id="tabela-central">
+                <!-- mudar para default__tabela -->
+                <thead>
+                    <tr>
+                        <th data-name="id" data-class="w-10">ID</th>
+                        <th data-name="data" data-class="w-22" data-format="date">Data</th>
+                        <th data-name="quantidade_itens" data-class="w-15">Variedade de Itens</th>
+                        <th data-name="hospedes" data-class="w-15">Hospedes</th>
+                        <th data-name="hospede_custo" data-class="w-15 align-left" data-format="coin-real"
+                            class="align-left">C/ por Hospede</th>
+                        <th data-name="custo" data-class="w-15 align-left" data-format="coin-real" class="align-left">
+                            Custo Total</th>
+                        <th data-format="action">Ações</th>
+
+                    </tr>
+                </thead>
+                <tbody class="cursor-pointer" id="tbody-central">
+                    <!-- mudar para default__tbody -->
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div><!-- Fim container-->
+
+</div>

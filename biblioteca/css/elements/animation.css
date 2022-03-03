@@ -1,0 +1,52 @@
+/* EFEITOS
+----------------------------------------------------------- */
+
+@keyframes modal-translated {
+    from {
+        transform: translate3d(0, -60px, 0)
+    }
+
+    to {
+        transform: translate3d(0, 0, 0)
+    }
+}
+
+
+@keyframes modal-opacity {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* ================================================================ */
+@keyframes modal-translated-mensagem {
+    from {
+        transform: translate3d(0, -60px, 0)
+    }
+
+    to {
+        transform: translate3d(0, 0, 0)
+    }
+}
+
+
+@keyframes modal-opacity-mensagem{
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* ================================================================ */

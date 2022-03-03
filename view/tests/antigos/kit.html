@@ -1,0 +1,438 @@
+< !DOCTYPE html > <html lang="en"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width,initial-scale=1.0"> <title>FilterComboBox - Component Kitchen</title> <link rel="shortcut icon" href="/static/20210424101706/images/favicon.ico"> <link rel="stylesheet" href="/static/20210424101706/main.css"> <link rel="stylesheet" href="/static/20210424101706/main.desktop.css" media="(min-width: 800px)"> <script type="module" src="/static/20210424101706/build/clientFull.min.js"></script>  </head> <body> <nav id="ckHeader"> <a href="/"> <img id="headerLogo" src="/static/20210424101706/images/Component Kitchen Logo.svg"> </a> <div id="headerSpace"></div> <div id="headerLinks" class="desktopOnly"> <ck-current-anchor href="/" class="areaLink"> <span>home</span> </ck-current-anchor> <!--
+        <ck-current-anchor href="/services" class="areaLink" area-link="true">
+        <span>services</span>
+    </ck-current-anchor>
+        --> <ck-current-anchor href="/blog" class="areaLink" area-link="true"> <span>blog</span> </ck-current-anchor> <ck-current-anchor href="/about" class="areaLink" area-link="true"> <span>about</span> </ck-current-anchor> <ck-current-anchor id="elixButton" href="/elix" area-link="true"> <div>elix components</div> </ck-current-anchor> </div> <ck-menu-button id="navigationMenuButton" class="mobileOnly showWhenUndefined"></ck-menu-button> </nav>  <link rel="stylesheet" href="/static/20210424101706/elix.css"> <header> <div class="block aqua"> <div class="fill mesh" style="background-image: url('/static/20210424101706/images/White Mesh.svg')"></div> <div class="meshOverlay gradient">  <div class="padded titleBlock"> <h1><wbr />Filter<wbr />Combo<wbr />Box</h1> <div class="subhead">A combo box which applies its text input as a filter on its list items</div> </div> <div class="padded anchors"> <a href="#overview" style="">OVERVIEW</a> <span class="separator" style="">|</span> <a href="#usage" style="">USAGE</a> <span class="separator" style="">|</span> <a href="#see-also" class="desktopOnly" style="">SEE ALSO</a> <span class="separator desktopOnly" style="">|</span> <a href="#api">API</a> <div id="anchorElixLogoContainer"> <a href="/elix"> <img id="anchorElixLogo" src="/static/20210424101706/images/Elix Logo White.svg"> </a> </div> </div>  </div> </div> </header> <article> <section class="documentation">  <div class=" markdown"><div class="demoContainer">
+        <div class="demo padded">
+            Fruit:
+      <elix-filter-combo-box aria-label="Fruits">
+                <div>Acai</div>
+                <div>Akee</div>
+                <div>Apple</div>
+                <div>Apricot</div>
+                <div>Avocado</div>
+                <div>Banana</div>
+                <div>Bilberry</div>
+                <div>Black sapote</div>
+                <div>Blackberry</div>
+                <div>Blackcurrant</div>
+                <div>Blood orange</div>
+                <div>Blueberry</div>
+                <div>Boysenberry</div>
+                <div>Cantaloupe</div>
+                <div>Cherimoya</div>
+                <div>Cherry</div>
+                <div>Chico fruit</div>
+                <div>Clementine</div>
+                <div>Cloudberry</div>
+                <div>Coconut</div>
+                <div>Crab apple</div>
+                <div>Cranberry</div>
+                <div>Cucumber</div>
+                <div>Currant</div>
+                <div>Damson</div>
+                <div>Date</div>
+                <div>Dragonfruit</div>
+                <div>Durian</div>
+                <div>Elderberry</div>
+                <div>Feijoa</div>
+                <div>Fig</div>
+                <div>Goji berry</div>
+                <div>Gooseberry</div>
+                <div>Grape</div>
+                <div>Grapefruit</div>
+                <div>Guava</div>
+                <div>Honeyberry</div>
+                <div>Honeydew</div>
+                <div>Horned melon</div>
+                <div>Huckleberry</div>
+                <div>Jabuticaba</div>
+                <div>Jackfruit</div>
+                <div>Jambul</div>
+                <div>Japanese plum</div>
+                <div>Jostaberry</div>
+                <div>Jujube</div>
+                <div>Juniper berry</div>
+                <div>Kiwifruit</div>
+                <div>Kumquat</div>
+                <div>Lemon</div>
+                <div>Lime</div>
+                <div>Longan</div>
+                <div>Loquat</div>
+                <div>Lychee</div>
+                <div>Mandarin</div>
+                <div>Mango</div>
+                <div>Mangosteen</div>
+                <div>Marionberry</div>
+                <div>Miracle fruit</div>
+                <div>Mulberry</div>
+                <div>Nance</div>
+                <div>Nectarine</div>
+                <div>Orange</div>
+                <div>Papaya</div>
+                <div>Passionfruit</div>
+                <div>Peach</div>
+                <div>Pear</div>
+                <div>Persimmon</div>
+                <div>Pineapple</div>
+                <div>Pineberry</div>
+                <div>Plantain</div>
+                <div>Plum</div>
+                <div>Pluot</div>
+                <div>Pomegranate</div>
+                <div>Pomelo</div>
+                <div>Purple mangosteen</div>
+                <div>Quince</div>
+                <div>Rambutan</div>
+                <div>Raspberry</div>
+                <div>Redcurrant</div>
+                <div>Salak</div>
+                <div>Salal berry</div>
+                <div>Salmonberry</div>
+                <div>Satsuma</div>
+                <div>Soursop</div>
+                <div>Star apple</div>
+                <div>Star fruit</div>
+                <div>Strawberry</div>
+                <div>Surinam cherry</div>
+                <div>Tamarillo</div>
+                <div>Tamarind</div>
+                <div>Tangerine</div>
+                <div>Ugli fruit</div>
+                <div>Watermelon</div>
+                <div>White currant</div>
+                <div>White sapote</div>
+                <div>Yuzu</div>
+            </elix-filter-combo-box>
+        </div>
+        <div class="demoCaption">
+            Demo: FilterComboBox filters down the set of choices as you type
+          <a class="demoLink" href="/demos/filterComboBox.html" target="_blank">
+                <span class="newWindowGlyph">⇲</span>
+            </a>
+        </div>
+    </div>
+
+        <h2 id="overview"><a id="overview">Overview</a></h2>
+        <p><code>FilterComboBox</code> is a type of <a href="ListComboBox">ListComboBox</a> pairing an <a href="AutoCompleteInput">AutoCompleteInput</a> that auto-completes text as you type, and a <a href="FilterListBox">FilterListBox</a> that filters the choices to show only items containing the typed text.</p>
+        <h2 id="usage"><a id="usage">Usage</a></h2>
+        <pre><code class="language-js"><span class="hljs-keyword">import</span> FilterComboBox <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;elix/define/FilterComboBox.js&#x27;</span>;
+<span class="hljs-keyword">const</span> filterComboBox = <span class="hljs-keyword">new</span> FilterComboBox(); <span class="hljs-comment">// or</span>
+            <span class="hljs-keyword">const</span> filterComboBox = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;elix-filter-combo-box&#x27;</span>);
+</code></pre>
+        <p>In HTML:</p>
+        <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;module&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;node_modules/elix/define/FilterComboBox.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">elix-filter-combo-box</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Pet&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Cat<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Dog<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Fish<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">elix-filter-combo-box</span>&gt;</span>
+        </code></pre>
+        <p>Use <code>FilterComboBox</code> when:</p>
+        <ul>
+            <li>You want to offer the user a list of common responses, but also want to allow them to enter their own response.</li>
+            <li>The list of common responses is large.</li>
+            <li>Space is limited, or the setting controlled by the combo box is not particularly high priority. In other situations, a <a href="ListWithSearch">ListWithSearch</a> may be preferred.</li>
+        </ul>
+        <h2 id="see-also"><a id="see-also">See also</a></h2>
+        <div class="cardGrid seeAlso">
+            <a class="componentCard seeAlso" href="/elix/AutoCompleteComboBox"> <div class="cardPreviewContainer"> <img class="cardPreview" src="/static/20210424101706/images/previews/AutoCompleteComboBox.png"> </div> <div class="cardDetails"> <div class="cardName"> <wbr />Auto<wbr />Complete<wbr />Combo<wbr />Box </div> <div> A combo box that auto-completes the user's input against the list items </div> </div> </a>
+                <a class="componentCard seeAlso" href="/elix/ListWithSearch"> <div class="cardPreviewContainer"> <img class="cardPreview" src="/static/20210424101706/images/previews/ListWithSearch.png"> </div> <div class="cardDetails"> <div class="cardName"> <wbr />List<wbr />With<wbr />Search </div> <div> A list accompanied by a search box </div> </div> </a>
+                    <a class="componentCard seeAlso" href="/elix/FilterListBox"> <div class="cardPreviewContainer"> <img class="cardPreview" src="/static/20210424101706/images/previews/FilterListBox.png"> </div> <div class="cardDetails"> <div class="cardName"> <wbr />Filter<wbr />List<wbr />Box </div> <div> List that only shows items containing a given text string </div> </div> </a>
+</div>
+</div> <div class="apiSection"> <h2><a id="api">API</a></h2> <p>Class hierarchy:</p> <div class="classDiagram"> <div class="classSubclasses"><div class="classBlock "> <a class="classHeader" href="PlainFilterComboBox"> <div class="className">PlainFilterComboBox</div> <div class="classSummary">FilterComboBox component in the Plain reference design system</div> </a>  </div> </div> <div class="classBlock current"> <a class="classHeader" href="FilterComboBox"> <div class="className">FilterComboBox</div> <div class="classSummary">A combo box which applies its text input as a filter on its list items</div> </a> <div class="classMixins">Built with <a class="classMixinLink" href="SlotContentMixin">SlotContentMixin</a></div> </div> <div class="classBlock "> <a class="classHeader" href="AutoCompleteComboBox"> <div class="className">AutoCompleteComboBox</div> <div class="classSummary">A combo box that auto-completes the user's input against the list items</div> </a> <div class="classMixins">Built with <a class="classMixinLink" href="ItemsTextMixin">ItemsTextMixin</a></div> </div><div class="classBlock "> <a class="classHeader" href="ListComboBox"> <div class="className">ListComboBox</div> <div class="classSummary">A combo box whose popup presents a list of choices</div> </a> <div class="classMixins">Built with <a class="classMixinLink" href="CursorAPIMixin">CursorAPIMixin</a> • <a class="classMixinLink" href="DelegateCursorMixin">DelegateCursorMixin</a> • <a class="classMixinLink" href="DelegateItemsMixin">DelegateItemsMixin</a> • <a class="classMixinLink" href="PopupListMixin">PopupListMixin</a> • <a class="classMixinLink" href="SingleSelectAPIMixin">SingleSelectAPIMixin</a></div> </div><div class="classBlock "> <a class="classHeader" href="ComboBox"> <div class="className">ComboBox</div> <div class="classSummary">A text input paired with a popup that can be used as an alternative to typing</div> </a> <div class="classMixins">Built with <a class="classMixinLink" href="DelegateFocusMixin">DelegateFocusMixin</a> • <a class="classMixinLink" href="DelegateInputLabelMixin">DelegateInputLabelMixin</a> • <a class="classMixinLink" href="DelegateInputSelectionMixin">DelegateInputSelectionMixin</a> • <a class="classMixinLink" href="FocusVisibleMixin">FocusVisibleMixin</a> • <a class="classMixinLink" href="FormElementMixin">FormElementMixin</a> • <a class="classMixinLink" href="KeyboardMixin">KeyboardMixin</a> • <a class="classMixinLink" href="PopupDragSelectMixin">PopupDragSelectMixin</a> • <a class="classMixinLink" href="PopupToggleMixin">PopupToggleMixin</a></div> </div><div class="classBlock "> <a class="classHeader" href="PopupSource"> <div class="className">PopupSource</div> <div class="classSummary">Positions a popup with respect to a source element</div> </a> <div class="classMixins">Built with <a class="classMixinLink" href="DisabledMixin">DisabledMixin</a> • <a class="classMixinLink" href="FocusVisibleMixin">FocusVisibleMixin</a> • <a class="classMixinLink" href="OpenCloseMixin">OpenCloseMixin</a></div> </div><div class="classBlock "> <a class="classHeader" href="ReactiveElement"> <div class="className">ReactiveElement</div> <div class="classSummary">General-purpose base for writing components in functional-reactive style</div> </a> <div class="classMixins">Built with <a class="classMixinLink" href="AttributeMarshallingMixin">AttributeMarshallingMixin</a> • <a class="classMixinLink" href="ReactiveMixin">ReactiveMixin</a> • <a class="classMixinLink" href="ShadowTemplateMixin">ShadowTemplateMixin</a></div> </div> <div class="classBlock "> <a class="classHeader" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement"> <div class="className">HTMLElement</div> <div class="classSummary">Standard browser class for all custom elements</div> </a>  </div> </div><p> The element defines the following <a href="customizing#replaceable-parts">shadow parts</a>: </p> <ul> <li> <code>backdrop</code>: default type is <a href="Hidden">Hidden</a> </li><li> <code>down-icon</code>: the icon shown in the toggle if the popup will open or close in the down direction </li><li> <code>input</code>: the text input element, default type is <a href="AutoCompleteInput">AutoCompleteInput</a> </li><li> <code>list</code>: the list of choices, default type is <a href="FilterListBox">FilterListBox</a> </li><li> <code>popup</code>: the popup element, default type is <a href="Popup">Popup</a> </li><li> <code>popup-toggle</code>: the element that lets the user know they can open the popup, default type is <a href="UpDownToggle">UpDownToggle</a> </li><li> <code>source</code>: the element used as the reference point for positioning the popup, generally the element that invokes the popup, default type is <code>div</code> element </li><li> <code>up-icon</code>: the icon shown in the toggle if the popup will open or close in the up direction </li> </ul><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="booleanAttributeValue">boolean<wbr />Attribute<wbr />Value(<wbr>name, value<wbr>) <span class="apiMemberType"> static method </span></a> </h3> <div class="apiDescription markdown"><p>Given a string value for a named boolean attribute, return <code>true</code> if the
+value is either: a) the empty string, or b) a case-insensitive match for the
+name.</p>
+                    <p>This is native HTML behavior; see the MDN documentation on <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes#Boolean_Attributes">boolean
+attributes</a>
+for the reasoning.</p>
+                    <p>Given a null value, this return <code>false</code>.
+Given a boolean value, this return the value as is.
+       <p class="apiLabel">Parameters:</p> <ul> <li> name: <span> <code>string</code> – </span> </li><li> value: <span> <code>string|boolean|null</code> – </span> </li> </ul>   <p> Defined by <a href="AttributeMarshallingMixin">AttributeMarshallingMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="close">close(<wbr>closeResult<wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Close the component (if not already closed).</p>
+                    <p>Some components like <a href="AlertDialog">AlertDialog</a> want to indicate why or
+how they were closed. To support such scenarios, you can supply a value
+to the optional <code>closeResult</code> parameter. This closeResult will be made
+available in the <code>whenClosed</code> promise and the <code>state.closeResult</code> member.
+       <p class="apiLabel">Parameters:</p> <ul> <li> closeResult: <span> <code>object</code> – </span>an indication of how or why the element closed </li> </ul>   <p> Defined by <a href="OpenCloseMixin">OpenCloseMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="close"><span> close <span class="apiMemberType"> event</span> </span></a> </h3> <div class="apiDescription markdown"><p>Raised when the component closes.
+       <p> Defined by <a href="OpenCloseMixin">OpenCloseMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="closed">closed <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>True if the element is currently closed.</p>
+                    <p>This read-only property is provided as a convenient inverse of <code>opened</code>.
+       <p><span class="apiLabel">Type:</span> <code>boolean</code></p>   <p> Defined by <a href="OpenCloseMixin">OpenCloseMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="closeFinished">close<wbr />Finished <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>True if the element has completely closed.</p>
+                    <p>For components not using asynchronous open/close effects, this property
+returns the same value as the <code>closed</code> property. For elements that have a
+true value of <code>state.openCloseEffects</code> (e.g., elements using
+<a href="TransitionEffectMixin">TransitionEffectMixin</a>), this property returns
+true only if <code>state.effect</code> is &quot;close&quot; and <code>state.effectPhase</code> is
+&quot;after&quot;.
+       <p><span class="apiLabel">Type:</span> <code>boolean</code></p>   <p> Defined by <a href="OpenCloseMixin">OpenCloseMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="contentSlot">content<wbr />Slot <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>See <a href="internal#internal.contentSlot">contentSlot</a>.
+          <p> Defined by <a href="SlotContentMixin">SlotContentMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="currentIndex">current<wbr />Index <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The index of the current item, or -1 if no item is current.
+       <p><span class="apiLabel">Type:</span> <code>number</code></p>   <p> Defined by <a href="CursorAPIMixin">CursorAPIMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="currentindexchange"><span> currentindexchange <span class="apiMemberType"> event</span> </span></a> </h3> <div class="apiDescription markdown"><p>Raised when the <code>currentIndex</code> property changes.
+       <p> Defined by <a href="CursorAPIMixin">CursorAPIMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="currentItem">current<wbr />Item <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The current item, or null if no item is current.
+       <p><span class="apiLabel">Type:</span> <code>Element</code></p>   <p> Defined by <a href="CursorAPIMixin">CursorAPIMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="currentItemRequired">current<wbr />Item<wbr />Required <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>True if the list should always have a current item (if it has items).
+       <p><span class="apiLabel">Type:</span> <code>boolean</code></p> <p><span class="apiLabel">Default:</span> <code>false</code></p>  <p> Defined by <a href="CursorAPIMixin">CursorAPIMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="cursorOperationsWrap">cursor<wbr />Operations<wbr />Wrap <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>True if cursor operations wrap from last to first, and vice versa.
+       <p><span class="apiLabel">Type:</span> <code>boolean</code></p> <p><span class="apiLabel">Default:</span> <code>false</code></p>  <p> Defined by <a href="CursorAPIMixin">CursorAPIMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="defaultState">default<wbr />State <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The default state for the component. This can be extended by mixins and
+                classes to provide additional default state.
+       <p><span class="apiLabel">Type:</span> <code>PlainObject</code></p>   <p> Defined by <a href="ReactiveMixin">ReactiveMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="delegatesFocus">delegates<wbr />Focus <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>Returns true if the component is delegating its focus.</p>
+                    <p>A component using <code>DelegateFocusMixin</code> will always have this property be
+true unless a class takes measures to override it.
+       <p><span class="apiLabel">Type:</span> <code>boolean</code></p> <p><span class="apiLabel">Default:</span> <code>true</code></p>  <p> Defined by <a href="DelegateFocusMixin">DelegateFocusMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="disabled">disabled <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>True if the component is disabled, false (the default) if not.</p>
+                    <p>The value of this property will be reflected to the <code>disabled</code> attribute
+so that it can be referenced in CSS. Note that this non-native
+implementation of the <code>disabled</code> attribute will <em>not</em> trigger the
+<code>:disabled</code> CSS pseudo-class, so your style rules will have to reference
+the presence or absence of the <code>disabled</code> attribute. That is, instead
+of writing</p>
+                    <pre><code>my-component<span class="hljs-selector-pseudo">:disabled</span> {... }
+                    </code></pre>
+                    <p>write this instead</p>
+                    <pre><code>my-component<span class="hljs-selector-attr">[disabled]</span> {... }
+                    </code></pre>
+                    <p>Like the native <code>disabled</code> attribute, this attribute is boolean. That
+means that it&#39;s <em>existence</em> in markup sets the attribute, even if set to
+an empty string or a string like &quot;false&quot;.
+       <p><span class="apiLabel">Type:</span> <code>boolean</code></p> <p><span class="apiLabel">Default:</span> <code>false</code></p>  <p> Defined by <a href="DisabledMixin">DisabledMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="disabledchange"><span> disabledchange <span class="apiMemberType"> event</span> </span></a> </h3> <div class="apiDescription markdown"><p>Raised when the <code>disabled</code> property changes.
+       <p> Defined by <a href="DisabledMixin">DisabledMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="form">form <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The ID of the <code>form</code> element with which this element is associated,
+or <code>null</code> if the element is not associated with any form. This is provided
+for consistency with the native HTML
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#form">form</a>
+property.
+       <p><span class="apiLabel">Type:</span> <code>string</code></p>   <p> Defined by <a href="FormElementMixin">FormElementMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="getItemText">get<wbr />Item<wbr />Text(<wbr>item<wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Extract the text from the given item.</p>
+                    <p>The default implementation returns an item&#39;s <code>aria-label</code>, <code>alt</code>
+attribute, <code>innerText</code>, or <code>textContent</code>, in that order. You can override
+this to return the text that should be used.
+       <p class="apiLabel">Parameters:</p> <ul> <li> item: <span> <code>Element</code> – </span> </li> </ul> <p> <span class="apiLabel">Returns: </span> <code>string</code>  </p>  <p> Defined by <a href="ItemsTextMixin">ItemsTextMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="goFirst">go<wbr />First(<wbr><wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Moves to the first item in the list.
+        <p> <span class="apiLabel">Returns: </span> <code>Boolean</code> True if the current item changed, false if not. </p>  <p> Defined by <a href="CursorAPIMixin">CursorAPIMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="goLast">go<wbr />Last(<wbr><wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Move to the last item in the list.
+        <p> <span class="apiLabel">Returns: </span> <code>Boolean</code> True if the current item changed </p>  <p> Defined by <a href="CursorAPIMixin">CursorAPIMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="goNext">go<wbr />Next(<wbr><wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Move to the next item in the list.</p>
+                    <p>If the list has no current item, the first item will become current.
+        <p> <span class="apiLabel">Returns: </span> <code>Boolean</code> True if the current item changed </p>  <p> Defined by <a href="CursorAPIMixin">CursorAPIMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="goPrevious">go<wbr />Previous(<wbr><wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Moves to the previous item in the list.</p>
+                    <p>If the list has no current item, the last item will become current.
+        <p> <span class="apiLabel">Returns: </span> <code>Boolean</code> True if the current item changed </p>  <p> Defined by <a href="CursorAPIMixin">CursorAPIMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="ids">ids <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>A convenient shortcut for looking up an element by ID in the component&#39;s
+Shadow DOM subtree.</p>
+                    <p>Example: if component&#39;s template contains a shadow element <code>&lt;button id=&quot;foo&quot;&gt;</code>, you can use the reference <code>this[ids].foo</code> to obtain
+the corresponding button in the component instance&#39;s shadow tree. The
+<code>ids</code> property is simply a shorthand for <code>getElementById</code>, so
+<code>this[ids].foo</code> is the same as
+<code>this[shadowRoot].getElementById(&#39;foo&#39;)</code>.
+       <p><span class="apiLabel">Type:</span> <code>object</code></p>   <p> Defined by <a href="ShadowTemplateMixin">ShadowTemplateMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="input">input <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The combo box&#39;s input element.
+       <p><span class="apiLabel">Type:</span> <code>Element|null</code></p>   <p> Defined by <a href="ComboBox">ComboBox</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="inputPartType">input<wbr />Part<wbr />Type <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The class or tag used to create the <code>input</code> part into which the
+user can enter text.
+       <p><span class="apiLabel">Type:</span> <code>(component class constructor)|HTMLTemplateElement|string</code></p> <p><span class="apiLabel">Default:</span> <code>'input'</code></p>  <p> Defined by <a href="ComboBox">ComboBox</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="items">items <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The current set of items drawn from the element&#39;s current state.
+          <p> Defined by <a href="DelegateItemsMixin">DelegateItemsMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="keydown">keydown(<wbr><wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>See the <a href="internal#internal.keydown">symbols</a> documentation for details.
+          <p> Defined by <a href="KeyboardMixin">KeyboardMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="listPartType">list<wbr />Part<wbr />Type <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The class or tag used to create the <code>list</code> part - the list of
+available choices shown in the popup.
+       <p><span class="apiLabel">Type:</span> <code>(component class constructor)|HTMLTemplateElement|string</code></p> <p><span class="apiLabel">Default:</span> <code>ListBox</code></p>  <p> Defined by <a href="ListComboBox">ListComboBox</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="name">name <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The name of the form field that will be filled with this element&#39;s
+<code>value</code>. This is an analogue of the standard HTML
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/name">name</a>
+property.
+       <p><span class="apiLabel">Type:</span> <code>string</code></p>   <p> Defined by <a href="FormElementMixin">FormElementMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="open">open(<wbr><wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Open the element (if not already opened).
+          <p> Defined by <a href="OpenCloseMixin">OpenCloseMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="open"><span> open <span class="apiMemberType"> event</span> </span></a> </h3> <div class="apiDescription markdown"><p>Raised when the component opens.
+       <p> Defined by <a href="OpenCloseMixin">OpenCloseMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="opened">opened <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>True if the element is currently opened.</p>
+                    <p>This property can be set as a boolean attribute
+       <p><span class="apiLabel">Type:</span> <code>boolean</code></p> <p><span class="apiLabel">Default:</span> <code>false</code></p>  <p> Defined by <a href="OpenCloseMixin">OpenCloseMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="openedchange"><span> openedchange <span class="apiMemberType"> event</span> </span></a> </h3> <div class="apiDescription markdown"><p>Raised when the opened/closed state of the component changes.
+       <p> Defined by <a href="OpenCloseMixin">OpenCloseMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="placeholder">placeholder <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The prompt text shown in the input if it is empty.
+       <p><span class="apiLabel">Type:</span> <code>string</code></p>   <p> Defined by <a href="ComboBox">ComboBox</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="popupAlign">popup<wbr />Align <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The alignment of the popup with respect to the source button.</p>
+                    <ul>
+                        <li><code>bottom</code>: popup and source are bottom-aligned</li>
+                        <li><code>end</code>: popup and source are aligned on the trailing edge according to the
+text direction</li>
+                        <li><code>left</code>: popup and source are left-aligned</li>
+                        <li><code>right</code>: popup and source are right-aligned</li>
+                        <li><code>start</code>: popup and source are aligned on the leading edge according to
+the text direction</li>
+                        <li><code>stretch</code>: both left and right edges are aligned</li>
+                        <li><code>top</code>: popup and source are top-aligned<pre><code> <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;apiLabel&quot;</span>&gt;</span>Type:<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>&#x27;bottom&#x27;|&#x27;end&#x27;|&#x27;left&#x27;|&#x27;right&#x27;|&#x27;start&#x27;|&#x27;stretch&#x27;|&#x27;top&#x27;<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;apiLabel&quot;</span>&gt;</span>Default:<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>&#x27;start&#x27;<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span> Defined by <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;PopupSource&quot;</span>&gt;</span>PopupSource<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                        </code></pre>
+                        </li>
+                    </ul>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="popupDirection">popup<wbr />Direction <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The preferred direction for the popup.</p>
+                    <ul>
+                        <li><code>above</code>: popup appears above the source</li>
+                        <li><code>below</code>: popup appears below the source</li>
+                        <li><code>column-reverse</code>: popup appears before the source in the block axis</li>
+                        <li><code>column</code>: popup appears after the source in the block axis</li>
+                        <li><code>left</code>: popup appears to the left of the source</li>
+                        <li><code>right</code>: popup appears to the right of the source</li>
+                        <li><code>row-reverse</code>: popup appears before the source in the inline axis</li>
+                        <li><code>row</code>: popup appears after the source in the inline axis<pre><code> <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;apiLabel&quot;</span>&gt;</span>Type:<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>&#x27;above&#x27;|&#x27;below&#x27;|&#x27;column-reverse&#x27;|&#x27;column&#x27;|&#x27;left&#x27;|&#x27;right&#x27;|&#x27;row-reverse&#x27;|&#x27;row&#x27;<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;apiLabel&quot;</span>&gt;</span>Default:<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>&#x27;column&#x27;<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span> Defined by <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;PopupSource&quot;</span>&gt;</span>PopupSource<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                        </code></pre>
+                        </li>
+                    </ul>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="popupPartType">popup<wbr />Part<wbr />Type <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The class or tag used to create the <code>popup</code> part – the element
+responsible for displaying the popup and handling overlay behavior.
+       <p><span class="apiLabel">Type:</span> <code>(component class constructor)|HTMLTemplateElement|string</code></p> <p><span class="apiLabel">Default:</span> <code>Popup</code></p>  <p> Defined by <a href="PopupSource">PopupSource</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="popupTogglePartType">popup<wbr />Toggle<wbr />Part<wbr />Type <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The class or tag used to create the <code>popup-toggle</code> part – the
+element that lets the user know they can open the popup.
+       <p><span class="apiLabel">Type:</span> <code>(component class constructor)|HTMLTemplateElement|string</code></p> <p><span class="apiLabel">Default:</span> <code>UpDownToggle</code></p>  <p> Defined by <a href="PopupToggleMixin">PopupToggleMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="render">render(<wbr>changed<wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Render the indicated changes in state to the DOM.</p>
+                    <p>The default implementation of this method does nothing. Override this
+                    method in your component to update your component&#39;s host element and
+                    any shadow elements to reflect the component&#39;s new state. See the
+<a href="ReactiveMixin#rendering">rendering example</a>.</p>
+                    <p>Be sure to call <code>super</code> in your method implementation so that your
+component&#39;s base classes and mixins have a chance to perform their own
+render work.
+       <p class="apiLabel">Parameters:</p> <ul> <li> changed: <span> <code>ChangedFlags</code> – </span>dictionary of flags indicating which state
+members have changed since the last render </li> </ul>   <p> Defined by <a href="ReactiveMixin">ReactiveMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="renderChanges">render<wbr />Changes(<wbr><wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Render any pending component changes to the DOM.</p>
+                    <p>This method does nothing if the state has not changed since the last
+render call.</p>
+                    <p>ReactiveMixin will invoke this method following a <code>setState</code> call;
+you should not need to invoke this method yourself.</p>
+                    <p>This method invokes the internal <code>render</code> method, then invokes the
+<code>rendered</code> method.
+          <p> Defined by <a href="ReactiveMixin">ReactiveMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="rendered">rendered(<wbr>changed<wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Perform any work that must happen after state changes have been rendered
+to the DOM.</p>
+                    <p>The default implementation of this method does nothing. Override this
+                    method in your component to perform work that requires the component to
+                    be fully rendered, such as setting focus on a shadow element or
+                    inspecting the computed style of an element. If such work should result
+in a change in component state, you can safely call <code>setState</code> during the
+<code>rendered</code> method.</p>
+                    <p>Be sure to call <code>super</code> in your method implementation so that your
+component&#39;s base classes and mixins have a chance to perform their own
+post-render work.
+       <p class="apiLabel">Parameters:</p> <ul> <li> changed: <span> <code>ChangedFlags</code> – </span> </li> </ul>   <p> Defined by <a href="ReactiveMixin">ReactiveMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="select">select(<wbr><wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Selects all the text.</p>
+                    <p>See the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select">select</a>
+documentation for details.
+          <p> Defined by <a href="DelegateInputSelectionMixin">DelegateInputSelectionMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="selectCurrentItemAndClose">select<wbr />Current<wbr />Item<wbr />And<wbr />Close(<wbr><wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Highlight the current item (if one exists), then close the menu.
+          <p> Defined by <a href="PopupListMixin">PopupListMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="selectedIndex">selected<wbr />Index <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The index of the selected item, or -1 if no item is selected.
+       <p><span class="apiLabel">Type:</span> <code>number</code></p>   <p> Defined by <a href="SingleSelectAPIMixin">SingleSelectAPIMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="selectedindexchange"><span> selectedindexchange <span class="apiMemberType"> event</span> </span></a> </h3> <div class="apiDescription markdown"><p>Raised when the <code>selectedIndex</code> property changes.
+       <p> Defined by <a href="SingleSelectAPIMixin">SingleSelectAPIMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="selectedItem">selected<wbr />Item <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The selected item, or null if no item is selected.
+       <p><span class="apiLabel">Type:</span> <code>Element</code></p>   <p> Defined by <a href="SingleSelectAPIMixin">SingleSelectAPIMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="selectedItemValue">selected<wbr />Item<wbr />Value <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The <code>value</code> attribute of the selected item. If no item is selected, this
+returns the empty string.</p>
+                    <p>You can set this property to select the item with a matching <code>value</code>
+attribute.
+       <p><span class="apiLabel">Type:</span> <code>string</code></p>   <p> Defined by <a href="ListComboBox">ListComboBox</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="selectionEnd">selection<wbr />End <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The end index of the selected text.</p>
+                    <p>See the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement">input</a>
+element documentation for details.
+          <p> Defined by <a href="DelegateInputSelectionMixin">DelegateInputSelectionMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="selectionStart">selection<wbr />Start <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The beginning index of the selected text.</p>
+                    <p>See the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement">input</a>
+element documentation for details.
+          <p> Defined by <a href="DelegateInputSelectionMixin">DelegateInputSelectionMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="setRangeText">set<wbr />Range<wbr />Text(<wbr><wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Replaces a range of text.</p>
+                    <p>See the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setRangeText">setRangeText</a>
+documentation for details.
+          <p> Defined by <a href="DelegateInputSelectionMixin">DelegateInputSelectionMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="setSelectionRange">set<wbr />Selection<wbr />Range(<wbr><wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Sets the start and end positions of the current text selection.</p>
+                    <p>See the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange">setSelectionRange</a>
+documentation for details.
+          <p> Defined by <a href="DelegateInputSelectionMixin">DelegateInputSelectionMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="setState">set<wbr />State(<wbr>changes<wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Update the component&#39;s state by merging the specified changes on
+                top of the existing state. If the component is connected to the document,
+                and the new state has changed, this returns a promise to asynchronously
+                render the component. Otherwise, this returns a resolved promise.
+       <p class="apiLabel">Parameters:</p> <ul> <li> changes: <span> <code>PlainObject</code> – </span>the changes to apply to the element&#39;s state </li> </ul> <p> <span class="apiLabel">Returns: </span> <code>Promise</code> - resolves when the new state has been rendered </p>  <p> Defined by <a href="ReactiveMixin">ReactiveMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="sourcePartType">source<wbr />Part<wbr />Type <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The class or tag used to create the <code>source</code> part - the button
+(or other element) the user can tap/click to invoke the popup.
+       <p><span class="apiLabel">Type:</span> <code>(component class constructor)|HTMLTemplateElement|string</code></p> <p><span class="apiLabel">Default:</span> <code>'button'</code></p>  <p> Defined by <a href="PopupSource">PopupSource</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="state">state <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The component&#39;s current state.</p>
+                    <p>The returned state object is immutable. To update it, invoke
+<code>internal.setState</code>.</p>
+                    <p>It&#39;s extremely useful to be able to inspect component state while
+debugging. If you append <code>?elixdebug=true</code> to a page&#39;s URL, then
+ReactiveMixin will conditionally expose a public <code>state</code> property that
+returns the component&#39;s state. You can then access the state in your
+browser&#39;s debug console.
+       <p><span class="apiLabel">Type:</span> <code>PlainObject</code></p>   <p> Defined by <a href="ReactiveMixin">ReactiveMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="stateEffects">state<wbr />Effects(<wbr>state, changed<wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Ask the component whether a state with a set of recently-changed fields
+                implies that additional second-order changes should be applied to that
+state to make it consistent.</p>
+                    <p>This method is invoked during a call to <code>internal.setState</code> to give all
+of a component&#39;s mixins and classes a chance to respond to changes in
+state. If one mixin/class updates state that it controls, another
+mixin/class may want to respond by updating some other state member that
+<em>it</em> controls.</p>
+                    <p>This method should return a dictionary of changes that should be applied
+                    to the state. If the dictionary object is not empty, the
+<code>internal.setState</code> method will apply the changes to the state, and
+invoke this <code>stateEffects</code> method again to determine whether there are
+any third-order effects that should be applied. This process repeats
+until all mixins/classes report that they have no additional changes to
+make.</p>
+                    <p>See an example of how <code>ReactiveMixin</code> invokes the <code>stateEffects</code> to
+<a href="ReactiveMixin#ensuring-state-consistency">ensure state consistency</a>.
+       <p class="apiLabel">Parameters:</p> <ul> <li> state: <span> <code>PlainObject</code> – </span>a proposal for a new state </li><li> changed: <span> <code>ChangedFlags</code> – </span>the set of fields changed in this
+latest proposal for the new state </li> </ul> <p> <span class="apiLabel">Returns: </span> <code>PlainObject</code>  </p>  <p> Defined by <a href="ReactiveMixin">ReactiveMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="toggle">toggle(<wbr>opened<wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>Toggle the open/close state of the element.
+       <p class="apiLabel">Parameters:</p> <ul> <li> opened: <span> <code>boolean</code> – </span>true if the element should be opened, false
+if closed. </li> </ul>   <p> Defined by <a href="OpenCloseMixin">OpenCloseMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="type">type <span class="apiMemberType"> property</span></a> </h3> <div class="apiDescription markdown"><p>The &quot;type&quot; of the form field, provided for consistency with the
+                native HTML
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#type">type</a>
+property.</p>
+                    <p>If a base class provides a <code>type</code> property, that will be returned. (If
+this mixin is applied to a class defined by WrappedStandardElement, this
+will return the <code>type</code> of the inner standard element.) Otherwise, the
+default value of this property will be the same as the HTML tag name
+registered for the custom element.
+       <p><span class="apiLabel">Type:</span> <code>string</code></p>   <p> Defined by <a href="FormElementMixin">FormElementMixin</a> </p> </p>
+                </div></elix-expandable-section><elix-expandable-section class="apiCard"> <h3 slot="header"> <a id="whenClosed">when<wbr />Closed(<wbr><wbr>) <span class="apiMemberType">  method </span></a> </h3> <div class="apiDescription markdown"><p>This method can be used as an alternative to listening to the
+                &quot;openedchange&quot; event, particularly in situations where you want to only
+                handle the next time the component is closed.
+        <p> <span class="apiLabel">Returns: </span> <code>Promise</code> A promise that resolves when the element has
+completely closed, including the completion of any asynchronous opening
+effect. </p>  <p> Defined by <a href="OpenCloseMixin">OpenCloseMixin</a> </p> </p>
+                </div></elix-expandable-section> </div>  </section> <div class="desktopOnly leftGutter sideNavigation"> <nav> <div class="sideNavigationAbout"> Elix is a comprehensive library of high-quality, ready-to-use web
+                components for common user interface patterns. You can customize them,
+          or create new elements from Elix's extensive set of component mixins. <a href="/elix/vision">More</a> <ul> <li class="sideLinkListItem"> <ck-current-anchor href="/elix"> Elix home </ck-current-anchor> </li> <li class="sideLinkListItem"> <ck-current-anchor href="/elix/getting_started"> Getting started </ck-current-anchor> </li> <li class="sideLinkListItem"> <ck-current-anchor href="/elix/customizing"> Customizing </ck-current-anchor> </li> </ul> </div> <ul> <li class="sideLinkListItem"> <ck-current-anchor href="/elix/accessibility"> <div>accessibility</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/AlertDialog"> <div>AlertDialog</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/AriaListMixin"> <div>AriaListMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/AriaMenuMixin"> <div>AriaMenuMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/AriaRoleMixin"> <div>AriaRoleMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ArrowDirectionMixin"> <div>ArrowDirectionMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/AttributeMarshallingMixin"> <div>AttributeMarshallingMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/AutoCompleteComboBox"> <div>AutoCompleteComboBox</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/AutoCompleteInput"> <div>AutoCompleteInput</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/AutoSizeTextarea"> <div>AutoSizeTextarea</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/Backdrop"> <div>Backdrop</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/Button"> <div>Button</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/calendar"> <div>calendar</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CalendarDay"> <div>CalendarDay</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CalendarDayButton"> <div>CalendarDayButton</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CalendarDayNamesHeader"> <div>CalendarDayNamesHeader</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CalendarDays"> <div>CalendarDays</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CalendarElementMixin"> <div>CalendarElementMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CalendarMonth"> <div>CalendarMonth</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CalendarMonthNavigator"> <div>CalendarMonthNavigator</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CalendarMonthYearHeader"> <div>CalendarMonthYearHeader</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/Carousel"> <div>Carousel</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CarouselSlideshow"> <div>CarouselSlideshow</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CarouselWithThumbnails"> <div>CarouselWithThumbnails</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CenteredStrip"> <div>CenteredStrip</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CheckListItem"> <div>CheckListItem</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ComboBox"> <div>ComboBox</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ComposedFocusMixin"> <div>ComposedFocusMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/constants"> <div>constants</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/content"> <div>content</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ContentItemsMixin"> <div>ContentItemsMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CrossfadeStage"> <div>CrossfadeStage</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CurrentMixin"> <div>CurrentMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CursorAPIMixin"> <div>CursorAPIMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CursorInViewMixin"> <div>CursorInViewMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/CursorSelectMixin"> <div>CursorSelectMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/DarkModeMixin"> <div>DarkModeMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/DateComboBox"> <div>DateComboBox</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/DateInput"> <div>DateInput</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/defaultScrollTarget"> <div>defaultScrollTarget</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/DelegateCursorMixin"> <div>DelegateCursorMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/DelegateFocusMixin"> <div>DelegateFocusMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/DelegateInputLabelMixin"> <div>DelegateInputLabelMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/DelegateInputSelectionMixin"> <div>DelegateInputSelectionMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/DelegateItemsMixin"> <div>DelegateItemsMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/Dialog"> <div>Dialog</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/DialogModalityMixin"> <div>DialogModalityMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/DirectionCursorMixin"> <div>DirectionCursorMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/DisabledMixin"> <div>DisabledMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/dom"> <div>dom</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/Drawer"> <div>Drawer</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/DrawerWithGrip"> <div>DrawerWithGrip</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/DropdownList"> <div>DropdownList</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/EffectMixin"> <div>EffectMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ExpandablePanel"> <div>ExpandablePanel</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ExpandableSection"> <div>ExpandableSection</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/Explorer"> <div>Explorer</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/FilterComboBox"> <div>FilterComboBox</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/FilterListBox"> <div>FilterListBox</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/FocusCaptureMixin"> <div>FocusCaptureMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/FocusVisibleMixin"> <div>FocusVisibleMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/FormElementMixin"> <div>FormElementMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/fractionalSelection"> <div>fractionalSelection</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/HamburgerMenuButton"> <div>HamburgerMenuButton</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/Hidden"> <div>Hidden</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/HoverMixin"> <div>HoverMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/html"> <div>html</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/Input"> <div>Input</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/internal"> <div>internal</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ItemsAPIMixin"> <div>ItemsAPIMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ItemsCursorMixin"> <div>ItemsCursorMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ItemsMultiSelectMixin"> <div>ItemsMultiSelectMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ItemsTextMixin"> <div>ItemsTextMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/KeyboardDirectionMixin"> <div>KeyboardDirectionMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/KeyboardMixin"> <div>KeyboardMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/KeyboardPagedCursorMixin"> <div>KeyboardPagedCursorMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/KeyboardPrefixCursorMixin"> <div>KeyboardPrefixCursorMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/LanguageDirectionMixin"> <div>LanguageDirectionMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ListBox"> <div>ListBox</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ListComboBox"> <div>ListComboBox</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ListExplorer"> <div>ListExplorer</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ListWithSearch"> <div>ListWithSearch</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/Menu"> <div>Menu</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/MenuButton"> <div>MenuButton</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/MenuItem"> <div>MenuItem</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/MenuSeparator"> <div>MenuSeparator</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ModalBackdrop"> <div>ModalBackdrop</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/Modes"> <div>Modes</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/MultiSelectAPIMixin"> <div>MultiSelectAPIMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/MultiSelectListBox"> <div>MultiSelectListBox</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/MultiSelectToggleMixin"> <div>MultiSelectToggleMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/MultiSelectValueAPIMixin"> <div>MultiSelectValueAPIMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/NumberSpinBox"> <div>NumberSpinBox</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/OpenCloseMixin"> <div>OpenCloseMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/OpenCloseToggle"> <div>OpenCloseToggle</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/Option"> <div>Option</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/OptionList"> <div>OptionList</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/Overlay"> <div>Overlay</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/OverlayFrame"> <div>OverlayFrame</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/OverlayMixin"> <div>OverlayMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/PageNumbersMixin"> <div>PageNumbersMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/PlayControlsMixin"> <div>PlayControlsMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/Popup"> <div>Popup</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/PopupButton"> <div>PopupButton</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/PopupDragSelectMixin"> <div>PopupDragSelectMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/PopupListMixin"> <div>PopupListMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/PopupModalityMixin"> <div>PopupModalityMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/PopupSource"> <div>PopupSource</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/PopupToggleMixin"> <div>PopupToggleMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/positionPopup"> <div>positionPopup</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ProgressSpinner"> <div>ProgressSpinner</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/PullToRefresh"> <div>PullToRefresh</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ReactiveElement"> <div>ReactiveElement</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ReactiveMixin"> <div>ReactiveMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/RepeatButton"> <div>RepeatButton</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/RepeatMousedownMixin"> <div>RepeatMousedownMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ResizeMixin"> <div>ResizeMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/SeamlessButton"> <div>SeamlessButton</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/SelectableButton"> <div>SelectableButton</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/SelectableMixin"> <div>SelectableMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/SelectedTextAPIMixin"> <div>SelectedTextAPIMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/SelectedValueAPIMixin"> <div>SelectedValueAPIMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/ShadowTemplateMixin"> <div>ShadowTemplateMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/SingleSelectAPIMixin"> <div>SingleSelectAPIMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/Slideshow"> <div>Slideshow</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/SlideshowWithPlayControls"> <div>SlideshowWithPlayControls</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/SlidingPages"> <div>SlidingPages</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/SlidingStage"> <div>SlidingStage</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/SlotContentMixin"> <div>SlotContentMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/SlotItemsMixin"> <div>SlotItemsMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/SpinBox"> <div>SpinBox</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/SwipeCommandsMixin"> <div>SwipeCommandsMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/SwipeDirectionMixin"> <div>SwipeDirectionMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/TabButton"> <div>TabButton</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/Tabs"> <div>Tabs</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/TabStrip"> <div>TabStrip</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/TapCursorMixin"> <div>TapCursorMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/template"> <div>template</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/TimerCursorMixin"> <div>TimerCursorMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/Toast"> <div>Toast</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/TooltipButton"> <div>TooltipButton</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/TouchSwipeMixin"> <div>TouchSwipeMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/TrackpadSwipeMixin"> <div>TrackpadSwipeMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/TrackTextSelectionMixin"> <div>TrackTextSelectionMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/TransitionEffectMixin"> <div>TransitionEffectMixin</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/UpDownToggle"> <div>UpDownToggle</div> </ck-current-anchor> </li><li class="sideLinkListItem"> <ck-current-anchor href="/elix/WrappedStandardElement"> <div>WrappedStandardElement</div> </ck-current-anchor> </li> </ul> </nav> </div> </article>  <footer> <div id="footerNavigation" class="block padded gray"> <div id="footerLinks"> <div class="footerColumn"> <a class="areaLink" href="/">home</a> <!-- <a class="areaLink" href="/services">services</a> --> <a class="areaLink" href="/blog">blog</a> <a class="areaLink" href="/about">about</a> <a class="areaLink" href="/elix">elix components</a> </div> <div class="footerColumn"></div> </div> <div class="footerTweet"></div> <div id="footerContact" class="footerColumn"> <div id="socialIcons"> <a href="https://twitter.com/ComponentK" aria-label="Component Kitchen on Twitter"> <svg height="19" viewBox="0 0 182.66667 150.66667" style="fill: white;"> <g xmlns="http://www.w3.org/2000/svg" transform="matrix(1.3333 0 0 -1.3333 0 150.67)"> <g transform="scale(.1)"> <path d="m1366.9 989.39c-50.27-22.309-104.33-37.387-161.05-44.18 57.89 34.723 102.34 89.679 123.28 155.15-54.18-32.15-114.18-55.47-178.09-68.04-51.13 54.49-124.02 88.55-204.68 88.55-154.89 0-280.43-125.55-280.43-280.43 0-21.988 2.457-43.398 7.258-63.91-233.08 11.68-439.72 123.36-578.04 293.01-24.141-41.4-37.969-89.567-37.969-140.97 0-97.308 49.489-183.13 124.76-233.44-45.969 1.437-89.218 14.058-127.03 35.078-0.043-1.18-0.043-2.348-0.043-3.52 0-135.9 96.68-249.22 224.96-275-23.512-6.41-48.281-9.8-73.86-9.8-18.089 0-35.628 1.711-52.781 5 35.711-111.41 139.26-192.5 262-194.77-96.058-75.23-216.96-120.04-348.36-120.04-22.621 0-44.961 1.332-66.918 3.91 124.16-79.568 271.55-125.98 429.94-125.98 515.82 0 797.86 427.31 797.86 797.93 0 12.153-0.28 24.223-0.79 36.25 54.77 39.571 102.31 88.95 139.93 145.2"></path> </g> </g> </svg> </a> <a href="https://www.linkedin.com/company/component-kitchen/" aria-label="Component Kitchen on LinkedIn"> <svg height="19" viewBox="0 0 22.258 22.258" style="fill: white"> <g> <path d="M5.366,2.973c0,1.376-1.035,2.479-2.699,2.479H2.636C1.034,5.453,0,4.348,0,2.973c0-1.409,1.067-2.482,2.698-2.482   C4.331,0.49,5.336,1.564,5.366,2.973z M0.28,21.766h4.772V7.413H0.28V21.766z M16.764,7.077c-2.531,0-3.664,1.39-4.301,2.37v0.046   h-0.031c0.012-0.014,0.023-0.03,0.031-0.046V7.414H7.692c0.062,1.345,0,14.353,0,14.353h4.771v-8.016   c0-0.432,0.029-0.855,0.157-1.164c0.346-0.854,1.132-1.747,2.446-1.747c1.729,0,2.42,1.319,2.42,3.247v7.68h4.771v-8.229   C22.258,9.126,19.902,7.077,16.764,7.077z"></path> </g> </svg> </a> <a href="https://github.com/elix/elix" aria-label="Elix on GitHub"> <svg viewBox="0 0 16 16" style="display: inline-block; fill: white; height: 1em; width: 1em; "> <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path> </svg> </a> </div> <a href="/"> <img id="footerLogo" src="/static/20210424101706/images/Component Kitchen Logo Reversed.svg"> </a> <a id="footerMailLink" href="mailto:info@component.kitchen"> info<wbr>@component.kitchen </a> <div>Seattle, WA USA</div> </div> </div> <div id="copyright"> © Component Kitchen, Inc. All Rights Reserved. </div> </footer> <script defer=" "> (function(i, s, o, g, r, a, m) {
+                            i["GoogleAnalyticsObject"] = r;
+            (i[r] =
+              i[r] ||
+              function() {
+                                (i[r].q = i[r].q || []).push(arguments);
+              }),
+              (i[r].l = 1 * new Date());
+            (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m);
+          })(
+            window,
+            document,
+            "script",
+            "//www.google-analytics.com/analytics.js",
+            "ga"
+          );
+          ga("create", "UA-49636800-1", "component.kitchen");
+          ga("send", "pageview"); </script> </body> </html>

@@ -1,0 +1,84 @@
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Exemplo de navegação sem actualização da página</title>
+    </head>
+    <body>
+      <nav>
+        <ul>
+          <li id="pagina1">
+            Página 01
+          </li>
+          <li id="pagina2">
+            Página 02
+          </li>
+          <li id="pagina3">
+            Página 03
+          </li>
+          <li id="pagina4">
+            Página 04
+          </li>
+        </ul>
+      </nav>
+      <section>
+        Olá, bem vindo à Página 01!
+      </section>
+
+      <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+      <script type="text/javascript">
+
+        function cumprimenta(pagina){
+
+          $('section').delay(1900).html( "Olá, bem vindo à " + $('#'+pagina).html() );
+
+          $('nav li').css("color", "black");
+          $this.css("color", "green");
+        }
+
+        function oraBolas() {
+          $('section').delay(100).html( "Existe qualquer coisa de errado!" );
+        }
+
+        /**
+         * Escuta alterações na hash da localização actual.
+         * @param {Event} e HashChangeEvent object
+         */
+        window.onhashchange = function(e) {
+
+          var pagina = lerHash();
+
+          // aqui chama-se função X mediante o valor da variável "pagina"
+
+          if (pagina.length==7)
+            cumprimenta(pagina);
+          else
+            oraBolas();
+        };
+
+       /**
+        * Actualiza a hash da localização actual com o valor facultado
+        * @param {string} str
+        */
+       function escreverHash(str) {
+         window.location.hash = str;
+       }
+
+       /**
+        * Devolve a hash da localização actual
+        * @return {string} Valor da Hash com prefixo '#' ignorado.
+        */
+       function lerHash () {
+         return window.location.hash.substring(1);
+       }
+
+       $(function() {
+
+         $('nav').on("click", 'li', function (e) {
+           e.preventDefault();
+           escreverHash($(this).attr("id"));
+         });
+       });
+     </script>
+   </body>
+</html>

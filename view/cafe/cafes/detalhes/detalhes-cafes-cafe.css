@@ -1,0 +1,175 @@
+/* Titulo -=========================================================================================== */
+
+.detalhes-cafe__title {
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.144);
+    display: block;
+    padding-bottom: 12px;
+}
+
+
+/* Data--------------------------------------------------- */
+.detalhes-cafe__title-data {
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+.detalhes-cafe__title-data-valor {
+    margin-left: 7px;
+    font-size: 25px;
+}
+/* ID--------------------------------------------------- */
+.detalhes-cafe__title-id {
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+    padding-left: 3px;
+}
+
+.detalhes-cafe__title-id-valor {
+    margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CAFE ITENS ---- Relação de Itens do Café*/
+/* ============================================================================================ */
+
+/* Titulo -------------------------------------------*/
+.detalhes-cafe-itens_titulo {
+    color: cornflowerblue;
+    font-size: 22px;
+    margin-top: 20px;
+    padding: 10px 5px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.315);
+    margin-top: 25px;
+
+    /* -webkit-gradient(linear, left top, right top, from(#CCCCCC), to(#000000)); */
+   
+    
+}
+
+/* Titulo  Texto*/
+.detalhes-cafe-itens_titulo-texto {}
+
+
+
+/* Ações -------------------------------------------*/
+.detalhes-cafe-itens_acoes {
+    margin-top: 25px;
+
+}
+
+
+
+
+/* Tabela -------------------------------------------*/
+.detalhes-cafe-itens_tabela{
+    margin-top: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* IMPRESSAO======================================================================================= */
+
+
+/*CSS para impressão*/
+@media print {
+
+
+    .header,
+    .sidebar,
+    button,
+    .c-view__acoes {
+        display: none !important;
+
+
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 0px 1fr;
+        grid-template-rows: 0px 1fr;
+        grid-template-areas:
+            "header header"
+            "sidebar main";
+    }
+
+    .main {
+        padding: 0px;
+
+    }
+
+    .c-view,
+    .form__main {
+        box-shadow: 0 0 0 0 !important;
+        padding: 0px;
+    }
+
+    .c-view__title {
+        margin-bottom: 35px;
+    }
+
+    input {
+        border: none !important;
+    }
+
+
+    /* Abre a tabela por inteiro */
+    .c-view__tabela {
+        height: 100%;
+    }
+
+    table {
+        border-left: none;
+    }
+}

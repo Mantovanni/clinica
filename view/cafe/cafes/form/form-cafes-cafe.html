@@ -1,0 +1,168 @@
+<div class="c-view">
+
+
+    <div class="c-view__title">
+        <h1>Café - </h1>
+        <div id="data-cafe" class="data-cafe"></div>
+    </div>
+
+    <form class="form-geral form-geral-cafe" id="form-cafe" autocomplete="off">
+
+
+        <!-- <div class="form__main"> -->
+
+        <!-- <div class="m-adicionar-item"> -->
+
+
+
+        <!-- ID Invisivel para o editar / é removido no DAO-->
+        <div class="col-md-6 esconder">
+            <div class="grupo-label-input">
+                <label for="adicionar-item-id" class="label-adicionar-item-id">Id</label>
+                <input type="text" name="id" id="adicionar-item-id" autocomplete="off" data-type="text">
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <!-- Cards -->
+        <!-- //==================================================================================================================== -->
+
+
+        <div class="c-cards">
+
+            <div class="col-md-3">
+                <div class="card cards__hospedes">
+                    <!-- <input type="text" name="" class="card-valor cards__hospedes-valor" id="cards-hospedes-valor"> -->
+                    <div class="card-valor cards__hospedes-valor" id="cards-hospedes-valor">
+                        00
+                    </div>
+                    <div class="card-texto cards-hospedes-texto">
+                        Quantidade de hospedes
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card cards__hospedes_custo">
+                    <div class="card-valor cards__hospedes_custo-valor" id="cards-hospedes_custo-valor">
+                        R$ 0,00
+                    </div>
+                    <div class="card-texto cards__hospedes_custo-texto">
+                        Custo por Hospedes
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card cards__quantidade">
+                    <div class="card-valor cards__quantidade-valor" id="cards-quantidade-valor">
+                        00
+                    </div>
+                    <div class="card-texto cards-quantidade-texto">
+                        Variedades de Itens
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card cards__custo_total">
+                    <div class="card-valor cards__custo_total-valor" id="cards-custo_total-valor">
+                        R$ 0,00
+                    </div>
+                    <div class="card-texto cards__custo_total-texto">
+                        Custo Total
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <!-- HOSPEDES======================================================================================== -->
+
+        <div class="c-cafe-hospedes">
+
+            <div class="grupo-label-input">
+                <label for="hospedes">Hospedes</label>
+
+                <input type="number" min="1" class="cafes-hospedes" name="hospedes" id="hospedes" placeholder="00"
+                    autocomplete="off" required>
+
+            </div>
+        </div>
+
+
+
+
+
+        <!-- Relação de Itens do Café -->
+        <!-- //==================================================================================================================== -->
+
+        <div class="form-cafe-itens">
+
+            <div class="form-cafe-itens_titulo">
+                <span class="form-cafe-itens_titulo-texto">Relação de Itens do Café</span>
+            </div>
+
+
+
+            <div class=" form-cafe-itens_acoes">
+
+                <div class=" form-cafe-itens_acoes-esquerda">
+                    <button class="btn-adicionar" id="btn-adicionar-cafe-item" type="button">+ Adicionar
+                        Item</button>
+
+                </div>
+
+                <div class="form-cafe-itens_acoes-direita">
+
+                    <!-- <button type="reset" class=" btn-cancelar" id="btn-cancelar-cafe"
+                                data-class='fechar-modal'>Limpar Campos</button> -->
+
+                </div>
+            </div>
+
+
+
+
+
+
+            <table class=" cafe-itens_tabela ">
+                <thead class="">
+                    <th>Item</th>
+                    <th>Qtd.</th>
+                    <th class="item-custo">Custo</th>
+                    <th class="item-total" >Total</th>
+                    <th></th>
+                </thead>
+
+
+                <tbody class="cafe-itens_tbody" id="cafe-itens_tbody">
+
+                </tbody>
+
+            </table>
+
+        </div> <!-- form-cafe-itens -->
+
+
+
+
+
+
+
+        <div class="form__footer-item">
+            <button type="submit" class="btn-salvar-azul" id="btn-salvar-cafe">Salvar</button>
+        </div>
+
+
+    </form> <!-- form-geral -->
+
+</div> <!-- c-view -->

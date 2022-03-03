@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <label for="busca">Buscar países</label>
+    <input type="text" id="busca" list="paises" autocomplete="on">
+    <input id="busca" class="cb_edit" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false"
+        aria-controls="cb1-listbox" aria-haspopup="true" aria-activedescendant="">
+
+
+    <datalist id="paises">
+
+
+        <option value="Vitória" label="teste">basdasda</option>
+        <option value="Queijo">100 grams</option>
+        <option value="Ceará"></option>
+        <option value="Rio Branco"></option>
+        <option value="Macapa"></option>
+        <option value="Olinda"></option>
+        <option value="Aracaju"></option>
+        <option value="Capitólio"></option>
+        <option value="São Paulo"></option>
+        <option value="Paraty"></option>
+    </datalist>
+
+
+
+
+    <!-- <div class="col-md-3">
+        <div class="grupo-label-input">
+            <label for="">nome-produto</label>
+            <select id="nome-produto" name="nome-produto" size="9" dropdownstyle = "dropdown" autoCompleteMode="SuggestAppend">
+                <option value="">-</option>
+                <option value="a">Pizza de Presunto</option>
+                <option value="b">Pizza de Queijo</option>
+                <option value="b">Carne</option>
+                <option value="b">X-Bacon</option>
+                <option value="b">Hamburguer</option>
+                <option value="b">laldsld</option>
+                <option value="Tortas">Tortas</option>
+                <option value="Doces">Doces</option>
+            </select>
+           
+        </div>
+    </div> -->
+
+
+
+    <!-- <ul>
+        <li role="option">teste</li>
+        <li>teste</li>
+        <li>teste</li>
+        <li>teste</li>
+    </ul> -->
+
+
+    <!-- <div class="combobox combobox-list">
+        <div class="group">
+            <input id="cb1-input" class="cb_edit" type="text" role="combobox" aria-autocomplete="list"
+                aria-expanded="false" aria-controls="cb1-listbox" aria-haspopup="true" aria-activedescendant="">
+            <button id="cb1-button" tabindex="-1" aria-label="Open">▼</button>
+        </div>
+        <ul id="cb1-listbox" role="listbox" aria-label="States" tabindex="-1" style="display: none;">
+            <li id="lb1-as" role="">American Samoa</li>
+        </ul>
+    </div> -->
+
+
+    <div class="combobox combobox-list">
+        <div class="group">
+            <input id="cb1-input" class="cb_edit" type="text" role="combobox" aria-autocomplete="list"
+                aria-expanded="true" aria-controls="cb1-listbox" aria-haspopup="true" aria-activedescendant="">
+            <button id="cb1-button" tabindex="-1" aria-label="Open">▼</button>
+        </div>
+        <ul id="cb1-listbox" role="listbox" aria-label="States" tabindex="-1" style="display: block;">
+            <li id="lb1-al" role="option">Alabama</li>
+            <li id="lb1-ak" role="option">Alaska</li>
+            <li id="lb1-as" role="option">American Samoa</li>
+            <li id="lb1-az" role="option">Arizona</li>
+            <li id="lb1-ar" role="option">Arkansas</li>
+        </ul>
+    </div>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Description of Auth
+ *
+ ** @author Ewerson Mantovani
+ */
+require_once (realpath(dirname(__FILE__)) . "/../models/UsuarioDAO.class.php");
+
+
+
+
+class Auth {
+
+
+public $nomeDoProjeto = "misturafina";
+
+   
+public function __construct() {
+        
+        if (isset($_POST['metodo'])) {
+            switch ($_POST['metodo']) {
+                case 'autenticar':
+                    $this->autenticar();
+                    break;
+            }
+        }
+
+        //Condicional para escolher qual metodo será chamado.
+        if (isset($_GET['metodo'])) {
+            switch ($_GET['metodo']) {
+                case 'logoff':
+                    $this->logoff();
+                    break;
+            }
+        }
+    }
+    
+    
+    
+    function autenticar() { 
+
+        // Verifica se houve POST e se o usuário ou a senha é(são) vazio(s)
+        if (!empty($_POST) AND (empty($_POST['usuario']) OR empty($_POST['senha']))) {
+            echo "Campo em branco, Redirecionando...";
+            echo "<meta HTTP-EQUIV='Refresh' CONTENT='2; URL=/$this->nomeDoProjeto/views/login'>";
+            exit;
+        }
+
+        // Pega os dados vindos do formulário
+        $login = $_POST['usuario'];
+        $senha = $_POST['senha'];
+
+        //Passas os dados para o metodo validarLogin onde é verificado se o login e senha
+        //constão no banco de dados..
+        if ($this->validarLogin($login, $senha)) {
+
+            //Caso tenha sido desconectado pelo fato da sessão expirar é redirecionado
+            //para o ultimo link ativado.
+            
+//      --------------------------------
+//            if(isset($_SESSION["url_recuperada"])){
+//                echo "<script>location.href = '" . $_SESSION["url_recuperada"] . "';</script>";
+//            }
+//      --------------------------------
+
+
+            echo "<script>location.href = '/$this->nomeDoProjeto/views/home/';</script>";
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    //Metodo verifica se o login e senha constão no banco de dados.
+    function validarLogin($login, $senha) {
+
+        //Instancia um objeto de UsuarioDAO para realizar as consultas.
+        $usuarioDAO = new UsuarioDAO();
+        //Passa o nome do usuario vindo do formulário para que o DAO faça uma consulta ao banco, 
+        //caso encontre algo ele retorna um Objeto Usuario.
+        $usuario = $usuarioDAO->listByNome($login);
+
+
+        //Se o objeto Usuário nao for nulo a condição é aceita.
+        if ($usuario != null) {
+            //Verifica se o atributo senha do Objeto Usuário é igual a senha preenchida no formulario.            
+            if ($usuario->getSenha() == $senha) {
+
+                //Inicia a sessão
+                session_start();
+                // Salva os dados encontrados na sessão
+                $_SESSION['id_bombordo_0001'] = $usuario->getId();
+                $_SESSION['login_bombordo_0001'] = $usuario->getUsuario();
+                $_SESSION['nivel_bombordo_0001'] = $usuario->getNivel();
+                
+                //$_SESSION['senha'] = $_POST['senha'];
+
+                
+                return true;
+            }
+
+
+            //header("Location: /stillo/views/login");
+            echo "Senha invalida, Redirecionando...";
+            echo "<meta HTTP-EQUIV='Refresh' CONTENT='2;URL=/$this->nomeDoProjeto/views/login'>";
+            return false;
+        }
+        //header("Location: /stillo/views/login");
+        echo "Login invalida, Redirecionando...";
+        echo "<meta HTTP-EQUIV='Refresh' CONTENT='2;URL=/$this->nomeDoProjeto/views/login'>";
+        return false;
+    }
+
+    //Realiza o saida do sistema removendo a sessão
+    function logoff() {
+
+        //Inicia a sessão
+        session_start();
+        //Elimina os dados da sessão
+//        session_unregister($_SESSION["login_bombordo_0001"]);
+        //session_unregister($_SESSION['senha']);
+        //Encerra a sessão
+        session_destroy();
+//        $this->recuperarURL();
+        
+              
+
+        echo "<script>location.href = '/$this->nomeDoProjeto/views/login/';</script>";
+    }
+
+    function verificar() {
+        //Inicia a sessão
+        session_start();
+
+        //Verifica se há dados ativos na sessão
+        if (empty($_SESSION["login_bombordo_0001"])) {
+            //Caso não exista dados registrados, exige entrada do login
+            
+            //Salva a url atual em uma sessão antes de redirecionar para a tela de login.
+            $this->recuperarURL();
+            
+            echo "<script>location.href = '/$this->nomeDoProjeto/views/login/';</script>";
+            //echo "<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=login.php'>";
+        }
+    }
+    
+    
+    
+    
+    function recuperarURL() {
+//        session_start();
+        $url = $_SERVER["REQUEST_URI"];
+        $_SESSION["url_recuperada"] = $url;  
+    }
+    
+    
+    
+    
+    
+    
+    
+    public static function verificarNivelDeAcesso($id){
+        //Inicia a sessão
+        //session_start();    
+        
+        if($id !=$_SESSION['nivel_bombordo_0001']){
+            $_SESSION['message'] = "Você nao tem permissão para acessar essa área.";
+            echo "<script>location.href = '/$this->nomeDoProjeto/views/home';</script>";
+        }     
+    }
+
+}
+
+$auth = new Auth();
+?>

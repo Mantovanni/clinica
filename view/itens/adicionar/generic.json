@@ -1,0 +1,14 @@
+{
+    "itemRelacional": [{
+        "produtos_id": "1",
+        "quantidade": "1"
+    }],
+    "item": {
+        "id": "130",
+        "nome": "111",
+        "custo": 10,
+        "quantidade": "1",
+        "categoria": "",
+        "subcategoria": ""
+    }
+}

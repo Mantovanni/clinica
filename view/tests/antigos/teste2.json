@@ -1,0 +1,273 @@
+Array
+(
+    [0] => Array
+        (
+            [0] => 1
+            [1] => Bolo de Fubá
+            [2] => 8.5
+            [3] => 8
+            [4] => Doces
+            [5] => Bolos
+            [6] => 
+        )
+
+    [1] => Array
+        (
+            [0] => 2
+            [1] => aasdads
+            [2] => 0.01
+            [3] => 1
+            [4] => Salgados
+            [5] => Tortas
+            [6] => 
+        )
+
+    [2] => Array
+        (
+            [0] => 3
+            [1] => Queijo
+            [2] => 20
+            [3] => 20
+            [4] => Salgados
+            [5] => Doces
+            [6] => teste
+        )
+
+    [3] => Array
+        (
+            [0] => 4
+            [1] => Suco
+            [2] => 10
+            [3] => 10
+            [4] => Salgados
+            [5] => Tortas
+            [6] => 
+        )
+
+    [4] => Array
+        (
+            [0] => 26
+            [1] => fssfd
+            [2] => 0.04
+            [3] => 34
+            [4] => 
+            [5] => 
+            [6] => 
+        )
+
+    [5] => Array
+        (
+            [0] => 27
+            [1] => teste
+            [2] => 20
+            [3] => 2
+            [4] => 
+            [5] => 
+            [6] => 
+        )
+
+    [6] => Array
+        (
+            [0] => 37
+            [1] => aaa
+            [2] => 0.01
+            [3] => 1
+            [4] => 
+            [5] => 
+            [6] => 
+        )
+
+    [7] => Array
+        (
+            [0] => 38
+            [1] => asda
+            [2] => 0.01
+            [3] => 1
+            [4] => 
+            [5] => 
+            [6] => 
+        )
+
+    [8] => Array
+        (
+            [0] => 39
+            [1] => sds
+            [2] => 0.01
+            [3] => 1
+            [4] => 
+            [5] => 
+            [6] => 
+        )
+
+)
+
+
+
+
+
+stdClass Object
+(
+    [name] => id
+    [orgname] => id
+    [table] => itens
+    [orgtable] => itens
+    [def] => 
+    [db] => cafe
+    [catalog] => def
+    [max_length] => 2
+    [length] => 11
+    [charsetnr] => 63
+    [flags] => 49667
+    [type] => 3
+    [decimals] => 0
+)
+
+
+
+
+
+
+
+
+
+
+stdClass Object
+(
+    [name] => quantidade
+    [orgname] => quantidade
+    [table] => itens
+    [orgtable] => itens
+    [def] => 
+    [db] => cafe
+    [catalog] => def
+    [max_length] => 2
+    [length] => 12
+    [charsetnr] => 63
+    [flags] => 32768
+    [type] => 4
+    [decimals] => 31
+)
+
+
+Array
+(
+    [0] => stdClass Object
+        (
+            [name] => id
+            [orgname] => id
+            [table] => itens
+            [orgtable] => itens
+            [def] => 
+            [db] => cafe
+            [catalog] => def
+            [max_length] => 2
+            [length] => 11
+            [charsetnr] => 63
+            [flags] => 49667
+            [type] => 3
+            [decimals] => 0
+        )
+
+    [1] => stdClass Object
+        (
+            [name] => nome
+            [orgname] => nome
+            [table] => itens
+            [orgtable] => itens
+            [def] => 
+            [db] => cafe
+            [catalog] => def
+            [max_length] => 13
+            [length] => 180
+            [charsetnr] => 255
+            [flags] => 0
+            [type] => 253
+            [decimals] => 0
+        )
+
+    [2] => stdClass Object
+        (
+            [name] => custo
+            [orgname] => custo
+            [table] => itens
+            [orgtable] => itens
+            [def] => 
+            [db] => cafe
+            [catalog] => def
+            [max_length] => 4
+            [length] => 12
+            [charsetnr] => 63
+            [flags] => 32768
+            [type] => 4
+            [decimals] => 31
+        )
+
+    [3] => stdClass Object
+        (
+            [name] => quantidade
+            [orgname] => quantidade
+            [table] => itens
+            [orgtable] => itens
+            [def] => 
+            [db] => cafe
+            [catalog] => def
+            [max_length] => 2
+            [length] => 12
+            [charsetnr] => 63
+            [flags] => 32768
+            [type] => 4
+            [decimals] => 31
+        )
+
+    [4] => stdClass Object
+        (
+            [name] => categoria
+            [orgname] => categoria
+            [table] => itens
+            [orgtable] => itens
+            [def] => 
+            [db] => cafe
+            [catalog] => def
+            [max_length] => 8
+            [length] => 180
+            [charsetnr] => 255
+            [flags] => 0
+            [type] => 253
+            [decimals] => 0
+        )
+
+    [5] => stdClass Object
+        (
+            [name] => subcategoria
+            [orgname] => subcategoria
+            [table] => itens
+            [orgtable] => itens
+            [def] => 
+            [db] => cafe
+            [catalog] => def
+            [max_length] => 6
+            [length] => 180
+            [charsetnr] => 255
+            [flags] => 0
+            [type] => 253
+            [decimals] => 0
+        )
+
+    [6] => stdClass Object
+        (
+            [name] => descricao
+            [orgname] => descricao
+            [table] => itens
+            [orgtable] => itens
+            [def] => 
+            [db] => cafe
+            [catalog] => def
+            [max_length] => 5
+            [length] => 180
+            [charsetnr] => 255
+            [flags] => 0
+            [type] => 253
+            [decimals] => 0
+        )
+
+)

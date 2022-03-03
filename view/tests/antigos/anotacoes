@@ -1,0 +1,6 @@
+177.137.199.64
+
+
+formularios a função form
+data-type="coin" = converte de moeda para float
+data-type="float" = converte se receber o valor String "" para 0 - evita erro no banco de campo Float, nao aceita ""

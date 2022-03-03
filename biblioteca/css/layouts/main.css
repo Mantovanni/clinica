@@ -1,0 +1,204 @@
+/* MAIN/VIEWS Default*/
+/* ==================================================================================== */
+
+.c-view {
+    /* height: 100%; */
+    min-height: 100%;
+    background-color: rgb(250, 250, 250);
+    /* background-color: #fff; */
+    border-radius: 3px;
+    padding: 10px 25px;
+    /* box-shadow: 9px 7px 12px -9px black; */
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, .14), 0 2px 2px 0 rgba(0, 0, 0, .12), 0 1px 3px 0 rgba(0, 0, 0, .2);
+    /* transition: all 1.3s; */
+    animation: modal-opacity 0.5s;
+    /* box-shadow: 0px 2px 4px -1px black ; */
+    /* #eef0f4 */
+}
+
+
+
+/* CLEAN-------- */
+/* ==================================================================================== */
+.view-clean{
+    animation: modal-opacity 0.5s;
+}
+.view-clean__title {
+    color: rgb(77, 77, 77);
+    margin-left: 4px;
+    margin-bottom: 5px;
+    font-size: 13px;
+   
+}
+
+
+
+
+.c-view__title {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.144);
+    color: rgb(70, 70, 70);
+    margin-bottom: 15px;
+    font-size: 13px;
+    /* padding-bottom: 10px; */
+
+    /* margin-bottom: 2.9rem; */
+}
+
+.c-view__acoes {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+
+    margin-top: 30px;
+    /* padding-top: 30px; */
+
+
+    /* height: 100px; */
+    /* padding-top: 40px; */
+    /* flex-wrap: wrap; */
+
+}
+
+.c-view__acoes-botoes {
+    display: flex;
+  
+
+}
+
+.c-view__acoes button,
+.c-view__acoes select {
+    margin-right: 15px;
+    /* font-size: 0.9rem; */
+
+    height: 40px;
+
+}
+
+
+
+
+.c-view__tabela {
+    height: calc(80vh - 150px);
+    /* height: 100%; */
+    margin-top: 20px;
+
+    overflow: auto;
+}
+
+
+
+
+
+
+/* ================================================================================================================== */
+
+@media screen and (max-width: 1000px) {
+
+    /* VIEW==================================================== */
+    .c-view{
+        padding: 10px;
+    }
+
+    .c-view__title {
+        height: 10%;
+        padding-bottom: 1px;
+    }
+
+
+
+
+    /* ACOES=================================================== */
+    .c-view__acoes {
+        /* flex-direction: column; */
+
+        /* display: block; */
+        /* height: initial; */
+
+        /* padding-top: 0px;  */
+        /* margin-bottom: 5px; */
+        /* height: 40%; */
+
+        /* margin-bottom: 15px; */
+        /* padding: 10px 0px; */
+    }
+
+    /*BOTOES----------------------------------------- */
+    .c-view__acoes-botoes {
+       
+        width: 100%;
+
+    }
+
+
+    .c-view__acoes button,
+    .c-view__acoes select {
+        margin: 0px 4px;
+
+        /* margin-top: 10px; */
+        /* font-size: 0.9rem; */
+        width: 42%;
+        height: 45px;
+
+        font-size: 14px;
+
+        /* padding: 5px; */
+
+    }
+
+    .c-view__acoes button.btn-movimentar {
+        /* padding: 10px 20px; */
+        font-size: 12px;
+        /* margin-bottom: 5px; */
+
+    }
+
+
+
+    /*pesuisa----------------------------------------- */
+    .c-view__acoes-pesquisa {
+      
+
+        margin: 10px 4px 0px 4px;
+
+        width: 100%;
+        /* margin-bottom: 16px; */
+
+    }
+
+
+    .c-view__acoes .acoes__buscar {
+        /* margin-top: 10px; */
+
+    }
+
+
+
+    /* //tabela===================================================*/
+    .c-view__tabela {
+        margin: 10px 4px 0px 4px;
+        height: 50%;
+
+        /* height: 70%; */
+    }
+
+    .cel-acoes button {
+        /* font-size: 20px; */
+        /* width: 20px;
+        height: 20px; */
+    }
+
+
+
+
+
+
+    /* ============================================= */
+
+
+
+
+}

@@ -1,0 +1,55 @@
+ /* .c-apartamentos2 {
+    display: flex;
+    justify-content: center; 
+    width: 100%;;
+   
+}  */
+.c-apartamentos {
+    display: flex;
+    flex-wrap: wrap;
+
+
+  
+    margin-top: 50px;
+
+}
+
+.card-apartamento {
+    align-items: baseline;
+    width: 79px;
+    height: 110px;
+    padding: 12px;
+ 
+}
+
+
+.apartamento {
+    background-color: rgb(42, 116, 165);
+    height: 100%;
+
+    padding: 5px;
+
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    font-size: 19px;
+    /* font-weight: 600; */
+
+   
+}
+
+.ap-numero {}
+
+/* //============================================================================ */
+
+
+
+@media screen and (max-width: 1000px) {
+
+    .c-apartamentos {
+
+      justify-content: center;    
+    
+    }
+
+}

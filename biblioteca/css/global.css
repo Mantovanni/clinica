@@ -1,0 +1,184 @@
+/* //FONTES ============================================================================== */
+/* Poppins */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+/* ROBOTO */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+
+
+
+
+/* RESETE */
+/* ======================================================================================= */
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+/* ======================================================================================= */
+
+
+
+
+
+
+
+
+/* GLOBAL */
+/* ======================================================================================= */
+/* Elementos-------------------------------------------- */
+
+html,
+body {
+    height: 100%;
+    font-size: 16px;
+
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Roboto', 'Franklin Gothic Medium', sans-serif;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    /* font-size: 5px; */
+}
+
+
+
+
+
+
+button {
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+select {
+    cursor: pointer;
+}
+
+input[type="date"] {
+    cursor: pointer;
+}
+
+/* h1{
+    display: flex;
+} */
+
+svg {
+    vertical-align: -.225em;
+}
+
+
+
+/* SCROOl BAR ------------------------------------- */
+::-webkit-scrollbar {
+    /* padding: 5px; */
+    width: 7px;
+    background: rgba(211, 206, 206, 0.8);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    /* padding: 5px;
+    border: 1px solid #555555; */
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(122, 112, 112, 0.8);
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);  */
+}
+
+
+
+/* PLACEHOLDER ------------------------------------- */
+
+/* PLACEHOLDER  com letras de tom mais apagados */
+::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.220);
+}
+
+:-moz-placeholder {
+    color: rgba(0, 0, 0, 0.295);
+}
+
+::-moz-placeholder {
+    color: rgba(0, 0, 0, 0.295);
+}
+
+:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.295);
+}
+
+/* ===================================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* IMPRESSAO======================================================================================= */
+
+
+/*CSS para impressão*/
+@media print {
+
+
+    .header,
+    .sidebar,
+    button,
+    .c-view__acoes {
+        display: none !important;
+
+
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 0px 1fr;
+        grid-template-rows: 0px 1fr;
+        grid-template-areas:
+            "header header"
+            "sidebar main";
+    }
+
+    .main {
+        padding: 0px;
+
+    }
+
+    .c-view,
+    .form__main {
+        box-shadow: 0 0 0 0 !important;
+        padding: 0px;
+    }
+
+    .c-view__title {
+        margin-bottom: 35px;
+    }
+
+    input {
+        border: none !important;
+    }
+
+
+    /* Abre a tabela por inteiro */
+    .c-view__tabela {
+        height: 100%;
+    }
+
+    table {
+        border-left: none;
+    }
+}

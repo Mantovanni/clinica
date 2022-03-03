@@ -1,0 +1,550 @@
+/* CSS das Paginas no main */
+/* ================================================================ */
+
+/* @import url('../view/itens/itens.css'); */
+/* @import '../view/itens/main/itens.css';
+@import '../view/cafe/main/cafe.css'; */
+
+
+
+
+
+
+
+/* ================================================================ */
+
+
+
+
+/* Container Geral */
+/* ================================================================ */
+.container {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 190px 1fr;
+    grid-template-rows: 57px 1fr;
+    grid-template-areas:
+        "header header"
+        "sidebar main";
+
+
+    animation: modal-opacity 0.8s;
+
+}
+
+/* ================================================================ */
+
+
+
+
+
+
+
+
+
+
+
+
+/* HEADER */
+/* ======================================================================================= */
+/* ======================================================================================= */
+.header {
+    position: relative;
+    /* Mantem o header por cima para que a combra apareça */
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    /* box-shadow: 10px 20px 11px 01px black; */
+    box-shadow: 10px -2px 11px 1px black !important;
+    /* border: 5px solid brown; */
+    /* height: 57px; */
+
+}
+
+/* Header Esquerda----------------------------------- */
+.header__esquerda {
+    display: flex;
+}
+
+/* Logo--------------------------- */
+.header__esquerda-logo {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    font-size: 21px;
+    font-weight: 900;
+}
+
+
+/* Hamburguer--------------------- */
+.menu-checkbox-div {
+    padding-left: 15px;
+
+}
+
+.menu-checkbox-button {
+    display: none;
+    /* margin-left: 28px; */
+    /* font-size: 28px; */
+    cursor: pointer;
+}
+
+
+
+.hamburguer {
+    position: relative;
+    background-color: rgba(218, 208, 208, 0.281);
+    width: 35px;
+    height: 35px;
+    border-radius: 10%;
+
+}
+
+.hamburguer::after {
+    content: "";
+    background-color: rgb(0, 0, 0);
+    width: 70%;
+    height: 10%;
+    border-radius: 5px;
+
+    position: absolute;
+    top: 30%;
+    left: 15%;
+
+    transition: 0.6s ease;
+
+}
+
+.hamburguer::before {
+    content: "";
+    background-color: rgb(0, 0, 0);
+    width: 45%;
+    height: 10%;
+    border-radius: 5px;
+
+    position: absolute;
+    top: 60%;
+    left: 15%;
+
+    transition: 0.6s ease;
+}
+
+/*Rodar Hamburguer */
+.menu-checkbox:checked~header .hamburguer:after {
+    transform: rotate(225deg);
+    top: 45%
+}
+
+.menu-checkbox:checked~header .hamburguer:before {
+    transform: rotate(-225deg);
+    top: 45%;
+    width: 70%;
+}
+
+
+
+
+/* Header Direita----------------------------------- */
+.header__direita {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 100%;
+}
+
+
+
+/* Usuario --------------------------------- */
+.header__direita-usuario {
+    /* display: flex; */
+    /* align-items: center; */
+
+    margin-right: 25px;
+    position: relative;
+    /* display: inline-block; */
+
+}
+
+/* Usuario ICONE- */
+.svg-usuario {
+    /* background-color: rgb(255, 0, 0); */
+    height: 25px;
+    width: 25px;
+}
+
+/* Usuario Nome- */
+.header__direita-usuario-nome {
+    margin-left: 10px;
+    cursor: pointer;
+
+}
+
+
+/* Logout------------------------------------ */
+.logout {
+    display: none;
+    align-items: center;
+
+    position: absolute;
+    background-color: #acacac;
+    min-width: 70px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+
+    z-index: 1;
+    top: 35px;
+    right: -10px;
+
+    border-radius: 4px;
+    transition: all 0.3s;
+    opacity: 0;
+
+
+}
+
+.logout:hover {
+    background-color: #858383;
+}
+
+/* Logout Icone*/
+.logout svg {
+    margin-left: 8px;
+}
+
+
+/* Exibe o logou */
+.header__direita:hover .logout {
+    display: flex;
+    opacity: 1;
+}
+
+
+
+
+
+/* ================================================================ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SIDEBAR */
+/* ======================================================================================= */
+/* ======================================================================================= */
+
+.sidebar {
+    /* position: fixed; */
+    /* position: relative; */
+    /* position: absolute; */
+
+
+    /* animation: sidebar-opacity 3.5s forwards;  */
+    /* display: flex;
+    flex-direction: column; */
+    /* align-items: center; */
+    /* position: relative; */
+    /* Mantem  por cima para que a combra apareça no main */
+    grid-area: sidebar;
+    /* width: 190px;    */
+    /* height: calc(100vh - 57px); */
+    height: 100%;
+
+    /* min-height: 500px; */
+    /* largura de tela toda menos o header */
+
+    background-color: rgb(50, 49, 59);
+    /* background-color: #363740; */
+    /* background-color: white; */
+    box-shadow: -1px 6.0px 11px 1px black;
+}
+
+/* Sidebar Top----------------------------------- */
+
+.sidebar__nav-top {
+    height: 110px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    padding-left: 20px;
+    padding-left: 20px;
+}
+
+.nav-top__title {
+
+    color: rgba(255, 255, 255, 0.637);
+    font-size: 15px;
+    /* font-weight: 600; */
+}
+
+/* Sidebar Menu----------------------------------- */
+/* ul */
+.sidebar__nav-menu {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: teal; */
+    /* height: 100vh; */
+}
+
+
+
+.sidebar__nav-menu a {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    width: 190px;
+    border-top: 1px solid rgba(0, 0, 0, 0.301);
+    color: rgba(255, 255, 255, 0.637);
+    font-size: 14px;
+
+    cursor: pointer;
+    /* font-weight: 900; */
+}
+
+.sidebar__nav-menu a:hover {
+    background-color: #9fa2b44d;
+    opacity: 80%;
+    transition: .2s;
+    /* border-left: 5px solid white; */
+    padding-left: 32px;
+}
+
+.sidebar__nav-menu a.active {
+    background-color: #9fa2b44d;
+    opacity: 80%;
+    border-left: 5px solid white;
+    padding-left: 32px;
+}
+
+/* Texto -------------------*/
+.sidebar__nav-menu a span {
+    margin-left: 8px;
+}
+
+/* Iconer ------------------*/
+.sidebar__nav-menu a i {
+    width: 18px;
+    height: 18px;
+}
+
+/* .sidebar__nav-menu a:active {
+    background-color: #9fa2b44d;
+    opacity: 80%;
+    border-left: 5px solid white;
+    padding-left: 32px;
+} */
+
+
+/* ================================================================ */
+
+/* Sub Menu ---------------------- ------------------*/
+.submenu {
+    display: block;
+    overflow: hidden;
+    max-height: 0;
+    transition: all 0.5s ease-out;
+}
+
+.submenu-show {
+
+    max-height: 200px !important;
+}
+
+
+.submenu a {
+    background-color: #1a2530;
+    background-color: rgb(41, 41, 41);
+}
+
+
+
+
+/* @keyframes sidebar-opacity {
+    from {
+        opacity: 0;
+    }
+  
+    to {
+        opacity: 1;
+    }
+  } */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MAIN */
+/* ======================================================================================= */
+/* ======================================================================================= */
+
+
+.main {
+
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding: 18px;
+    /* background-color: #eeeeee; */
+    /* background-color: #f1f1f1; */
+
+    background-color: #cfd6e0;
+    /* background-color: #b6c0cf; */
+    /* background-color: #eff1ee; */
+
+    /* background-color: #e7eaee; */
+    /* min-height: 500px; */
+    /* width: auto; */
+    /* box-shadow: 1px 5px 11px 1px black; */
+    /* background-color: #E5E5E5; */
+    /* background-color: #c0b6cf; */
+
+    overflow: auto;
+    /* animation: modal-opacity 1s; */
+
+    /* transition: all 3.3s; */
+}
+
+.main__content {
+    /* background-color: white; */
+    /* min-height: 100%; */
+    /* height: 100vh; */
+    /* display: none; */
+    /* width: 800px; */
+    /* width: calc(100% - 48px); */
+    width: 100%;
+    max-width: 1000px;
+    /* height: 100%; */
+    /* background-color: violet; */
+    /* max-width: 80%; */
+
+    /* transition: all 5.3s; */
+
+    /* transition: 3.6; */
+    /* animation: modal-opacity 1.3s; */
+    /* background-color: #b6c0cf; */
+    /* min-height: 500px; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Regras no fundo porque eu venho sobrescrevendo as regras acima */
+/* REGRAS PARA TELA MENOR Celular----------------------------------- */
+/* ================================================================ */
+/* input */
+.menu-checkbox {
+    display: none;
+}
+
+@media(max-width: 650px) {
+
+    /* Almenta o main */
+    .container {
+        grid-template-areas:
+            "header header"
+            "main main";
+    }
+
+
+    /* SIDEBAR----------------------------------- */
+    /* Mostra o botao para chamar a side bar */
+    .menu-checkbox-button {
+        display: block;
+        /* transition: .5s; */
+    }
+
+    /* esconde a sidebar no canto esquerdo */
+    .sidebar {    
+        position: fixed;
+        /* position: relative; */
+        /* position: absolute; */
+
+        left: -100vw;
+        top: 58px;
+        transition: all .5s;
+    }
+
+    /* Mostra  o SIDEBAR - Caso o botao seja apertado   */
+    .menu-checkbox:checked~.sidebar {
+        left: 0px;
+    }
+
+
+
+
+
+    /* Menu Logo Diminui ----------------------------------- */
+    .header__esquerda-logo {
+        font-size: 14px;
+    }
+
+
+}

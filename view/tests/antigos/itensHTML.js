@@ -1,0 +1,195 @@
+export function html(){
+
+    return`<!-- <link rel="stylesheet" href="../../view/itens/itens.css"> -->
+<div class="main__container">
+
+
+    <!-- <div class="c-itens-view"> -->
+    <div class="c-view">
+
+
+        <div class="c-view__title">
+            <h1>Itens</h1>
+        </div>
+
+
+
+        <div class="c-view__acoes">
+            <div class="c-view__acoes-botoes">
+
+                <button class="btn-adicionar c-view__acoes-botoes-adicionar" id="acoes__button-adicionar-item">Adicionar
+                    Item</button>
+            </div>
+
+            <div class="c-view__acoes-pesquisa">
+                <!-- <span>Busca</span> -->
+                <input class="input-default acoes__buscar-itens" id="acoes__buscar-itens" placeholder="Pesquisar">
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <div class="c-view__tabela">
+
+            <table class="tabela-default" id="tabela-itens">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Item</th>
+                        <th>Valor Un.</th>
+                        <th>Quantidade</th>
+                        <th>Valor Total</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-itens">
+                    <!-- <tr>
+                        <td id="teste">24</td>
+                        <td>Bolo de Fubá</td>
+                        <td>R$25,00</td>
+                        <td>08</td>
+                        <td>R$189,00</td>
+                    </tr> -->
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div><!-- Fim container itens -->
+
+
+
+
+
+
+
+
+
+    <!-- Inicio MODAL ADICIONAR ITEM -->
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+    <div class="modal-container" id="modal-adicionar-item">
+        <div class="modal-window-default">
+
+
+
+
+            <div class="modal-window__title">
+
+                <h3>
+                    Adicionar Item
+                </h3>
+                <button class="btn-fechar-modal" id="btn-fechar-modal-item">X</button>
+            </div>
+
+
+
+            <form action="" class="form-geral">
+                
+                <div class="modal-window__content">
+
+                    <!-- <div class="m-adicionar-item"> -->
+
+
+
+
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="grupo-label-input">
+                                <label for="adicionar-item-nome" class="label-adicionar-item-nome">Nome</label>
+                                <input type="text" id="adicionar-item-nome" placeholder="Nome do item"
+                                    autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="grupo-label-input">
+                                <label for="adicionar-item-custo">Custo</label>
+                                <input type="text" id="adicionar-item-custo" placeholder="Digite o custo"
+                                    autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="grupo-label-input">
+                                <label for="adicionar-item-custo">Quantidade</label>
+                                <input type="text" id="adicionar-item-quantidade" placeholder="Digite o custo"
+                                    autocomplete="off" required>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="grupo-label-input">
+                                <label for="">Categoria</label>
+                                <select id="adicionar-item-categoria">
+                                    <option value="Salgados">Salgados</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="grupo-label-input">
+                                <label for="">SubCategoria</label>
+                                <select id="adicionar-item-subcategoria">
+                                    <option value="Tortas">Tortas</option>
+                                    <option value="Doces">Doces</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="grupo-label-input">
+                        <label for="adicionar-item-descricao">Descrição</label>
+                        <textarea id="adicionar-item-descricao"></textarea>
+                    </div>
+
+
+                    <!-- m-adicionar-item -->
+                    <!-- </div> -->
+
+                </div> <!-- modal-window__content -->
+
+
+                <div class="modal-window__footer">
+
+                    <button class="btn-cancelar" id="btn-cancelar-modal-item">Cancelar</button>
+                    <button class="btn-salvar" id="btn-salvar-modal-item">Salvar</button>
+                </div>
+            </form>
+
+        </div><!-- modal-window -->
+    </div><!-- modal-container -->
+
+    <!-- Fim MODAL ADICIONAR ITEM -->
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="itens.js" type="module"></script>
+</div>`
+}

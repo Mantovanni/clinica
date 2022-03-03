@@ -1,0 +1,86 @@
+.itens-produtos {
+    padding: 0px 9px;
+    /* font-size: 13px; */
+
+}
+
+/* Titulos----------------------------------------- */
+.itens-produtos_titulo {
+    color: cornflowerblue;
+    font-size: 22px;
+    margin-top: 20px;
+    padding: 10px 5px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.315);
+    margin-bottom: 15px;
+}
+
+/* Botao Adicionar--------------------------------- */
+.itens-produtos_adicionar button {
+    height: 35px;
+    padding: 0px 10px;
+    font-size: 15px;
+}
+
+
+
+/* TABELA---------------------------------------------------------- */
+.itens-produtos_tabela {
+    margin-top: 15px;
+    /* transition: all 1s; */
+}
+
+/* Linhas----------------------------------- */
+.itens-produtos_tabela tr {
+    height: 30px;
+}
+
+/* Cabeçalho TH------------------------------*/
+.itens-produtos_tabela th {
+    font-weight: 400;
+    text-align: left;
+    color: cornflowerblue;
+}
+
+/* Celulas TD---------------------------------- */
+.itens-produtos_tabela .produto-nome {
+    width: 50%;
+}
+
+.itens-produtos_tabela .produto-quantidade {
+    width: 10%;
+}
+
+.itens-produtos_tabela .produto-valor {
+    width: 15%;
+}
+
+.itens-produtos_tabela .produto-total {
+    width: 15%;
+}
+
+.itens-produtos_tabela .produto-acoes {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    width: 10%;
+}
+
+
+
+/* Imputs============================================= */
+.itens-produtos_tabela input {
+    height: 30px;
+    /* margin: 5px;  */
+    border-radius: 3px;
+    font-size: 13px;
+
+}
+
+
+
+/* .teste{
+    background-color: chartreuse;
+    width: 20px;
+    height: 20px;
+} */

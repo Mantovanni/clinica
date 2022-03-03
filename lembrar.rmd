@@ -1,0 +1,12 @@
+Banco de Dados
+=============================
+
+como funciona Triggers gatilho, regras de oque vem primeirio no banco
+caso exclua algo , ou gatilho ativa antes ou depois
+
+--------------------------------------------------
+
+
+
+
+

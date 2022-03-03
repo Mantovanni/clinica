@@ -1,0 +1,82 @@
+
+
+/* CARD */
+/* ================================================================================ */
+.dashboard .c-card{
+    width: 33.333333333333%;
+  
+}
+.dashboard .card{
+    height: 90px;
+    margin-bottom: 15px;
+    text-align: left;
+    padding-top: 15px;
+   
+   
+}
+
+.dashboard  .c-card:first-child .card{
+    margin-right: 30px;
+  
+}
+.dashboard  .c-card:last-child .card{
+    margin-left: 30px;
+  
+}
+
+/* VALOR----------------------------------- */
+.dashboard  .card-valor{
+    /* color: rgba(0, 255, 255, 0.452); */
+    font-weight: 700;
+   
+}
+/* Texto----------------------------------- */
+.dashboard .card-texto{
+    /* font-weight: 700; */
+   
+}
+
+
+
+
+
+/* AREA */
+/* ================================================================================ */
+.dashboard .area.estoque{
+    padding: 10px 25px;
+    /* height: 100%; */
+    min-height: 350px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================================================================ */
+
+@media screen and (max-width: 1000px) {
+    .dashboard .c-card{       
+        width: 100%;
+             
+    }
+    .dashboard .card{       
+        margin: 4px 4px; 
+        padding: 17px;
+             
+    }
+    .dashboard  .c-card:first-child .card{
+        margin-right: 4px;
+      
+    }
+    .dashboard  .c-card:last-child .card{
+        margin-left: 4px;
+      
+    }
+}
