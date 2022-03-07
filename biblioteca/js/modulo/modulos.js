@@ -32,7 +32,7 @@ export function selectValue(element) {
 
 //-------------------------------------------------------------------------------
 /**
- * Adiciona uma option no select , recebendo o nome e o valor dela
+ * Adiciona uma option no elemento select , recebendo o nome e o valor dela
  * @param {Element} select A referencia para o Select
  * @param {String} text O nome que sera exibido na option
  * @param {} value O valor da option
@@ -82,10 +82,7 @@ export function setIntervalCustom(callBackFunction, delay) {
 
 // Limpa todas as setIntervals criadas pela função setIntervalCustom
 //==================================================================
-/**
- * Devolve a hash da localização actual
- * @return {string} Valor da Hash com prefixo '#/' ignorado.
- */
+
 export function clearIntervalCustom() {
     const arrayDeIdsSetInterval = globalThis.idInterval;
 
@@ -105,13 +102,11 @@ export function clearIntervalCustom() {
 
 
 
-
 //QUERY SELECTOR
 //==============================================================================================
 export function qs(elemento) {
     return document.querySelector(elemento);
 }
-
 
 
 
@@ -665,7 +660,7 @@ function formatDate(date) {
 // =======================================================================================================================
 // =======================================================================================================================
 
-//Pasa para maiscula o primeiro caracter da String
+//Passa para maiscula o primeiro caracter da String
 export function firstToUpperCase(string) {
 
     const primeiroCaractere = string.slice(0, 1)

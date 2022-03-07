@@ -26,12 +26,10 @@ export function pageMain(url) {
 
 
 
-
-
-
     // try {
 
     //Define a pagina inicial
+    //---------------------------------------------------------
     if (url == "") {
         url = "dashboard"
 
@@ -39,8 +37,10 @@ export function pageMain(url) {
 
     // console.log(url);
 
+
+
     //Tratamento da String Url
-    ////=================================================================================
+    ////====================================================================================================
     //Transforma a string url em um array separando por "/"
     const arrayUrl = url.split("/");
     // console.log(arrayUrl);
@@ -74,10 +74,7 @@ export function pageMain(url) {
 
 
 
-
-
-
-    //GRUPO - Regras para para uma pasta de grupo  
+    //GRUPO - Regras da Url para uma pasta de grupo  
     // -------------------------------------------------------------------------
     if (arrayUrl[0] == "rouparia" || arrayUrl[0] == "cafe" || arrayUrl[0] == "manutencao") {
         //Regras para url da pagina principal
@@ -237,6 +234,7 @@ export function pageMain(url) {
 
     //Remove o efeito de ficar piscando o loading muito rapido entre as trocas de tela,
     //Loading so aparece a partir de X segundos 
+    //-------------------------------------------------------------------------------------
     setTimeout(() => {
         // console.log("loading: " + promisseResolvida);
         if (promisseResolvida == false) {

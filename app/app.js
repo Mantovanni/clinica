@@ -21,7 +21,7 @@ const eleLogout = document.querySelector('#logout');
 
 sub();
 
-
+//Função para habilitar os submenus
 function sub(params) {
    
     const sidebar = document.querySelector("#sidebar");
@@ -44,10 +44,6 @@ function sub(params) {
     })
     
 }
-
-
-
-
 
 
 
@@ -86,15 +82,14 @@ setInterval(() => {
 
 //Navegação
 //=========================================================
-// Apos carregar toda a pagina le o hash
+// Apos carregar toda a pagina ativa a função 
 window.onload = controleHash;
-// Escuta alterações na hash 
+
+// Escuta alterações na hash, sepre que ouver uma alteração na hash ativa a função.
 window.onhashchange = controleHash;
 
 //Resolve bug do autocomplete por cima do sidebar
 b.bug.autocomplete();
-
-
 
 
 
@@ -107,6 +102,9 @@ eleLogout.addEventListener('click', b.auth.logout)
 
 
 
+// console.log(b.lerHash());
+// console.log(window.location.hash);
+
 
 
 
@@ -116,7 +114,11 @@ eleLogout.addEventListener('click', b.auth.logout)
 //controleHash
 //==============================================================================================
 function controleHash() {
+    //Ler a url depois da hash e manda para função que criar a pagina principal
     b.render.pageMain(b.lerHash());
+
+
+
     
     const sidebar = document.querySelector(".sidebar__nav-menu")
     const menuOptions = sidebar.querySelectorAll(".menu-option")
@@ -126,7 +128,7 @@ function controleHash() {
     // const elementsSidebar = Array.from(sidebar.children);
 
 
-    //Roda todos os menus do side bar e coloca a class active no menu de mesmo nome da hash na url 
+    //Preocura em todos os menus do side bar e coloca a class active no menu de mesmo nome da hash na url 
     //ex. element.dataset.value = "produtos" e url: /produtos
     menuOptions.forEach(element => {
       

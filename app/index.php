@@ -339,7 +339,7 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
 
 
 
-    <!-- Criar esse ellemntos no proprio javascript -->
+    <!-- Criar esse elemento no proprio javascript -->
     <div class="modal-fundo" id="modal-fundo">
         <div class="modal-window-default" id="modal-window">
 
@@ -362,7 +362,7 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
 
 
 
-    <!-- Criar esse ellemntos no proprio javascript -->
+    <!-- Criar esse elementos no proprio javascript -->
     <div class="modal-fundo" id="modal-fundo-custom">
         <div class="modal-window-custom" id="modal-window-custom">
 

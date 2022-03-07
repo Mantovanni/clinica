@@ -1,0 +1,176 @@
+<form class="form-geral" id="form-modal">
+
+
+    <div class="form__main">
+
+
+        <button type="reset" class="btn-fechar-modal" id="btn-fechar-modal" data-class='fechar-modal'>X</button>
+
+        <!-- ID Invisivel para o editar -->
+        <div class="col-md-6 esconder">
+            <div class="grupo-label-input">
+                <label for="adicionar-id" class="label-adicionar-id">Id</label>
+                <input type="text" name="id" id="adicionar-id" autocomplete="off" data-type="text">
+            </div>
+        </div>
+
+
+        <!-- Campos -->
+        <!-- ================================================================================================= -->
+
+        <!-- linha --------------------------------------------------------------------------------------- -->
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="grupo-label-input">
+                    <label for="nome">Nome do Produto *</label>
+
+                    <input type="text" name="nome" id="nome" placeholder="Produto" autocomplete="off" required>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="grupo-label-input">
+                    <label for="">Unidade de medida *</label>
+                    <select id="unidade" name="unidade" required>
+                        <option value="">-</option>
+                        <option value="Un">Unidade (Un.)</option>
+                        <option value="Kg">Peso - (Kg. - Quilo )</option>
+                        <option value="L">Volume (L - Litros)</option>
+                    </select>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="grupo-label-input">
+                    <label for="custo">Custo</label>
+
+                    <input type="text" name="custo" id="custo" placeholder="R$ 0,00" autocomplete="off"
+                        data-type="coin-real" data-no_extract="true" disabled>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+        </div>
+        <!-- linha --------------------------------------------------------------------------------------- -->
+
+
+
+        <div class="col-md-12">
+
+            <div class="col-md-6">
+                <div class="grupo-label-input">
+                    <label for="marca">Marca</label>
+
+                    <input type="text" name="marca" id="marca" placeholder="Nome do fabricante" autocomplete="off">
+
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="grupo-label-input">
+                    <label for="estoque_minimo">Estoque Minimo</label>
+
+                    <input type="number" min="0" name="estoque_minimo" id="estoque_minimo" placeholder="10"
+                        autocomplete="off" data-type="float">
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="grupo-label-input">
+                    <label for="estoque">Estoque Atual</label>
+
+                    <input type="text" name="estoque" id="estoque" placeholder="0" autocomplete="off" disabled
+                        data-type="float" data-no_extract="true">
+
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+
+            <!-- <div class="col-md-3">
+                <div class="grupo-label-input">
+                    <label for="estoque-maximo">Estoque Maximo</label>
+
+                    <input type="number" min="0" name="estoque-maximo" id="estoque-maximo" placeholder="100"
+                        autocomplete="off" data-type="float">
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div> -->
+
+        </div>
+        <!-- linha --------------------------------------------------------------------------------------- -->
+
+
+        <div class="col-md-12">
+
+
+            <div class="col-md-6"></div>
+
+
+
+            <div class="col-md-3">
+                <div class="grupo-label-input">
+                    <label for="">Tipo</label>
+                    <select id="tipo" name="tipo" required>
+                        <option value="Cafe">Cafe da Manha</option>
+                        <option value="Rouparia">Rouparia</option>
+                        <option value="Limpeza">Produto de Limpeza</option>
+
+                    </select>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+
+            <div class="col-md-3">
+                <div class="grupo-label-input">
+                    <label for="">Situação</label>
+                    <select id="situacao" name="situacao" required>
+                        <option value="ativo">Ativo</option>
+                        <option value="inativo">Inativo</option>
+
+                    </select>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+
+
+        </div>
+        <!-- linha --------------------------------------------------------------------------------------- -->
+        <div class="col-md-12">
+            <div class="grupo-label-input">
+                <label for="observacao">Observações</label>
+                <textarea id="observacao" name="observacao" cols="30" rows="3"></textarea>
+                <span class="mensagem-validacao"></span>
+            </div>
+        </div>
+
+        <!-- linha --------------------------------------------------------------------------------------- -->
+
+        <!-- <div class="col-md-6">
+            <div class="grupo-label-input">
+                <label for="">Categoria</label>
+                <select id="categoria" name="categoria">
+                    <option value="">-</option>
+                </select>
+                <span class="mensagem-validacao"></span>
+            </div>
+        </div>
+
+    </div> -->
+
+
+        <!-- ================================================================================================= -->
+        <div class="form__footer">
+
+            <button type="reset" class="btn-cancelar" id="btn-cancelar-modal"
+                data-class='fechar-modal'>Cancelar</button>
+            <button type="submit" class="btn-salvar" id="btn-salvar-modal">Salvar</button>
+        </div>
+
+
+</form>

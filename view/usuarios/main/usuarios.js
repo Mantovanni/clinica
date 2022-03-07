@@ -27,9 +27,9 @@ export function init() {
     carregarTabela();
 
 
+    globalThis.aaa = 2;
 
-
-
+console.log(globalThis);
 
 
     //BOTAO ADICIONAR
