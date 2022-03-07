@@ -44,8 +44,6 @@ class ControllerUsuarios {
 
 
 
-
-
     //buscarUsuarioByLoginSenha
     //==========================================================================================================
     static function  buscarUsuarioByLoginSenha($body)
@@ -63,15 +61,7 @@ class ControllerUsuarios {
 
 
 
-
-
-
-
-
-
 }
-
-
 
 
 $ControllerUsuarios = new ControllerUsuarios();

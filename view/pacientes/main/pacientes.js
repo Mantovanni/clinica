@@ -1,20 +1,16 @@
-import b from '../../../biblioteca/js/biblioteca.js';
-
+import  b from '../../../biblioteca/js/biblioteca.js';
 
 
 export function init() {
 
-    // globalThis.novaProp = { hello: 'World' }
+    //VARIÁVEIS
+    //=====================================================================================================
+    //=====================================================================================================
 
-    // console.log(globalThis);
-
-    //Variaveis
-    //==============================================================================================================
-    //GLOBAIS
+    //Globais
     //----------------------------------------------------------
-    const adicionarUrl = " ../view/produtos/adicionar/adicionar-produtos.html";
-    const urlJs = "../../../view/produtos/adicionar/adicionar-produtos.js";//Url partir do render.js
-
+    const adicionarUrl = " ../view/usuarios/adicionar/adicionar-pacientes.html";
+    const urlJs = "../../../view/usuarios/adicionar/adicionar-pacientes.js";//Url partir do render.js
 
 
     //Elements DOM
@@ -25,27 +21,13 @@ export function init() {
     const inpPesquisar = document.querySelector("#acoes__buscar");
 
 
-    // let copiaTabela = "";
 
 
 
 
-    //Formulario
-    //--------------------------------------
-    const formAdicionar = document.querySelector('#form-adicionar');//Formulario Adicionar
-
-
-
-
-    //MASCARAS
-    //==============================================================================================================
-    // b.maskMoeda(inpValor);
-
-
-
-
-
-    //Init==========================================================================================================
+    //INIT / INICIAR
+    //=====================================================================================================
+    //=====================================================================================================
     carregarTabela();
 
 
@@ -54,21 +36,19 @@ export function init() {
 
 
 
-
-
-
-    //Eventos
-    //==============================================================================================================
-    //BTN - Adicionar----------------
+    //EVENTOS
+    //=====================================================================================================
+    //=====================================================================================================
+    //BTN - Adicionar
+    //------------------------------------------------------
     btnAdicionar.addEventListener('click', function (e) {
         b.modal.abrir();
 
         // Passa o elemento Janela Modal para a função render.page 
-        b.render.pageModal(adicionarUrl, urlJs);//assync
-        // b.render.page(b.modal.content, adicionarUrl, urlJs);//assync
+        b.render.pageModal(adicionarUrl, urlJs);//async
+        // b.render.page(b.modal.content, adicionarUrl, urlJs);//async
 
     });
-    //==============================================================================================================
     // btnAdicionar.click()
 
 
@@ -78,72 +58,34 @@ export function init() {
 
 
 
-
-
-    //Funções
-    //==============================================================================================================
+    //FUNÇÕES
+    //=====================================================================================================
+    //=====================================================================================================
 
     //Carregar Tabela
-    //===================================================================================================
+    //==================================================================================================
     function carregarTabela() {
 
 
-        // b.crud.listar("produtos", responseList => {  //async     
-        b.crud.custom("listarProdutos", "produtos", "", responseList => {  //async     
+        //Função que lista todas a linhas de uma tabela no banco e retorna os dados
+        b.crud.listar("pacientes", responseList => {  //async     
 
-
-            // console.log(responseList);
-            const responseTratada = responseList["data"].map(response => {
-
-                // response.estoque = parseFloat(response.estoque).toFixed(2)             
-                response.estoque_total = b.paraMoeda(response.estoque_total) + " " + response.unidade;
+            //Extrai os dados da tabela e faz algum tratamento caso necessário.
+            const dados = responseList["data"].map(response => {
+                //Adiciona um zero a esquerda da ID
+                response.id = response.id.padStart(2, '0');
+               
                 return response;
             });
+      
 
 
-
-            b.render.lineInTable(tbody, responseTratada, "produtos");
-
-            //Inserir função pesquisar tabela
+            //Função que cria a tabela na DOM utilizando os dados extraídos do banco.
+            b.render.lineInTable(tbody, dados, "pacientes");
+            
+            //Insere a função de pesquisar na tabela
+            //OBS. Adicionar essa função de forma automatica no futuro
             b.table.insertSearch(inpPesquisar, tbody);
-
-            inserirBotoesEstoque(tbody, responseList["data"]);
-        }, false);
-
-    }
-
-
-
-
-
-
-
-
-    //============================================================================================================
-    //Cria os botoes de estoque na tabela
-    function inserirBotoesEstoque(elTable, dadosItensArray) {//Espera receber um TBODY
-
-        //Pega todos os elementos celula da coluna ações na tabela
-        const celAcoesNodes = elTable.querySelectorAll('.cel-acoes');
-
-
-        dadosItensArray.forEach((dadosItem, indice) => {
-
-
-            celAcoesNodes[indice].insertAdjacentHTML("afterbegin", `<button class="btn-estoque-linha" data-name="estoque">${b.ico.carrinho2}</button>`);
-
-
-
-            //Pega o botão criado na cellula
-            const novoBtnEstoque = celAcoesNodes[indice].querySelector(`[data-name="estoque"]`);
-            //Estoque
-            //---------------------------------------------------------------------------------------------
-            novoBtnEstoque.addEventListener('click', function (e) {
-                // window.location = "#/estoque/movimentacoes/" + dadosItem.id;
-                b.inserirHash(`produtos/movimentacoes/${dadosItem.id}`)
-
-            });
-
         });
 
     }
@@ -155,10 +97,6 @@ export function init() {
 
 
 
-
-
-
-
-
-
+    //==============================================================================================
 }
+

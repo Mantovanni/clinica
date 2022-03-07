@@ -9,4 +9,10 @@ caso exclua algo , ou gatilho ativa antes ou depois
 
 
 
+CODIGO
+==============================================================
+EXPLICAR
+1 - Como é feita a comunicação do javascript com php
+
+
 

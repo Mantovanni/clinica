@@ -9,7 +9,8 @@ export function init() {
     // console.log(globalThis);
 
     //Variaveis
-    //==============================================================================================================
+    //========================================================================================================
+
     //GLOBAIS
     //----------------------------------------------------------
     const adicionarUrl = " ../view/produtos/adicionar/adicionar-produtos.html";
@@ -102,6 +103,7 @@ export function init() {
 
 
 
+            
             b.render.lineInTable(tbody, responseTratada, "produtos");
 
             //Inserir função pesquisar tabela

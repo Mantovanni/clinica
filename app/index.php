@@ -14,7 +14,9 @@ $ControllerAuth::verificarSessao();
 
 //Força abrir o endereço em HTTPS
 //---------------------------------------------------------------------------------
-if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.168.0.10") {
+
+//Endereços locais para não forçar o HTTPS enquanto estiver desenvolvendo
+if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.168.1.50") {
     // if ($_SERVER['SERVER_NAME'] !== "192.168.0.10") {
     if (!$_SERVER['HTTPS']) {
         $protocolo = 'https://';
@@ -46,20 +48,20 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" href="/cafe/biblioteca/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/clinica/biblioteca/img/favicon.ico" type="image/x-icon">
 
     <title>Sistema de Controle</title>
 
     <!-- Regras gerais de css para todo sistema -->
-    <link rel="stylesheet" href="/cafe/biblioteca/css/global.css">
-    <link rel="stylesheet" href="/cafe/biblioteca/css/elements.css">
-    <link rel="stylesheet" href="/cafe/biblioteca/css/presets.css">
+    <link rel="stylesheet" href="/clinica/biblioteca/css/global.css">
+    <link rel="stylesheet" href="/clinica/biblioteca/css/elements.css">
+    <link rel="stylesheet" href="/clinica/biblioteca/css/presets.css">
 
     <!-- @imports do CSS de layouts default e das paginas-->
-    <link rel="stylesheet" href="/cafe/biblioteca/css/layouts.css">
+    <link rel="stylesheet" href="/clinica/biblioteca/css/layouts.css">
 
 
-    <!-- <link rel="preload" as="script" href="/cafe/view/itens/main/itens.js"> -->
+    <!-- <link rel="preload" as="script" href="/clinica/view/itens/main/itens.js"> -->
 
 
     <script type="module" src="app.js" defer="true"></script>
@@ -103,7 +105,7 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
 
                 <div class="header__esquerda-logo">
                     <div id="voltar-pagina"></div>
-                    <span> <a href="/cafe/app/#/cafe">Sistema de Controle </a></span>
+                    <span> <a href="/clinica/app/">SIS Clínica </a></span>
                 </div>
 
 
@@ -261,9 +263,13 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
                         </a>
                     </li>
 
-                </ul>
+                </ul>                
 
 
+                <a href="#/pacientes" id="paciente-menu" data-url="pacientes" class="menu-option">
+                    <i class="svg-paciente"></i>
+                    <span>Pacientes</span>
+                </a>
 
                 <a href="#/estoques" id="estoque-menu" data-url="estoques" class="menu-option">
                     <i class="svg-estoque"></i>
