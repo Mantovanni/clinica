@@ -205,7 +205,8 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
 
 
 
-
+                <!-- Dashboard -->
+                <!----------------------------------------------------------------------->
                 <a href="#/dashboard" id="dashboard-menu" data-url="dashboard" class="menu-option">
                     <i class="svg-chart"></i>
                     <span>Dashboard</span>
@@ -215,7 +216,7 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
                 <!-- Sub MENU Cafes-------------------------------------------------------------------- -->
                 <a id="cafe-menu" data-url="cafe/cafes">
                     <i class="svg-cafe"></i>
-                    <span>Café da Manhã</span>
+                    <span>Atendimentos</span>
                 </a>
 
                 <ul class="submenu" data-submenu="cafe-menu">
@@ -266,20 +267,29 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
                 </ul>                
 
 
+
+
+                <!-- Pacientes -->
+                <!----------------------------------------------------------------------->
                 <a href="#/pacientes" id="paciente-menu" data-url="pacientes" class="menu-option">
-                    <i class="svg-paciente"></i>
+                    <i class="svg-pacientes"></i>
                     <span>Pacientes</span>
                 </a>
 
+                <!-- Medicamentos -->
+                <!----------------------------------------------------------------------->  
+                <a href="#/produtos" id="produtos-menu" data-url="produtos" class="menu-option">
+                    <!-- <i class="svg-bolsa-mais"></i> -->
+                    <i class="svg-pill"></i>
+
+                    <span>Medicamentos</span>
+                </a>
+
+                <!-- Estoques -->
+                <!----------------------------------------------------------------------->
                 <a href="#/estoques" id="estoque-menu" data-url="estoques" class="menu-option">
                     <i class="svg-estoque"></i>
                     <span>Estoques</span>
-                </a>
-
-
-                <a href="#/produtos" id="produtos-menu" data-url="produtos" class="menu-option">
-                    <i class="svg-bolsa-mais"></i>
-                    <span>Produtos</span>
                 </a>
 
                 <?php

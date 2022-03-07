@@ -11,3 +11,5 @@ e os que nao tem nao remover mais ficar no receituário
 
 
 
+------------------------------
+Criar uma função para gerar e gerenciar o controle de acesso aos menus do side bar

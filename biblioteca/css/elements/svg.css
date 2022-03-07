@@ -21,6 +21,9 @@
 }
 
 
+
+
+
 /* HEADER - USER */
 .svg-user {
     background-image: url(../../img/svg/user.svg);
@@ -32,7 +35,12 @@
 
 
 
-/* SIDE BAR------------------------------------------------------------------------------- */
+
+
+
+
+/* SIDE BAR */
+/* =========================================================================================== */
 .svg-usuarios {
     background-image: url(../../img/svg/usuarios.svg);
     width: 21px;
@@ -97,6 +105,32 @@
     background-size: contain;
 }
 
+.svg-pacientes {
+    background-image: url(../../img/svg/pacientes.svg);
+    width: 21px;
+    height: 21px;
+    /* background-color: tomato; */
+    background-size: contain;
+}
+
+.svg-pill {
+    background-image: url(../../img/svg/pill.svg);
+    width: 21px;
+    height: 21px;
+    /* background-color: tomato; */
+    background-size: contain;
+}
+.svg-pill2 {
+    background-image: url(../../img/svg/pill2.svg);
+    width: 21px;
+    height: 21px;
+    /* background-color: tomato; */
+    background-size: contain;
+}
+
+
+
+
 /* //Chart---------------------------------------------------------------- */
 .svg-chart {
     background-image: url(../../img/svg/chart.svg);
@@ -119,6 +153,17 @@
     /* background-color: tomato; */
     background-size: contain;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

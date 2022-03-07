@@ -353,7 +353,7 @@ export function pageModal(urlPagina, urlJs, valueInit) {
 
 
         b.fetchText(urlPagina, html => {
-            //Insere o conteudo HTML no elemento referenciado  
+            //Insere o conteúdo HTML no elemento referenciado  
             b.modal.content(html, resolve);
 
             //ativa o JS com as regras depois dos elementos da pagina forem inseridos no DOM
