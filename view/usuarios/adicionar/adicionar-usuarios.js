@@ -55,7 +55,6 @@ export function init(valueInit) {
 
                 b.modal.fechar();
 
-                responseItemSalvo.total = responseItemSalvo.custo * responseItemSalvo.quantidade;
                 //informa a TBody, 
                 b.render.lineInTable(tbodyItens, responseItemSalvo, "usuarios");
             });

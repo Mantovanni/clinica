@@ -564,7 +564,7 @@ export function findNamePropInObeject(nome, object, callFunction) {
 // DATAS
 // =======================================================================================================================
 // =======================================================================================================================
-// Pega a data atual do sistema  e formata nesse modelo .- Ex dde saida - 12/09/2019
+// Pega a data atual do sistema  e formata nesse modelo .- Ex dde saída - 12/09/2019
 export function getDataAtualFormatada() {
     var date = new Date()
     var day = date.getDate();
@@ -590,11 +590,11 @@ export function getDataAtualFormatada() {
 
 
 //==================================================================================================
-// Recebe uma data  no padrao ISO 2020-05-31 e converte para 31/05/2020
+// Recebe uma data  no padrão ISO 2020-05-31 e converte para 31/05/2020
 export function formatDataISOforDataUser(data) {
     let dataFormatada = data;
 
-
+console.log(data);
     if (data != null) {
         dataFormatada = dataFormatada.split("-");
         dataFormatada = dataFormatada[2] + "/" + dataFormatada[1] + "/" + dataFormatada[0];
@@ -606,7 +606,7 @@ export function formatDataISOforDataUser(data) {
 }
 
 //==================================================================================================
-// Recebe uma data  no padrao 31/05/2020  e converte para padrao ISO 2020-05-31
+// Recebe uma data  no padrão 31/05/2020  e converte para padrão ISO 2020-05-31
 export function formatDataUserforISO(data) {
     let dataFormatada = data;
 

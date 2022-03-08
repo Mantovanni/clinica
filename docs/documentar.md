@@ -14,5 +14,6 @@ CODIGO
 EXPLICAR
 1 - Como é feita a comunicação do javascript com php
 
+2- element.dataset = passar variaveis pelo html exemplp data-xxxx="blabla"
 
 

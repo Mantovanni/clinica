@@ -32,4 +32,7 @@ CÓDIGO
 ==============================================================================
 1 - CRUD básico não usa o controller específico, apenas funções personalizadas precisa usar o controller próprio
 
+2- Ao criar um produto não é mais criado o estoque em estoque_has_produtos, isso so acontece quando é feita uma movimentação
+daquele produto para o determinado estoque.OBS. limpar o código em ProdutosDAO função criarProduto
+
 

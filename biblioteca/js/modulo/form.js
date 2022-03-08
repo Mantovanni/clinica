@@ -19,14 +19,18 @@ export function extractValues(form) {
     Array.from(form).forEach(element => {
 
 
-        //Remove os botoes do array de valores do form
+        //Remove os elementos botoes e o dataset com valor no_extract = true do array de valores do form
         if (element.nodeName != "BUTTON" && !element.dataset.no_extract) {
 
 
             if (element.dataset.relacional == "1") {
 
             } else {
-                switch (element.dataset.type) {
+          
+                switch (element.dataset.type) {                   
+                    case "date"://Formata a data no padrão para o banco
+                        formValues[element.name] = b.formatDataUserforISO(element.value);            
+                        break;
                     case "coin"://Formata de Moeda para Float
                         formValues[element.name] = b.paraFloat(element.value);
                         break;
@@ -63,7 +67,7 @@ export function extractValues(form) {
 
 
 //----------------------------------------------------------------------------------
-//Extrai os valores dos inputs do form e coloca em um objeto com os parametros igual
+//Extrai os valores dos inputs do form e coloca em um objeto com os parâmetros igual
 //o atributo name do elementos
 export function extractValuesAll(form) {
 
@@ -170,9 +174,15 @@ export function preencher(form, dataObject) {
                     case "coin-real":
                         element.value = b.paraMoedaReal(dataObject[key])
                         break;
+                    //VERIFICAR REDUNDÂNCIA COM COIN ACIMA
                     case "quantia":
                         element.value = b.paraMoeda(dataObject[key])
                         break;
+                    case "date":
+                        element.value = b.formatDataISOforDataUser(dataObject[key])
+                        break;
+
+
                     default:
                         element.value = dataObject[key];
                         break;

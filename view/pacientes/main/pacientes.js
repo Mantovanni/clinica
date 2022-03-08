@@ -9,8 +9,8 @@ export function init() {
 
     //Globais
     //----------------------------------------------------------
-    const adicionarUrl = " ../view/usuarios/adicionar/adicionar-pacientes.html";
-    const urlJs = "../../../view/usuarios/adicionar/adicionar-pacientes.js";//Url partir do render.js
+    const adicionarUrl = " ../view/pacientes/adicionar/adicionar-pacientes.html";
+    const urlJs = "../../../view/pacientes/adicionar/adicionar-pacientes.js";//Url partir do render.js
 
 
     //Elements DOM
@@ -42,10 +42,10 @@ export function init() {
     //BTN - Adicionar
     //------------------------------------------------------
     btnAdicionar.addEventListener('click', function (e) {
-        b.modal.abrir();
+        b.modal.abrir("Adicionar Pacientes");
 
         // Passa o elemento Janela Modal para a função render.page 
-        b.render.pageModal(adicionarUrl, urlJs);//async
+       b.render.pageModal(adicionarUrl, urlJs);//async
         // b.render.page(b.modal.content, adicionarUrl, urlJs);//async
 
     });
