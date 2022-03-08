@@ -118,7 +118,7 @@ export function init(valueInit) {
         //Estoque
         //---------------------------------------------------------------------------------------------
         novoBtnEstoque.addEventListener('click', function (e) {
-            window.location = "#/estoque/movimentacoes/" + dadosItem.id;
+            window.location = "#/produtos/movimentacoes/" + dadosItem.id;
 
         });
     }

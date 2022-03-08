@@ -213,59 +213,16 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
                 </a>
 
 
-                <!-- Sub MENU Cafes-------------------------------------------------------------------- -->
-                <a id="cafe-menu" data-url="cafe/cafes">
+               
+
+
+            
+                <!-- Atendimentos -->
+                <!----------------------------------------------------------------------->
+                <a href="#/atendimentos" id="paciente-menu" data-url="atendimentos" class="menu-option">
                     <i class="svg-cafe"></i>
                     <span>Atendimentos</span>
                 </a>
-
-                <ul class="submenu" data-submenu="cafe-menu">
-                    <li>
-                        <a href="#/cafe/cafes" id="cafe-menu" data-url="cafe/cafes" class="menu-option">
-                            <!-- <i class="svg-cafe"></i> -->
-                            <span>Cafés</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#/itens" id="itens-menu" data-url="itens" class="menu-option">
-                            <!-- <i class="svg-cardapio"></i> -->
-                            <span>Itens do Café</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#/cafe/produtos" id="cafe-produtos-menu" data-url="cafe/produtos" class="menu-option">
-                            <!-- <i class="svg-cafe"></i> -->
-                            <span>Produtos</span>
-                        </a>
-                    </li>
-                </ul>
-
-
-
-
-
-                <!-- Sub MENU ROUPARIA-------------------------------------------------------------------- -->
-                <a id="rouparia-menu" data-url="rouparia/produtos">
-                    <i class="svg-carrinho"></i>
-                    <span>Rouparia</span>
-                </a>
-
-                <ul class="submenu" data-submenu="rouparia-menu">
-                    <li>
-                        <a href="#/rouparia/apartamentos" id="apartamentos-menu" data-url="rouparia/apartamentos" class="menu-option">
-                            <!-- <i class="svg-bolsa-mais"></i> -->
-                            <span>Apartamentos</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#/rouparia/produtos" id="rouparia-menu" data-url="rouparia/produtos" class="menu-option">
-                            <!-- <i class="svg-carrinho"></i> -->
-                            <span>Produtos</span>
-                        </a>
-                    </li>
-
-                </ul>                
-
 
 
 
@@ -276,6 +233,7 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
                     <span>Pacientes</span>
                 </a>
 
+
                 <!-- Medicamentos -->
                 <!----------------------------------------------------------------------->  
                 <a href="#/produtos" id="produtos-menu" data-url="produtos" class="menu-option">
@@ -285,6 +243,7 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
                     <span>Medicamentos</span>
                 </a>
 
+
                 <!-- Estoques -->
                 <!----------------------------------------------------------------------->
                 <a href="#/estoques" id="estoque-menu" data-url="estoques" class="menu-option">
@@ -292,6 +251,10 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
                     <span>Estoques</span>
                 </a>
 
+
+
+                <!-- Usuários -->
+                <!----------------------------------------------------------------------->
                 <?php
 
                 if ($_SESSION["acesso"] == "admin") {

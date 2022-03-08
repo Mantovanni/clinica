@@ -6,7 +6,7 @@
 
         <button type="reset" class="btn-fechar-modal" id="btn-fechar-modal" data-class='fechar-modal'>X</button>
 
-        <!-- ID Invisivel para o editar -->
+        <!-- ID invisível para o editar -->
         <div class="col-md-6 esconder">
             <div class="grupo-label-input">
                 <label for="adicionar-id" class="label-adicionar-id">Id</label>
@@ -15,54 +15,57 @@
         </div>
 
 
-        <!-- Campos -->
-        <!-- ================================================================================================= -->
+        <!-- CAMPOS -->
+        <!-- ============================================================================================================ -->
+        <!-- ============================================================================================================ -->
 
-        <!-- linha --------------------------------------------------------------------------------------- -->
+
+        <!-- Linha 01 -->
+        <!--------------------------------------------------------------------------------------------------->
         <div class="col-md-12">
             <div class="col-md-6">
                 <div class="grupo-label-input">
-                    <label for="nome">Nome do Produto *</label>
+                    <label for="nome">Nome</label>
 
-                    <input type="text" name="nome" id="nome" placeholder="Produto" autocomplete="off" required>
+                    <input type="text" name="nome" id="nome" placeholder="Nome" autocomplete="off" required>
                     <span class="mensagem-validacao"></span>
                 </div>
             </div>
 
             <div class="col-md-3">
                 <div class="grupo-label-input">
-                    <label for="">Unidade de medida *</label>
-                    <select id="unidade" name="unidade" required>
+                    <label for="sexo">Sexo</label>
+                    <select id="sexo" name="sexo" required>
                         <option value="">-</option>
-                        <option value="Un">Unidade (Un.)</option>
-                        <option value="Kg">Peso - (Kg. - Quilo )</option>
-                        <option value="L">Volume (L - Litros)</option>
+                        <option value="Homem">Homem</option>
+                        <option value="Mulher">Mulher</option>                       
                     </select>
                     <span class="mensagem-validacao"></span>
                 </div>
             </div>
+
             <div class="col-md-3">
                 <div class="grupo-label-input">
-                    <label for="custo">Custo</label>
-
-                    <input type="text" name="custo" id="custo" placeholder="R$ 0,00" autocomplete="off"
-                        data-type="coin-real" data-no_extract="true" disabled>
-                    <span class="mensagem-validacao"></span>
+                    <label for="data_nascimento">Data de Nascimento</label>
+                    <input type="text" name="data_nascimento" id="data_nascimento" placeholder="00/00/0000" autocomplete="off" 
+                    value="22/09/1988" data-type="date" disabled>
+                    <span class="mensagem-validacao" ></span>
                 </div>
             </div>
 
         </div>
-        <!-- linha --------------------------------------------------------------------------------------- -->
+      
 
 
 
+         <!-- Linha 02 -->
+        <!--------------------------------------------------------------------------------------------------->
         <div class="col-md-12">
 
             <div class="col-md-6">
                 <div class="grupo-label-input">
-                    <label for="marca">Marca</label>
-
-                    <input type="text" name="marca" id="marca" placeholder="Nome do fabricante" autocomplete="off">
+                    <label for="responsavel_nome">Responsável</label>
+                    <input type="text" name="responsavel_nome" id="responsavel_nome" placeholder="Nome do Repensável" autocomplete="off">
 
                     <span class="mensagem-validacao"></span>
                 </div>
@@ -70,60 +73,75 @@
 
             <div class="col-md-3">
                 <div class="grupo-label-input">
-                    <label for="estoque_minimo">Estoque Minimo</label>
-
-                    <input type="number" min="0" name="estoque_minimo" id="estoque_minimo" placeholder="10"
-                        autocomplete="off" data-type="float">
+                    <label for="cpf">Cpf</label>
+                    <input type="number" name="cpf" id="cpf" placeholder="000.000.000-00" autocomplete="off">
+                    
                     <span class="mensagem-validacao"></span>
                 </div>
             </div>
 
             <div class="col-md-3">
                 <div class="grupo-label-input">
-                    <label for="estoque">Estoque Atual</label>
-
-                    <input type="text" name="estoque" id="estoque" placeholder="0" autocomplete="off" disabled
-                        data-type="float" data-no_extract="true">
+                    <label for="rg">Rg</label>
+                    <input type="text" name="rg" id="rg" placeholder="" autocomplete="off">
 
                     <span class="mensagem-validacao"></span>
                 </div>
             </div>
 
-
-            <!-- <div class="col-md-3">
-                <div class="grupo-label-input">
-                    <label for="estoque-maximo">Estoque Maximo</label>
-
-                    <input type="number" min="0" name="estoque-maximo" id="estoque-maximo" placeholder="100"
-                        autocomplete="off" data-type="float">
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div> -->
 
         </div>
-        <!-- linha --------------------------------------------------------------------------------------- -->
+       
+
+        <!-- Linha 03 -->
+        <!--------------------------------------------------------------------------------------------------->
+        <div class="col-md-12">
+
+            <div class="col-md-6">
+                <div class="grupo-label-input">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" name="endereco" id="endereco" placeholder="" autocomplete="off">
+
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="grupo-label-input">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" name="bairro" id="bairro" placeholder="" autocomplete="off">
+
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="grupo-label-input">
+                    <label for="numero">Número</label>
+                    <input type="text" name="numero" id="numero" placeholder="" autocomplete="off">
+
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+        </div>
 
 
+
+
+        <!-- Linha 04 -->
+        <!--------------------------------------------------------------------------------------------------->
         <div class="col-md-12">
 
 
-            <div class="col-md-6"></div>
-
-
-
-            <!-- <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="grupo-label-input">
-                    <label for="">Tipo</label>
-                    <select id="tipo" name="tipo" required>
-                        <option value="Cafe">Cafe da Manha</option>
-                        <option value="Rouparia">Rouparia</option>
-                        <option value="Limpeza">Produto de Limpeza</option>
+                    <label for="numero">Número para Contato</label>
+                    <input type="text" name="numero" id="numero" placeholder="" autocomplete="off">
 
-                    </select>
                     <span class="mensagem-validacao"></span>
                 </div>
-            </div> -->
-
+            </div>
 
             <div class="col-md-3">
                 <div class="grupo-label-input">
@@ -131,16 +149,19 @@
                     <select id="situacao" name="situacao" required>
                         <option value="ativo">Ativo</option>
                         <option value="inativo">Inativo</option>
-
+    
                     </select>
                     <span class="mensagem-validacao"></span>
                 </div>
             </div>
-
-
-
         </div>
-        <!-- linha --------------------------------------------------------------------------------------- -->
+        
+
+
+
+
+        <!-- Linha 05 -->
+        <!--------------------------------------------------------------------------------------------------->
         <div class="col-md-12">
             <div class="grupo-label-input">
                 <label for="observacao">Observações</label>
@@ -148,6 +169,9 @@
                 <span class="mensagem-validacao"></span>
             </div>
         </div>
+
+
+
 
         <!-- linha --------------------------------------------------------------------------------------- -->
 

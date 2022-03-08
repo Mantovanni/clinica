@@ -19,7 +19,9 @@ const eleLogout = document.querySelector('#logout');
 
 //Init==========================================================================================================
 
-sub();
+
+
+// sub();
 
 //Função para habilitar os submenus
 function sub(params) {

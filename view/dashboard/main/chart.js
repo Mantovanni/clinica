@@ -56,7 +56,7 @@ const optionsDefault = {
     },
 
     title: {
-        text: "Estoques",
+        text: "Medicamentos",
         align: 'left',
         margin: 10,
         offsetX: -10,

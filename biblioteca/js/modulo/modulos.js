@@ -594,7 +594,6 @@ export function getDataAtualFormatada() {
 export function formatDataISOforDataUser(data) {
     let dataFormatada = data;
 
-console.log(data);
     if (data != null) {
         dataFormatada = dataFormatada.split("-");
         dataFormatada = dataFormatada[2] + "/" + dataFormatada[1] + "/" + dataFormatada[0];
