@@ -1,5 +1,4 @@
-<form class="form-geral" id="form-modal">
-
+<form class="form" id="form-modal">
 
     <div class="form__main">
 
@@ -22,179 +21,163 @@
 
         <!-- Linha 01 -->
         <!--------------------------------------------------------------------------------------------------->
-        <div class="col-md-12">
-            <div class="col-md-6">
-                <div class="grupo-label-input">
-                    <label for="nome">Nome</label>
 
-                    <input type="text" name="nome" id="nome" placeholder="Nome" autocomplete="off" required>
-                    <span class="mensagem-validacao"></span>
+        <div class="c-atend">
+
+
+            <div class="c-atend_line1">
+
+                <div class="c-atend__paciente ">
+
+                    <div class="c-atend__paciente-nome">
+                        <div class="grupo-label-input">
+                            <label for="nome">Paciente</label>
+
+                            <input type="text" name="nome" id="nome" placeholder="Nome" autocomplete="off" required>
+                            <span class="mensagem-validacao"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="c-atend__paciente-dados ">
+
+
+                        <div class="c-atend__paciente-dados-line1 col-md-12">
+                            <div class="c-atend__paciente-dados-idade col-md-6">
+                                Idade: 45 Anos
+                            </div>
+                            <div class="c-atend__paciente-dados-atendimentos col-md-6">
+                                Atendimentos: 02
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="c-atend__paciente-dados-primenira col-md-6">
+                                Primeira Consulta: 18/01/2021
+                            </div>
+                            <div class="c-atend__paciente-dados-sexo col-md-6">
+                                Sexo: M
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
+
+
+
+                <div class="c-atend__buttons">
+
+                    <!-- <button class="btn-adicionar" id="btn-XX">Abrir Atendimento</button> -->
+                    <button class="btn-blue" id="btn-XX">Abrir Atendimento</button>
+                    <button class="btn-blue" id="btn-XX">Fechar Atendimento</button>
+                    <button class="btn-blue" id="btn-XX">Imprimir </button>
+                    <!-- <button class="btn-adicionar" id="btn-XX">Abrir Atendimento</button> -->
+                    <!-- <button class="btn-print" id="btn-XX">Imprimir </button> -->
+
+                </div>
+
+
             </div>
 
-            <div class="col-md-3">
-                <div class="grupo-label-input">
-                    <label for="sexo">Sexo</label>
-                    <select id="sexo" name="sexo" required>
-                        <option value="">-</option>
-                        <option value="Homem">Homem</option>
-                        <option value="Mulher">Mulher</option>                       
-                    </select>
-                    <span class="mensagem-validacao"></span>
-                </div>
+
+
+            <!-- //tabs ========================================================================================= -->
+
+            <div class="c-atend_tab">
+
+                <div class="tab">
+                    <input type="radio" name="tabgroup" id="tab1" >
+                    <input type="radio" name="tabgroup" id="tab2" checked>
+                    <input type="radio" name="tabgroup" id="tab3">
+                    <input type="radio" name="tabgroup" id="tab4">
+
+                    <!-- <input type="radio" name="tabgroup" id="tab3" aria-controls="dunkles"> -->
+            
+                    <div class="tab-menu">
+                        <label for="tab1">Procedimentos</label>
+                        <label for="tab2">Anamnese</label>
+                        <label for="tab3">Atestado</label>
+                        <label for="tab4">Receituário</label>                        
+
+                    </div>
+            
+            
+                    <div class="tab-panels">
+            
+            
+            
+                        <!-- //section Procedimentos ================================================= -->
+                        <section class="tab-panel" id="tab-produtos">
+            
+
+
+
+
+
+
+
+
+
+            
+                        </section>
+            
+                        <!-- //section Anamnese ================================================= -->
+                        <section class="tab-panel" id="tab-anamnese">
+                              
+                            <div class="grupo-label-input">
+                                <label for="anamnese">Observações</label>
+                                <textarea id="anamnese" name="anamnese" cols="30" rows="3"></textarea>                               
+                            </div>
+            
+                        </section>
+
+                        <!-- //section Atestado ================================================= -->
+                        <section class="tab-panel" id="tab-atestado">
+                              
+                            <div class="grupo-label-input">
+                                <!-- <label for="observacao">Observações</label> -->
+                                <textarea id="atestado" name="atestado" cols="30" rows="3"></textarea>
+                                <span class="mensagem-validacao"></span>
+                            </div>
+                        </section>
+
+                        <!-- //section Receituário ================================================= -->
+                        <section class="tab-panel" id="tab-receituario">
+                            <div class="grupo-label-input">
+                                <!-- <label for="observacao">Observações</label> -->
+                                <textarea id="receituario" name="receituario" cols="30" rows="3"></textarea>
+                                <span class="mensagem-validacao"></span>
+                            </div>
+            
+                        </section>
+            
+            
+            
+            
+                    </div><!-- tab panels-->
+            
+                </div><!-- tab -->
             </div>
 
-            <div class="col-md-3">
-                <div class="grupo-label-input">
-                    <label for="data_nascimento">Data de Nascimento</label>
-                    <input type="text" name="data_nascimento" id="data_nascimento" placeholder="00/00/0000" autocomplete="off" 
-                    value="22/09/1988" data-type="date" disabled>
-                    <span class="mensagem-validacao" ></span>
-                </div>
-            </div>
+
 
         </div>
-      
+
+     
 
 
 
-         <!-- Linha 02 -->
-        <!--------------------------------------------------------------------------------------------------->
-        <div class="col-md-12">
-
-            <div class="col-md-6">
-                <div class="grupo-label-input">
-                    <label for="responsavel_nome">Responsável</label>
-                    <input type="text" name="responsavel_nome" id="responsavel_nome" placeholder="Nome do Repensável" autocomplete="off">
-
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="grupo-label-input">
-                    <label for="cpf">Cpf</label>
-                    <input type="number" name="cpf" id="cpf" placeholder="000.000.000-00" autocomplete="off">
-                    
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="grupo-label-input">
-                    <label for="rg">Rg</label>
-                    <input type="text" name="rg" id="rg" placeholder="" autocomplete="off">
-
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
+    </div>
 
 
-        </div>
-       
+    <!-- ================================================================================================= -->
+    <div class="form__footer">
 
-        <!-- Linha 03 -->
-        <!--------------------------------------------------------------------------------------------------->
-        <div class="col-md-12">
-
-            <div class="col-md-6">
-                <div class="grupo-label-input">
-                    <label for="endereco">Endereço</label>
-                    <input type="text" name="endereco" id="endereco" placeholder="" autocomplete="off">
-
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="grupo-label-input">
-                    <label for="bairro">Bairro</label>
-                    <input type="text" name="bairro" id="bairro" placeholder="" autocomplete="off">
-
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <div class="grupo-label-input">
-                    <label for="numero">Número</label>
-                    <input type="text" name="numero" id="numero" placeholder="" autocomplete="off">
-
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-
-        </div>
-
-
-
-
-        <!-- Linha 04 -->
-        <!--------------------------------------------------------------------------------------------------->
-        <div class="col-md-12">
-
-
-            <div class="col-md-4">
-                <div class="grupo-label-input">
-                    <label for="numero">Número para Contato</label>
-                    <input type="text" name="numero" id="numero" placeholder="" autocomplete="off">
-
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="grupo-label-input">
-                    <label for="">Situação</label>
-                    <select id="situacao" name="situacao" required>
-                        <option value="ativo">Ativo</option>
-                        <option value="inativo">Inativo</option>
-    
-                    </select>
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-        </div>
-        
-
-
-
-
-        <!-- Linha 05 -->
-        <!--------------------------------------------------------------------------------------------------->
-        <div class="col-md-12">
-            <div class="grupo-label-input">
-                <label for="observacao">Observações</label>
-                <textarea id="observacao" name="observacao" cols="30" rows="3"></textarea>
-                <span class="mensagem-validacao"></span>
-            </div>
-        </div>
-
-
-
-
-        <!-- linha --------------------------------------------------------------------------------------- -->
-
-        <!-- <div class="col-md-6">
-            <div class="grupo-label-input">
-                <label for="">Categoria</label>
-                <select id="categoria" name="categoria">
-                    <option value="">-</option>
-                </select>
-                <span class="mensagem-validacao"></span>
-            </div>
-        </div>
-
-    </div> -->
-
-
-        <!-- ================================================================================================= -->
-        <div class="form__footer">
-
-            <button type="reset" class="btn-cancelar" id="btn-cancelar-modal"
-                data-class='fechar-modal'>Cancelar</button>
-            <button type="submit" class="btn-salvar" id="btn-salvar-modal">Salvar</button>
-        </div>
+        <button type="reset" class="btn-cancelar" id="btn-cancelar-modal" data-class='fechar-modal'>Cancelar</button>
+        <button type="submit" class="btn-salvar" id="btn-salvar-modal">Salvar</button>
+    </div>
 
 
 </form>

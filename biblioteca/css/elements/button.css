@@ -62,6 +62,37 @@
     background-color: rgb(47, 211, 83);
 }
 
+/* BUTON AZUL -----------------------------------------------------------------------------*/
+.btn-blue {
+ 
+    padding: 6px 10px;
+    background-color: rgb(37, 119, 167);
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    outline-style: none;
+    box-shadow: 2px 2px 5px -3px black;
+ 
+}
+
+.btn-blue:hover {
+    background-color: rgba(37, 119, 167, 0.842);
+}
+
+.btn-blue:active {
+    background-color:rgb(37, 119, 167);
+    font-size: 13px;
+}
+
+
+
+
+
+
+
 
 /* SALVAR Azul-----------------------------------------------------------------------------*/
 .btn-salvar-azul {

@@ -31,6 +31,12 @@
 @import '../../view/cafe/cafes/form/form-cafes-cafe.css';
 @import '../../view/cafe/cafes/detalhes/detalhes-cafes-cafe.css';
 
+/* atendimentos -----------------------------------------------*/
+@import '../../view/atendimentos/main/atendimentos.css';
+@import '../../view/atendimentos/adicionar/adicionar-atendimentos.css';
+
+
+
 /* ITENS -----------------------------------------------*/
 @import '../../view/itens/main/itens.css';
 @import '../../view/itens/adicionar/adicionar-itens.css';

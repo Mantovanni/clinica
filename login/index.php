@@ -22,12 +22,12 @@ $ControllerAuth::verificarSessaoTelaLogin();
     <link rel="stylesheet" href="login.css">
 
 
-    <link rel="stylesheet" href="/cafe/biblioteca/css/elements.css">
-    <link rel="stylesheet" href="/cafe/biblioteca/css/presets.css">
+    <link rel="stylesheet" href="/clinica/biblioteca/css/elements.css">
+    <link rel="stylesheet" href="/clinica/biblioteca/css/presets.css">
 
     <!-- @imports do CSS de layouts default e das paginas-->
-    <link rel="stylesheet" href="/cafe/biblioteca/css/layouts.css">
-    <!-- <link rel="stylesheet" href="/cafe/biblioteca/css/global.css"> -->
+    <link rel="stylesheet" href="/clinica/biblioteca/css/layouts.css">
+    <!-- <link rel="stylesheet" href="/clinica/biblioteca/css/global.css"> -->
 
     
     <script src="login.js" type="module" defer="true"></script>

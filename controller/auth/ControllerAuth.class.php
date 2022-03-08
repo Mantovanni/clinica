@@ -100,7 +100,7 @@ class ControllerAuth
         // print_r($_SESSION);
         // if (session_status() == PHP_SESSION_NONE) {
         if (empty($_SESSION["usuario"])) {
-            header('Location: /cafe/login');
+            header('Location: /clinica/login');
         }
     }
 
@@ -131,7 +131,7 @@ class ControllerAuth
         session_start();
 
         if (!empty($_SESSION["usuario"])) {
-            header('Location: /cafe/app');
+            header('Location: /clinica/app');
         }
     }
 

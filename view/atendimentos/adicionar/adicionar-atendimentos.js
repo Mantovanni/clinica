@@ -16,6 +16,9 @@ export function init(valueInit) {
     const tbody = document.querySelector('#tbody-central');//Tabela Central
     const tituloPage = document.querySelector('#modal-window__title-texto');
 
+
+    
+
     //Formulário
     //--------------------------------------
     const formAdicionar = document.querySelector('#form-modal');//Formulario Adicionar
@@ -124,6 +127,17 @@ export function init(valueInit) {
             
          }
   }
+
+
+
+    //Adicionar Autocomplete
+    //=======================================================================================
+
+
+
+
+
+
 
 
 

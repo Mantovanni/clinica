@@ -27,7 +27,7 @@
 
 
 
-/* Laytout */
+/* Layout */
 /* ================================================================================================ */
 
 /* .tab-menu */
@@ -67,7 +67,10 @@
 /* Label selecionado---------------------- */
 .tab > input:first-child:checked ~ .tab-menu > label:first-child,
 .tab > input:nth-child(2):checked ~ .tab-menu > label:nth-child(2),
-.tab > input:nth-child(3):checked ~ .tab-menu > label:nth-child(3) 
+.tab > input:nth-child(3):checked ~ .tab-menu > label:nth-child(3),
+.tab > input:nth-child(4):checked ~ .tab-menu > label:nth-child(4),
+.tab > input:nth-child(5):checked ~ .tab-menu > label:nth-child(5),
+.tab > input:nth-child(6):checked ~ .tab-menu > label:nth-child(6)
 {
   background-color: rgb(255, 255, 255);
   margin-bottom: -1px; /* Retira a borda de baixo */

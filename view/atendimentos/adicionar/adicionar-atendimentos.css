@@ -1,3 +1,79 @@
-/* .modal-window-default {
-    width: 1000px
-} */
+.form__footer{
+
+    padding-top: 20px;
+}
+
+
+
+/* TAB ======================================================================== */
+.c-atend .tab-menu label {
+  
+    padding: 5px 35px 5px 25px;
+
+}
+
+.c-atend .tab .tab-panel {
+    padding: 10px 0px 0px 0px;   
+  }
+
+
+
+
+
+
+/* ============================================================================ */
+/* .c-atend {} */
+.c-atend textarea{
+    height: 120px;
+}
+
+.c-atend_line1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* width: 100%; */
+    /* align-content: ; */
+    height: 150px;
+}
+
+
+
+/* ----------------------------------------------------------- */
+.c-atend__paciente {
+    width: 60%;
+    /* flex: 1; */
+
+}
+
+.c-atend__paciente-dados {
+    margin-left: 14px;
+    font-size: 13px;
+    /* display: flex; */
+}
+
+.c-atend__paciente-dados-line1 {
+    margin-bottom: 6px;
+}
+
+
+/* ============================================================ */
+.c-atend__buttons {
+    width: 25%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    /* margin-right: 30px; */
+    padding: 10px 15px;
+}
+
+
+
+/* ============================================================ */
+/* ============================================================ */
+
+.c-atend_tab {
+    margin-left: 14px;
+    margin-right: 10px;
+}
