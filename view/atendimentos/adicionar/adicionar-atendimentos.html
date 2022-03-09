@@ -1,8 +1,12 @@
-<form class="form" id="form-modal">
+<form class="form c-atend" id="form-modal">
 
+
+    <!-- FORM MAIN / Conteúdo -->
+    <!-- ============================================================================================================ -->
     <div class="form__main">
 
 
+        <!-- PODE SER REMOVIDO -->
         <button type="reset" class="btn-fechar-modal" id="btn-fechar-modal" data-class='fechar-modal'>X</button>
 
         <!-- ID invisível para o editar -->
@@ -15,58 +19,99 @@
 
 
         <!-- CAMPOS -->
-        <!-- ============================================================================================================ -->
-        <!-- ============================================================================================================ -->
+        <!-- ====================================================================================================== -->
+        <!-- ====================================================================================================== -->
+
+        <!-- //remover -->
+        <div class="">
 
 
-        <!-- Linha 01 -->
-        <!--------------------------------------------------------------------------------------------------->
 
-        <div class="c-atend">
-
-
+            <!-- Linha 01 -->
+            <!--------------------------------------------------------------------------------------------------->
             <div class="c-atend_line1">
 
+
+                <!-- Dados do paciente -->
+                <!----------------------------------------------------------------------------->
                 <div class="c-atend__paciente ">
 
+
+
+                    <!-- Paciente Input -->
                     <div class="c-atend__paciente-nome">
                         <div class="grupo-label-input">
                             <label for="nome">Paciente</label>
 
-                            <input type="text" name="nome" id="nome" placeholder="Nome" autocomplete="off" required>
+                            <!-- Div para para determinar onde sera listado os itens do auto complete -->
+                            <div class="autoComplete_wrapper">
+                                <input type="text" name="nome" id="nome" placeholder="Nome" autocomplete="off" required>
+                            </div>
+
                             <span class="mensagem-validacao"></span>
                         </div>
                     </div>
 
 
+                    <!-- Paciente Dados -->
                     <div class="c-atend__paciente-dados ">
 
+                        <div class="c-atend__paciente-dados_line1 col-md-12">
 
-                        <div class="c-atend__paciente-dados-line1 col-md-12">
+                            <!-- Idade -->
                             <div class="c-atend__paciente-dados-idade col-md-6">
-                                Idade: 45 Anos
+                                <div class="paciente-dados_propriedade">
+                                    Idade:
+                                </div>
+                                <div class="paciente-dados_valor" id="paciente-idade">
+                                    45 Anos
+                                </div>
                             </div>
+
+                            <!-- Atendimentos -->
                             <div class="c-atend__paciente-dados-atendimentos col-md-6">
-                                Atendimentos: 02
+                                <div class="paciente-dados_propriedade">
+                                    Atendimentos:
+                                </div>
+                                <div class="paciente-dados_valor" id="paciente-atendimentos">
+                                    00
+                                </div>
                             </div>
-
                         </div>
 
-                        <div class="col-md-12">
-                            <div class="c-atend__paciente-dados-primenira col-md-6">
-                                Primeira Consulta: 18/01/2021
+
+                        <div class="c-atend__paciente-dados_line2 col-md-12">
+
+                            <!-- Primeira Consulta -->
+                            <div class="c-atend__paciente-dados-primeira col-md-6">
+                                <div class="paciente-dados_propriedade">
+                                    Primeira Consulta:
+                                </div>
+                                <div class="paciente-dados_valor" id="paciente-primeira_consulta">
+                                    00/00/0000
+                                </div>
                             </div>
+
+                            <!-- Sexo -->
                             <div class="c-atend__paciente-dados-sexo col-md-6">
-                                Sexo: M
+                                <div class="paciente-dados_propriedade">
+                                    Sexo:
+                                </div>
+                                <div class="paciente-dados_valor" id="paciente-sexo">
+                                    M
+                                </div>
                             </div>
                         </div>
+
+
 
                     </div>
 
                 </div>
 
 
-
+                <!-- Botões a direita -->
+                <!------------------------------------------------------------------------------>
                 <div class="c-atend__buttons">
 
                     <!-- <button class="btn-adicionar" id="btn-XX">Abrir Atendimento</button> -->
@@ -83,34 +128,34 @@
 
 
 
-            <!-- //tabs ========================================================================================= -->
 
+            <!-- TABS -->
+            <!--------------------------------------------------------------------------------------------------->
             <div class="c-atend_tab">
 
                 <div class="tab">
-                    <input type="radio" name="tabgroup" id="tab1" >
+                    <input type="radio" name="tabgroup" id="tab1">
                     <input type="radio" name="tabgroup" id="tab2" checked>
                     <input type="radio" name="tabgroup" id="tab3">
                     <input type="radio" name="tabgroup" id="tab4">
 
                     <!-- <input type="radio" name="tabgroup" id="tab3" aria-controls="dunkles"> -->
-            
+
                     <div class="tab-menu">
                         <label for="tab1">Procedimentos</label>
                         <label for="tab2">Anamnese</label>
                         <label for="tab3">Atestado</label>
-                        <label for="tab4">Receituário</label>                        
+                        <label for="tab4">Receituário</label>
 
                     </div>
-            
-            
+
+
                     <div class="tab-panels">
-            
-            
-            
+
+
+
                         <!-- //section Procedimentos ================================================= -->
                         <section class="tab-panel" id="tab-produtos">
-            
 
 
 
@@ -120,22 +165,23 @@
 
 
 
-            
+
+
                         </section>
-            
+
                         <!-- //section Anamnese ================================================= -->
                         <section class="tab-panel" id="tab-anamnese">
-                              
+
                             <div class="grupo-label-input">
                                 <label for="anamnese">Observações</label>
-                                <textarea id="anamnese" name="anamnese" cols="30" rows="3"></textarea>                               
+                                <textarea id="anamnese" name="anamnese" cols="30" rows="3"></textarea>
                             </div>
-            
+
                         </section>
 
                         <!-- //section Atestado ================================================= -->
                         <section class="tab-panel" id="tab-atestado">
-                              
+
                             <div class="grupo-label-input">
                                 <!-- <label for="observacao">Observações</label> -->
                                 <textarea id="atestado" name="atestado" cols="30" rows="3"></textarea>
@@ -150,28 +196,26 @@
                                 <textarea id="receituario" name="receituario" cols="30" rows="3"></textarea>
                                 <span class="mensagem-validacao"></span>
                             </div>
-            
+
                         </section>
-            
-            
-            
-            
+
+
+
+
                     </div><!-- tab panels-->
-            
+
                 </div><!-- tab -->
             </div>
 
 
-
         </div>
-
-     
-
 
 
     </div>
 
 
+
+    <!-- FORM FOOTER -->
     <!-- ================================================================================================= -->
     <div class="form__footer">
 

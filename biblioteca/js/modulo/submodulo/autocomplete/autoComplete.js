@@ -1,7 +1,8 @@
 import autoComplete from './bibli/autoComplete.js';
 
 export function ativar(seletor, data, callBackFunction) {
-
+   
+    
     // let resultado = false;
     // console.log(tabela);
     const autoCompleteJS = new autoComplete({
@@ -29,11 +30,13 @@ export function ativar(seletor, data, callBackFunction) {
 
 
             key: ["nome"],
-            results: (list) => {
+            results: (list) => {               
                 // Filter duplicates
                 const filteredResults = Array.from(new Set(list.map((value) => value.match))).map((food) => {
+                
                     return list.find((value) => value.match === food);
                 });
+              
                 return filteredResults;
             },
         },
@@ -113,7 +116,7 @@ export function ativar(seletor, data, callBackFunction) {
         feedback: (data) => {
             console.log(data);
         },
-        onSelection: (feedback) => {
+        onSelection: (feedback) => {         
             // console.log(feedback);
             document.querySelector(seletor).blur();
             const selection = feedback.selection.value[feedback.selection.key];
