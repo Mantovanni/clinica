@@ -40,7 +40,7 @@ export function init(valueInit) {
     //INIT / INICIAR
     //=====================================================================================================
     //=====================================================================================================
-    tituloPage.textContent = "Editar Pacientes";
+    tituloPage.textContent = "Editar Paciente";
     b.form.preencher(formAdicionar, valueInit.dadosItem);
 
 

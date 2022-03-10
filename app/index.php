@@ -50,7 +50,7 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
 
     <link rel="shortcut icon" href="/clinica/biblioteca/img/favicon.ico" type="image/x-icon">
 
-    <title>Sistema de Controle</title>
+    <title>SIC Clínica Facury</title>
 
     <!-- Regras gerais de css para todo sistema -->
     <link rel="stylesheet" href="/clinica/biblioteca/css/global.css">
@@ -105,7 +105,7 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
 
                 <div class="header__esquerda-logo">
                     <div id="voltar-pagina"></div>
-                    <span> <a href="/clinica/app/">SIS Clínica </a></span>
+                    <span> <a href="/clinica/app/">Clínica Facury</a></span>
                 </div>
 
 
@@ -213,10 +213,10 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
                 </a>
 
 
-               
 
 
-            
+
+
                 <!-- Atendimentos -->
                 <!----------------------------------------------------------------------->
                 <a href="#/atendimentos" id="paciente-menu" data-url="atendimentos" class="menu-option">
@@ -235,7 +235,7 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
 
 
                 <!-- Medicamentos -->
-                <!----------------------------------------------------------------------->  
+                <!----------------------------------------------------------------------->
                 <a href="#/produtos" id="produtos-menu" data-url="produtos" class="menu-option">
                     <!-- <i class="svg-bolsa-mais"></i> -->
                     <i class="svg-pill"></i>
@@ -252,6 +252,15 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
                 </a>
 
 
+
+                <!-- Profissionais -->
+                <!----------------------------------------------------------------------->
+                <a href="#/profissionais" id="profissionais-menu" data-url="profissionais" class="menu-option">
+                    <i class="svg-estoque"></i>
+                    <span>Profissionais</span>
+                </a>
+
+                
 
                 <!-- Usuários -->
                 <!----------------------------------------------------------------------->
@@ -280,11 +289,6 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
             <!-- </div> -->
 
         </nav>
-
-
-
-
-
 
 
 

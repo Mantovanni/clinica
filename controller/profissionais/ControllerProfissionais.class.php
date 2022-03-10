@@ -6,16 +6,16 @@
  */
 
 /**
- * Description of Profissionais
+ * Description of Pacientes
  *
  ** @author Ewerson Mantovani
  */
-require_once (realpath(dirname(__FILE__)) . "/ProfissionaisDAO.class.php");
+require_once (realpath(dirname(__FILE__)) . "/PacientesDAO.class.php");
 
 
 
 
-class ControllerProfissionais {
+class ControllerPacientes {
 
     public function __construct()
     {
@@ -26,8 +26,10 @@ class ControllerProfissionais {
 
         if (!empty($body->metodo)) {
             switch ($body->metodo) {
-                        
-
+              
+                
+                
+               
                 default;
                     echo "Metodo com nome errado!";
                     break;
@@ -39,20 +41,16 @@ class ControllerProfissionais {
 
 
 
-
-
-
-    // FUNÇÕES ESPECÍFICAS DA CLASSE
+    // FUNÇÔES ESPESSIFICAS DA CLASSE
     //====================================================================================================
     //====================================================================================================
 
 
 
- 
 
 
 
 }
 
 
-$ControllerProfissionais = new ControllerProfissionais();
+$ControllerPacientes = new ControllerPacientes();

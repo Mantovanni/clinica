@@ -104,7 +104,7 @@ export function init(valueInit) {
          if (validarForm(form)) {
  
              //Response contem o elemento salvo junto de sua ID criada no banco
-             b.crud.salvar(b.form.extractValues(form), "pacientes", responseItemSalvo => {//async
+             b.crud.salvar(b.form.extractValues(form), "profissionais", responseItemSalvo => {//async
                  b.modal.fechar();
  
         
@@ -115,7 +115,7 @@ export function init(valueInit) {
             
  
                  // Função que cria e insere a linha na tabela com os dados do formulário que foram salvos no banco e retornaram para ser tratados
-                 const linhaCriada = b.render.lineInTable(tbody, responseItemSalvo, "pacientes");
+                 const linhaCriada = b.render.lineInTable(tbody, responseItemSalvo, "profissionais");
             
                  
              }, true).then(()=>{

@@ -38,7 +38,9 @@ class CafesDAO
             INNER JOIN cafes_has_itens ON cafes.id = cafes_has_itens.cafes_id           
             group by cafes.id 
             order by cafes.id 
-            -- DESC";
+            ";
+            
+             // DESC";
 
 
         $resultado = mysqli_query(Database::connect(), $query) or
@@ -144,7 +146,7 @@ class CafesDAO
         unset($item["id"]);
         unset($item["itemRelacional"]);
 
-    
+
         session_start();
         //Passa a id do usuario logado na sessao atual
         $item["usuarios_id"] = $_SESSION["id"];
@@ -171,11 +173,11 @@ class CafesDAO
         // Pega a id criada(auto increment) do item salvo no banco
         // mysqli_insert_id(Database::connect());
 
-        $data["item"]->id = mysqli_insert_id(Database::connect());//pega a id da comanda criada
+        $data["item"]->id = mysqli_insert_id(Database::connect()); //pega a id da comanda criada
         $query = "SET @lastListasId = LAST_INSERT_ID();"; //pega a id da comanda criada
         mysqli_query($connection, $query) or die(mysqli_error($connection) . "\n || Query2: " . $query);
 
-       
+
 
         //Coloca o valor na proprieda itemRelacional novamente
         $item["itemRelacional"] =  $itensRelacionais;
@@ -231,7 +233,7 @@ class CafesDAO
                 JOIN `itens_has_produtos` ON `itens`.`id` = `itens_has_produtos`.`itens_id`
                 JOIN `produtos` ON `produtos`.`id` = `itens_has_produtos`.`produtos_id`
             WHERE
-                (`cafesCusto_view`.`id` = ". $data["item"]->id .")
+                (`cafesCusto_view`.`id` = " . $data["item"]->id . ")
             GROUP BY `produtos`.`id`";
 
 
@@ -246,35 +248,6 @@ class CafesDAO
 
         return $data;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 

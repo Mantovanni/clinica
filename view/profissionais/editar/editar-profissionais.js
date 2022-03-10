@@ -1,20 +1,17 @@
 import b from '../../../biblioteca/js/biblioteca.js';
 
-
-
 export function init(valueInit) {
-    //VARIÁVEIS
+       //VARIÁVEIS
     //=====================================================================================================
     //=====================================================================================================
 
     //Globais
     //----------------------------------------------------------
 
-
     //Elements DOM
     //----------------------------------------------------------
-    const tbody = document.querySelector('#tbody-central');//Tabela Central
     const tituloPage = document.querySelector('#modal-window__title-texto');
+
 
     //Formulário
     //--------------------------------------
@@ -25,8 +22,8 @@ export function init(valueInit) {
 
     //MASCARAS
     //==========================================================================================
-    // Aplica mascaras no form
     b.form.mask(formAdicionar);
+
 
 
 
@@ -43,30 +40,61 @@ export function init(valueInit) {
     //INIT / INICIAR
     //=====================================================================================================
     //=====================================================================================================
-    // tituloPage.textContent = "Adicionar Pacientes";
+    tituloPage.textContent = "Editar Profissional";
+    b.form.preencher(formAdicionar, valueInit.dadosItem);
 
 
 
 
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
 
     //EVENTOS
     //=====================================================================================================
     //=====================================================================================================
-    //Form - Adicionar / Novo
+    //BTN - Salvar
     //------------------------------------------------------
     formAdicionar.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        //Envia o elemento form com todos os seus inputs para função salvarForm
-        salvarForm(e.target);
-     
+        //Pega o FORM que é o target do evento submit
+        const form = e.target;
+
+        if (validarForm(form)) {
+
+
+            const formFiltrado = b.form.extractValues(form);
+
+            console.log(formFiltrado);
+
+            b.crud.editar(formFiltrado, "profissionais", response => {//async   
+                b.modal.fechar()
+
+
+
+                response.estoque_total = b.paraMoeda(0) + " " + response.unidade;
+                response.custo = valueInit.dadosItem.custo;
+
+
+                const linhaCriada = b.render.lineInTable(valueInit.elLinhaSelecionada, response, "profissionais");             
+
+            }).then(() => {
+                b.modal.fechar()
+            });
+
+        }
     });
-
-
-
-
 
 
 
@@ -97,39 +125,5 @@ export function init(valueInit) {
 
 
 
-    //Salva os dados do formulário no banco de dados
-    //=======================================================================================
-    function salvarForm(form) {
-  
-         if (validarForm(form)) {
- 
-             //Response contem o elemento salvo junto de sua ID criada no banco
-             b.crud.salvar(b.form.extractValues(form), "pacientes", responseItemSalvo => {//async
-                 b.modal.fechar();
- 
-        
-                // console.log(responseItemSalvo.id);
-
-                //Adicionar zero a esquerda //corrigir erro
-                //  responseItemSalvo.id = responseItemSalvo.id.padStart(2, '0');
-            
- 
-                 // Função que cria e insere a linha na tabela com os dados do formulário que foram salvos no banco e retornaram para ser tratados
-                 const linhaCriada = b.render.lineInTable(tbody, responseItemSalvo, "pacientes");
-            
-                 
-             }, true).then(()=>{
-                 b.modal.fechar()
-             });
-            
-         }
-  }
-
-
-
-
-
 
 }
-
-

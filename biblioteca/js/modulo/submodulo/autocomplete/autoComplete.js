@@ -46,26 +46,32 @@ export function ativar(seletor, data, callBackFunction) {
             event: ["input", "focus"],
             // condition: (event, queryValue) => {
 
-            //     const list = document.querySelector('#autoComplete_list');
-
-            //     console.log(list);
-            //     // list.innerHTML ="";
-            //     // const message = document.createElement("li");
-            //     // message.setAttribute("class", "no_result");
-            //     // message.setAttribute("tabindex", "1");
-            //     // message.innerHTML = `
-            //     //    <span style="display: flex; align-items: center; font-weight: 100; color: rgba(0,0,0,.2);">
-            //     //        Nenhum resultado""
-            //     //    </span>`;
-
-            //     // list.appendChild(message);
+                // console.log(event.target);
+                // console.log(queryValue);
 
 
+                // event.target.select();
 
-            //     console.log(event);
-            //     console.log(queryValue);
-            //     // return true;
-            //     return queryValue.replace(/ /g, "").length; // Returns "Boolean"
+                // const list = document.querySelector('#autoComplete_list');
+
+                // console.log(list);
+                // list.innerHTML ="";
+                // const message = document.createElement("li");
+                // message.setAttribute("class", "no_result");
+                // message.setAttribute("tabindex", "1");
+                // message.innerHTML = `
+                //    <span style="display: flex; align-items: center; font-weight: 100; color: rgba(0,0,0,.2);">
+                //        Nenhum resultado""
+                //    </span>`;
+
+                // list.appendChild(message);
+
+
+
+                // console.log(event);
+                // console.log(queryValue);
+                // return true;
+                // return queryValue.replace(/ /g, "").length; // Returns "Boolean"
             // }
         },
         searchEngine: "strict",

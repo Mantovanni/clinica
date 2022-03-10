@@ -24,6 +24,12 @@ export function init(valueInit) {
 
 
 
+    //Atendimento
+    //----------------------------------------------------------------
+    const btnAtendimento = document.querySelector('#btn-atendimento');
+    const btnImpAtendimento = document.querySelector('#btn-imp-atendimento');
+
+
     //Paciente
     //----------------------------------------------------------------
     const inpNomePaciente = document.querySelector('#nome')
@@ -59,7 +65,11 @@ export function init(valueInit) {
     //=====================================================================================================
     // tituloPage.textContent = "Adicionar Pacientes";
 
-    buscarListaDeProdutos();
+    buscarListaDePacientes();
+
+
+// console.dir(btnAtendimento);
+    // btnAtendimento.draggable = false;
 
 
 
@@ -70,8 +80,8 @@ export function init(valueInit) {
     //EVENTOS
     //=====================================================================================================
     //=====================================================================================================
-    //BTN - Salvar
-    //------------------------------------------------------
+    //Form - Adicionar / Novo
+    //--------------------------------------------------------------------
     formAdicionar.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -81,15 +91,44 @@ export function init(valueInit) {
     });
 
 
+    //Input Paciente
+    //Sempre que der foco no campo seleciona todo seu conteúdo
+    //--------------------------------------------------------------------
+    inpNomePaciente.addEventListener('focus', function(e){
+        inpNomePaciente.select()
+
+    });
+
+
+    //Botão - Abrir Atendimento
+    //--------------------------------------------------------------------
+    btnAtendimento.addEventListener('click', e => {
+        //Cancela o evento Default do botão de ativar o form     
+        // e.preventDefault();
+
+
+        // Se precisar colocar esse botão fora do forme
+        // formAdicionar.submit();
+
+        //alterar o botão para fechar atendimento
+        //mudar o tirtulo do modal para "Atendimento 00 - Paciente Fulano de Tal"
+
+
+    })
+
+    //Botão - Imprimir Atendimento
+    //--------------------------------------------------------------------
+    btnImpAtendimento.addEventListener('click', e => {
+        //Cancela o evento Default do botão de ativar o form
+        e.preventDefault();
+
+    })
 
 
 
 
 
-
-
-
-
+   
 
 
 
@@ -129,6 +168,10 @@ export function init(valueInit) {
                 const linhaCriada = b.render.lineInTable(tbody, responseItemSalvo, "pacientes");
 
 
+                //Funções caso der certo o save do novo atendimento aqui
+                // ----------------------------------------------------------
+
+
             }, true).then(() => {
                 b.modal.fechar()
             });
@@ -140,8 +183,9 @@ export function init(valueInit) {
 
 
     //Busca no banco de dados a lista dos pacientes
+    //Criar uma busca custom, onde ja tenha a quantidade de atendimentos e o ultimo 
     //=======================================================================================
-    function buscarListaDeProdutos() {
+    function buscarListaDePacientes() {
         b.crud.listar("pacientes", response => { //async 
 
 
@@ -157,7 +201,7 @@ export function init(valueInit) {
 
     //Insere a função de auto complete no input Paciente
     //=======================================================================================
-    function insertAutoCompletePacientes() {//async /buscarListaDeProdutos
+    function insertAutoCompletePacientes() {//async /buscarListaDePacientes
 
 
         b.autoComplete.ativar("#nome", listaPacientesAsync, selectedKeyData => {
@@ -169,6 +213,7 @@ export function init(valueInit) {
             exibirDadosPaciente(pacienteData);
 
 
+
         });
     }
 
@@ -176,15 +221,16 @@ export function init(valueInit) {
     //Recebe os dados do Paciente e oe exibe na tela.
     //=======================================================================================
     function exibirDadosPaciente(pacienteData) {
-    
-console.log(pacienteData);
 
-        divIdade.textContent = b.formatDataForIdade(pacienteData.data_nascimento); //criar função que recebe uma data e retonra  idade
+        console.log(pacienteData);
+
+        divIdade.textContent = b.formatDataForIdade(pacienteData.data_nascimento);
         divAtendimentos.textContent = 5; //criar função para retornar o numero de atendimentos do paciente
         primeiraConsulta.textContent = 3434;
         sexo.textContent = pacienteData.sexo;
 
     }
+
 
 
 
