@@ -177,9 +177,9 @@ export function init(valueInit) {
     //=======================================================================================
     function exibirDadosPaciente(pacienteData) {
     
+console.log(pacienteData);
 
-
-        divIdade.textContent = 25; //criar função que recebe uma data e retonra  idade
+        divIdade.textContent = b.formatDataForIdade(pacienteData.data_nascimento); //criar função que recebe uma data e retonra  idade
         divAtendimentos.textContent = 5; //criar função para retornar o numero de atendimentos do paciente
         primeiraConsulta.textContent = 3434;
         sexo.textContent = pacienteData.sexo;

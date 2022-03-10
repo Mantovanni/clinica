@@ -12,11 +12,6 @@ export function verifique() {
 
 
 
-
-
-
-
-
 //SELECT
 //==============================================================================================
 
@@ -557,13 +552,25 @@ export function findNamePropInObeject(nome, object, callFunction) {
 
 
 
-
-
-
-
 // DATAS
 // =======================================================================================================================
 // =======================================================================================================================
+
+
+//Recebe uma data no padrão ISO exp. 1988-09-22 e retorna a idade exp. 33
+export function formatDataForIdade(nascimento) {
+    // const nascimento = new Date("1988-09-22");
+    //31557600000 = milisegundos em um ano
+    const idade = Math.floor((Date.now() - new Date(nascimento)) / (31557600000));
+
+    return idade;
+
+}
+
+
+
+
+
 // Pega a data atual do sistema  e formata nesse modelo .- Ex dde saída - 12/09/2019
 export function getDataAtualFormatada() {
     var date = new Date()
@@ -698,6 +705,22 @@ export function allFirstToUpperCase(frase) {
     return fraseFormatada;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

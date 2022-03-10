@@ -39,6 +39,7 @@ export default {
     findNamePropInObeject : findNamePropInObeject,
     objectValue : objectValue,
     selectAdd : selectAdd,
+    formatDataForIdade : formatDataForIdade,
     
    
 
@@ -50,7 +51,7 @@ export default {
 import {firstToUpperCase, fetchPost, fetchText, lerHash, inserirHash, formatDataISOforDataUser, maskQuantidade,
     clearIntervalCustom, paraMoeda, paraMoedaReal, paraFloat, setIntervalCustom, findElArrayInObject, maskMoeda,
     allFirstToUpperCase, appendMultipleNodes,findNamePropInObeject,getDataAtualFormatada,getDataAtualISO ,formatDataUserforISO,
-    htmlToElement, selectValue, objectValue, selectAdd} 
+    htmlToElement, selectValue, objectValue, selectAdd, formatDataForIdade} 
     from './modulo/modulos.js';
 
 
