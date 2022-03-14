@@ -46,7 +46,8 @@
 
                             <!-- Div para para determinar onde sera listado os itens do auto complete -->
                             <div class="autoComplete_wrapper">
-                                <input type="text" name="nome" id="nome" placeholder="Nome" autocomplete="off" required>
+                                <input type="text" name="nome" id="nome" placeholder="Nome" autocomplete="off"
+                                    data-extract="false" data-paciente_id="" required>
                             </div>
 
                             <span class="mensagem-validacao"></span>
@@ -65,7 +66,7 @@
                                     Idade:
                                 </div>
                                 <div class="paciente-dados_valor" id="paciente-idade">
-                                    
+
                                 </div>
                             </div>
 
@@ -75,7 +76,7 @@
                                     Atendimentos:
                                 </div>
                                 <div class="paciente-dados_valor" id="paciente-atendimentos">
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -89,7 +90,7 @@
                                     Primeira Consulta:
                                 </div>
                                 <div class="paciente-dados_valor" id="paciente-primeira_consulta">
-                                    
+
                                 </div>
                             </div>
 
@@ -99,7 +100,7 @@
                                     Sexo:
                                 </div>
                                 <div class="paciente-dados_valor" id="paciente-sexo">
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -133,12 +134,11 @@
             <!-- TABS -->
             <!--------------------------------------------------------------------------------------------------->
             <div class="c-atend_tab">
-
                 <div class="tab">
-                    <input type="radio" name="tabgroup" id="tab1">
-                    <input type="radio" name="tabgroup" id="tab2" checked>
-                    <input type="radio" name="tabgroup" id="tab3">
-                    <input type="radio" name="tabgroup" id="tab4">
+                    <input type="radio" name="tabgroup" id="tab1" data-extract="false">
+                    <input type="radio" name="tabgroup" id="tab2" data-extract="false" checked>
+                    <input type="radio" name="tabgroup" id="tab3" data-extract="false">
+                    <input type="radio" name="tabgroup" id="tab4" data-extract="false">
 
                     <!-- <input type="radio" name="tabgroup" id="tab3" aria-controls="dunkles"> -->
 

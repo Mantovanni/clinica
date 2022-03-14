@@ -29,7 +29,7 @@ export function init(valueInit) {
     const btnAdicionarItemProduto = document.querySelector('#btn-adicionar-item-produto');//Formulario Adicionar
 
 
-    //Formulario
+    //Formulário
     //--------------------------------------
     const formAdicionar = document.querySelector('#form-modal');//Formulario Adicionar
 

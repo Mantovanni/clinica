@@ -57,7 +57,7 @@ class MovimentacoesDAO
 
 
 
-    // listarMovimentacoesPorProduto 
+    // listarMovimentacoesPorEstoque
     //Recebe a id do estoque
     //=============================================================================================================
     static function listarMovimentacoesPorEstoque($body) //fazer VIWER
@@ -243,7 +243,7 @@ class MovimentacoesDAO
         {
 
             //Verifica se o estoque do produto ja existe para criar um caso não exista e em seguida atualizar 
-            //PASAR ISSO PRA PROCEDURE NO BANCO DE DADOS
+            //PASSAR ISSO PRA PROCEDURE NO BANCO DE DADOS
             //======================================================================================
             $query  = "SELECT * FROM estoques_has_produtos 
         WHERE estoques_id = " . $data["estoques_id"] . "

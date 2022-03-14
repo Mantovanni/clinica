@@ -26,10 +26,12 @@ class ControllerAtendimentos {
 
         if (!empty($body->metodo)) {
             switch ($body->metodo) {
-              
+                case 'salvar':
+                    self::salvar($body);
+                    break;
                 
                 
-               
+        
                 default;
                     echo "Método com nome errado!";
                     break;
@@ -49,6 +51,18 @@ class ControllerAtendimentos {
 
 
 
+    //Salvar no banco
+    //==========================================================================================================
+    static function  salvar($body)
+    {
+
+        //Converte Objeto em Array
+        $data = (array)$body->data;
+
+        $consulta = GeralDAO::salvar($data, $body->tabela);
+
+        echo json_encode($consulta);
+    }
 
 
 

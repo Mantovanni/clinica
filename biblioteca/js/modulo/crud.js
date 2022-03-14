@@ -17,7 +17,7 @@ export async function fetchCrud(url, data, myFunction) {
 
         b.modal.alert("erro", "Falha ao realizar ação!");
         console.error(err)
-        return false; // return false inpede de realizar o myFunction
+        return false; // return false impede de realizar o myFunction
     }
 
 
@@ -309,10 +309,20 @@ export function custom(metodo, controllerName, data, functionResponse, alert) {
         }, response => {
             //    console.log("a");
             //Se a requisição deu certo exibe a mensagem depois faz uma interação com os valores.
-            if (alert) {
-                b.modal.alert("sucesso", "Ação realizada com sucesso!");
-            }
+             //ATENÇÃO
 
+             if (alert) {
+                b.modal.alert("sucesso",  "Ação realizada com sucesso!");
+            } 
+
+            // if (alert) {
+            //     b.modal.alert("sucesso", alert);
+            // }else{
+            //     b.modal.alert("sucesso", "Ação realizada com sucesso!");
+            // }
+            
+
+           
             functionResponse(response);
 
 

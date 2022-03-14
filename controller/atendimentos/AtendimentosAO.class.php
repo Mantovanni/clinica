@@ -46,7 +46,29 @@ class ControllerAtendimentos {
     //====================================================================================================
     //====================================================================================================
 
+ // SALVAR
+    //==============================================================================================================
+    static function  salvar($data, $tabela)
+    {
 
+        unset($data["id"]);
+
+        $query  = "INSERT INTO $tabela";
+        // implode keys do $array...
+        $query .= " (`" . implode("`, `", array_keys($data)) . "`)";
+        // implode values do $array...
+        $query .= " VALUES ('" . implode("', '", $data) . "') ";
+
+
+        if (mysqli_query(Database::connect(), $query)) {
+            //retorna a id criada nessa conexao junto com todos os outro valores
+            $data["id"] = mysqli_insert_id(Database::connect());
+            return $data;
+        } else {
+            echo "Erro - " . mysqli_error(Database::connect()) . "\n ||  QUERY: $query";
+            // return false;
+        }
+    }
 
  
 

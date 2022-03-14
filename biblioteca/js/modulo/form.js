@@ -19,8 +19,9 @@ export function extractValues(form) {
     Array.from(form).forEach(element => {
 
 
-        //Remove os elementos botoes e o dataset com valor no_extract = true do array de valores do form
-        if (element.nodeName != "BUTTON" && !element.dataset.no_extract) {
+        //Remove os elementos botoes e o dataset com valor extract = false do array de valores do form
+        console.log(form);
+        if (element.nodeName != "BUTTON" && !element.dataset.extract) {
 
 
             if (element.dataset.relacional == "1") {

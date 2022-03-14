@@ -53,7 +53,7 @@ export function init(valueInit) {
             //Remove o dataset.type = ignore
             // form["estoque"].dataset.type = "";
             // form["estoque"].value = 0;
-
+console.log(b.form.extractValues(form));
             //Response contem o elemento salvo junto de sua ID criada no banco
             b.crud.custom("criarProduto", "produtos", b.form.extractValues(form), responseItemSalvo => {//async
                 b.modal.fechar();

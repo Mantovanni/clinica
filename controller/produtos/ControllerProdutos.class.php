@@ -35,11 +35,11 @@ class ControllerProdutos
 
 
                 default;
-                    echo "Metodo com nome errado!";
+                    echo "Método com nome errado!";
                     break;
             }
         } else {
-            echo "Nenhum metodo encontrado!";
+            echo "Nenhum método encontrado!";
         }
     }
 

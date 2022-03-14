@@ -21,7 +21,7 @@ class Database {
     public static $conn;
     
 
-    //Metodo Estilo Procedural
+    //Método Estilo Procedural
     // =============================================================================================================
     public static function connect() {
         if (self::$conn == null) {           
@@ -41,7 +41,7 @@ class Database {
         return self::$conn;
     }
 
-    //Metodo Estilo Orientado a Objeto
+    //Método Estilo Orientado a Objeto
     // =============================================================================================================
     public static function connect2() {
         if (self::$conn == null) {           

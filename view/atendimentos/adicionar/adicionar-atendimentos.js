@@ -77,6 +77,10 @@ export function init(valueInit) {
 
 
 
+
+
+
+
     //EVENTOS
     //=====================================================================================================
     //=====================================================================================================
@@ -111,7 +115,9 @@ export function init(valueInit) {
         // formAdicionar.submit();
 
         //alterar o botão para fechar atendimento
-        //mudar o tirtulo do modal para "Atendimento 00 - Paciente Fulano de Tal"
+        //mudar o titulo do modal para "Atendimento 00 - Paciente Fulano de Tal"
+        //liberar para editar os campos do atendimento
+        //fechar o campo de escolha do paciente
 
 
     })
@@ -123,6 +129,9 @@ export function init(valueInit) {
         e.preventDefault();
 
     })
+
+
+
 
 
 
@@ -158,14 +167,18 @@ export function init(valueInit) {
 
         if (validarForm(form)) {
 
+
+            console.log(form);
+            console.log(b.form.extractValues(form));
+
             //Response contem o elemento salvo junto de sua ID criada no banco
-            b.crud.salvar(b.form.extractValues(form), "pacientes", responseItemSalvo => {//async
+            b.crud.custom(b.form.extractValues(form), "atendimentos", responseItemSalvo => {//async
                 b.modal.fechar();
 
 
 
                 // Função que cria e insere a linha na tabela com os dados do formulário que foram salvos no banco e retornaram para ser tratados
-                const linhaCriada = b.render.lineInTable(tbody, responseItemSalvo, "pacientes");
+                const linhaCriada = b.render.lineInTable(tbody, responseItemSalvo, "atendimentos");
 
 
                 //Funções caso der certo o save do novo atendimento aqui
@@ -222,8 +235,9 @@ export function init(valueInit) {
     //=======================================================================================
     function exibirDadosPaciente(pacienteData) {
 
-        console.log(pacienteData);
-
+        // console.log(pacienteData);
+        inpNomePaciente.dataset.paciente_id = pacienteData.id;
+    
         divIdade.textContent = b.formatDataForIdade(pacienteData.data_nascimento);
         divAtendimentos.textContent = 5; //criar função para retornar o numero de atendimentos do paciente
         primeiraConsulta.textContent = 3434;
