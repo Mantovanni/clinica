@@ -1,21 +1,16 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of Pacientes
+ * Description of Controller
  *
- ** @author Ewerson Mantovani
+ ** @author Ewerson Mantovani - ewerson.mantovani@gmail.com
  */
 require_once (realpath(dirname(__FILE__)) . "/PacientesDAO.class.php");
 
 
 
 
-class ControllerPacientes {
+class ControllerProfissionais {
 
     public function __construct()
     {
@@ -31,17 +26,17 @@ class ControllerPacientes {
                 
                
                 default;
-                    echo "Metodo com nome errado!";
+                    echo "Método com nome errado!";
                     break;
             }
         } else {
-            echo "Nenhum metodo encontrado!";
+            echo "Nenhum método encontrado!";
         }
     }
 
 
 
-    // FUNÇÔES ESPESSIFICAS DA CLASSE
+    // FUNÇÕES ESPECÍFICAS DA CLASSE
     //====================================================================================================
     //====================================================================================================
 

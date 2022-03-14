@@ -1,45 +1,17 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of Profissionais
+ * Description of DAO
  *
- ** @author Ewerson Mantovani
+ ** @author Ewerson Mantovani - ewerson.mantovani@gmail.com
  */
-require_once (realpath(dirname(__FILE__)) . "/ProfissionaisDAO.class.php");
+
+require_once(realpath(dirname(__FILE__)) . "/../../config/Database.class.php");
 
 
 
 
-class ControllerProfissionais {
-
-    public function __construct()
-    {
-        //Recebe o corpo da mensagem o request payload recebido no modelo JSON      
-        $body = json_decode(file_get_contents('php://input'));
-
-
-
-        if (!empty($body->metodo)) {
-            switch ($body->metodo) {
-                        
-
-                default;
-                    echo "Metodo com nome errado!";
-                    break;
-            }
-        } else {
-            echo "Nenhum metodo encontrado!";
-        }
-    }
-
-
-
-
+class ProfissionaisDAO {
 
 
     // FUNÇÕES ESPECÍFICAS DA CLASSE
@@ -48,11 +20,8 @@ class ControllerProfissionais {
 
 
 
- 
-
 
 
 }
 
-
-$ControllerProfissionais = new ControllerProfissionais();
+?>

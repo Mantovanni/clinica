@@ -207,12 +207,12 @@ class CafesDAO
 
 
 
-        //MOVIMENTAÇÔES
+        //MOVIMENTAÇÕES
         // 1 AS estoques_id, / Producao       
         // 2 AS estoques_id, / Almoxerifado       
         //=============================================================================================
-        //Busca no padrao da tabela movimentações para inserir
-        //Busca todas as quantidades de todos os produtos ultilizados no cafe e lança 
+        //Busca no padrão da tabela movimentações para inserir
+        //Busca todas as quantidades de todos os produtos utilizados no cafe e lança 
         //suas respectivas movimentações
         $query = "INSERT INTO movimentacoes (produtos_id, cafes_id, estoques_id, usuarios_id, data, operacao, origem, tipo, quantidade, valor)
             SELECT 			
@@ -248,6 +248,13 @@ class CafesDAO
 
         return $data;
     }
+
+
+
+
+
+
+    
 }
 
 

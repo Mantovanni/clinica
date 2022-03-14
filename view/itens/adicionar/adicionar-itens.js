@@ -63,12 +63,16 @@ export function init(valueInit) {
 
     //Eventos
     //======================================================================================================
-    //BTN - Salvar----------------------------------------------------------------
+    //FORM - Adicionar----------------------------------------------------------------
     formAdicionar.addEventListener('submit', function (e) {
+        //Evita que ao clicar enter dentro de qualquer input ative o envio do formulário
         e.preventDefault();
 
         //Pega o FORM que é o target do evento submit
         const form = e.target;
+
+        console.log(b.form.extractValues(form));
+        console.dir(b.form.extractValues(form));
 
         if (validarForm(form)) {
 
@@ -85,7 +89,7 @@ export function init(valueInit) {
 
 
                //Dados para Editar-------------------------------------------
-                //Quando atuzalizar o sistema para a a opção edição trazer os dados atraves de uma sonsulta by id no banco,
+                //Quando atualizar o sistema para a a opção edição trazer os dados através de uma consulta by id no banco,
                 //ai pode remover isso
                 //Dados usados para o loop, quando tentar editar um item editado na tabela
                 //Usado para quando Editar a linha criada , antes de atualizar a tabela
@@ -132,17 +136,27 @@ export function init(valueInit) {
 
     //Funções
     //======================================================================================================
+    //======================================================================================================
     function validarForm(form) {
         let validate = true;
 
-        //    Codigos aqui
+        //    Códigos aqui
 
         return validate;
     }
 
 
 
-    //------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+    //======================================================================================================
     function buscarListaDeProdutos() {
         b.crud.listar("produtosCusto_view", response => { //async //mudar nome da tabela para viewProdutos
 
@@ -161,7 +175,14 @@ export function init(valueInit) {
 
 
 
-    //-------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+    //======================================================================================================
     function adicionarProduto() {
 
         const inpCusto = formAdicionar.querySelector(`#custo`)
@@ -308,7 +329,27 @@ export function init(valueInit) {
 
 
 
-    //----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //======================================================================================================
     //Extrai os valores das linhas de produtos e insere no array global  
     function extractValuesRelacional(formValues) {
         //form é um objeto 
@@ -343,6 +384,8 @@ export function init(valueInit) {
             });
         });
         dataFormValues.item.custo = b.paraFloat(document.querySelector("#custo").value);
+
+        console.log(formValuesAll);
 
         return formValuesAll
         // console.log(data);

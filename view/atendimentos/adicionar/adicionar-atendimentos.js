@@ -34,6 +34,7 @@ export function init(valueInit) {
     //----------------------------------------------------------------
     const inpNomePaciente = document.querySelector('#nome')
 
+    const divPacienteId = document.querySelector('#paciente_id')
     const divIdade = document.querySelector('#paciente-idade')
     const divAtendimentos = document.querySelector('#paciente-atendimentos')
     const primeiraConsulta = document.querySelector('#paciente-primeira_consulta')
@@ -168,11 +169,14 @@ export function init(valueInit) {
         if (validarForm(form)) {
 
 
-            console.log(form);
-            console.log(b.form.extractValues(form));
+            // console.log(form);
+            // console.log(b.form.extractValues(form));
+            const dataAtendimentos = b.form.extractValues(form);
+
+
 
             //Response contem o elemento salvo junto de sua ID criada no banco
-            b.crud.custom(b.form.extractValues(form), "atendimentos", responseItemSalvo => {//async
+            b.crud.custom("salvarAtendimento", "atendimentos", dataAtendimentos, responseItemSalvo => {//async
                 b.modal.fechar();
 
 
@@ -223,7 +227,7 @@ export function init(valueInit) {
             //--------------------------------------------------------
             const pacienteData = selectedKeyData.selection.value;
 
-            exibirDadosPaciente(pacienteData);
+            inserirDadosPaciente(pacienteData);
 
 
 
@@ -233,11 +237,13 @@ export function init(valueInit) {
 
     //Recebe os dados do Paciente e oe exibe na tela.
     //=======================================================================================
-    function exibirDadosPaciente(pacienteData) {
+    function inserirDadosPaciente(pacienteData) {
 
         // console.log(pacienteData);
         inpNomePaciente.dataset.paciente_id = pacienteData.id;
-    
+
+
+        divPacienteId.textContent = pacienteData.id;
         divIdade.textContent = b.formatDataForIdade(pacienteData.data_nascimento);
         divAtendimentos.textContent = 5; //criar função para retornar o numero de atendimentos do paciente
         primeiraConsulta.textContent = 3434;

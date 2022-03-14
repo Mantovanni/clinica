@@ -5,22 +5,22 @@ import b from '../biblioteca.js';
 
 //=================================================================================================================
 /**
- * Recebe um elemento FORM e extrai e trata todos os valores dos campos seguindo  as regras de tipo no dataset 
- * retornando um objeto com todos o valores 
+ * Recebe um elemento FORM extrai os nomes e valores dos seus elementos filhos(campos), trata esses valores
+ * seguindo  as regras de tipo no dataset retornando um objeto com todos os valores.
  * @param {object} form - um objeto elemento DOM do tipo Form
- * @return {object} formValues - retorna um novo objeto com os nomes e valores
+ * @return {object} formValues - retorna um novo objeto com os nomes e valores 
  */
 export function extractValues(form) {
 
 
     const formValues = {};
 
-    // Trasnforma o no de lementos em um array de elementos para usar foreach
+    // Transforma o no de elementos em um array de elementos para usar foreach
     Array.from(form).forEach(element => {
 
 
         //Remove os elementos botoes e o dataset com valor extract = false do array de valores do form
-        console.log(form);
+        // console.log(form);
         if (element.nodeName != "BUTTON" && !element.dataset.extract) {
 
 
@@ -67,6 +67,8 @@ export function extractValues(form) {
 
 
 
+
+//USADO NA FUNÇÃO TRANSFERIR
 //----------------------------------------------------------------------------------
 //Extrai os valores dos inputs do form e coloca em um objeto com os parâmetros igual
 //o atributo name do elementos

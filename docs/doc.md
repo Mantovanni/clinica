@@ -35,4 +35,4 @@ CÓDIGO
 2- Ao criar um produto não é mais criado o estoque em estoque_has_produtos, isso so acontece quando é feita uma movimentação
 daquele produto para o determinado estoque.OBS. limpar o código em ProdutosDAO função criarProduto
 
-
+3- o usuário logado no sistema é pego nas funções dentro do DAO

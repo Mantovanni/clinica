@@ -8,7 +8,7 @@
 /**
  * Description of Atendimentos
  *
- ** @author Ewerson Mantovani
+ ** @author Ewerson Mantovani - ewerson.mantovani@gmail.com
  */
 require_once (realpath(dirname(__FILE__)) . "/AtendimentosDAO.class.php");
 
@@ -22,22 +22,23 @@ class ControllerAtendimentos {
         //Recebe o corpo da mensagem o request payload recebido no modelo JSON      
         $body = json_decode(file_get_contents('php://input'));
 
-
+        // print_r($body);
 
         if (!empty($body->metodo)) {
             switch ($body->metodo) {
-                case 'salvar':
-                    self::salvar($body);
+
+                case 'salvarAtendimento':
+                    self::salvarAtendimento($body);
                     break;
                 
                 
         
                 default;
-                    echo "Método com nome errado!";
+                    echo "Nenhum método com esse nome encontrado.";
                     break;
             }
         } else {
-            echo "Nenhum método encontrado!";
+            echo "Campo método vazio.";
         }
     }
 
@@ -53,13 +54,11 @@ class ControllerAtendimentos {
 
     //Salvar no banco
     //==========================================================================================================
-    static function  salvar($body)
+    static function  salvarAtendimento($body)
     {
 
-        //Converte Objeto em Array
-        $data = (array)$body->data;
 
-        $consulta = GeralDAO::salvar($data, $body->tabela);
+        $consulta = AtendimentosDAO::salvarAtendimento($body);
 
         echo json_encode($consulta);
     }
