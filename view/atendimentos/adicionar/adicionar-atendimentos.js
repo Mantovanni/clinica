@@ -94,8 +94,9 @@ export function init(valueInit) {
     //Form - Adicionar / Novo
     //--------------------------------------------------------------------
     formModalAtendimento.addEventListener('submit', function (e) {
+        //Evita que o submit do form tente abrir um link
         e.preventDefault();
-        console.log("sub");
+        // console.log("sub");
 
         //Envia o elemento form com todos os seus inputs para função salvarForm
         // salvarForm(e.target);
@@ -301,6 +302,9 @@ export function init(valueInit) {
 
 
 
+
+
+    
 
 
 

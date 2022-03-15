@@ -92,10 +92,6 @@ export function init(valueInit) {
     //--------------------------------------------------------------------
     formModalAtendimento.addEventListener('submit', function (e) {
         e.preventDefault();
-        console.log("sub");
-
-        //Envia o elemento form com todos os seus inputs para função salvarForm
-        // salvarForm(e.target);
 
     });
 
@@ -161,6 +157,21 @@ export function init(valueInit) {
     //FUNÇÕES
     //=====================================================================================================
     //=====================================================================================================
+
+console.log(valueInit.pacientes_id);
+
+function carregarDadosPaciente(){
+    valueInit.pacientes_id
+}
+
+function carregarDadosAtendimentoById{
+    //fazer uma view no banco que traga todos os dados em um unica consulta
+}
+
+
+
+
+
 
 
     //Cria regras para validar o formulário
@@ -292,7 +303,17 @@ export function init(valueInit) {
 
     //==============================================================================================================
 
+    function buscarListaDePacientes() {
+        b.crud.listar("pacientes", response => { //async 
 
+
+            listaPacientesAsync = response["data"];
+
+            insertAutoCompletePacientes();
+        })
+
+
+    }
 
 
 
