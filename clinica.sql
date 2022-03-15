@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `manto068_clinica` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `manto068_clinica`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Linux (x86_64)
 --
 -- Host: localhost    Database: manto068_clinica
@@ -79,13 +77,16 @@ DROP TABLE IF EXISTS `atendimentos`;
 CREATE TABLE `atendimentos` (
   `id` int NOT NULL AUTO_INCREMENT,
   `pacientes_id` int NOT NULL,
-  `profissionais_id` int NOT NULL,
+  `profissionais_id` int DEFAULT NULL,
   `usuarios_id` int NOT NULL,
   `abertura` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `fechamento` timestamp NULL DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL COMMENT 'aberto\nfechado',
   `recebido` varchar(45) DEFAULT NULL COMMENT 'sim\nnao',
   `registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `anamnese` varchar(3000) DEFAULT NULL,
+  `atestado` varchar(3000) DEFAULT NULL,
+  `receituario` varchar(3000) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_atendimentos_1_idx` (`pacientes_id`),
   KEY `fk_atendimentos_2_idx` (`profissionais_id`),
@@ -93,7 +94,7 @@ CREATE TABLE `atendimentos` (
   CONSTRAINT `fk_atendimentos_1` FOREIGN KEY (`pacientes_id`) REFERENCES `pacientes` (`id`),
   CONSTRAINT `fk_atendimentos_2` FOREIGN KEY (`profissionais_id`) REFERENCES `profissionais` (`id`),
   CONSTRAINT `fk_atendimentos_6` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,6 +103,7 @@ CREATE TABLE `atendimentos` (
 
 LOCK TABLES `atendimentos` WRITE;
 /*!40000 ALTER TABLE `atendimentos` DISABLE KEYS */;
+INSERT INTO `atendimentos` VALUES (1,1,NULL,1,'2022-03-15 01:05:49',NULL,NULL,NULL,'2022-03-15 01:05:49','','',''),(2,1,NULL,1,'2022-03-15 01:06:24',NULL,NULL,NULL,'2022-03-15 01:06:24','','',''),(3,1,NULL,1,'2022-03-15 01:09:30',NULL,NULL,NULL,'2022-03-15 01:09:30','','',''),(4,1,NULL,1,'2022-03-15 01:15:17',NULL,NULL,NULL,'2022-03-15 01:15:17','a','b','c'),(5,2,NULL,1,'2022-03-15 02:32:59',NULL,NULL,NULL,'2022-03-15 02:32:59','','',''),(6,3,NULL,1,'2022-03-15 02:34:03',NULL,NULL,NULL,'2022-03-15 02:34:03','','',''),(7,3,NULL,1,'2022-03-15 02:44:58',NULL,NULL,NULL,'2022-03-15 02:44:58','','',''),(8,2,NULL,1,'2022-03-15 03:18:16',NULL,'Aberto',NULL,'2022-03-15 03:18:16',NULL,NULL,NULL),(9,1,NULL,1,'2022-03-15 03:18:44',NULL,'Aberto',NULL,'2022-03-15 03:18:44',NULL,NULL,NULL),(10,1,NULL,1,'2022-03-15 05:25:07',NULL,'Aberto',NULL,'2022-03-15 05:25:07',NULL,NULL,NULL),(11,1,NULL,1,'2022-03-15 05:25:07',NULL,'Aberto',NULL,'2022-03-15 05:25:07',NULL,NULL,NULL),(12,1,NULL,1,'2022-03-15 05:25:22',NULL,'Aberto',NULL,'2022-03-15 05:25:22',NULL,NULL,NULL),(13,1,NULL,1,'2022-03-15 05:25:29',NULL,'Aberto',NULL,'2022-03-15 05:25:29',NULL,NULL,NULL),(14,2,NULL,1,'2022-03-15 05:26:39',NULL,'Aberto',NULL,'2022-03-15 05:26:39',NULL,NULL,NULL),(15,3,NULL,1,'2022-03-15 05:33:53',NULL,'Aberto',NULL,'2022-03-15 05:33:53',NULL,NULL,NULL),(16,1,NULL,1,'2022-03-15 05:40:21',NULL,'Aberto',NULL,'2022-03-15 05:40:21',NULL,NULL,NULL),(17,1,NULL,1,'2022-03-15 05:54:11',NULL,'Aberto',NULL,'2022-03-15 05:54:11',NULL,NULL,NULL),(18,1,NULL,1,'2022-03-15 05:57:30',NULL,'Aberto',NULL,'2022-03-15 05:57:30',NULL,NULL,NULL),(19,3,NULL,1,'2022-03-15 06:01:27',NULL,'Aberto',NULL,'2022-03-15 06:01:27',NULL,NULL,NULL),(20,1,NULL,1,'2022-03-15 06:02:15',NULL,'Aberto',NULL,'2022-03-15 06:02:15','','',''),(21,2,NULL,1,'2022-03-15 06:03:09',NULL,'Aberto',NULL,'2022-03-15 06:03:09','asd','gfg',''),(22,1,NULL,1,'2022-03-15 06:20:11',NULL,'Aberto',NULL,'2022-03-15 06:20:11','','asdasd',''),(23,2,NULL,1,'2022-03-15 06:20:55',NULL,'Concluido',NULL,'2022-03-15 06:20:55','teste','asdasd','');
 /*!40000 ALTER TABLE `atendimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -737,4 +739,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-14  9:27:22
+-- Dump completed on 2022-03-15  8:39:54
