@@ -348,6 +348,15 @@ export function custom(metodo, controllerName, data, functionResponse, alert) {
     // });
 
 }
+
+
+
+
+
+
+
+
+
 //
 //==============================================================================================================
 /**
@@ -362,14 +371,8 @@ export function custom(metodo, controllerName, data, functionResponse, alert) {
  */
 
 
-
-
-
-
-
-
-
-
+//Essa função de crud custom recebe o um único parâmetro como objeto, dessa forma é possível receber mais parâmetros
+//Recebe uma String com o texto a ser exibido como alerta .
 export function custom2(parametros) {
 
     return fetchCrud(`../controller/${parametros.controller.nome}/Controller${b.firstToUpperCase(parametros.controller.nome)}.class.php`,

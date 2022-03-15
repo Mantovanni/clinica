@@ -34,6 +34,13 @@ class AtendimentosDAO {
         //Remove o elemento do array pela KEY // para esse campo não ser usado no 'implode'
         unset($data["id"]);
 
+// print_r($_SESSION["id"]);
+
+
+        //Passa a id do usuário logado na sessão atual
+        session_start();
+        $data["usuarios_id"] = $_SESSION["id"];
+
         $query  = "INSERT INTO atendimentos";
         // implode keys do $array...
         $query .= " (`" . implode("`, `", array_keys($data)) . "`)";
@@ -51,6 +58,8 @@ class AtendimentosDAO {
             echo "Erro - " . mysqli_error(Database::connect()) . "\n ||  QUERY: $query";
             // return false;
         }
+
+     
     }
 
  

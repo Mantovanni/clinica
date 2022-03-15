@@ -3,7 +3,6 @@ require_once(realpath(dirname(__FILE__)) . "../../controller/auth/ControllerAuth
 $ControllerAuth::verificarSessao();
 
 
-
 // echo session_status();
 // echo PHP_SESSION_ACTIVE;
 // echo $_SESSION["usuario"];

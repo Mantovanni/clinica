@@ -49,7 +49,7 @@ export function init() {
         // b.render.page(b.modal.content, adicionarUrl, urlJs);//async
 
     });
-    btnAdicionar.click()
+    // btnAdicionar.click()
 
 
 
@@ -68,7 +68,7 @@ export function init() {
 
 
         //Função que lista todas a linhas de uma tabela no banco e retorna os dados
-        b.crud.listar("pacientes", responseList => {  //async     
+        b.crud.listar("atendimentos", responseList => {  //async     
 
             //Extrai os dados da tabela e faz algum tratamento caso necessário.
             const dados = responseList["data"].map(response => {
@@ -81,10 +81,10 @@ export function init() {
 
 
             //Função que cria a tabela na DOM utilizando os dados extraídos do banco.
-            b.render.lineInTable(tbody, dados, "pacientes");
+            b.render.lineInTable(tbody, dados, "atendimentos");
             
             //Insere a função de pesquisar na tabela
-            //OBS. Adicionar essa função de forma automatica no futuro
+            //OBS. Adicionar essa função de forma automática no futuro
             b.table.insertSearch(inpPesquisar, tbody);
         });
 

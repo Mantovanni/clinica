@@ -36,3 +36,17 @@ CÓDIGO
 daquele produto para o determinado estoque.OBS. limpar o código em ProdutosDAO função criarProduto
 
 3- o usuário logado no sistema é pego nas funções dentro do DAO
+
+
+
+
+
+Sistema da  Clinica
+==============================================================================
+
+Atendimentos
+--------------------------------------------------------
+Ao clicar em abrir atendimento é inserido um registro na tabela atendimentos com o campo Status = Aberto
+Ao clicar em salvar é editado um registro na tabala Atendimentos
+Ao clicar em fechar atendimentos é editado a tabela Atendimentos o campo Status = Concluído e
+é inserido um registro na tabela Pagamentos com o campo Pagamento = Pendente
