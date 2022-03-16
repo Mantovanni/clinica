@@ -13,6 +13,7 @@ export function init(valueInit) {
     let listaPacientesAsync = [];
     let pacienteSelected = [];
     let atendimentoAberto = false;
+    let globalAtendimentoData = {};
     // let atendimentoStatus = "Fechado";
 
 
@@ -72,9 +73,15 @@ export function init(valueInit) {
     //=====================================================================================================
     // tituloPage.textContent = "Adicionar Pacientes";
 
+    // valueInit.novoAtendimento = true
+    if (valueInit.novoAtendimento == false) {
+        carregarDadosCompletosAtendimentoById();
+    }
+
     buscarListaDePacientes();
 
-    b.form.preencher(formModalAtendimento, valueInit.dadosItem);
+
+    // b.form.preencher(formModalAtendimento, valueInit.dadosItem);
 
 
 
@@ -114,10 +121,11 @@ export function init(valueInit) {
         //Cancela o evento Default do botão de ativar/submit o form     
         e.preventDefault();
 
-        // Se o atendimento ja estiver aberto então chama a função de fechar/concluir o atendimento
-        //se não estiver, chama a função de abrir
-        if (atendimentoAberto) {
+
+        if (globalAtendimentoData.status = "Aberto") {
             concluirAtendimento();
+        } else if (globalAtendimentoData.status = "Concluido") {
+            reabrirAtendimento();
         } else {
             abrirAtendimento();
         }
@@ -154,25 +162,77 @@ export function init(valueInit) {
 
 
 
+
+
+
+
+
+
+
     //FUNÇÕES
     //=====================================================================================================
     //=====================================================================================================
 
-console.log(valueInit.pacientes_id);
+    // console.log(valueInit.pacientes_id);
 
-function carregarDadosPaciente(){
-    valueInit.pacientes_id
-}
-
-function carregarDadosAtendimentoById(){
-    //fazer uma view no banco que traga todos os dados em um unica consulta
-}
+    // function carregarDadosPaciente(){
+    //     valueInit.pacientes_id
+    // }
 
 
 
 
+    //Busca no banco dos dados do atendimento
+    //=======================================================================================
+    //buscarDadosCompletosDoAtendimentoById
+    function carregarDadosCompletosAtendimentoById() {
+
+        const data = {};
+        //Pega a id passada por parâmetro pela função que cria a linha na tabela
+        data.id = valueInit.dadosItem.id;
 
 
+        //Função que busca no banco todos os dados daquele atendimentos nas tabelas relacionadas
+        b.crud.custom("carregarDadosCompletosAtendimentoById", "atendimentos", data, responseList => {  //async     
+
+            //Coloca em uma variável global os dados do paciente.
+            globalAtendimentoData = responseList["data"];
+
+
+            preencherCamposAtendimento(responseList["data"])
+
+
+        });
+
+
+    }
+
+
+
+    //
+    //=======================================================================================
+    function preencherCamposAtendimento(atendimentoData) {
+
+        //Muda um conjunto de regras no layout na DOM de acordo com o status do atendimento
+        if (atendimentoData.status == "Aberto") {
+            mudarLayoutParaAtendimentoAberto()
+
+        } else if (atendimentoData.status == "Concluido") {
+            mudarLayoutParaAtendimentoConcluido()
+        }
+
+
+        //Preenche os dados do atendimento
+        //----------------------------------------------------
+        b.form.preencher(formModalAtendimento, atendimentoData);
+
+
+        //Preenche os dados sobre o paciente na tela
+        // --------------------------------------------------
+        inserirDadosPaciente(atendimentoData);
+        inpNomePaciente.value = atendimentoData.nome;
+
+    }
 
     //Cria regras para validar o formulário
     //=======================================================================================
@@ -190,10 +250,30 @@ function carregarDadosAtendimentoById(){
 
 
 
-    //Cria/Abre um registro na tabela atendimento apenas com os dados de referencia ao paciente  e com status = Aberto
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Salva/Abre um registro na tabela atendimento apenas com os dados de referencia ao paciente  e com status = Aberto
     //=======================================================================================
     function abrirAtendimento() {
 
+        //dataFormAtendimentos é um objeto que ira receber os dados do atendimento.
         const dataFormAtendimentos = {};
         dataFormAtendimentos.pacientes_id = pacienteSelected.id;
         dataFormAtendimentos.status = "Aberto";
@@ -209,11 +289,9 @@ function carregarDadosAtendimentoById(){
                 // Função que cria e insere a linha na tabela com os dados do formulário que foram salvos no banco e retornaram para ser tratados
                 const linhaCriada = b.render.lineInTable(tbody, responseItemSalvo, "atendimentos");
 
-                //Coloca o status do atendimento como aberto
-                atendimentoAberto = true;
 
-                //Funções caso der certo o save do novo atendimento 
-                // ----------------------------------------------------------
+                //Conjunto de alterações no layout apos abrir o atendimento
+                //Manda como parâmetro os dados do novo atendimento criado
                 mudarLayoutParaAtendimentoAberto(responseItemSalvo);
 
             }, true).then(() => {
@@ -226,6 +304,7 @@ function carregarDadosAtendimentoById(){
 
 
     //Salva todos as alterações do atendimento no banco mais nao muda o seu status para Concluído ele continua Aberto
+    //salvarAtendimento recebe um objeto com os dados do atendimento como parâmetro.
     //=======================================================================================
     function salvarAtendimento(dataFormModalAtendimento) {
         //Pega o FORM que é o target do evento submit
@@ -234,12 +313,9 @@ function carregarDadosAtendimentoById(){
 
             // const dataFormModalAtendimento = b.form.extractValues(formModalAtendimento);
 
+            // b.crud.custom("editarAtendimento", "atendimentos" )
             b.crud.editar(dataFormModalAtendimento, "atendimentos", response => {//async   
                 b.modal.fechar()
-
-
-
-
 
             }).then(() => {
                 b.modal.fechar()
@@ -265,7 +341,26 @@ function carregarDadosAtendimentoById(){
 
 
 
+    // Muda o atendimento para status = Aberto
+    //=======================================================================================
+    function reabrirAtendimento() {
 
+        const data = {};
+        data.id = globalAtendimentoData.id;
+        data.status = "Aberto"
+
+        b.crud.editar(data, "atendimentos", response => {//async   
+            
+
+            mudarLayoutParaAtendimentoAberto(globalAtendimentoData);
+
+
+        }).then(() => {
+           
+        });
+
+        
+    }
 
 
 
@@ -297,10 +392,42 @@ function carregarDadosAtendimentoById(){
 
 
 
+    //Faz um conjunto de alterações no layout para o modo do atendimento aberto
+    //=======================================================================================
+    function mudarLayoutParaAtendimentoConcluido() {
+
+   
+
+
+
+        //alterar o botão para fechar atendimento
+        //--------------------------------------------------------------------------
+
+        //mudar o titulo do modal para "Atendimento 00 - Paciente Fulano de Tal"
+        //--------------------------------------------------------------------------
+
+        //liberar para editar os campos do atendimento
+        //--------------------------------------------------------------------------
+
+        //fechar o campo de escolha do paciente
+        //--------------------------------------------------------------------------
+
+    }
 
 
 
 
+
+
+
+
+
+
+
+
+
+    // FUNÇÕES PARA OS CAMPOS DE PACIENTES
+    //==============================================================================================================
     //==============================================================================================================
 
     function buscarListaDePacientes() {
@@ -314,12 +441,6 @@ function carregarDadosAtendimentoById(){
 
 
     }
-
-
-
-
-
-
 
 
 

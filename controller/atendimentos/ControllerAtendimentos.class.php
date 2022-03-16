@@ -10,12 +10,13 @@
  *
  ** @author Ewerson Mantovani - ewerson.mantovani@gmail.com
  */
-require_once (realpath(dirname(__FILE__)) . "/AtendimentosDAO.class.php");
+require_once(realpath(dirname(__FILE__)) . "/AtendimentosDAO.class.php");
 
 
 
 
-class ControllerAtendimentos {
+class ControllerAtendimentos
+{
 
     public function __construct()
     {
@@ -30,9 +31,13 @@ class ControllerAtendimentos {
                 case 'salvarAtendimento':
                     self::salvarAtendimento($body);
                     break;
-                
-                
-        
+
+                case 'carregarDadosCompletosAtendimentoById':
+                    self::carregarDadosCompletosAtendimentoById($body);
+                    break;
+
+
+
                 default;
                     echo "Nenhum método com esse nome encontrado.";
                     break;
@@ -65,6 +70,15 @@ class ControllerAtendimentos {
 
 
 
+    //Buscar dados completo do atendimento
+    //==========================================================================================================
+    static function  carregarDadosCompletosAtendimentoById($body)
+    {
+
+        $consulta = AtendimentosDAO::carregarDadosCompletosAtendimentoById($body);
+
+        echo json_encode($consulta);
+    }
 }
 
 

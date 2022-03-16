@@ -26,3 +26,8 @@ cada medico so poderá reabrir o seu próprio atendimento
 
 --------------------------
 exibir o nome e o CRM do medico na tela do atendimento
+
+1 - mudar a regara do editar, para quando ativar a função form.preencher(), passar a
+usar os dados vindo de uma consulta ao banco e não utilizar mais os dados que vem por parâmetro valueInit
+dados esses que são recebidos da função que cria a linha, dados que são retornados apos inserção no banco,
+isso fica em loop

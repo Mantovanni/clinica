@@ -63,8 +63,16 @@ class AtendimentosDAO {
     }
 
  
-    // Erro - Incorrect integer value: '' for column 'pacientes_id' at row 1
-    // ||  QUERY: INSERT INTO atendimentos (`pacientes_id`, `anamnese`, `atestado`, `receituario`) VALUES ('', 'd', '', '') null
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -187,6 +195,96 @@ class AtendimentosDAO {
 
         return $data;
     }
+
+
+
+
+
+
+    // Busca no banco todos os dados daquele atendimentos nas tabelas relacionadas
+    //===========================================================================================================
+    static function carregarDadosCompletosAtendimentoById($body){
+
+        $data = (array)$body->data;
+
+        $dados["data"] = array();
+        $query =
+            "SELECT * FROM 
+            atendimentos
+            INNER JOIN pacientes
+            ON atendimentos.id = pacientes.id
+            WHERE atendimentos.id = " . $data["id"] . ";                                                 
+            ";
+
+
+        $resultado = mysqli_query(Database::connect(), $query) or
+            die(mysqli_error(Database::connect()) . "\n || Query: " . $query);
+
+
+           
+        while ($linha = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+
+            $dataToSend["data"] = $linha;
+        }
+
+
+    
+        return $dataToSend;
+
+       
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

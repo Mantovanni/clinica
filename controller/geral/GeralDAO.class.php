@@ -130,7 +130,7 @@ class GeralDAO
     // LISTAR por ID
     //==============================================================================================================
 
-    static function listarById($id, $tabela) //fazer VIWER
+    static function listarById($id, $tabela) //fazer VIEWER
     {
 
         $dados["data"] = array();
