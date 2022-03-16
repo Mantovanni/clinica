@@ -164,7 +164,7 @@ function carregarDadosPaciente(){
     valueInit.pacientes_id
 }
 
-function carregarDadosAtendimentoById{
+function carregarDadosAtendimentoById(){
     //fazer uma view no banco que traga todos os dados em um unica consulta
 }
 
