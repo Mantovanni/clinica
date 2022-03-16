@@ -221,7 +221,7 @@ export function init(valueInit) {
 
         //Muda um conjunto de regras no layout na DOM de acordo com o status do atendimento
         if (atendimentoData.status == "Aberto") {
-            mudarLayoutParaAtendimentoAberto()
+            mudarLayoutParaAtendimentoAberto(atendimentoData)
 
         } else if (atendimentoData.status == "Concluido") {
             mudarLayoutParaAtendimentoConcluido()
