@@ -10,7 +10,7 @@ export function init() {
     //Globais
     //----------------------------------------------------------
     const adicionarUrl = " ../view/atendimentos/adicionar/adicionar-atendimentos.html";
-    const urlJs = "../../../view/atendimentos/adicionar/adicionar-atendimentos.js";//Url partir do render.js
+    const urlJs = "../../../view/atendimentos/editar/editar-atendimentos.js";//Url partir do render.js
 
 
     //Elements DOM
@@ -46,7 +46,7 @@ export function init() {
 
         // Passa o elemento Janela Modal para a função render.page 
        b.render.pageModal(adicionarUrl, urlJs);//async
-        // b.render.page(b.modal.content, adicionarUrl, urlJs);//async
+        //  b.render.page(b.modal.content, adicionarUrl, urlJs);//async
 
     });
     // btnAdicionar.click()

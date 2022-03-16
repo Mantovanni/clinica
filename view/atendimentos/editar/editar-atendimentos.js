@@ -1,4 +1,5 @@
 import b from '../../../biblioteca/js/biblioteca.js';
+import { logout } from '../../../biblioteca/js/modulo/auth.js';
 
 
 
@@ -74,7 +75,9 @@ export function init(valueInit) {
     // tituloPage.textContent = "Adicionar Pacientes";
 
     // valueInit.novoAtendimento = true
-    if (valueInit.novoAtendimento == false) {
+
+    if (valueInit != undefined) {
+        console.log("AAA");
         carregarDadosCompletosAtendimentoById();
     }
 
@@ -126,7 +129,10 @@ export function init(valueInit) {
             concluirAtendimento();
         } else if (globalAtendimentoData.status = "Concluido") {
             reabrirAtendimento();
-        } else {
+
+        }
+        //globalAtendimentoData = null
+        else {
             abrirAtendimento();
         }
 
@@ -350,16 +356,16 @@ export function init(valueInit) {
         data.status = "Aberto"
 
         b.crud.editar(data, "atendimentos", response => {//async   
-            
+
 
             mudarLayoutParaAtendimentoAberto(globalAtendimentoData);
 
 
         }).then(() => {
-           
+
         });
 
-        
+
     }
 
 
@@ -396,7 +402,7 @@ export function init(valueInit) {
     //=======================================================================================
     function mudarLayoutParaAtendimentoConcluido() {
 
-   
+
 
 
 
