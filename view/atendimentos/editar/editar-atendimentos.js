@@ -76,8 +76,9 @@ export function init(valueInit) {
 
     // valueInit.novoAtendimento = true
 
+    //Quando entra pela opção de editar
     if (valueInit != undefined) {
-        console.log("AAA");
+        console.log("carregarDadosCompletosAtendimentoById");
         carregarDadosCompletosAtendimentoById();
     }
 
@@ -125,9 +126,10 @@ export function init(valueInit) {
         e.preventDefault();
 
 
-        if (globalAtendimentoData.status = "Aberto") {
+        if (globalAtendimentoData.status == "Aberto") {
             concluirAtendimento();
-        } else if (globalAtendimentoData.status = "Concluido") {
+        } else if (globalAtendimentoData.status == "Concluido") {
+            console.log("reabrirAtendimento");
             reabrirAtendimento();
 
         }
@@ -176,75 +178,20 @@ export function init(valueInit) {
 
 
     //FUNÇÕES
-    //=====================================================================================================
-    //=====================================================================================================
-
-    // console.log(valueInit.pacientes_id);
-
-    // function carregarDadosPaciente(){
-    //     valueInit.pacientes_id
-    // }
+    //==============================================================================================================
+    //==============================================================================================================
 
 
 
-
-    //Busca no banco dos dados do atendimento
-    //=======================================================================================
-    //buscarDadosCompletosDoAtendimentoById
-    function carregarDadosCompletosAtendimentoById() {
-
-        const data = {};
-        //Pega a id passada por parâmetro pela função que cria a linha na tabela
-        data.id = valueInit.dadosItem.id;
-
-
-        //Função que busca no banco todos os dados daquele atendimentos nas tabelas relacionadas
-        b.crud.custom("carregarDadosCompletosAtendimentoById", "atendimentos", data, responseList => {  //async     
-
-            //Coloca em uma variável global os dados do paciente.
-            globalAtendimentoData = responseList["data"];
-
-
-            preencherCamposAtendimento(responseList["data"])
-
-
-        });
-
-
-    }
-
-
-
-    //
-    //=======================================================================================
-    function preencherCamposAtendimento(atendimentoData) {
-
-        //Muda um conjunto de regras no layout na DOM de acordo com o status do atendimento
-        if (atendimentoData.status == "Aberto") {
-            mudarLayoutParaAtendimentoAberto(atendimentoData)
-
-        } else if (atendimentoData.status == "Concluido") {
-            mudarLayoutParaAtendimentoConcluido()
-        }
-
-
-        //Preenche os dados do atendimento
-        //----------------------------------------------------
-        b.form.preencher(formModalAtendimento, atendimentoData);
-
-
-        //Preenche os dados sobre o paciente na tela
-        // --------------------------------------------------
-        inserirDadosPaciente(atendimentoData);
-        inpNomePaciente.value = atendimentoData.nome;
-
-    }
+    // FUNÇÕES Paciente
+    //============================================================================================================
+    //============================================================================================================
 
     //Cria regras para validar o formulário
     //=======================================================================================
     function validarForm() {
         let validate = true;
-        console.log("object");
+   
 
         if (inpNomePaciente.value == "") {
             alert("Selecione um paciente!")
@@ -256,6 +203,75 @@ export function init(valueInit) {
 
 
 
+    function buscarListaDePacientes() {
+        b.crud.listar("pacientes", response => { //async 
+
+
+            listaPacientesAsync = response["data"];
+
+            insertAutoCompletePacientes();
+        })
+
+
+    }
+
+
+
+    //Busca no banco de dados a lista dos pacientes
+    //Criar uma busca custom, onde ja tenha a quantidade de atendimentos e o ultimo 
+    //=======================================================================================
+    function buscarListaDePacientes() {
+        b.crud.listar("pacientes", response => { //async 
+
+
+            listaPacientesAsync = response["data"];
+
+            insertAutoCompletePacientes();
+        })
+
+
+    }
+
+
+
+    //Insere a função de auto complete no input Paciente
+    //=======================================================================================
+    function insertAutoCompletePacientes() {//async /buscarListaDePacientes
+
+
+        b.autoComplete.ativar("#nome", listaPacientesAsync, selectedKeyData => {
+
+            //Ações apos selecionar um item da lista / selectedKeyData contem os dados o item
+            //--------------------------------------------------------
+
+            //Passa os dados do paciente selecionado para variável global
+            pacienteSelected = selectedKeyData.selection.value;
+
+
+            const pacienteData = selectedKeyData.selection.value;
+            inserirDadosPaciente(pacienteData);
+
+
+
+        });
+    }
+
+
+    //Recebe os dados do Paciente e oe exibe na tela.
+    //=======================================================================================
+    function inserirDadosPaciente(pacienteData) {//async /insertAutoCompletePacientes
+
+        // console.log(pacienteData);
+        inpNomePaciente.dataset.pacientes_id = pacienteData.id;
+
+
+        inpPacienteId.value = pacienteData.id;
+        divIdade.textContent = b.formatDataForIdade(pacienteData.data_nascimento);
+        divAtendimentos.textContent = 5; //criar função para retornar o numero de atendimentos do paciente
+        divPrimeiraConsulta.textContent = 3434;
+        divSexo.textContent = pacienteData.sexo;
+
+    }
 
 
 
@@ -272,6 +288,16 @@ export function init(valueInit) {
 
 
 
+
+
+
+
+
+
+
+    // FUNÇÕES Atendimento
+    //==============================================================================================================
+    //==============================================================================================================
 
 
 
@@ -357,8 +383,9 @@ export function init(valueInit) {
 
         b.crud.editar(data, "atendimentos", response => {//async   
 
+             globalAtendimentoData.status = "Aberto";
 
-            mudarLayoutParaAtendimentoAberto(globalAtendimentoData);
+             mudarLayoutParaAtendimentoAberto(globalAtendimentoData)
 
 
         }).then(() => {
@@ -427,84 +454,85 @@ export function init(valueInit) {
 
 
 
-
-
-
-
-
-    // FUNÇÕES PARA OS CAMPOS DE PACIENTES
-    //==============================================================================================================
-    //==============================================================================================================
-
-    function buscarListaDePacientes() {
-        b.crud.listar("pacientes", response => { //async 
-
-
-            listaPacientesAsync = response["data"];
-
-            insertAutoCompletePacientes();
-        })
-
-
-    }
-
-
-
-    //Busca no banco de dados a lista dos pacientes
-    //Criar uma busca custom, onde ja tenha a quantidade de atendimentos e o ultimo 
+   
+    //Busca no banco dos dados do atendimento
     //=======================================================================================
-    function buscarListaDePacientes() {
-        b.crud.listar("pacientes", response => { //async 
+    //buscarDadosCompletosDoAtendimentoById
+    function carregarDadosCompletosAtendimentoById() {
+
+        const data = {};
+        //Pega a id passada por parâmetro pela função que cria a linha na tabela
+        data.id = valueInit.dadosItem.id;
 
 
-            listaPacientesAsync = response["data"];
+        //Função que busca no banco todos os dados daquele atendimentos nas tabelas relacionadas
+        b.crud.custom("carregarDadosCompletosAtendimentoById", "atendimentos", data, responseList => {  //async     
 
-            insertAutoCompletePacientes();
-        })
+            //Coloca em uma variável global os dados do paciente.
+            globalAtendimentoData = responseList["data"];
 
-
-    }
-
-
-
-    //Insere a função de auto complete no input Paciente
-    //=======================================================================================
-    function insertAutoCompletePacientes() {//async /buscarListaDePacientes
-
-
-        b.autoComplete.ativar("#nome", listaPacientesAsync, selectedKeyData => {
-
-            //Ações apos selecionar um item da lista / selectedKeyData contem os dados o item
-            //--------------------------------------------------------
-
-            //Passa os dados do paciente selecionado para variável global
-            pacienteSelected = selectedKeyData.selection.value;
-
-
-            const pacienteData = selectedKeyData.selection.value;
-            inserirDadosPaciente(pacienteData);
-
-
+            preencherCamposAtendimento(responseList["data"])
 
         });
+
+
     }
 
 
-    //Recebe os dados do Paciente e oe exibe na tela.
+    //
     //=======================================================================================
-    function inserirDadosPaciente(pacienteData) {//async /insertAutoCompletePacientes
+    function preencherCamposAtendimento(atendimentoData) {
 
-        // console.log(pacienteData);
-        inpNomePaciente.dataset.pacientes_id = pacienteData.id;
+        //Muda um conjunto de regras no layout na DOM de acordo com o status do atendimento
+        if (atendimentoData.status == "Aberto") {
+            mudarLayoutParaAtendimentoAberto(atendimentoData)
+
+        } else if (atendimentoData.status == "Concluido") {
+            mudarLayoutParaAtendimentoConcluido()
+        }
 
 
-        inpPacienteId.value = pacienteData.id;
-        divIdade.textContent = b.formatDataForIdade(pacienteData.data_nascimento);
-        divAtendimentos.textContent = 5; //criar função para retornar o numero de atendimentos do paciente
-        divPrimeiraConsulta.textContent = 3434;
-        divSexo.textContent = pacienteData.sexo;
+        //Preenche os dados do atendimento
+        //----------------------------------------------------
+        b.form.preencher(formModalAtendimento, atendimentoData);
+
+
+        //Preenche os dados sobre o paciente na tela
+        // --------------------------------------------------
+        inserirDadosPaciente(atendimentoData);
+        inpNomePaciente.value = atendimentoData.nome;
+
+        console.log(atendimentoData);
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // FUNÇÕES Procedimentos
+    //==============================================================================================================
+    //==============================================================================================================
+
+
+
+
+
 
 
 
