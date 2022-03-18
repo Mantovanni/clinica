@@ -50,9 +50,9 @@ export function selectAdd(select, text, value) {
 
 
 //==============================================================================================
-//Retonar o valor do objeto e nao ao inves de sua referencia
+//Retorna o valor do objeto e não sua referencia
 export function objectValue(object) {
-    JSON.parse(JSON.stringify(object));
+    return JSON.parse(JSON.stringify(object));
 }
 
 

@@ -24,6 +24,7 @@ export function init(valueInit) {
     //Geral
     //----------------------------------------------------------------
     const tbody = document.querySelector('#tbody-central');//Tabela Central
+    const elHeaderWindowModal = document.querySelector('.modal-window__title');//Header do Modal
     const tituloPage = document.querySelector('#modal-window__title-texto');//Titulo Modal
     const formModalAtendimento = document.querySelector('#form-modal');//Formulário Adicionar
 
@@ -181,6 +182,72 @@ export function init(valueInit) {
     //==============================================================================================================
     //==============================================================================================================
 
+    //Busca no banco dos dados do atendimento
+    //=======================================================================================
+    //buscarDadosCompletosDoAtendimentoById
+    function carregarDadosCompletosAtendimentoById() {
+
+        const data = {};
+        //Pega a id passada por parâmetro pela função que cria a linha na tabela
+        data.id = valueInit.dadosItem.id;
+
+
+        //Função que busca no banco todos os dados daquele atendimentos nas tabelas relacionadas
+        b.crud.custom("carregarDadosCompletosAtendimentoById", "atendimentos", data, responseList => {  //async    
+
+            console.log(responseList);
+
+            //Coloca em uma variável global os dados do paciente.
+            globalAtendimentoData = responseList["data"];
+            
+
+            preencherCamposAtendimento(responseList["data"])
+
+        });
+
+
+    }
+
+
+    //
+    //=======================================================================================
+    function preencherCamposAtendimento(atendimentoData) {
+
+        //Muda um conjunto de regras no layout na DOM de acordo com o status do atendimento
+        if (atendimentoData.status == "Aberto") {        
+            mudarLayoutParaAtendimentoAberto(atendimentoData)
+
+        } else if (atendimentoData.status == "Concluido") {
+            console.log(atendimentoData);
+            mudarLayoutParaAtendimentoConcluido(atendimentoData)
+        }
+
+
+        //Preenche os dados do atendimento
+        //----------------------------------------------------
+        b.form.preencher(formModalAtendimento, atendimentoData);
+
+
+        //Preenche os dados sobre o paciente na tela
+        // ---------------------------------------------------
+        //Retorna o valor do objeto e não sua referencia
+        const pacienteData = b.objectValue(atendimentoData);
+        pacienteData.id = atendimentoData.pacientes_id;
+
+        inserirDadosPaciente(pacienteData);
+        inpNomePaciente.value = atendimentoData.nome;
+
+        // console.log(atendimentoData);
+
+    }
+
+
+
+
+
+
+
+
 
 
     // FUNÇÕES Paciente
@@ -191,7 +258,7 @@ export function init(valueInit) {
     //=======================================================================================
     function validarForm() {
         let validate = true;
-   
+
 
         if (inpNomePaciente.value == "") {
             alert("Selecione um paciente!")
@@ -201,19 +268,6 @@ export function init(valueInit) {
         return validate;
     }
 
-
-
-    function buscarListaDePacientes() {
-        b.crud.listar("pacientes", response => { //async 
-
-
-            listaPacientesAsync = response["data"];
-
-            insertAutoCompletePacientes();
-        })
-
-
-    }
 
 
 
@@ -226,7 +280,8 @@ export function init(valueInit) {
 
             listaPacientesAsync = response["data"];
 
-            insertAutoCompletePacientes();
+
+            insertAutoCompletePacientes(response["data"]);
         })
 
 
@@ -236,10 +291,10 @@ export function init(valueInit) {
 
     //Insere a função de auto complete no input Paciente
     //=======================================================================================
-    function insertAutoCompletePacientes() {//async /buscarListaDePacientes
+    function insertAutoCompletePacientes(listaPacientesData) {//async /buscarListaDePacientes
 
 
-        b.autoComplete.ativar("#nome", listaPacientesAsync, selectedKeyData => {
+        b.autoComplete.ativar("#nome", listaPacientesData, selectedKeyData => {
 
             //Ações apos selecionar um item da lista / selectedKeyData contem os dados o item
             //--------------------------------------------------------
@@ -262,8 +317,7 @@ export function init(valueInit) {
     function inserirDadosPaciente(pacienteData) {//async /insertAutoCompletePacientes
 
         // console.log(pacienteData);
-        inpNomePaciente.dataset.pacientes_id = pacienteData.id;
-
+        // inpNomePaciente.dataset.pacientes_id = pacienteData.id;
 
         inpPacienteId.value = pacienteData.id;
         divIdade.textContent = b.formatDataForIdade(pacienteData.data_nascimento);
@@ -322,6 +376,10 @@ export function init(valueInit) {
                 const linhaCriada = b.render.lineInTable(tbody, responseItemSalvo, "atendimentos");
 
 
+                //Muda o status na globalAtendimento para Aberto
+                globalAtendimentoData.status = "Aberto";
+
+
                 //Conjunto de alterações no layout apos abrir o atendimento
                 //Manda como parâmetro os dados do novo atendimento criado
                 mudarLayoutParaAtendimentoAberto(responseItemSalvo);
@@ -346,6 +404,7 @@ export function init(valueInit) {
             // const dataFormModalAtendimento = b.form.extractValues(formModalAtendimento);
 
             // b.crud.custom("editarAtendimento", "atendimentos" )
+            console.log(dataFormModalAtendimento);
             b.crud.editar(dataFormModalAtendimento, "atendimentos", response => {//async   
                 b.modal.fechar()
 
@@ -361,10 +420,12 @@ export function init(valueInit) {
     // Salva e muda o Status do atendimento para Concluído
     //=======================================================================================
     function concluirAtendimento() {
+        console.log("concluirAtendimento");
 
         const dataFormModalAtendimento = b.form.extractValues(formModalAtendimento);
 
         dataFormModalAtendimento.status = "Concluido";
+
 
         salvarAtendimento(dataFormModalAtendimento);
     }
@@ -381,11 +442,14 @@ export function init(valueInit) {
         data.id = globalAtendimentoData.id;
         data.status = "Aberto"
 
+        console.log(globalAtendimentoData)
+console.log(data);
+
         b.crud.editar(data, "atendimentos", response => {//async   
 
-             globalAtendimentoData.status = "Aberto";
+            globalAtendimentoData.status = "Aberto";
 
-             mudarLayoutParaAtendimentoAberto(globalAtendimentoData)
+            mudarLayoutParaAtendimentoAberto(globalAtendimentoData)
 
 
         }).then(() => {
@@ -402,18 +466,22 @@ export function init(valueInit) {
 
     //Faz um conjunto de alterações no layout para o modo do atendimento aberto
     //=======================================================================================
-    function mudarLayoutParaAtendimentoAberto(atendimento) {
+    function mudarLayoutParaAtendimentoAberto(atendimentoData) {
 
         //Insere a ID criada do atendimento no campo Id do form
-        inpAtendimentoId.value = atendimento.id;
+        inpAtendimentoId.value = atendimentoData.id;
 
-
-
-        //alterar o botão para fechar atendimento
+        //Alterar o botão para Concluir atendimento
         //--------------------------------------------------------------------------
+        btnAtendimento.textContent = "Concluir Atendimento";
 
-        //mudar o titulo do modal para "Atendimento 00 - Paciente Fulano de Tal"
+
+
+        //Mudar o titulo do modal para "Atendimento 00 - Paciente Fulano de Tal"
         //--------------------------------------------------------------------------
+        tituloPage.textContent = "Atendimento - " + atendimentoData.id;
+        elHeaderWindowModal.style.backgroundColor = 'green';
+
 
         //liberar para editar os campos do atendimento
         //--------------------------------------------------------------------------
@@ -425,25 +493,17 @@ export function init(valueInit) {
 
 
 
-    //Faz um conjunto de alterações no layout para o modo do atendimento aberto
+    //Faz um conjunto de alterações no layout para o modo do atendimento Concluído
     //=======================================================================================
-    function mudarLayoutParaAtendimentoConcluido() {
+    function mudarLayoutParaAtendimentoConcluido(atendimentoData) {
 
 
+console.log(atendimentoData.id);
 
-
-
-        //alterar o botão para fechar atendimento
+        //Mudar o titulo do modal para "Atendimento 00 - Paciente Fulano de Tal"
         //--------------------------------------------------------------------------
-
-        //mudar o titulo do modal para "Atendimento 00 - Paciente Fulano de Tal"
-        //--------------------------------------------------------------------------
-
-        //liberar para editar os campos do atendimento
-        //--------------------------------------------------------------------------
-
-        //fechar o campo de escolha do paciente
-        //--------------------------------------------------------------------------
+        tituloPage.textContent = "Atendimento - " + atendimentoData.id;
+        elHeaderWindowModal.style.backgroundColor = '#2559a7';//Azul 
 
     }
 
@@ -454,57 +514,7 @@ export function init(valueInit) {
 
 
 
-   
-    //Busca no banco dos dados do atendimento
-    //=======================================================================================
-    //buscarDadosCompletosDoAtendimentoById
-    function carregarDadosCompletosAtendimentoById() {
 
-        const data = {};
-        //Pega a id passada por parâmetro pela função que cria a linha na tabela
-        data.id = valueInit.dadosItem.id;
-
-
-        //Função que busca no banco todos os dados daquele atendimentos nas tabelas relacionadas
-        b.crud.custom("carregarDadosCompletosAtendimentoById", "atendimentos", data, responseList => {  //async     
-
-            //Coloca em uma variável global os dados do paciente.
-            globalAtendimentoData = responseList["data"];
-
-            preencherCamposAtendimento(responseList["data"])
-
-        });
-
-
-    }
-
-
-    //
-    //=======================================================================================
-    function preencherCamposAtendimento(atendimentoData) {
-
-        //Muda um conjunto de regras no layout na DOM de acordo com o status do atendimento
-        if (atendimentoData.status == "Aberto") {
-            mudarLayoutParaAtendimentoAberto(atendimentoData)
-
-        } else if (atendimentoData.status == "Concluido") {
-            mudarLayoutParaAtendimentoConcluido()
-        }
-
-
-        //Preenche os dados do atendimento
-        //----------------------------------------------------
-        b.form.preencher(formModalAtendimento, atendimentoData);
-
-
-        //Preenche os dados sobre o paciente na tela
-        // --------------------------------------------------
-        inserirDadosPaciente(atendimentoData);
-        inpNomePaciente.value = atendimentoData.nome;
-
-        console.log(atendimentoData);
-
-    }
 
 
 

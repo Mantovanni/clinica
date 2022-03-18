@@ -585,6 +585,213 @@ export function lineInTable(elTable, dados, nometabelaDoBanco) {//Espera receber
 
 
 
+            
+
+            //Adiciona edição no TH que estiver com data-edit="true"
+            const eleCellNome = elNovaLinha.querySelector(`[data-edit="true"]`);
+            if (eleCellNome) {
+                eleCellNome.classList.add("cursor-pointer")
+                eleCellNome.addEventListener('click', function (e) {
+
+                    b.modal.abrir();
+                    // Passa o elemento Janela Modal para a função render.page 
+
+                    b.render.page(
+
+                        b.modal.content,
+                        `../view/${nometabelaDoBanco}/adicionar/adicionar-${nometabelaDoBanco}.html`,
+                        `../../../view/${nometabelaDoBanco}/editar/editar-${nometabelaDoBanco}.js`,
+                        "modal",
+                        {
+                            dadosItem: dadosItem,
+                            elLinhaSelecionada: e.target.parentNode
+                        }
+
+                    );//assync
+
+
+                    // b.render.pageModal(
+                    // `../view/${nometabelaDoBanco}/adicionar/adicionar-${nometabelaDoBanco}.html`,
+                    // `../../../view/${nometabelaDoBanco}/editar/editar-${nometabelaDoBanco}.js`,
+                    //     {
+                    //         dadosItem: dadosItem,
+                    //         elLinhaSelecionada: e.target.parentNode
+                    //     }
+
+                    // );//assync
+
+                });
+            }
+
+
+
+        }
+
+        //Coloca a linha criada no array 
+        linhasCriadas.push(elNovaLinha);
+    });
+
+    return linhasCriadas;
+
+}//============================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//lineInTable - cria uma ou mais linhas em uma tabela
+//============================================================================================================
+/**
+       * Recebe um elemento Tbody ou TR para adicionar uma ou mais linhas ou editar uma llinha da tabela com os dados passado por um Objeto
+       * @param {HTMLTableElement} elTable Recebe um elemento Tbody ou TR para adicionar uma ou mais linhas ou editar uma llinha
+       * @param {object} dados Um objeto com os valores/data de uma ou mais linhas
+       * @param {string} nometabelaDoBanco Nome da tabela no banco, para as funções de excluir e editar
+       * @returns {HTMLTableElement} Retorna a referencia para a linha criada
+       */
+ export function lineInTableDesc(elTable, dados, nometabelaDoBanco) {//Espera receber um TBODY
+
+    //---------------------------------------------------------------------------------------------
+    //Verifica se está recevendo um um objeto ou array de objetos,
+    //para adicionar um a muitas linhas
+    let dadosArray;
+    if (Array.isArray(dados)) {
+        // Limpar tabela antes de criar outra
+        elTable.innerHTML = "";
+        dadosArray = dados;
+    } else {
+        dadosArray = [dados];
+    }
+
+
+    const linhasCriadas = [];
+    dadosArray.forEach(dadosItem => {
+
+
+        //Cria linha e insere a linha vazia  na tabela ou
+        //se for edição , apaga o conteudo da linha selecionada  e a reultiliza
+        //---------------------------------------------------------------------------------------------
+        let elNovaLinha = "";
+        //Sef for uma linha/TR selecionada no edit
+
+        if (elTable.tagName == "TR") {
+            //Passa a linha pra uma nova referencia;
+            elNovaLinha = elTable;
+            //Limpa a linha 
+            elNovaLinha.innerHTML = "";
+            //Pega o pai/tbody da linha 
+            elTable = elTable.parentNode;
+
+        } else {
+            //Cria uma linha para manipular
+            elNovaLinha = document.createElement("tr")
+            //Insere a linha na tabela
+            elTable.insertBefore(elNovaLinha, elTable.firstChild);
+            // <tr class="tabela-item-linha" data-item-id="${responseItemSalvo.id}">
+        }
+
+        elNovaLinha.dataset.id = dadosItem.id;
+
+
+
+        //Insere dados nas celulas das tabelas
+        //---------------------------------------------------------------------------------------------
+        //Pega a linha de celulas do Head da tabela TH
+        const cabecalho = elTable.parentNode.querySelector("thead tr");//Espera receber um TBODY 
+        //  elTable.parentNode.querySelector("thead tr").childNodes;
+        //Encontra o NOME do parametro do objeto no data-nome="" do elemento       
+        b.findElArrayInObject(cabecalho.cells, dadosItem, (element, key) => {
+
+            switch (element.dataset.format) {
+                case "coin-real":
+                    elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
+                    data-name="${key}">${b.paraMoedaReal(dadosItem[key])}</td>`);
+                    // html += `<td data-name="${key}">${b.paraMoeda(dadosItem[key])}</td>`;
+                    break;
+
+                case "coin":
+                    elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
+                    data-name="${key}">${b.paraMoeda(dadosItem[key])}</td>`);
+                    // html += `<td data-name="${key}">${b.paraMoeda(dadosItem[key])}</td>`;
+                    break;
+
+                case "date":
+                    elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
+                    data-name="${key}">${b.formatDataISOforDataUser(dadosItem[key])}</td>`);
+                    // html += `<td data-name="${key}">${b.paraMoeda(dadosItem[key])}</td>`;
+                    break;
+
+                case "action":
+                    elNovaLinha.insertAdjacentHTML("beforeend", `<td class="cel-acoes">
+                    <button class="btn-excluir-linha" data-name="excluir">${b.ico.lixeira}</button></td>`);
+                    // html += `<td data-name="${key}">${b.paraMoeda(dadosItem[key])}</td>`;
+                    break;
+
+                default:
+
+
+                    if (element.dataset.edit == "true") {
+                        elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
+                        data-name="${key}"  data-edit="true">${dadosItem[key]}</td>`);
+                    } else {
+                        elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
+                        data-name="${key}">${dadosItem[key]}</td>`);
+                    }
+
+
+
+                    // html += `<td data-name="${key}">${dadosItem[key]}</td>`;
+                    break;
+            }
+
+            //Adiciona a opção de clicar na celula para editar
+            //=====================================================
+
+
+
+        });
+
+        //Insere as celulas criadas na linha
+        // elNovaLinha.appendChild(b.htmlToElement(html));
+
+        //Action 
+        //==========================================================================================================================
+        if (nometabelaDoBanco != undefined) {
+
+            //Excluir 
+            //---------------------------------------------------------------------------------------------
+            const botaoExcluir = elNovaLinha.querySelector('[data-name="excluir"]');
+            botaoExcluir.addEventListener('click', function (e) {
+                // comanda.splice(linha.rowIndex, 1);//no array X remova 1 elemento
+
+                //Recebe a mensagem a ser exibida na janela, e uma function de callback que
+                //sera executada somente se clicar em Confirmar
+                b.modal.confirm(() => {
+                    b.crud.deletar(dadosItem.id, nometabelaDoBanco, () => {
+                        elTable.deleteRow(elNovaLinha.rowIndex - 1);
+
+
+                    })
+                })
+            });
+
+
+            //Editar
+            //---------------------------------------------------------------------------------------------
+            // const botaoEditar = linhaElemento.querySelector('.editar-linha');
+            //Coloca um evento para edição na celula de name=nome
+
+
+
 
 
             //Adiciona edição no TH que estiver com data-edit="true"
@@ -652,8 +859,6 @@ export function lineInTable(elTable, dados, nometabelaDoBanco) {//Espera receber
 
 
 
-
-
 //lineInTable - cria uma ou mais linhas em uma tabela
 //============================================================================================================
 /**
@@ -663,164 +868,208 @@ export function lineInTable(elTable, dados, nometabelaDoBanco) {//Espera receber
        * @param {string} nometabelaDoBanco Nome da tabela no banco, para as funções de excluir e editar
        * @returns {HTMLTableElement} Retorna a referencia para a linha criada
        */
-export function lineInTableDesc(elTable, dados, nometabelaDoBanco) {//Espera receber um TBODY
+// export function lineInTableDesc2(elTable, dados, nometabelaDoBanco) {//Espera receber um TBODY
 
-    //---------------------------------------------------------------------------------------------
-    //Verifica se está recevendo um um objeto ou array de objetos,
-    //para adicionar um a muitas linhas
-    let dadosArray;
-    if (Array.isArray(dados)) {
-        // Limpar tabela antes de criar outra
-        elTable.innerHTML = "";
-        dadosArray = dados;
-    } else {
-        dadosArray = [dados];
-    }
-
-
-    const linhasCriadas = [];
-    dadosArray.forEach(dadosItem => {
+//     //---------------------------------------------------------------------------------------------
+//     //Verifica se está recevendo um um objeto ou array de objetos,
+//     //para adicionar um a muitas linhas
+//     let dadosArray;
+//     if (Array.isArray(dados)) {
+//         // Limpar tabela antes de criar outra
+//         elTable.innerHTML = "";
+//         dadosArray = dados;
+//     } else {
+//         dadosArray = [dados];
+//     }
 
 
-        //Cria linha e insere a linha vazia  na tabela ou
-        //se for edição , apaga o conteudo da linha selecionada  e a reultiliza
-        //---------------------------------------------------------------------------------------------
-        let elNovaLinha = "";
-        //Sef for uma linha/TR selecionada no edit
-        if (elTable.tagName == "TR") {
-            //Passa a linha pra uma nova referencia;
-            elNovaLinha = elTable;
-            //Limpa a linha 
-            elNovaLinha.innerHTML = "";
-            //Pega o pai/tbody da linha 
-            elTable = elTable.parentNode;
-
-        } else {
-            //Cria uma linha para manipular
-            elNovaLinha = document.createElement("tr")
-
-            //Insere linha no top da tabela
-            elTable.insertBefore(elNovaLinha, elTable.firstChild);
-        }
-
-        elNovaLinha.dataset.id = dadosItem.id;
+//     const linhasCriadas = [];
+//     dadosArray.forEach(dadosItem => {
 
 
+//         //Cria linha e insere a linha vazia  na tabela ou
+//         //se for edição , apaga o conteudo da linha selecionada  e a reultiliza
+//         //---------------------------------------------------------------------------------------------
+//         let elNovaLinha = "";
+//         //Sef for uma linha/TR selecionada no edit
+//         if (elTable.tagName == "TR") {
+//             //Passa a linha pra uma nova referencia;
+//             elNovaLinha = elTable;
+//             //Limpa a linha 
+//             elNovaLinha.innerHTML = "";
+//             //Pega o pai/tbody da linha 
+//             elTable = elTable.parentNode;
 
-        //Insere dados nas celulas das tabelas
-        //---------------------------------------------------------------------------------------------
-        //Pega a linha de celulas do Head da tabela TH
-        const cabecalho = elTable.parentNode.querySelector("thead tr");//Espera receber um TBODY 
-        //  elTable.parentNode.querySelector("thead tr").childNodes;
-        //Encontra o NOME do parametro do objeto no data-nome="" do elemento       
-        b.findElArrayInObject(cabecalho.cells, dadosItem, (element, key) => {
+//         } else {
+//             //Cria uma linha para manipular
+//             elNovaLinha = document.createElement("tr")
 
-            switch (element.dataset.format) {
-                case "coin-real":
-                    elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
-                    data-name="${key}">${b.paraMoedaReal(dadosItem[key])}</td>`);
-                    // html += `<td data-name="${key}">${b.paraMoeda(dadosItem[key])}</td>`;
-                    break;
+//             //Insere linha no top da tabela
+//             elTable.insertBefore(elNovaLinha, elTable.firstChild);
+//         }
 
-                case "coin":
-                    elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
-                    data-name="${key}">${b.paraMoeda(dadosItem[key])}</td>`);
-                    // html += `<td data-name="${key}">${b.paraMoeda(dadosItem[key])}</td>`;
-                    break;
-
-                case "date":
-                    elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
-                    data-name="${key}">${b.formatDataISOforDataUser(dadosItem[key])}</td>`);
-                    // html += `<td data-name="${key}">${b.paraMoeda(dadosItem[key])}</td>`;
-                    break;
-
-                case "action":
-                    elNovaLinha.insertAdjacentHTML("beforeend", `<td class="cel-acoes">
-                    <button class="btn-excluir-linha" data-name="excluir">${b.ico.lixeira}</button></td>`);
-                    // html += `<td data-name="${key}">${b.paraMoeda(dadosItem[key])}</td>`;
-                    break;
-
-                default:
-                    elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
-                    data-name="${key}">${dadosItem[key]}</td>`);
-                    // html += `<td data-name="${key}">${dadosItem[key]}</td>`;
-                    break;
-            }
+//         elNovaLinha.dataset.id = dadosItem.id;
 
 
 
-        });
+//         //Insere dados nas celulas das tabelas
+//         //---------------------------------------------------------------------------------------------
+//         //Pega a linha de celulas do Head da tabela TH
+//         const cabecalho = elTable.parentNode.querySelector("thead tr");//Espera receber um TBODY 
+//         //  elTable.parentNode.querySelector("thead tr").childNodes;
+//         //Encontra o NOME do parametro do objeto no data-nome="" do elemento       
+//         b.findElArrayInObject(cabecalho.cells, dadosItem, (element, key) => {
 
-        //Insere as celulas criadas na linha
-        // elNovaLinha.appendChild(b.htmlToElement(html));
+//             switch (element.dataset.format) {
+//                 case "coin-real":
+//                     elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
+//                     data-name="${key}">${b.paraMoedaReal(dadosItem[key])}</td>`);
+//                     // html += `<td data-name="${key}">${b.paraMoeda(dadosItem[key])}</td>`;
+//                     break;
 
-        //Action 
-        //==========================================================================================================================
-        if (nometabelaDoBanco != undefined) {
+//                 case "coin":
+//                     elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
+//                     data-name="${key}">${b.paraMoeda(dadosItem[key])}</td>`);
+//                     // html += `<td data-name="${key}">${b.paraMoeda(dadosItem[key])}</td>`;
+//                     break;
 
-            //Excluir 
-            //---------------------------------------------------------------------------------------------
-            const botaoExcluir = elNovaLinha.querySelector('[data-name="excluir"]');
-            botaoExcluir.addEventListener('click', function (e) {
-                // comanda.splice(linha.rowIndex, 1);//no array X remova 1 elemento
+//                 case "date":
+//                     elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
+//                     data-name="${key}">${b.formatDataISOforDataUser(dadosItem[key])}</td>`);
+//                     // html += `<td data-name="${key}">${b.paraMoeda(dadosItem[key])}</td>`;
+//                     break;
 
-                //Recebe a mensagem a ser exibida na janela, e uma function de callback que
-                //sera executada somente se clicar em Confirmar
-                b.modal.confirm(() => {
-                    b.crud.deletar(dadosItem.id, nometabelaDoBanco, () => {
-                        elTable.deleteRow(elNovaLinha.rowIndex - 1);
+//                 case "action":
+//                     elNovaLinha.insertAdjacentHTML("beforeend", `<td class="cel-acoes">
+//                     <button class="btn-excluir-linha" data-name="excluir">${b.ico.lixeira}</button></td>`);
+//                     // html += `<td data-name="${key}">${b.paraMoeda(dadosItem[key])}</td>`;
+//                     break;
 
-
-                    })
-                })
-            });
-
-
-            //Editar
-            //---------------------------------------------------------------------------------------------
-            // const botaoEditar = linhaElemento.querySelector('.editar-linha');
-            //Coloca um evento para edição na celula de name=nome
-            const eleCellNome = elNovaLinha.querySelector(`[data-name="nome"]`);
-            eleCellNome.classList.add("cursor-pointer")
-            eleCellNome.addEventListener('click', function (e) {
-
-                b.modal.abrir();
-                // Passa o elemento Janela Modal para a função render.page 
-
-                b.render.page(
-
-                    b.modal.content,
-                    `../view/${nometabelaDoBanco}/adicionar/adicionar-${nometabelaDoBanco}.html`,
-                    `../../../view/${nometabelaDoBanco}/editar/editar-${nometabelaDoBanco}.js`,
-                    "modal",
-                    {
-                        dadosItem: dadosItem,
-                        elLinhaSelecionada: e.target.parentNode
-                    }
-
-                );//assync
+//                 default:
+//                     elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
+//                     data-name="${key}">${dadosItem[key]}</td>`);
+//                     // html += `<td data-name="${key}">${dadosItem[key]}</td>`;
+//                     break;
+//             }
 
 
-                // b.render.pageModal(
-                // `../view/${nometabelaDoBanco}/adicionar/adicionar-${nometabelaDoBanco}.html`,
-                // `../../../view/${nometabelaDoBanco}/editar/editar-${nometabelaDoBanco}.js`,
-                //     {
-                //         dadosItem: dadosItem,
-                //         elLinhaSelecionada: e.target.parentNode
-                //     }
 
-                // );//assync
+//         });
 
-            });
-        }
+//         //Insere as celulas criadas na linha
+//         // elNovaLinha.appendChild(b.htmlToElement(html));
 
-        //Coloca a linha criada no array 
-        linhasCriadas.push(elNovaLinha);
-    });
+//         //Action 
+//         //==========================================================================================================================
+//         if (nometabelaDoBanco != undefined) {
 
-    return linhasCriadas;
+//             //Excluir 
+//             //---------------------------------------------------------------------------------------------
+//             const botaoExcluir = elNovaLinha.querySelector('[data-name="excluir"]');
+//             botaoExcluir.addEventListener('click', function (e) {
+//                 // comanda.splice(linha.rowIndex, 1);//no array X remova 1 elemento
 
-}//============================================================================================================
+//                 //Recebe a mensagem a ser exibida na janela, e uma function de callback que
+//                 //sera executada somente se clicar em Confirmar
+//                 b.modal.confirm(() => {
+//                     b.crud.deletar(dadosItem.id, nometabelaDoBanco, () => {
+//                         elTable.deleteRow(elNovaLinha.rowIndex - 1);
+
+
+//                     })
+//                 })
+//             });
+
+
+//             //Editar
+//             //---------------------------------------------------------------------------------------------
+//             // const botaoEditar = linhaElemento.querySelector('.editar-linha');
+//             //Coloca um evento para edição na celula de name=nome
+
+//              //Adiciona edição no TH que estiver com data-edit="true"
+
+// console.log(elNovaLinha);
+//              const eleCellNome = elNovaLinha.querySelector(`[data-edit="true"]`);
+//              if (eleCellNome) {
+//                  console.log("sda");
+//                  eleCellNome.classList.add("cursor-pointer")
+//                  eleCellNome.addEventListener('click', function (e) {
+ 
+//                      b.modal.abrir();
+//                      // Passa o elemento Janela Modal para a função render.page 
+ 
+//                      b.render.page(
+ 
+//                          b.modal.content,
+//                          `../view/${nometabelaDoBanco}/adicionar/adicionar-${nometabelaDoBanco}.html`,
+//                          `../../../view/${nometabelaDoBanco}/editar/editar-${nometabelaDoBanco}.js`,
+//                          "modal",
+//                          {
+//                              dadosItem: dadosItem,
+//                              elLinhaSelecionada: e.target.parentNode
+//                          }
+ 
+//                      );//assync
+ 
+ 
+//                      // b.render.pageModal(
+//                      // `../view/${nometabelaDoBanco}/adicionar/adicionar-${nometabelaDoBanco}.html`,
+//                      // `../../../view/${nometabelaDoBanco}/editar/editar-${nometabelaDoBanco}.js`,
+//                      //     {
+//                      //         dadosItem: dadosItem,
+//                      //         elLinhaSelecionada: e.target.parentNode
+//                      //     }
+ 
+//                      // );//assync
+ 
+//                  });
+//              }
+
+             
+
+
+
+//             // const eleCellNome = elNovaLinha.querySelector(`[data-name="nome"]`);
+//             // eleCellNome.classList.add("cursor-pointer")
+//             // eleCellNome.addEventListener('click', function (e) {
+
+//             //     b.modal.abrir();
+//             //     // Passa o elemento Janela Modal para a função render.page 
+
+//             //     b.render.page(
+
+//             //         b.modal.content,
+//             //         `../view/${nometabelaDoBanco}/adicionar/adicionar-${nometabelaDoBanco}.html`,
+//             //         `../../../view/${nometabelaDoBanco}/editar/editar-${nometabelaDoBanco}.js`,
+//             //         "modal",
+//             //         {
+//             //             dadosItem: dadosItem,
+//             //             elLinhaSelecionada: e.target.parentNode
+//             //         }
+
+//             //     );//assync
+
+
+//             //     // b.render.pageModal(
+//             //     // `../view/${nometabelaDoBanco}/adicionar/adicionar-${nometabelaDoBanco}.html`,
+//             //     // `../../../view/${nometabelaDoBanco}/editar/editar-${nometabelaDoBanco}.js`,
+//             //     //     {
+//             //     //         dadosItem: dadosItem,
+//             //     //         elLinhaSelecionada: e.target.parentNode
+//             //     //     }
+
+//             //     // );//assync
+
+//             // });
+//         }
+
+//         //Coloca a linha criada no array 
+//         linhasCriadas.push(elNovaLinha);
+//     });
+
+//     return linhasCriadas;
+
+// }//============================================================================================================
 
 
 

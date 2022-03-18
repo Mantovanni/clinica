@@ -81,7 +81,7 @@ export function init() {
 
 
             //Função que cria a tabela na DOM utilizando os dados extraídos do banco.
-            b.render.lineInTable(tbody, dados, "atendimentos");
+            b.render.lineInTableDesc(tbody, dados, "atendimentos");
             
             //Insere a função de pesquisar na tabela
             //OBS. Adicionar essa função de forma automática no futuro

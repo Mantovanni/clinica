@@ -11,7 +11,8 @@ require_once(realpath(dirname(__FILE__)) . "/../../config/Database.class.php");
 
 
 
-class AtendimentosDAO {
+class AtendimentosDAO
+{
 
 
     // FUNÇÕES ESPECÍFICAS DA CLASSE
@@ -21,7 +22,7 @@ class AtendimentosDAO {
 
 
 
- 
+
     // SALVAR
     //==============================================================================================================
     //==============================================================================================================
@@ -34,7 +35,7 @@ class AtendimentosDAO {
         //Remove o elemento do array pela KEY // para esse campo não ser usado no 'implode'
         unset($data["id"]);
 
-// print_r($_SESSION["id"]);
+        // print_r($_SESSION["id"]);
 
 
         //Passa a id do usuário logado na sessão atual
@@ -58,11 +59,9 @@ class AtendimentosDAO {
             echo "Erro - " . mysqli_error(Database::connect()) . "\n ||  QUERY: $query";
             // return false;
         }
-
-     
     }
 
- 
+
 
 
 
@@ -203,16 +202,23 @@ class AtendimentosDAO {
 
     // Busca no banco todos os dados daquele atendimentos nas tabelas relacionadas
     //===========================================================================================================
-    static function carregarDadosCompletosAtendimentoById($body){
+    static function carregarDadosCompletosAtendimentoById($body)
+    {
 
         $data = (array)$body->data;
 
         $dados["data"] = array();
         $query =
-            "SELECT * FROM 
-            atendimentos
-            INNER JOIN pacientes
-            ON atendimentos.id = pacientes.id
+            "SELECT 
+                atendimentos.*,
+                pacientes.nome,
+                pacientes.data_nascimento,
+                pacientes.sexo
+            FROM 
+                atendimentos
+            INNER JOIN 
+                pacientes
+            ON atendimentos.pacientes_id = pacientes.id
             WHERE atendimentos.id = " . $data["id"] . ";                                                 
             ";
 
@@ -221,18 +227,14 @@ class AtendimentosDAO {
             die(mysqli_error(Database::connect()) . "\n || Query: " . $query);
 
 
-           
+
         while ($linha = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
 
             $dataToSend["data"] = $linha;
         }
 
 
-    
         return $dataToSend;
-
-       
-
     }
 
 
@@ -498,23 +500,4 @@ class AtendimentosDAO {
 
         return $data;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-?>
