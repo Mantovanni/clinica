@@ -114,7 +114,7 @@ export function insertLineInput(elTable, dataAutocomplete, afterSelectAutoComple
     elTable.appendChild(elNovaLinha);
 
 
-    //Insere dados nas celulas das tabelas
+    //Insere dados nas células das tabelas
     //---------------------------------------------------------------------------------------------
     //Serve para agrupar os inputs da mesma linha , para quando for usar a função de extrair dados do form
     // let groupLine = 1;
@@ -253,7 +253,7 @@ export function insertLineInput(elTable, dataAutocomplete, afterSelectAutoComple
 
 
         //------------------------------------------------------------------------------------------------------
-        //Verifica qual input da linha é pra ser ignorado no envio do formulario 
+        //Verifica qual input da linha é pra ser ignorado no envio do formulário 
         //inserindo .dataset.ignore = "true";       
         if (element.dataset.ignore) {
             inpAtual.dataset.ignore = "true";
@@ -262,7 +262,7 @@ export function insertLineInput(elTable, dataAutocomplete, afterSelectAutoComple
 
 
         // ----------------------------------------------------------------------------------------------------
-        //Verifica se o o campo input da celula vai ter a função de auto cmplete
+        //Verifica se o o campo input da celula vai ter a função de auto complete
         if (element.dataset.autocomplete) {
 
 

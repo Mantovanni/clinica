@@ -17,3 +17,9 @@ EXPLICAR
 2- element.dataset = passar variaveis pelo html exemplp data-xxxx="blabla"
 
 
+
+3- falar sobre os modelos de inserção dos elmentos na DOM e dentro de outros elemntos
+ elTbodyItensProduto.insertAdjacentHTML("beforeend",
+
+
+

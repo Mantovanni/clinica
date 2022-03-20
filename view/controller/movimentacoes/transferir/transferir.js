@@ -320,7 +320,7 @@ export function init(dataInit) {
     //Adiciona uma linha vazia
     function adicionarLinhaItem(listaProdutosAsync) {
 
-        //insere uma lnha de inputs recebendo a taqbela, e os dados para o autocomplete
+        //insere uma linha de inputs recebendo a tabela, e os dados para o autocomplete
         const eleNewLine = b.table.insertLineInput(elTbody_TableInput, listaProdutosAsync, (dataSelecionado, linha) => {
 
             //Pega os valores o item selecionado na lista
@@ -331,7 +331,7 @@ export function init(dataInit) {
             linha.cells[2].firstElementChild.value = b.paraMoeda(itemSelecionado.estoque_total);//quantidade em estoque
             linha.cells[3].firstElementChild.value = "1,00";
 
-            // Seleciona o proximo input automaticamante apos escolher um item
+            // Seleciona o proximo input automaticamente apos escolher um item
             linha.cells[3].firstElementChild.select();
             // dataSelecionado.event.path[3].nextElementSibling.firstElementChild.select();
         });
@@ -345,7 +345,7 @@ export function init(dataInit) {
         const inpQuantidade = eleNewLine.cells[3].firstElementChild;
 
 
-        //Inpede de passar um valor maior que tem em estoque
+        //Impede de passar um valor maior que tem em estoque
         //------------------------------------------------------------------------------------------
         const checarEstoqueMinimo = ev => {
             if (b.paraFloat(inpAtual.value) < b.paraFloat(inpQuantidade.value)) {

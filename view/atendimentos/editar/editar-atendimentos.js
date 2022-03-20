@@ -50,7 +50,10 @@ export function init(valueInit) {
     const divSexo = document.querySelector('#paciente-sexo')
 
 
-
+    //Procedimentos
+    //----------------------------------------------------------------
+    const btnAdicionarProcedimento = document.querySelector('#btn-adicionar-procedimento');
+    const btnLimparLista = document.querySelector('#btn-limparlista');
 
 
     //MASCARAS
@@ -61,6 +64,7 @@ export function init(valueInit) {
 
 
 
+KSJDFHJKSDHFKJSDLFHJSDF
 
 
 
@@ -130,7 +134,7 @@ export function init(valueInit) {
         if (globalAtendimentoData.status == "Aberto") {
             concluirAtendimento();
         } else if (globalAtendimentoData.status == "Concluido") {
-            console.log("reabrirAtendimento");
+            
             reabrirAtendimento();
 
         }
@@ -195,7 +199,7 @@ export function init(valueInit) {
         //Função que busca no banco todos os dados daquele atendimentos nas tabelas relacionadas
         b.crud.custom("carregarDadosCompletosAtendimentoById", "atendimentos", data, responseList => {  //async    
 
-            console.log(responseList);
+            
 
             //Coloca em uma variável global os dados do paciente.
             globalAtendimentoData = responseList["data"];
@@ -218,7 +222,7 @@ export function init(valueInit) {
             mudarLayoutParaAtendimentoAberto(atendimentoData)
 
         } else if (atendimentoData.status == "Concluido") {
-            console.log(atendimentoData);
+            
             mudarLayoutParaAtendimentoConcluido(atendimentoData)
         }
 
@@ -442,8 +446,6 @@ export function init(valueInit) {
         data.id = globalAtendimentoData.id;
         data.status = "Aberto"
 
-        console.log(globalAtendimentoData)
-console.log(data);
 
         b.crud.editar(data, "atendimentos", response => {//async   
 
@@ -488,6 +490,7 @@ console.log(data);
 
         //fechar o campo de escolha do paciente
         //--------------------------------------------------------------------------
+        inpNomePaciente.disabled = "true";
 
     }
 
@@ -498,12 +501,16 @@ console.log(data);
     function mudarLayoutParaAtendimentoConcluido(atendimentoData) {
 
 
-console.log(atendimentoData.id);
+
 
         //Mudar o titulo do modal para "Atendimento 00 - Paciente Fulano de Tal"
         //--------------------------------------------------------------------------
         tituloPage.textContent = "Atendimento - " + atendimentoData.id;
         elHeaderWindowModal.style.backgroundColor = '#2559a7';//Azul 
+
+
+
+        inpNomePaciente.disabled = "true";
 
     }
 
@@ -539,7 +546,54 @@ console.log(atendimentoData.id);
     //==============================================================================================================
     //==============================================================================================================
 
+    //------------------------------------------------------------------------------------
+    //Adiciona uma linha vazia
+    function adicionarLinhaItem(listaProdutosAsync) {
 
+        //insere uma linha de inputs recebendo a tabela, e os dados para o autocomplete
+        const eleNewLine = b.table.insertLineInput(elTbody_TableInput, listaProdutosAsync, (dataSelecionado, linha) => {
+
+            //Pega os valores o item selecionado na lista
+            const itemSelecionado = dataSelecionado.selection.value;
+
+            //Auto Preenche os campos quando seleciona um item na lista
+            linha.cells[0].firstElementChild.value = itemSelecionado.id;
+            linha.cells[2].firstElementChild.value = b.paraMoeda(itemSelecionado.estoque_total);//quantidade em estoque
+            linha.cells[3].firstElementChild.value = "1,00";
+
+            // Seleciona o proximo input automaticamente apos escolher um item
+            linha.cells[3].firstElementChild.select();
+            // dataSelecionado.event.path[3].nextElementSibling.firstElementChild.select();
+        });
+
+
+
+
+
+        // const inpNome = eleNewLine.cells[1].firstElementChild.firstElementChild;
+        // const inpAtual = eleNewLine.cells[2].firstElementChild;
+        // const inpQuantidade = eleNewLine.cells[3].firstElementChild;
+
+
+        // //Impede de passar um valor maior que tem em estoque
+        // //------------------------------------------------------------------------------------------
+        // const checarEstoqueMinimo = ev => {
+        //     if (b.paraFloat(inpAtual.value) < b.paraFloat(inpQuantidade.value)) {
+        //         inpQuantidade.value = inpAtual.value;
+        //     }
+        // }
+        // inpQuantidade.addEventListener('input', checarEstoqueMinimo)
+
+
+        // //Se nao encontrar nenhum valor e sair do campo , limpa ele
+        // //------------------------------------------------------------------------------------------
+        // inpNome.addEventListener('focusout', resetarInvalido);
+        // inpNome.addEventListener('focus', resetarInvalido);
+        // function resetarInvalido(e) {
+        //     inpNome.value = "";
+        // }
+
+    }
 
 
 
