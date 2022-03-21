@@ -256,6 +256,18 @@ export function init(valueInit) {
             globalAtendimentoData = responseList["data"];
 
 
+            //Muda um conjunto de regras no layout na DOM de acordo com o status do atendimento
+            if (globalAtendimentoData.status == "Aberto") {
+                mudarLayoutParaAtendimentoAberto(globalAtendimentoData)
+
+            } else if (globalAtendimentoData.status == "Concluido") {
+
+                mudarLayoutParaAtendimentoConcluido(globalAtendimentoData)
+            }
+
+
+
+            //Preenche os campos do atendimento com os dados do banco
             preencherCamposAtendimento(responseList["data"])
 
         });
@@ -268,31 +280,31 @@ export function init(valueInit) {
     //=======================================================================================
     function preencherCamposAtendimento(atendimentoData) {
 
-        //Muda um conjunto de regras no layout na DOM de acordo com o status do atendimento
-        if (atendimentoData.status == "Aberto") {
-            mudarLayoutParaAtendimentoAberto(atendimentoData)
-
-        } else if (atendimentoData.status == "Concluido") {
-
-            mudarLayoutParaAtendimentoConcluido(atendimentoData)
-        }
 
 
-        //Preenche os dados do atendimento
-        //----------------------------------------------------
+
+        //Preenche os dados do atendimento não relacionais
+        //-------------------------------------------------------------
         b.form.preencher(formModalAtendimento, atendimentoData);
 
 
         //Preenche os dados sobre o paciente na tela
-        // ---------------------------------------------------
+        // ------------------------------------------------------------
         //Retorna o valor do objeto e não sua referencia
         const pacienteData = b.objectValue(atendimentoData);
         pacienteData.id = atendimentoData.pacientes_id;
 
+        //Campos das Divs
         inserirDadosPaciente(pacienteData);
+        //Campo Nome
         inpNomePaciente.value = atendimentoData.nome;
 
-        // console.log(atendimentoData);
+
+        //Preenche os Procedimentos
+        // ------------------------------------------------------------
+
+
+
 
     }
 
@@ -459,7 +471,7 @@ export function init(valueInit) {
             // const dataFormModalAtendimento = b.form.extractValues(formModalAtendimento);
 
             // b.crud.custom("editarAtendimento", "atendimentos" )
-            
+
             b.crud.editar(dataFormModalAtendimento, "atendimentos", response => {//async   
                 b.modal.fechar()
 
@@ -479,12 +491,12 @@ export function init(valueInit) {
 
             const formValuesAll = {};
 
-           formValuesAll.item =  b.form.extractValuesAll2(formModalAtendimento);
+            formValuesAll.item = b.form.extractValuesAll2(formModalAtendimento);
 
             console.log(formValuesAll);
 
 
-            
+
             b.crud.editarRelacional(formValuesAll, "atendimentos", "atendimentos_has_procedimentos", responseItemSalvo => {//async    
                 b.modal.fechar()
 
@@ -633,7 +645,7 @@ export function init(valueInit) {
             globalListaProcedimentosDataAsync = response["data"];
 
 
-            adicionarLinhaItem(response["data"]);
+            adicionarProcedimento(response["data"]);
         })
 
 
@@ -651,7 +663,74 @@ export function init(valueInit) {
 
     //Adiciona uma linha vazia de procedimentos
     //------------------------------------------------------------------------------------
-    function adicionarLinhaItem(listaProdutosAsync) {
+    function adicionarProcedimento(listaProcedimentos) {
+
+
+
+        //Formata os dados de estoque para inserir em movimentações.
+        let data = {};
+        data = dataInit.preencherData.map(element => {
+            data = element;
+
+            //Mudar estoque total para estoque
+            data.produtos_id = element.id;
+            data.estoque_atual = element.estoque_total;
+            data.quantidade = element.estoque_total;
+
+            return data;
+        });
+
+
+
+        //insere uma linha de inputs recebendo a tabela, e os dados para o autocomplete
+        b.table.insertLineInputFilled2(elTbody_TableInput,
+            {
+                data: data,
+                afterCreateNewLine: (eleNewLine) => {
+
+                    const inpNome = eleNewLine.cells[1].firstElementChild.firstElementChild;
+
+                    // //Se nao encontrar nenhum valor e sair do campo , limpa ele
+                    // //------------------------------------------------------------------------------------------
+                    inpNome.addEventListener('focusout', resetarInvalido);
+                    inpNome.addEventListener('focus', resetarInvalido);
+                    function resetarInvalido(e) {
+                        inpNome.value = "";
+                    }
+
+
+
+                },
+                autoComplete: {
+                    data: globalListaProcedimentosDataAsync,
+                    afterSelect: (selectedKeyData, linha) => {
+
+                        //Regras aplicadas apos selecionar um item da lista do autocomplete
+                        //---------------------------------------------------------------------
+                        //Pega os valores do item selecionado na lista
+                        const procedimentoData = selectedKeyData.selection.value;
+
+                        //Auto Preenche os campos quando seleciona um item na lista
+                        linha.cells[0].firstElementChild.value = procedimentoData.id;
+                        linha.cells[2].firstElementChild.value = "1,00";
+                        // Seleciona o proximo input automaticamente apos escolher um item
+                        linha.cells[2].firstElementChild.select();
+                        // dataSelecionado.event.path[3].nextElementSibling.firstElementChild.select();
+
+                    }
+                },
+
+            });
+
+
+    }
+
+
+
+
+    //Adiciona uma linha vazia de procedimentos
+    //------------------------------------------------------------------------------------
+    function adicionarProcedimento2(listaProcedimentos) {
 
         //insere uma linha de inputs recebendo a tabela, e os dados para o autocomplete
         const eleNewLine = b.table.insertLineInput2(elTbody_TableInput, globalListaProcedimentosDataAsync, (selectedKeyData, linha) => {
@@ -671,22 +750,7 @@ export function init(valueInit) {
 
 
 
-
-
         const inpNome = eleNewLine.cells[1].firstElementChild.firstElementChild;
-        // const inpAtual = eleNewLine.cells[2].firstElementChild;
-        // const inpQuantidade = eleNewLine.cells[3].firstElementChild;
-
-
-        // //Impede de passar um valor maior que tem em estoque
-        // //------------------------------------------------------------------------------------------
-        // const checarEstoqueMinimo = ev => {
-        //     if (b.paraFloat(inpAtual.value) < b.paraFloat(inpQuantidade.value)) {
-        //         inpQuantidade.value = inpAtual.value;
-        //     }
-        // }
-        // inpQuantidade.addEventListener('input', checarEstoqueMinimo)
-
 
         // //Se nao encontrar nenhum valor e sair do campo , limpa ele
         // //------------------------------------------------------------------------------------------
@@ -701,7 +765,24 @@ export function init(valueInit) {
 
 
 
-    // const formValuesAll = b.form.extractValuesAll(form);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
