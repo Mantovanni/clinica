@@ -477,7 +477,9 @@ export function init(valueInit) {
 
         if (validarForm(formModalAtendimento)) {
 
-            const formValuesAll = b.form.extractValuesAll(formModalAtendimento);
+            const formValuesAll = {};
+
+           formValuesAll.item =  b.form.extractValuesAll2(formModalAtendimento);
 
             console.log(formValuesAll);
 

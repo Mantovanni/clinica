@@ -84,9 +84,9 @@ CREATE TABLE `atendimentos` (
   `status` varchar(45) DEFAULT NULL COMMENT 'aberto\nfechado',
   `recebido` varchar(45) DEFAULT NULL COMMENT 'sim\nnao',
   `registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `anamnese` varchar(3000) DEFAULT NULL,
-  `atestado` varchar(3000) DEFAULT NULL,
-  `receituario` varchar(3000) DEFAULT NULL,
+  `anamnese` varchar(245) DEFAULT NULL,
+  `atestado` varchar(245) DEFAULT NULL,
+  `receituario` varchar(245) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_atendimentos_1_idx` (`pacientes_id`),
   KEY `fk_atendimentos_2_idx` (`profissionais_id`),
@@ -94,7 +94,7 @@ CREATE TABLE `atendimentos` (
   CONSTRAINT `fk_atendimentos_1` FOREIGN KEY (`pacientes_id`) REFERENCES `pacientes` (`id`),
   CONSTRAINT `fk_atendimentos_2` FOREIGN KEY (`profissionais_id`) REFERENCES `profissionais` (`id`),
   CONSTRAINT `fk_atendimentos_6` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,8 +103,38 @@ CREATE TABLE `atendimentos` (
 
 LOCK TABLES `atendimentos` WRITE;
 /*!40000 ALTER TABLE `atendimentos` DISABLE KEYS */;
-INSERT INTO `atendimentos` VALUES (1,1,NULL,1,'2022-03-15 01:05:49',NULL,NULL,NULL,'2022-03-15 01:05:49','','',''),(2,1,NULL,1,'2022-03-15 01:06:24',NULL,NULL,NULL,'2022-03-15 01:06:24','','',''),(3,1,NULL,1,'2022-03-15 01:09:30',NULL,NULL,NULL,'2022-03-15 01:09:30','','',''),(4,1,NULL,1,'2022-03-15 01:15:17',NULL,NULL,NULL,'2022-03-15 01:15:17','a','b','c'),(5,2,NULL,1,'2022-03-15 02:32:59',NULL,NULL,NULL,'2022-03-15 02:32:59','','',''),(6,3,NULL,1,'2022-03-15 02:34:03',NULL,NULL,NULL,'2022-03-15 02:34:03','','',''),(7,3,NULL,1,'2022-03-15 02:44:58',NULL,NULL,NULL,'2022-03-15 02:44:58','','',''),(8,2,NULL,1,'2022-03-15 03:18:16',NULL,'Aberto',NULL,'2022-03-15 03:18:16',NULL,NULL,NULL),(9,1,NULL,1,'2022-03-15 03:18:44',NULL,'Aberto',NULL,'2022-03-15 03:18:44',NULL,NULL,NULL),(10,1,NULL,1,'2022-03-15 05:25:07',NULL,'Aberto',NULL,'2022-03-15 05:25:07',NULL,NULL,NULL),(11,1,NULL,1,'2022-03-15 05:25:07',NULL,'Aberto',NULL,'2022-03-15 05:25:07',NULL,NULL,NULL),(12,1,NULL,1,'2022-03-15 05:25:22',NULL,'Aberto',NULL,'2022-03-15 05:25:22',NULL,NULL,NULL),(13,1,NULL,1,'2022-03-15 05:25:29',NULL,'Aberto',NULL,'2022-03-15 05:25:29',NULL,NULL,NULL),(14,2,NULL,1,'2022-03-15 05:26:39',NULL,'Aberto',NULL,'2022-03-15 05:26:39',NULL,NULL,NULL),(15,3,NULL,1,'2022-03-15 05:33:53',NULL,'Aberto',NULL,'2022-03-15 05:33:53',NULL,NULL,NULL),(16,1,NULL,1,'2022-03-15 05:40:21',NULL,'Aberto',NULL,'2022-03-15 05:40:21',NULL,NULL,NULL),(17,1,NULL,1,'2022-03-15 05:54:11',NULL,'Aberto',NULL,'2022-03-15 05:54:11',NULL,NULL,NULL),(18,1,NULL,1,'2022-03-15 05:57:30',NULL,'Aberto',NULL,'2022-03-15 05:57:30',NULL,NULL,NULL),(19,3,NULL,1,'2022-03-15 06:01:27',NULL,'Aberto',NULL,'2022-03-15 06:01:27',NULL,NULL,NULL),(20,1,NULL,1,'2022-03-15 06:02:15',NULL,'Aberto',NULL,'2022-03-15 06:02:15','','',''),(21,2,NULL,1,'2022-03-15 06:03:09',NULL,'Aberto',NULL,'2022-03-15 06:03:09','asd','gfg',''),(22,1,NULL,1,'2022-03-15 06:20:11',NULL,'Aberto',NULL,'2022-03-15 06:20:11','','asdasd',''),(23,2,NULL,1,'2022-03-15 06:20:55',NULL,'Concluido',NULL,'2022-03-15 06:20:55','teste','asdasd','');
+INSERT INTO `atendimentos` VALUES (1,1,NULL,1,'2022-03-20 18:37:58',NULL,'Aberto',NULL,'2022-03-20 18:37:58','rwerwer','',''),(2,2,NULL,1,'2022-03-20 18:46:17',NULL,'Concluido',NULL,'2022-03-20 18:46:17','','',''),(3,1,NULL,1,'2022-03-20 19:37:16',NULL,'Concluido',NULL,'2022-03-20 19:37:16','asdasdasd','',''),(4,3,NULL,1,'2022-03-20 19:38:35',NULL,'Concluido',NULL,'2022-03-20 19:38:35','','',''),(5,3,NULL,1,'2022-03-21 04:25:30',NULL,'Aberto',NULL,'2022-03-21 04:25:30',NULL,NULL,NULL),(6,4,NULL,1,'2022-03-21 04:36:41',NULL,'Aberto',NULL,'2022-03-21 04:36:41','','','');
 /*!40000 ALTER TABLE `atendimentos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `atendimentos_has_procedimentos`
+--
+
+DROP TABLE IF EXISTS `atendimentos_has_procedimentos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `atendimentos_has_procedimentos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `atendimentos_id` int NOT NULL,
+  `procedimentos_id` int NOT NULL,
+  `quantidade` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_atendimentos_has_procedimentos_1_idx` (`procedimentos_id`),
+  KEY `fk_atendimentos_has_procedimentos_2_idx` (`atendimentos_id`),
+  CONSTRAINT `fk_atendimentos_has_procedimentos_1` FOREIGN KEY (`procedimentos_id`) REFERENCES `procedimentos` (`id`),
+  CONSTRAINT `fk_atendimentos_has_procedimentos_2` FOREIGN KEY (`atendimentos_id`) REFERENCES `atendimentos` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `atendimentos_has_procedimentos`
+--
+
+LOCK TABLES `atendimentos_has_procedimentos` WRITE;
+/*!40000 ALTER TABLE `atendimentos_has_procedimentos` DISABLE KEYS */;
+INSERT INTO `atendimentos_has_procedimentos` VALUES (1,6,1,'1'),(2,6,2,'1');
+/*!40000 ALTER TABLE `atendimentos_has_procedimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -327,7 +357,7 @@ CREATE TABLE `itens` (
   `registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `unidade` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=244 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=245 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -336,7 +366,7 @@ CREATE TABLE `itens` (
 
 LOCK TABLES `itens` WRITE;
 /*!40000 ALTER TABLE `itens` DISABLE KEYS */;
-INSERT INTO `itens` VALUES (241,'Bolo de Fubá',NULL,NULL,NULL,'2021-05-09 04:31:36','Un'),(242,'Queijo',NULL,NULL,NULL,'2021-05-09 04:54:55','Kg'),(243,'Bolo de Queijo',NULL,NULL,NULL,'2021-05-09 06:05:14','Un');
+INSERT INTO `itens` VALUES (241,'Bolo de Fubá',NULL,NULL,NULL,'2021-05-09 04:31:36','Un'),(242,'Queijo',NULL,NULL,NULL,'2021-05-09 04:54:55','Kg'),(243,'Bolo de Queijo',NULL,NULL,NULL,'2021-05-09 06:05:14','Un'),(244,'adasdsad',NULL,NULL,NULL,'2022-03-21 04:39:41','Un');
 /*!40000 ALTER TABLE `itens` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -376,7 +406,7 @@ CREATE TABLE `itens_has_produtos` (
   KEY `fk_itens_has_produtos_itens1_idx` (`itens_id`),
   CONSTRAINT `fk_itens_has_produtos_itens1` FOREIGN KEY (`itens_id`) REFERENCES `itens` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_itens_has_produtos_produtos` FOREIGN KEY (`produtos_id`) REFERENCES `produtos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=982 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=987 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -385,7 +415,7 @@ CREATE TABLE `itens_has_produtos` (
 
 LOCK TABLES `itens_has_produtos` WRITE;
 /*!40000 ALTER TABLE `itens_has_produtos` DISABLE KEYS */;
-INSERT INTO `itens_has_produtos` VALUES (976,82,242,1),(977,84,243,5),(978,81,243,6),(979,82,243,3),(980,84,241,1),(981,81,241,3);
+INSERT INTO `itens_has_produtos` VALUES (976,82,242,1),(977,84,243,5),(978,81,243,6),(979,82,243,3),(982,84,241,1),(983,81,241,3),(985,79,244,1),(986,80,244,1);
 /*!40000 ALTER TABLE `itens_has_produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -472,7 +502,7 @@ CREATE TABLE `procedimentos` (
   `nome` varchar(240) DEFAULT NULL,
   `valor` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -481,6 +511,7 @@ CREATE TABLE `procedimentos` (
 
 LOCK TABLES `procedimentos` WRITE;
 /*!40000 ALTER TABLE `procedimentos` DISABLE KEYS */;
+INSERT INTO `procedimentos` VALUES (1,'Consulta Clínica',200),(2,'Aplicação de Soro',150);
 /*!40000 ALTER TABLE `procedimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -739,4 +770,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-15  8:39:54
+-- Dump completed on 2022-03-21  1:52:43

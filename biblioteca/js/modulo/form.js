@@ -149,6 +149,83 @@ export function extractValuesAll(form) {
 
 
 
+//----------------------------------------------------------------------------------
+//Extrai os valores dos inputs do form e coloca em um objeto com os parâmetros igual
+//o atributo name do elementos
+export function extractValuesAll2(form) {
+
+    const formValues = {};
+    formValues.itemRelacional = [];
+
+    let item = {};
+    // Trasnforma o no de lementos em um array de elementos para usar foreach
+    Array.from(form).forEach(element => {
+
+        // console.log(element);
+        //Remove os botoes do array de valores do form
+        if (element.nodeName != "BUTTON" && element.dataset.ignore !== "true") {//element.dataset.igrnore = true, ignora so para extrair
+            // if (element.nodeName != "BUTTON" && !element.dataset.extract) {
+
+            let valor = "";
+
+            //Fiiltra valor-------------------------------------------------
+            switch (element.dataset.type) {
+                case "coin"://Formata de Moeda para Float
+                    valor = b.paraFloat(element.value);
+
+                    // console.log(valor);
+                    break;
+                case "coin-real"://Formata de Moeda para Float
+                    valor = b.paraFloat(element.value);
+                    break;
+                case "quantia"://Formata 
+                    valor = b.paraFloat(element.value);
+                    break;
+                // case "ignore"://Campo e ignorado 
+
+                //     break;
+                case "float":// Se o campo estiver vazio ""(String), converte para um numero 0 float, evita erro no DB
+                    if (element.value === "") {
+                        valor = 0;
+                    } else {
+                        valor = element.value;
+                    }
+                    break;
+                default:
+                    valor = element.value;
+                    break;
+            }
+
+            // if (element.dataset.type = "ignore") {
+
+            //Armazena valor-----------------------------------------------------------
+            if (element.dataset.relacional) {
+
+                const numero = element.dataset.relacional;
+
+                //Passa o valor para o objeto
+                item[element.name] = valor;
+                // formValues.itemRelacional[numero] = b.objectValue(item);
+                formValues.itemRelacional[numero] = Object.assign({}, item);
+
+
+
+            } else {
+                formValues[element.name] = valor;
+
+            }
+
+            // }
+        }
+
+    });
+
+    return formValues;
+
+}
+
+
+
 
 //=================================================================================================================
 /**
