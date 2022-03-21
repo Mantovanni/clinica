@@ -52,20 +52,27 @@ export function init(valueInit) {
 
     //Procedimentos
     //----------------------------------------------------------------
-    const btnAdicionarProcedimento = document.querySelector('#btn-adicionar-procedimento');
-    const btnLimparLista = document.querySelector('#btn-limparlista');
+    const btnAdicionarProcedimento = document.querySelector('#btn-adicionar_procedimento');
+    const btnLimparLista = document.querySelector('#btn-limpar_lista');
+    const elTbody_TableInput = document.querySelector('#table-input_tbody');
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     //MASCARAS
     //==========================================================================================
     // Aplica mascaras no form
     b.form.mask(formModalAtendimento);
-
-
-
-
-KSJDFHJKSDHFKJSDLFHJSDF
-
 
 
 
@@ -91,6 +98,13 @@ KSJDFHJKSDHFKJSDLFHJSDF
 
 
     // b.form.preencher(formModalAtendimento, valueInit.dadosItem);
+
+
+
+
+
+
+
 
 
 
@@ -134,7 +148,7 @@ KSJDFHJKSDHFKJSDLFHJSDF
         if (globalAtendimentoData.status == "Aberto") {
             concluirAtendimento();
         } else if (globalAtendimentoData.status == "Concluido") {
-            
+
             reabrirAtendimento();
 
         }
@@ -163,6 +177,41 @@ KSJDFHJKSDHFKJSDLFHJSDF
         e.preventDefault();
 
     })
+
+
+
+
+    //Procedimentos
+    //=============================================================================================
+    //Botão - Adicionar Procedimento
+    //--------------------------------------------------------------------
+    btnAdicionarProcedimento.addEventListener('click', e => {
+        e.preventDefault();
+
+        adicionarLinhaItem();
+    })
+
+
+    btnLimparLista.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        //Limpa as linhas
+        elTbody_TableInput.innerHTML = "";
+
+        // /Adiciona uma Linha 
+        adicionarLinhaItem();
+    });
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -199,11 +248,11 @@ KSJDFHJKSDHFKJSDLFHJSDF
         //Função que busca no banco todos os dados daquele atendimentos nas tabelas relacionadas
         b.crud.custom("carregarDadosCompletosAtendimentoById", "atendimentos", data, responseList => {  //async    
 
-            
+
 
             //Coloca em uma variável global os dados do paciente.
             globalAtendimentoData = responseList["data"];
-            
+
 
             preencherCamposAtendimento(responseList["data"])
 
@@ -218,11 +267,11 @@ KSJDFHJKSDHFKJSDLFHJSDF
     function preencherCamposAtendimento(atendimentoData) {
 
         //Muda um conjunto de regras no layout na DOM de acordo com o status do atendimento
-        if (atendimentoData.status == "Aberto") {        
+        if (atendimentoData.status == "Aberto") {
             mudarLayoutParaAtendimentoAberto(atendimentoData)
 
         } else if (atendimentoData.status == "Concluido") {
-            
+
             mudarLayoutParaAtendimentoConcluido(atendimentoData)
         }
 
@@ -547,11 +596,11 @@ KSJDFHJKSDHFKJSDLFHJSDF
     //==============================================================================================================
 
     //------------------------------------------------------------------------------------
-    //Adiciona uma linha vazia
+    //Adiciona uma linha vazia de procedimentos
     function adicionarLinhaItem(listaProdutosAsync) {
 
         //insere uma linha de inputs recebendo a tabela, e os dados para o autocomplete
-        const eleNewLine = b.table.insertLineInput(elTbody_TableInput, listaProdutosAsync, (dataSelecionado, linha) => {
+        const eleNewLine = b.table.insertLineInput2(elTbody_TableInput, listaProdutosAsync, (dataSelecionado, linha) => {
 
             //Pega os valores o item selecionado na lista
             const itemSelecionado = dataSelecionado.selection.value;
