@@ -85,16 +85,18 @@ export function insertSearch(inpPesquisar, tbody) {
 
 
 
-
-//============================================================================================================
+//Cria as linhas de inputs na tabela de acordo com as regras no data-set aplicada no cabeçalho,
+//essas regras ja determinam a formatação da tabela e também como serão criados os inputs.
+//==================================================================================================================
+//==================================================================================================================
 /**
        * Recebe um elemento Tbody ou TR para adicionar uma ou mais linhas ou editar uma llinha da tabela com os dados passado por um Objeto
        * @param {HTMLTableElement} elTable Recebe um elemento Tbody ou TR para adicionar uma ou mais linhas ou editar uma llinha
        * @param {object} dados Um objeto com os valores/data de uma ou mais linhas
-       * @param {string} nometabelaDoBanco Nome da tabela no banco, para as funções de excluir e editar
+       
        * @returns {HTMLTableElement} Retorna a referencia para a linha criada
        */
- export function insertLineInput2(elTable, dataAutocomplete, afterSelectAutoComplete) {//Espera receber um TBODY
+export function insertLineInput2(elTable, dataAutocomplete, afterSelectAutoComplete) {//Espera receber um TBODY
 
 
     //Array de retorno da função
@@ -103,7 +105,8 @@ export function insertSearch(inpPesquisar, tbody) {
     //Cria uma linha para manipular
     const elNovaLinha = document.createElement("tr")
 
-    //Numeração das ids das linhas----------------------------------------------------------
+    //Numeração das ids das linhas
+    // =====================================================================================================
     const firstLine = elTable.lastElementChild;
     if (firstLine) {
         elNovaLinha.dataset.id = b.paraFloat(firstLine.dataset.id) + 1;
@@ -116,31 +119,34 @@ export function insertSearch(inpPesquisar, tbody) {
     elTable.appendChild(elNovaLinha);
 
 
-    //Cria as células e os inputs dentro delas na tabela
-    //---------------------------------------------------------------------------------------------
+
+
+    //Cria as células e cria os inputs dentro delas na tabela
+    // =====================================================================================================
     //Serve para agrupar os inputs da mesma linha , para quando for usar a função de extrair dados do form
     // let groupLine = 1;
 
-    //Pega a linha <tr> com cabeçalho na tabela
-    const cabecalho = elTable.parentNode.querySelector("thead tr");//Espera receber um TBODY
-    console.log(cabecalho);
-    Array.from(cabecalho.cells).forEach(element => {
+    //Seleciona a linha<tr> correspondente ao cabeçalho na tabela
+    const elTrCabecalho = elTable.parentNode.querySelector("thead tr");
+    //Varre cada célula do cabeçalho
+    Array.from(elTrCabecalho.cells).forEach(element => {
 
-        // b.findElArrayInObject(cabecalho.cells, dadosItem, (element, key) => {
+        // b.findElArrayInObject(elTrCabecalho.cells, dadosItem, (element, key) => {
 
 
+        //Cria as linhas de inputs na tabela de acordo com as regras no data-set aplicada no cabeçalho
+        // =====================================================================================================
 
-        // ===================================================================================================================
-        //Cria e insere a celula --------------------------------------------------------------------------------
-        elNovaLinha.insertAdjacentHTML("beforeend", `
-                <td class="${element.dataset.class}"data-name="${element.dataset.name}">                   
-                    <input class="input-default" type="text" name="${element.dataset.name}" autocomplete="lala" 
-                    id="item-${element.dataset.name}-${elNovaLinha.dataset.id}"  data-relacional="${elNovaLinha.dataset.id}" required"></input>                  
-                </td>`);
+        //Cria e insere a célula na linha nova --------------------------------------------------------------------------------
+        elNovaLinha.insertAdjacentHTML("beforeend",
+            `<td class="${element.dataset.class}"data-name="${element.dataset.name}">                   
+            <input class="input-default" type="text" name="${element.dataset.name}" autocomplete="lala" 
+            id="item-${element.dataset.name}-${elNovaLinha.dataset.id}"  data-relacional="${elNovaLinha.dataset.id}" required"></input>                  
+        </td>`);
 
 
         //------------------------------------------------------------------------------------------------------
-        //Pega a celula td e o seu input recem criada da linha para aplicar regras especificas.
+        //Seleciona a célula<td> e o seu input recém criados da linha para aplicar regras especificas.
         const tdAtual = elNovaLinha.lastElementChild;
         // const inpAtual = elNovaLinha.querySelector(`#item-${element.dataset.name}-${elNovaLinha.dataset.id}`)
         const inpAtual = elNovaLinha.lastElementChild.firstElementChild;
@@ -149,55 +155,13 @@ export function insertSearch(inpPesquisar, tbody) {
 
 
 
-        //format
-        //Formatar o valore recebido-------------------------------------------------------------------------------
-        //Passa a o atributo de formatação da Celula para o input
-        switch (element.dataset.format) {
-            case "coin":
-                inpAtual.value = b.paraMoeda(0);
-                inpAtual.dataset.type = "coin";
-                break;
 
 
-            case "coin-real":
-                inpAtual.value = b.paraMoedaReal(0);
-                inpAtual.dataset.type = "coin-real";
-                break;
+        //REGRAS - são adicionados nos atributos da célula e do input
+        //=========================================================================================================
 
-
-            case "date":
-                inpAtual.value = b.formatDataISOforDataUser()
-                inpAtual.dataset.type = "date";
-
-
-            default:
-                break;
-        }
-
-
-
-
-        //Insere atribuos html
-        //--------------------------------------------------------------------------------------------------
-        //Passa a o atributo de formatação da Celula para o input
-        switch (element.dataset.attr) {
-            case "disabled":
-                inpAtual.setAttribute("disabled", "disabled");
-                // inpAtual.disabled = "true" ;
-                break;
-
-            case "coin-real":
-
-                break;
-
-        }
-
-
-
-
-
-        //type
-        //----------------------------------------------------------------------------------------------------------
+        //TYPE - normalmente aplicado na célula (tdAtual)
+        //---------------------------------------------------------------------------------------------------
         //Verifica o tipo de campo 
         switch (element.dataset.type) {
             case "esconder":
@@ -213,8 +177,8 @@ export function insertSearch(inpPesquisar, tbody) {
                 tdAtual.insertAdjacentHTML("beforeend", `
                 <button class="btn-excluir-linha" data-name="excluir">${b.ico.lixeira}</button>`);
 
-                //BOTAO EXCLUIR
-                //-------------------------------------------------------------------------------------------------
+                //BOTÃO EXCLUIR
+                //--------------------------------------------------------------------------------------------
                 const botaoExcluir = elNovaLinha.querySelector('[data-name="excluir"]');
                 botaoExcluir.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -246,13 +210,62 @@ export function insertSearch(inpPesquisar, tbody) {
 
                     });
                 }
-
-
-
                 break;
+
+
+
             default:
                 break;
         }
+
+
+
+
+        //FORMAT - no input        
+        //---------------------------------------------------------------------------------------------------------
+        //Adiciona as regras de formatação no inputs para serem usadas nos métodos do FORM
+        //Adiciona alguns valores padrões em alguns tipos de formato
+        switch (element.dataset.format) {
+            case "coin":
+                inpAtual.value = b.paraMoeda(0);
+                inpAtual.dataset.type = "coin"; //mudar na função do FORM type para format
+                break;
+
+
+            case "coin-real":
+                inpAtual.value = b.paraMoedaReal(0);
+                inpAtual.dataset.type = "coin-real";
+                break;
+
+
+            case "date":
+                inpAtual.value = b.formatDataISOforDataUser()
+                inpAtual.dataset.type = "date";
+
+
+            default:
+                break;
+        }
+
+
+
+
+        //ATTR - no input
+        //Passa algum atributo pa o input dentro da célula
+        //---------------------------------------------------------------------------------------------------------
+        //Passa a o atributo de formatação da Célula para o input
+        switch (element.dataset.attr) {
+            case "disabled":
+                inpAtual.setAttribute("disabled", "disabled");
+                // inpAtual.disabled = "true" ;
+                break;
+
+            case "coin-real":
+
+                break;
+
+        }
+
 
 
 
@@ -266,12 +279,12 @@ export function insertSearch(inpPesquisar, tbody) {
 
 
         // ----------------------------------------------------------------------------------------------------
-        //Verifica se o o campo input da celula vai ter a função de auto complete
-        if (element.dataset.autocomplete) {
+        //Verifica se o o campo input da célula vai ter a função de auto complete
+        // if (element.dataset.autocomplete) {
 
 
 
-        }
+        // }
 
 
     });//foreach
@@ -279,6 +292,7 @@ export function insertSearch(inpPesquisar, tbody) {
 
 
     // groupLine++;
+    //Modificar o método mask para se basear no dataset.format e não no dataset-type
     b.form.mask(elNovaLinha)
 
     // linhasCriadas = elNovaLinha

@@ -75,7 +75,7 @@ export function ativar(seletor, data, callBackFunction) {
             // }
         },
         searchEngine: "strict",
-        placeHolder: "Buscar por produto.",
+        placeHolder: "Digite para buscar...",
         debounce: 100,
         resultsList: {
             noResults: (list, query) => {

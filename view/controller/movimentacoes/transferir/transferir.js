@@ -398,7 +398,7 @@ export function init(dataInit) {
 
 
 
-        //insere uma lnha de inputs recebendo a taqbela, e os dados para o autocomplete
+        //insere uma linha de inputs recebendo a tabela, e os dados para o autocomplete
         b.table.insertLineInputFilled(elTbody_TableInput, {
             data: data,
             afterCreateNewLine: (eleNewLine) => {
@@ -408,7 +408,7 @@ export function init(dataInit) {
                 const inpQuantidade = eleNewLine.cells[3].firstElementChild;
 
 
-                //Inpede de passar um valor maior que tem em estoque
+                //Impede de passar um valor maior que tem em estoque
                 //------------------------------------------------------------------------------------------
                 const checarEstoqueMinimo = ev => {
                     if (b.paraFloat(inpAtual.value) < b.paraFloat(inpQuantidade.value)) {

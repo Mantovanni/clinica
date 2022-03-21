@@ -12,6 +12,7 @@ export function init(valueInit) {
     //========================================================================
     //Lista usado para o autocomplete
     let listaPacientesAsync = [];
+    let globalListaProcedimentosDataAsync = [];
     let pacienteSelected = [];
     let atendimentoAberto = false;
     let globalAtendimentoData = {};
@@ -95,6 +96,7 @@ export function init(valueInit) {
     }
 
     buscarListaDePacientes();
+    buscarListaDeProcedimentos();
 
 
     // b.form.preencher(formModalAtendimento, valueInit.dadosItem);
@@ -138,7 +140,7 @@ export function init(valueInit) {
 
     //Botões
     //=============================================================================================
-    //Botão - Abrir Atendimento
+    //Botão - Abrir / Concluir - Atendimento
     //--------------------------------------------------------------------
     btnAtendimento.addEventListener('click', e => {
         //Cancela o evento Default do botão de ativar/submit o form     
@@ -325,7 +327,7 @@ export function init(valueInit) {
 
 
     //Busca no banco de dados a lista dos pacientes
-    //Criar uma busca custom, onde ja tenha a quantidade de atendimentos e o ultimo 
+    //Criar uma busca custom, onde ja tenha a quantidade de atendimentos e o ultimo atendimentos
     //=======================================================================================
     function buscarListaDePacientes() {
         b.crud.listar("pacientes", response => { //async 
@@ -449,7 +451,7 @@ export function init(valueInit) {
     //Salva todos as alterações do atendimento no banco mais nao muda o seu status para Concluído ele continua Aberto
     //salvarAtendimento recebe um objeto com os dados do atendimento como parâmetro.
     //=======================================================================================
-    function salvarAtendimento(dataFormModalAtendimento) {
+    function salvarAtendimento2(dataFormModalAtendimento) {//mudar para editarAtendimento
         //Pega o FORM que é o target do evento submit
 
         if (validarForm(formModalAtendimento)) {
@@ -457,8 +459,31 @@ export function init(valueInit) {
             // const dataFormModalAtendimento = b.form.extractValues(formModalAtendimento);
 
             // b.crud.custom("editarAtendimento", "atendimentos" )
-            console.log(dataFormModalAtendimento);
+            
             b.crud.editar(dataFormModalAtendimento, "atendimentos", response => {//async   
+                b.modal.fechar()
+
+            }).then(() => {
+                b.modal.fechar()
+            });
+
+        }
+    }
+
+
+
+    function salvarAtendimento(dataFormModalAtendimento) {//mudar para editarAtendimento
+        //Pega o FORM que é o target do evento submit
+
+        if (validarForm(formModalAtendimento)) {
+
+            const formValuesAll = b.form.extractValuesAll(formModalAtendimento);
+
+            console.log(formValuesAll);
+
+
+            
+            b.crud.editarRelacional(formValuesAll, "atendimentos", "atendimentos_has_procedimentos", responseItemSalvo => {//async    
                 b.modal.fechar()
 
             }).then(() => {
@@ -473,7 +498,7 @@ export function init(valueInit) {
     // Salva e muda o Status do atendimento para Concluído
     //=======================================================================================
     function concluirAtendimento() {
-        console.log("concluirAtendimento");
+        // console.log("concluirAtendimento");
 
         const dataFormModalAtendimento = b.form.extractValues(formModalAtendimento);
 
@@ -488,6 +513,7 @@ export function init(valueInit) {
 
 
     // Muda o atendimento para status = Aberto
+    //Edita apenas o campo de status na tabela do atendimentos
     //=======================================================================================
     function reabrirAtendimento() {
 
@@ -595,23 +621,49 @@ export function init(valueInit) {
     //==============================================================================================================
     //==============================================================================================================
 
-    //------------------------------------------------------------------------------------
+    //Busca no banco de dados a lista dos procedimentos
+    //=======================================================================================
+    //OBSERVAÇÃO, LIBERAR o campo do procedimento so apos a lista de procedimentos retornar do banco
+    function buscarListaDeProcedimentos() {
+        b.crud.listar("procedimentos", response => { //async 
+
+
+            globalListaProcedimentosDataAsync = response["data"];
+
+
+            adicionarLinhaItem(response["data"]);
+        })
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
     //Adiciona uma linha vazia de procedimentos
+    //------------------------------------------------------------------------------------
     function adicionarLinhaItem(listaProdutosAsync) {
 
         //insere uma linha de inputs recebendo a tabela, e os dados para o autocomplete
-        const eleNewLine = b.table.insertLineInput2(elTbody_TableInput, listaProdutosAsync, (dataSelecionado, linha) => {
+        const eleNewLine = b.table.insertLineInput2(elTbody_TableInput, globalListaProcedimentosDataAsync, (selectedKeyData, linha) => {
 
-            //Pega os valores o item selecionado na lista
-            const itemSelecionado = dataSelecionado.selection.value;
+            //Regras aplicadas apos selecionar um item da lista do autocomplete
+            //---------------------------------------------------------------------
+            //Pega os valores do item selecionado na lista
+            const procedimentoData = selectedKeyData.selection.value;
 
             //Auto Preenche os campos quando seleciona um item na lista
-            linha.cells[0].firstElementChild.value = itemSelecionado.id;
-            linha.cells[2].firstElementChild.value = b.paraMoeda(itemSelecionado.estoque_total);//quantidade em estoque
-            linha.cells[3].firstElementChild.value = "1,00";
-
+            linha.cells[0].firstElementChild.value = procedimentoData.id;
+            linha.cells[2].firstElementChild.value = "1,00";
             // Seleciona o proximo input automaticamente apos escolher um item
-            linha.cells[3].firstElementChild.select();
+            linha.cells[2].firstElementChild.select();
             // dataSelecionado.event.path[3].nextElementSibling.firstElementChild.select();
         });
 
@@ -619,7 +671,7 @@ export function init(valueInit) {
 
 
 
-        // const inpNome = eleNewLine.cells[1].firstElementChild.firstElementChild;
+        const inpNome = eleNewLine.cells[1].firstElementChild.firstElementChild;
         // const inpAtual = eleNewLine.cells[2].firstElementChild;
         // const inpQuantidade = eleNewLine.cells[3].firstElementChild;
 
@@ -636,18 +688,18 @@ export function init(valueInit) {
 
         // //Se nao encontrar nenhum valor e sair do campo , limpa ele
         // //------------------------------------------------------------------------------------------
-        // inpNome.addEventListener('focusout', resetarInvalido);
-        // inpNome.addEventListener('focus', resetarInvalido);
-        // function resetarInvalido(e) {
-        //     inpNome.value = "";
-        // }
+        inpNome.addEventListener('focusout', resetarInvalido);
+        inpNome.addEventListener('focus', resetarInvalido);
+        function resetarInvalido(e) {
+            inpNome.value = "";
+        }
 
     }
 
 
 
 
-
+    // const formValuesAll = b.form.extractValuesAll(form);
 
 
 

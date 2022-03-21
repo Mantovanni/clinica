@@ -84,6 +84,7 @@ export function extractValuesAll(form) {
         // console.log(element);
         //Remove os botoes do array de valores do form
         if (element.nodeName != "BUTTON" && element.dataset.ignore !== "true") {//element.dataset.igrnore = true, ignora so para extrair
+            // if (element.nodeName != "BUTTON" && !element.dataset.extract) {
 
             let valor = "";
 
