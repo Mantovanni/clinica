@@ -49,16 +49,42 @@ class AtendimentosDAO
         $query .= " VALUES ('" . implode("', '", $data) . "') ";
 
 
-        if (mysqli_query(Database::connect(), $query)) {
-            //mysqli_insert_id - retorna a id criada nessa conexão junto com todos os outro valores
-            $data["id"] = mysqli_insert_id(Database::connect());
+        // if (mysqli_query(Database::connect(), $query)) {
+        //     //mysqli_insert_id - retorna a id criada nessa conexão junto com todos os outro valores
+        //     $data["id"] = mysqli_insert_id(Database::connect());
 
-            // Retorna os valores que foram recebidos e inseridos na tabela juntamente da Id criada no banco.
-            return $data;
-        } else {
-            echo "Erro - " . mysqli_error(Database::connect()) . "\n ||  QUERY: $query";
-            // return false;
-        }
+        //     // Retorna os valores que foram recebidos e inseridos na tabela juntamente da Id criada no banco.
+        //     return $data;
+        // } else {
+        //     echo "Erro - " . mysqli_error(Database::connect()) . "\n ||  QUERY: $query";
+        //     // return false;
+        // }
+
+
+
+        mysqli_query(Database::connect(), $query) or
+            die(mysqli_error(Database::connect()) . "\n || Query1: " . $query);
+
+        $data["id"] = mysqli_insert_id(Database::connect());
+
+    
+
+
+
+        //Cria o Faturamento com (status = Aberto) relacionado ao atendimento 
+        //===============================================================================================
+        $query =
+            "INSERT INTO pagamentos (`atendimentos_id`, `status`) 
+            VALUES (" . $data["id"] . ", 'Aberto');                                              
+            ";
+
+            mysqli_query(Database::connect(), $query) or
+            die(mysqli_error(Database::connect()) . "\n || Query2: " . $query);
+
+
+
+
+        return $data;
     }
 
 
@@ -207,7 +233,7 @@ class AtendimentosDAO
 
         $data = (array)$body->data;
 
-        $dataToSend["data"] = array();//Nao esta sendo usado, quando uma consulta nao retorna nada pra nao dar erro
+        $dataToSend["data"] = array(); //Nao esta sendo usado, quando uma consulta nao retorna nada pra nao dar erro
 
         $query =
             "SELECT 
@@ -296,14 +322,14 @@ class AtendimentosDAO
 
 
 
-     // Lista dados atendimentos com pacientes
+    // Lista dados atendimentos com pacientes
     //===========================================================================================================
     static function listarAtendimentosClientes()
     {
 
         // $data = (array)$body->data;
 
-        $dataToSend["data"] = array();//Nao esta sendo usado, quando uma consulta nao retorna nada pra nao dar erro
+        $dataToSend["data"] = array(); //Nao esta sendo usado, quando uma consulta nao retorna nada pra nao dar erro
 
         $query =
             "SELECT 

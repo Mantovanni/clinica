@@ -9,8 +9,8 @@ export function init() {
 
     //Globais
     //----------------------------------------------------------
-    const adicionarUrl = " ../view/atendimentos/adicionar/adicionar-atendimentos.html";
-    const urlJs = "../../../view/atendimentos/editar/editar-atendimentos.js";//Url partir do render.js
+    const adicionarUrl = " ../view/procedimentos/adicionar/adicionar-procedimentos.html";
+    const urlJs = "../../../view/procedimentos/adicionar/adicionar-procedimentos.js";//Url partir do render.js
 
 
     //Elements DOM
@@ -42,24 +42,19 @@ export function init() {
     //BTN - Adicionar
     //------------------------------------------------------
     btnAdicionar.addEventListener('click', function (e) {
-        b.modal.abrir("Novo Atendimento");
-        
+        b.modal.abrir("Adicionar Procedimento");
 
         // Passa o elemento Janela Modal para a função render.page 
        b.render.pageModal(adicionarUrl, urlJs);//async
-        //  b.render.page(b.modal.content, adicionarUrl, urlJs);//async
+        // b.render.page(b.modal.content, adicionarUrl, urlJs);//async
 
     });
     // btnAdicionar.click()
 
 
 
-//Jogar para biblioteca
-    const formatarData = (data) =>{
-        let d = new Date(data);
-        // Month retorna entre 0 e 11, por isso a adição +1
-        return `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`
-    }
+
+
 
 
 
@@ -73,15 +68,12 @@ export function init() {
 
 
         //Função que lista todas a linhas de uma tabela no banco e retorna os dados
-        b.crud.custom("listarAtendimentosClientes", "atendimentos", "",responseList => {  //async     
+        b.crud.listar("procedimentos", responseList => {  //async     
 
             //Extrai os dados da tabela e faz algum tratamento caso necessário.
             const dados = responseList["data"].map(response => {
                 //Adiciona um zero a esquerda da ID
                 response.id = response.id.padStart(2, '0');
-
-                response.abertura = formatarData(response.abertura);
-
                
                 return response;
             });
@@ -89,10 +81,10 @@ export function init() {
 
 
             //Função que cria a tabela na DOM utilizando os dados extraídos do banco.
-            b.render.lineInTableDesc(tbody, dados, "atendimentos");
+            b.render.lineInTable(tbody, dados, "procedimentos");
             
             //Insere a função de pesquisar na tabela
-            //OBS. Adicionar essa função de forma automática no futuro
+            //OBS. Adicionar essa função de forma automatica no futuro
             b.table.insertSearch(inpPesquisar, tbody);
         });
 

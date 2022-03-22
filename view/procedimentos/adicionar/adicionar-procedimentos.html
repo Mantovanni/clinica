@@ -1,0 +1,93 @@
+<form class="form-geral" id="form-modal">
+
+
+    <div class="form__main">
+
+
+        <button type="reset" class="btn-fechar-modal" id="btn-fechar-modal" data-class='fechar-modal'>X</button>
+
+        <!-- ID invisível para o editar -->
+        <div class="col-md-6 esconder">
+            <div class="grupo-label-input">
+                <label for="adicionar-id" class="label-adicionar-id">Id</label>
+                <input type="text" name="id" id="adicionar-id" autocomplete="off" data-type="text">
+            </div>
+        </div>
+
+
+        <!-- CAMPOS -->
+        <!-- ============================================================================================================ -->
+        <!-- ============================================================================================================ -->
+
+
+        <!-- Linha 01 -->
+        <!--------------------------------------------------------------------------------------------------->
+        <div class="col-md-12">
+            <div class="col-md-7">
+                <div class="grupo-label-input">
+                    <label for="nome">Nome</label>
+
+                    <input type="text" name="nome" id="nome" placeholder="Nome do procedimento" autocomplete="off" required>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="grupo-label-input">
+                    <label for="valor">Valor R$</label>
+                    <input type="text" name="valor" id="valor" placeholder="R$ 0,00" autocomplete="off" data-type="coin">
+
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+    
+        </div>
+      
+
+
+
+ 
+       
+
+
+
+
+        <!-- Linha 05 -->
+        <!--------------------------------------------------------------------------------------------------->
+        <div class="col-md-12">
+            <div class="grupo-label-input">
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" name="descricao" cols="30" rows="7"></textarea>
+                <span class="mensagem-validacao"></span>
+            </div>
+        </div>
+
+
+
+
+        <!-- linha --------------------------------------------------------------------------------------- -->
+
+        <!-- <div class="col-md-6">
+            <div class="grupo-label-input">
+                <label for="">Categoria</label>
+                <select id="categoria" name="categoria">
+                    <option value="">-</option>
+                </select>
+                <span class="mensagem-validacao"></span>
+            </div>
+        </div>
+
+    </div> -->
+
+
+        <!-- ================================================================================================= -->
+        <div class="form__footer">
+
+            <button type="reset" class="btn-cancelar" id="btn-cancelar-modal"
+                data-class='fechar-modal'>Cancelar</button>
+            <button type="submit" class="btn-salvar" id="btn-salvar-modal">Salvar</button>
+        </div>
+
+
+</form>

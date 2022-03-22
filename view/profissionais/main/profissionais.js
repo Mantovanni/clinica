@@ -49,7 +49,7 @@ export function init() {
         // b.render.page(b.modal.content, adicionarUrl, urlJs);//async
 
     });
-    btnAdicionar.click()
+    // btnAdicionar.click()
 
 
 

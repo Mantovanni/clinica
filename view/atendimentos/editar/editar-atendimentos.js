@@ -531,8 +531,29 @@ export function init(valueInit) {
 
         dataFormModalAtendimento.status = "Concluido";
 
-
+       
         salvarAtendimento(dataFormModalAtendimento);
+
+
+
+        //Altera o status do faturamentos
+        //-------------------------------------------------------------------------------
+        //pega a id do faturamento correspondente ao atendimento
+        b.crud.listarByKey("atendimentos_id",dataFormModalAtendimento.id, "pagamentos", response =>{
+
+            const faturamentoData = {};
+            faturamentoData.id = response["data"][0].id
+            faturamentoData.status = "Pendente";
+    
+            b.crud.editar(faturamentoData, "pagamentos", response => {//async   
+                // b.modal.fechar()
+    
+            })
+
+        } )
+
+
+
     }
 
 

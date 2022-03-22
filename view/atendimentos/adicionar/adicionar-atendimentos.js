@@ -220,6 +220,7 @@ export function init(valueInit) {
 
     //Salva todos as alterações do atendimento no banco mais nao muda o seu status para Concluído ele continua Aberto
     //=======================================================================================
+    //salvarEdicaoAtendimento
     function salvarAtendimento(dataFormModalAtendimento) {
         //Pega o FORM que é o target do evento submit
 
@@ -251,7 +252,35 @@ export function init(valueInit) {
 
         dataFormModalAtendimento.status = "Concluido";
 
+        console.log("teste2");
         salvarAtendimento(dataFormModalAtendimento);
+
+console.log("teste");
+        //Altera o status do faturamentos
+        //-------------------------------------------------------------------------------
+
+        //pega a id do faturamento correspondente ao atendimento
+        b.crud.listarByKey("atendimento_id",dataFormModalAtendimento.id, "pagamentos" response =>{
+
+
+            const faturamentoData = {};
+            faturamentoData.id = response.id
+            faturamentoData.status = "Pendente";
+    
+            b.crud.editar(faturamentoData, "pagamentosa", response => {//async   
+                // b.modal.fechar()
+    
+            })
+
+        } )
+
+
+      
+
+        // b.crud.custom("concluirAtendimento", "atendimento","", response => {
+
+        // })
+
     }
 
 

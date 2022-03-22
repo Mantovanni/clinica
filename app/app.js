@@ -21,7 +21,7 @@ const eleLogout = document.querySelector('#logout');
 
 
 
-// sub();
+sub();
 
 //Função para habilitar os submenus
 function sub(params) {
@@ -40,10 +40,10 @@ function sub(params) {
     const submenu2 = sidebar.querySelector("[data-submenu='rouparia-menu']");
 
 
-    menu2.addEventListener('click', ev => {
-        console.log("object");
-        submenu2.classList.toggle("submenu-show");
-    })
+    // menu2.addEventListener('click', ev => {
+    //     console.log("object");
+    //     submenu2.classList.toggle("submenu-show");
+    // })
     
 }
 

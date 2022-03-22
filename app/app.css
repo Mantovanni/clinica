@@ -273,7 +273,7 @@
 /* Sidebar Top----------------------------------- */
 
 .sidebar__nav-top {
-    height: 110px;
+    height: 50px;
     display: flex;
     align-items: center;
     /* justify-content: center; */

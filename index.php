@@ -3,6 +3,7 @@ require_once(realpath(dirname(__FILE__)) . "../../controller/auth/ControllerAuth
 $ControllerAuth::verificarSessao();
 
 
+
 // echo session_status();
 // echo PHP_SESSION_ACTIVE;
 // echo $_SESSION["usuario"];
@@ -13,9 +14,7 @@ $ControllerAuth::verificarSessao();
 
 //Força abrir o endereço em HTTPS
 //---------------------------------------------------------------------------------
-
-//Endereços locais para não forçar o HTTPS enquanto estiver desenvolvendo
-if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.168.1.50") {
+if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.168.0.10") {
     // if ($_SERVER['SERVER_NAME'] !== "192.168.0.10") {
     if (!$_SERVER['HTTPS']) {
         $protocolo = 'https://';
@@ -47,20 +46,20 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" href="/clinica/biblioteca/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/cafe/biblioteca/img/favicon.ico" type="image/x-icon">
 
-    <title>SIC Clínica Facury</title>
+    <title>Sistema de Controle</title>
 
     <!-- Regras gerais de css para todo sistema -->
-    <link rel="stylesheet" href="/clinica/biblioteca/css/global.css">
-    <link rel="stylesheet" href="/clinica/biblioteca/css/elements.css">
-    <link rel="stylesheet" href="/clinica/biblioteca/css/presets.css">
+    <link rel="stylesheet" href="/cafe/biblioteca/css/global.css">
+    <link rel="stylesheet" href="/cafe/biblioteca/css/elements.css">
+    <link rel="stylesheet" href="/cafe/biblioteca/css/presets.css">
 
     <!-- @imports do CSS de layouts default e das paginas-->
-    <link rel="stylesheet" href="/clinica/biblioteca/css/layouts.css">
+    <link rel="stylesheet" href="/cafe/biblioteca/css/layouts.css">
 
 
-    <!-- <link rel="preload" as="script" href="/clinica/view/itens/main/itens.js"> -->
+    <!-- <link rel="preload" as="script" href="/cafe/view/itens/main/itens.js"> -->
 
 
     <script type="module" src="app.js" defer="true"></script>
@@ -104,7 +103,7 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
 
                 <div class="header__esquerda-logo">
                     <div id="voltar-pagina"></div>
-                    <span> <a href="/clinica/app/">Clínica Facury</a></span>
+                    <span> <a href="/cafe/app/#/cafe">Sistema de Controle </a></span>
                 </div>
 
 
@@ -204,138 +203,37 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
 
 
 
-                <!-- Dashboard -->
-                <!----------------------------------------------------------------------->
+
                 <a href="#/dashboard" id="dashboard-menu" data-url="dashboard" class="menu-option">
                     <i class="svg-chart"></i>
                     <span>Dashboard</span>
                 </a>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <!-- Atendimentos -->
-                <!----------------------------------------------------------------------->
-                <a href="#/atendimentos" id="paciente-menu" data-url="atendimentos" class="menu-option">
-                    <i class="svg-cafe"></i>
-                    <span>Atendimentos</span>
-                </a>
-
-                <!-- Pagamentos -->
-                <!----------------------------------------------------------------------->
-                <a href="#/pagamentos" id="pagamentos-menu" data-url="pagamentos" class="menu-option">
-                    <i class="svg-dolar"></i>
-                    <span>Faturamentos</span>
-                </a>
-
-                <!-- Pacientes -->
-                <!----------------------------------------------------------------------->
-                <a href="#/pacientes" id="paciente-menu" data-url="pacientes" class="menu-option">
-                    <i class="svg-pacientes"></i>
-                    <span>Pacientes</span>
-                </a>
-
-
-
-
-
-
-
-
-
-
-                <!-- Estoques -->
-                <!----------------------------------------------------------------------->
-                <a href="#/estoques" id="estoque-menu" data-url="estoques" class="menu-option">
-                    <i class="svg-estoque"></i>
-                    <span>Estoques</span>
-                </a>
-
-
-
-
-
-
-                <!-- Sub MENU Cadastros-------------------------------------------------------------------- -->
+                <!-- Sub MENU Cafes-------------------------------------------------------------------- -->
                 <a id="cafe-menu" data-url="cafe/cafes">
-                    <i class="svg-mais"></i>
-                    <span>Cadastros ...</span>
+                    <i class="svg-cafe"></i>
+                    <span>Café da Manhã</span>
                 </a>
 
                 <ul class="submenu" data-submenu="cafe-menu">
                     <li>
-
-                        <!-- Procedimentos -->
-                        <!----------------------------------------------------------------------->
-                        <a href="#/procedimentos" id="procedimentos-menu" data-url="procedimentos" class="menu-option">
-                            <i class="svg-dashboard2"></i>
-                            <span>Procedimentos</span>
+                        <a href="#/cafe/cafes" id="cafe-menu" data-url="cafe/cafes" class="menu-option">
+                            <!-- <i class="svg-cafe"></i> -->
+                            <span>Cafés</span>
                         </a>
-
                     </li>
                     <li>
-
-                        <!-- Medicamentos -->
-                        <!----------------------------------------------------------------------->
-                        <a href="#/produtos" id="produtos-menu" data-url="produtos" class="menu-option">
-                            <!-- <i class="svg-bolsa-mais"></i> -->
-                            <i class="svg-pill"></i>
-
-                            <span>Medicamentos</span>
+                        <a href="#/itens" id="itens-menu" data-url="itens" class="menu-option">
+                            <!-- <i class="svg-cardapio"></i> -->
+                            <span>Itens do Café</span>
                         </a>
-
                     </li>
                     <li>
-
-                        <!-- Profissionais -->
-                        <!----------------------------------------------------------------------->
-                        <a href="#/profissionais" id="profissionais-menu" data-url="profissionais" class="menu-option">
-                            <i class="svg-usuarios"></i>
-                            <span>Profissionais</span>
+                        <a href="#/cafe/produtos" id="cafe-produtos-menu" data-url="cafe/produtos" class="menu-option">
+                            <!-- <i class="svg-cafe"></i> -->
+                            <span>Produtos</span>
                         </a>
-
-                    </li>
-
-                    <li>
-
-                        <!-- Usuários -->
-                        <!----------------------------------------------------------------------->
-                        <?php
-
-                        if ($_SESSION["acesso"] == "admin") {
-
-                            echo ' 
-                    <a href="#/usuarios" id="usuarios-menu" data-url="usuarios" class="menu-option">
-                    <i class="svg-user"></i>
-                    <span>Usuários</span>
-                    </a>';
-                        }
-
-                        ?>
-
                     </li>
                 </ul>
 
@@ -343,9 +241,53 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
 
 
 
+                <!-- Sub MENU ROUPARIA-------------------------------------------------------------------- -->
+                <a id="rouparia-menu" data-url="rouparia/produtos">
+                    <i class="svg-carrinho"></i>
+                    <span>Rouparia</span>
+                </a>
+
+                <ul class="submenu" data-submenu="rouparia-menu">
+                    <li>
+                        <a href="#/rouparia/apartamentos" id="apartamentos-menu" data-url="rouparia/apartamentos" class="menu-option">
+                            <!-- <i class="svg-bolsa-mais"></i> -->
+                            <span>Apartamentos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#/rouparia/produtos" id="rouparia-menu" data-url="rouparia/produtos" class="menu-option">
+                            <!-- <i class="svg-carrinho"></i> -->
+                            <span>Produtos</span>
+                        </a>
+                    </li>
+
+                </ul>
 
 
 
+                <a href="#/estoques" id="estoque-menu" data-url="estoques" class="menu-option">
+                    <i class="svg-estoque"></i>
+                    <span>Estoques</span>
+                </a>
+
+
+                <a href="#/produtos" id="produtos-menu" data-url="produtos" class="menu-option">
+                    <i class="svg-bolsa-mais"></i>
+                    <span>Produtos</span>
+                </a>
+
+                <?php
+
+                if ($_SESSION["acesso"] == "admin") {
+
+                    echo ' 
+                    <a href="#/usuarios" id="usuarios-menu" data-url="usuarios" class="menu-option">
+                    <i class="svg-usuarios"></i>
+                    <span>Usuários</span>
+                    </a>';
+                }
+
+                ?>
                 <!-- <a href="#/usuarios" id="usuarios-menu" data-value="usuarios">
                     <i class="svg-usuarios"></i>
                     <span>Usuários</span>
@@ -359,6 +301,11 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
             <!-- </div> -->
 
         </nav>
+
+
+
+
+
 
 
 
@@ -392,7 +339,7 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
 
 
 
-    <!-- Criar esse elemento no proprio javascript -->
+    <!-- Criar esse ellemntos no proprio javascript -->
     <div class="modal-fundo" id="modal-fundo">
         <div class="modal-window-default" id="modal-window">
 
@@ -415,7 +362,7 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
 
 
 
-    <!-- Criar esse elementos no proprio javascript -->
+    <!-- Criar esse ellemntos no proprio javascript -->
     <div class="modal-fundo" id="modal-fundo-custom">
         <div class="modal-window-custom" id="modal-window-custom">
 

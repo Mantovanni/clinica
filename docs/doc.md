@@ -50,3 +50,12 @@ Ao clicar em abrir atendimento é inserido um registro na tabela atendimentos co
 Ao clicar em salvar é editado um registro na tabala Atendimentos
 Ao clicar em fechar atendimentos é editado a tabela Atendimentos o campo Status = Concluído e
 é inserido um registro na tabela Pagamentos com o campo Pagamento = Pendente
+
+
+
+
+------------------------------------------
+pagamentos
+Aberto
+Pendente
+Pago
