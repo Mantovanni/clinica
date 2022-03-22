@@ -36,6 +36,17 @@
 @import '../../view/atendimentos/adicionar/adicionar-atendimentos.css';
 
 
+/* faturamentos -----------------------------------------------*/
+@import '../../view/pagamentos/main/pagamentos.css';
+@import '../../view/pagamentos/adicionar/adicionar-pagamentos.css';
+
+
+
+
+
+
+
+
 
 /* ITENS -----------------------------------------------*/
 @import '../../view/itens/main/itens.css';

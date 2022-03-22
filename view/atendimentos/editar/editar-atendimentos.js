@@ -247,7 +247,7 @@ export function init(valueInit) {
     //==============================================================================================================
     //==============================================================================================================
 
-    //Busca no banco dos dados do atendimento
+    //Busca no banco todos os dados do atendimento
     //=======================================================================================
     //buscarDadosCompletosDoAtendimentoById
     function carregarDadosCompletosAtendimentoById() {
@@ -265,7 +265,7 @@ export function init(valueInit) {
             //Coloca em uma variável global os dados do paciente.
             globalAtendimentoData = responseList["data"]["atendimento"];
 
-            const procedimentosData = responseList["data"]["procedimentos"];
+            const procedimentosDoAtendimentoData = responseList["data"]["procedimentos"];
 
 
 
@@ -281,7 +281,7 @@ export function init(valueInit) {
 
 
             //Preenche os campos do atendimento com os dados do banco
-            preencherCamposAtendimento(globalAtendimentoData, procedimentosData)
+            preencherCamposAtendimento(globalAtendimentoData, procedimentosDoAtendimentoData)
 
         });
 
@@ -291,7 +291,7 @@ export function init(valueInit) {
 
     //
     //=======================================================================================
-    function preencherCamposAtendimento(atendimentoData, procedimentosData) {
+    function preencherCamposAtendimento(atendimentoData, procedimentosDoAtendimentoData) {
 
 
 
@@ -315,7 +315,7 @@ export function init(valueInit) {
 
         //Preenche os Procedimentos
         // ------------------------------------------------------------
-        preencherProcedimento(procedimentosData)
+        preencherProcedimento(procedimentosDoAtendimentoData)
 
 
 
@@ -604,7 +604,7 @@ export function init(valueInit) {
 
         //Mudar o titulo do modal para "Atendimento 00 - Paciente Fulano de Tal"
         //--------------------------------------------------------------------------
-        tituloPage.textContent = "Atendimento - " + atendimentoData.id;
+        tituloPage.textContent = "Atendimento - " + atendimentoData.id.padStart(4, '0');
         elHeaderWindowModal.style.backgroundColor = 'green';
 
 
@@ -628,7 +628,7 @@ export function init(valueInit) {
 
         //Mudar o titulo do modal para "Atendimento 00 - Paciente Fulano de Tal"
         //--------------------------------------------------------------------------
-        tituloPage.textContent = "Atendimento - " + atendimentoData.id;
+        tituloPage.textContent = "Atendimento - " + atendimentoData.id.padStart(4, '0');
         elHeaderWindowModal.style.backgroundColor = '#2559a7';//Azul 
 
 

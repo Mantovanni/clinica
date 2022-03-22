@@ -1,4 +1,4 @@
-<form class="form-geral" id="form-modal">
+<form class="form-geral faturamento" id="form-modal">
 
 
     <div class="form__main">
@@ -20,181 +20,234 @@
         <!-- ============================================================================================================ -->
 
 
-        <!-- Linha 01 -->
-        <!--------------------------------------------------------------------------------------------------->
-        <div class="col-md-12">
-            <div class="col-md-6">
-                <div class="grupo-label-input">
-                    <label for="nome">Nome</label>
-
-                    <input type="text" name="nome" id="nome" placeholder="Nome" autocomplete="off" required>
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="grupo-label-input">
-                    <label for="sexo">Sexo</label>
-                    <select id="sexo" name="sexo" required>
-                        <option value="">-</option>
-                        <option value="Homem">Homem</option>
-                        <option value="Mulher">Mulher</option>                       
-                    </select>
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="grupo-label-input">
-                    <label for="data_nascimento">Data de Nascimento</label>
-                    <input type="text" name="data_nascimento" id="data_nascimento" placeholder="00/00/0000" autocomplete="off" 
-                    value="22/09/1988" data-type="date" disabled>
-                    <span class="mensagem-validacao" ></span>
-                </div>
-            </div>
-
-        </div>
-      
-
-
-
-         <!-- Linha 02 -->
-        <!--------------------------------------------------------------------------------------------------->
-        <div class="col-md-12">
-
-            <div class="col-md-6">
-                <div class="grupo-label-input">
-                    <label for="responsavel_nome">Responsável</label>
-                    <input type="text" name="responsavel_nome" id="responsavel_nome" placeholder="Nome do Repensável" autocomplete="off">
-
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="grupo-label-input">
-                    <label for="cpf">Cpf</label>
-                    <input type="number" name="cpf" id="cpf" placeholder="000.000.000-00" autocomplete="off">
-                    
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="grupo-label-input">
-                    <label for="rg">Rg</label>
-                    <input type="text" name="rg" id="rg" placeholder="" autocomplete="off">
-
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-
-
-        </div>
-       
-
-        <!-- Linha 03 -->
-        <!--------------------------------------------------------------------------------------------------->
-        <div class="col-md-12">
-
-            <div class="col-md-6">
-                <div class="grupo-label-input">
-                    <label for="endereco">Endereço</label>
-                    <input type="text" name="endereco" id="endereco" placeholder="" autocomplete="off">
-
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="grupo-label-input">
-                    <label for="bairro">Bairro</label>
-                    <input type="text" name="bairro" id="bairro" placeholder="" autocomplete="off">
-
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <div class="grupo-label-input">
-                    <label for="numero">Número</label>
-                    <input type="text" name="numero" id="numero" placeholder="" autocomplete="off">
-
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-
-        </div>
 
 
 
 
-        <!-- Linha 04 -->
-        <!--------------------------------------------------------------------------------------------------->
-        <div class="col-md-12">
-
-
-            <div class="col-md-4">
-                <div class="grupo-label-input">
-                    <label for="numero">Número para Contato</label>
-                    <input type="text" name="numero" id="numero" placeholder="" autocomplete="off">
-
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="grupo-label-input">
-                    <label for="">Situação</label>
-                    <select id="situacao" name="situacao" required>
-                        <option value="ativo">Ativo</option>
-                        <option value="inativo">Inativo</option>
-    
-                    </select>
-                    <span class="mensagem-validacao"></span>
-                </div>
-            </div>
-        </div>
-        
 
 
 
 
-        <!-- Linha 05 -->
-        <!--------------------------------------------------------------------------------------------------->
-        <div class="col-md-12">
+
+
+
+        <!-- ID invisível para usado quando for editar -->
+        <div class="col-md-6 esconder">
             <div class="grupo-label-input">
-                <label for="observacao">Observações</label>
-                <textarea id="observacao" name="observacao" cols="30" rows="3"></textarea>
-                <span class="mensagem-validacao"></span>
+                <label for="atendimento_id" class="label-adicionar-id">Id</label>
+                <input type="text" name="id" id="atendimento_id" autocomplete="off" data-type="text">
             </div>
         </div>
 
 
+        <!-- Id do Paciente -->
+        <input class="esconder" type="text" name="pacientes_id" id="pacientes_id">
 
 
-        <!-- linha --------------------------------------------------------------------------------------- -->
 
-        <!-- <div class="col-md-6">
-            <div class="grupo-label-input">
-                <label for="">Categoria</label>
-                <select id="categoria" name="categoria">
-                    <option value="">-</option>
-                </select>
-                <span class="mensagem-validacao"></span>
+        <!-- CAMPOS -->
+        <!-- ====================================================================================================== -->
+        <!-- ====================================================================================================== -->
+
+        <!-- //remover -->
+        <div class="">
+
+
+
+            <!-- Linha 01 - Pacientes -->
+            <!--------------------------------------------------------------------------------------------------->
+            <div class="c-atend_line1">
+
+
+                <!-- Dados do paciente -->
+                <!----------------------------------------------------------------------------->
+                <div class="c-atend__paciente ">
+
+
+
+                    <!-- Paciente Input -->
+                    <div class="c-atend__paciente-nome">
+                        <div class="grupo-label-input">
+                            <label for="nome">Paciente</label>
+
+                            <!-- Div para para determinar onde sera listado os itens do auto complete -->
+                            <div class="autoComplete_wrapper">
+                                <input type="text" name="nome" id="nome" placeholder="Nome" autocomplete="off"
+                                    data-extract="false" data-paciente_id="" data-ignore="true" required>
+                            </div>
+
+                            <span class="mensagem-validacao"></span>
+                        </div>
+                    </div>
+
+
+                    <!-- Paciente Dados -->
+                    <div class="c-atend__paciente-dados ">
+
+                        <div class="c-atend__paciente-dados_line1 col-md-12">
+
+                            <!-- Idade -->
+                            <div class="c-atend__paciente-dados-idade col-md-6">
+                                <div class="paciente-dados_propriedade">
+                                    Idade:
+                                </div>
+                                <div class="paciente-dados_valor" id="paciente-idade">
+
+                                </div>
+                            </div>
+
+                            <!-- Atendimentos -->
+                            <div class="c-atend__paciente-dados-atendimentos col-md-6">
+                                <div class="paciente-dados_propriedade">
+                                    Atendimentos:
+                                </div>
+                                <div class="paciente-dados_valor" id="paciente-atendimentos">
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="c-atend__paciente-dados_line2 col-md-12">
+
+                            <!-- Primeira Consulta -->
+                            <div class="c-atend__paciente-dados-primeira col-md-6">
+                                <div class="paciente-dados_propriedade">
+                                    Primeira Consulta:
+                                </div>
+                                <div class="paciente-dados_valor" id="paciente-primeira_consulta">
+
+                                </div>
+                            </div>
+
+                            <!-- Sexo -->
+                            <div class="c-atend__paciente-dados-sexo col-md-6">
+                                <div class="paciente-dados_propriedade">
+                                    Sexo:
+                                </div>
+                                <div class="paciente-dados_valor" id="paciente-sexo">
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- Botões a direita -->
+                <!------------------------------------------------------------------------------>
+                <div class="c-atend__buttons">
+
+
+                    <!-- <button class="btn-blue" id="btn-atendimento">Abrir Atendimento</button>
+         
+                    <button class="btn-blue" id="btn-imp-atendimento">Imprimir Atendimento</button> -->
+
+
+                </div>
+
+
             </div>
-        </div>
-
-    </div> -->
 
 
-        <!-- ================================================================================================= -->
-        <div class="form__footer">
 
-            <button type="reset" class="btn-cancelar" id="btn-cancelar-modal"
-                data-class='fechar-modal'>Cancelar</button>
-            <button type="submit" class="btn-salvar" id="btn-salvar-modal">Salvar</button>
-        </div>
+
+            <!-- TABLE INPUT Procedimentos-->
+            <!-- //==================================================================================================================== -->
+            <div class="table-input">
+
+                <div class="table-input_titulo">
+                    <span class="table-input_titulo-texto">Procedimentos</span>
+                </div>
+
+
+
+                <table class="table-input_tabela">
+
+                    <thead class="">
+                        <tr>
+                            <th data-name="procedimentos_id" data-type="esconder" class="esconder"></th>
+                            <th data-name="nome" data-type="autocomplete" data-ignore="true" data-class="w-50">Nome</th>
+                            <!-- <th data-name="estoque_atual" data-format="coin" data-attr="disabled"
+                                                data-class="w-20" data-ignore="true">Qtd Atual.</th> -->
+                            <th data-name="quantidade" data-format="coin" data-class="w-10">Qtd.</th>
+                            <th data-name="valor" data-format="coin" data-class="w-10">Valor</th>
+                            <!-- <th data-name="procedimentos_id">Total</th> -->
+
+                            <!-- <th data-name="" data-type="action" data-class="w-5"></th> -->
+                        </tr>
+                    </thead>
+
+
+                    <tbody class="table-input_tbody" id="table-input_tbody">
+                        <!-- Linhas geradas aqui -->
+                    </tbody>
+
+
+                </table>
+
+            </div>
+
+
+            <!-- 
+            <div class="linha">
+                 -->
+            <div class="desconto_linha col-md-12">
+
+                <div class="col-md-7"></div>
+
+                <div class="desconto col-md-5">
+
+                    <div class="col-md-4"></div>
+
+                    <div class="desconto_nome col-md-4">Desconto</div>
+
+                    <div class="desconto_valor col-md-4">
+
+                        <input class="input-default" type="text">
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="total_linha col-md-12">
+
+                <div class="col-md-7"></div>
+
+                <div class="total col-md-5">
+
+                    <div class="col-md-4"></div>
+
+                    <div class="total_nome col-md-4">Total</div>
+
+                    <div class="total_valor col-md-4">
+
+                        R$ 258,00
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+            <!-- ================================================================================================= -->
+            <div class="form__footer">
+
+                <!-- <button type="reset" class="btn-cancelar" id="btn-cancelar-modal"
+                data-class='fechar-modal'>Cancelar</button> -->
+                <button type="submit" class="btn-salvar" id="btn-salvar-modal">Confirmar</button>
+            </div>
 
 
 </form>

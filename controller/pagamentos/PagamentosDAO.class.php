@@ -30,7 +30,15 @@ class PagamentosDAO {
         $dataToSend["data"] = array(); 
 
         $query =
-            "SELECT * FROM pagamentos;                                               
+            "SELECT 
+            pagamentos.id,
+            pagamentos.status,
+            pagamentos.atendimentos_id,
+            pacientes.nome,
+            atendimentos.abertura
+            FROM pagamentos
+            INNER JOIN atendimentos ON atendimentos.id = pagamentos.atendimentos_id
+            INNER JOIN pacientes ON pacientes.id = atendimentos.pacientes_id;                                              
             ";
 
 

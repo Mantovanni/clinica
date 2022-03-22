@@ -1,3 +1,32 @@
-/* .modal-window-default {
-    width: 1000px
-} */
+.faturamento .desconto_linha {
+    margin-top: 20px;
+}
+
+.faturamento .desconto_linha input {
+    height: 30px;
+    /* text-align: right; */
+}
+
+.faturamento .desconto_nome {
+    padding-top: 4px;
+    padding-right: 10px;
+    justify-content: flex-end
+}
+
+
+
+
+
+
+.faturamento .total_linha {
+    margin-top: 20px;
+
+}
+
+.faturamento .totais {}
+
+.faturamento .totais {}
+
+.faturamento .totais {}
+
+.faturamento .totais {}

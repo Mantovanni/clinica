@@ -273,7 +273,8 @@ class AtendimentosDAO
         $query =
             "SELECT 
                 atendimentos_has_procedimentos.*,
-                procedimentos.nome
+                procedimentos.nome,
+                procedimentos.valor
             
             FROM 
                 atendimentos
