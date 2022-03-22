@@ -76,8 +76,8 @@ export function init(valueInit) {
     b.form.mask(formModalAtendimento);
 
 
-
-
+    // reseta a cor padrão do header do modal
+    elHeaderWindowModal.style.backgroundColor = '#505f6d';//Cinza 
 
 
 
@@ -89,6 +89,8 @@ export function init(valueInit) {
 
     // valueInit.novoAtendimento = true
 
+    buscarListaDeProcedimentos();
+
     //Quando entra pela opção de editar
     if (valueInit != undefined) {
         console.log("carregarDadosCompletosAtendimentoById");
@@ -96,7 +98,9 @@ export function init(valueInit) {
     }
 
     buscarListaDePacientes();
-    buscarListaDeProcedimentos();
+
+
+
 
 
     // b.form.preencher(formModalAtendimento, valueInit.dadosItem);
@@ -167,7 +171,13 @@ export function init(valueInit) {
     btnSalvar.addEventListener('click', e => {
         e.preventDefault();
 
-        salvarAtendimento(b.form.extractValues(formModalAtendimento));
+
+        // const dataFormModalAtendimento = {};
+
+        // dataFormModalAtendimento.item = b.form.extractValuesAll2(formModalAtendimento);
+
+
+        salvarAtendimento(b.form.extractValuesAll2(formModalAtendimento));
     })
 
 
@@ -190,7 +200,7 @@ export function init(valueInit) {
     btnAdicionarProcedimento.addEventListener('click', e => {
         e.preventDefault();
 
-        adicionarLinhaItem();
+        adicionarProcedimento();
     })
 
 
@@ -201,7 +211,7 @@ export function init(valueInit) {
         elTbody_TableInput.innerHTML = "";
 
         // /Adiciona uma Linha 
-        adicionarLinhaItem();
+        adicionarProcedimento();
     });
 
 
@@ -251,9 +261,12 @@ export function init(valueInit) {
         b.crud.custom("carregarDadosCompletosAtendimentoById", "atendimentos", data, responseList => {  //async    
 
 
-
+            console.log(responseList);
             //Coloca em uma variável global os dados do paciente.
-            globalAtendimentoData = responseList["data"];
+            globalAtendimentoData = responseList["data"]["atendimento"];
+
+            const procedimentosData = responseList["data"]["procedimentos"];
+
 
 
             //Muda um conjunto de regras no layout na DOM de acordo com o status do atendimento
@@ -268,7 +281,7 @@ export function init(valueInit) {
 
 
             //Preenche os campos do atendimento com os dados do banco
-            preencherCamposAtendimento(responseList["data"])
+            preencherCamposAtendimento(globalAtendimentoData, procedimentosData)
 
         });
 
@@ -278,7 +291,7 @@ export function init(valueInit) {
 
     //
     //=======================================================================================
-    function preencherCamposAtendimento(atendimentoData) {
+    function preencherCamposAtendimento(atendimentoData, procedimentosData) {
 
 
 
@@ -302,7 +315,7 @@ export function init(valueInit) {
 
         //Preenche os Procedimentos
         // ------------------------------------------------------------
-
+        preencherProcedimento(procedimentosData)
 
 
 
@@ -489,11 +502,11 @@ export function init(valueInit) {
 
         if (validarForm(formModalAtendimento)) {
 
+           
+
             const formValuesAll = {};
 
-            formValuesAll.item = b.form.extractValuesAll2(formModalAtendimento);
-
-            console.log(formValuesAll);
+            formValuesAll.item = dataFormModalAtendimento;
 
 
 
@@ -514,7 +527,7 @@ export function init(valueInit) {
     function concluirAtendimento() {
         // console.log("concluirAtendimento");
 
-        const dataFormModalAtendimento = b.form.extractValues(formModalAtendimento);
+        const dataFormModalAtendimento = b.form.extractValuesAll2(formModalAtendimento);
 
         dataFormModalAtendimento.status = "Concluido";
 
@@ -658,34 +671,32 @@ export function init(valueInit) {
 
 
 
-
-
-
     //Adiciona uma linha vazia de procedimentos
     //------------------------------------------------------------------------------------
-    function adicionarProcedimento(listaProcedimentos) {
+    function preencherProcedimento(atendimentoData) {
 
 
-
+        console.log(atendimentoData);
         //Formata os dados de estoque para inserir em movimentações.
-        let data = {};
-        data = dataInit.preencherData.map(element => {
-            data = element;
+        // let data = {};
+        // data = atendimentoData.map(element => {
+        //     data = element;
 
-            //Mudar estoque total para estoque
-            data.produtos_id = element.id;
-            data.estoque_atual = element.estoque_total;
-            data.quantidade = element.estoque_total;
+        //     //Mudar estoque total para estoque
+        //     data.produtos_id = element.id;
+        //     data.estoque_atual = element.estoque_total;
+        //     data.quantidade = element.estoque_total;
 
-            return data;
-        });
+        //     return data;
+        // });
 
 
+        elTbody_TableInput.innerHTML = "";
 
         //insere uma linha de inputs recebendo a tabela, e os dados para o autocomplete
         b.table.insertLineInputFilled2(elTbody_TableInput,
             {
-                data: data,
+                data: atendimentoData,
                 afterCreateNewLine: (eleNewLine) => {
 
                     const inpNome = eleNewLine.cells[1].firstElementChild.firstElementChild;
@@ -723,14 +734,20 @@ export function init(valueInit) {
             });
 
 
+
+
     }
+
+
+
+
 
 
 
 
     //Adiciona uma linha vazia de procedimentos
     //------------------------------------------------------------------------------------
-    function adicionarProcedimento2(listaProcedimentos) {
+    function adicionarProcedimento(listaProcedimentos) {
 
         //insere uma linha de inputs recebendo a tabela, e os dados para o autocomplete
         const eleNewLine = b.table.insertLineInput2(elTbody_TableInput, globalListaProcedimentosDataAsync, (selectedKeyData, linha) => {

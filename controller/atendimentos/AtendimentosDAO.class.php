@@ -207,7 +207,8 @@ class AtendimentosDAO
 
         $data = (array)$body->data;
 
-        $dados["data"] = array();
+        $dataToSend["data"] = array();//Nao esta sendo usado, quando uma consulta nao retorna nada pra nao dar erro
+
         $query =
             "SELECT 
                 atendimentos.*,
@@ -230,8 +231,45 @@ class AtendimentosDAO
 
         while ($linha = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
 
-            $dataToSend["data"] = $linha;
+            $dataToSend["data"]["atendimento"] = $linha;
         }
+
+
+
+
+
+        // lista de procedimentos
+        //=================================================================================================
+
+        //Caso não aja procedimentos, passa um vazio para evitar erro nas funções do JS
+        $dataToSend["data"]["procedimentos"] = array();
+
+        $query =
+            "SELECT 
+                atendimentos_has_procedimentos.*,
+                procedimentos.nome
+            
+            FROM 
+                atendimentos
+            INNER JOIN atendimentos_has_procedimentos ON atendimentos.id = atendimentos_has_procedimentos.atendimentos_id
+            INNER JOIN procedimentos ON procedimentos.id = atendimentos_has_procedimentos.procedimentos_id                        
+            WHERE atendimentos.id = " . $data["id"] . ";                                                 
+            ";
+
+
+        $resultado = mysqli_query(Database::connect(), $query) or
+            die(mysqli_error(Database::connect()) . "\n || Query2: " . $query);
+
+
+
+        while ($linha = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+
+            $dataToSend["data"]["procedimentos"][] = $linha;
+        }
+
+
+
+
 
 
         return $dataToSend;
@@ -258,7 +296,45 @@ class AtendimentosDAO
 
 
 
+     // Lista dados atendimentos com pacientes
+    //===========================================================================================================
+    static function listarAtendimentosClientes()
+    {
 
+        // $data = (array)$body->data;
+
+        $dataToSend["data"] = array();//Nao esta sendo usado, quando uma consulta nao retorna nada pra nao dar erro
+
+        $query =
+            "SELECT 
+                atendimentos.*,
+                pacientes.nome,
+                pacientes.data_nascimento,
+                pacientes.sexo
+            FROM 
+                atendimentos
+            INNER JOIN 
+                pacientes
+            ON atendimentos.pacientes_id = pacientes.id;                                                 
+            ";
+
+
+        $resultado = mysqli_query(Database::connect(), $query) or
+            die(mysqli_error(Database::connect()) . "\n || Query: " . $query);
+
+
+
+        while ($linha = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+
+            $dataToSend["data"][] = $linha;
+        }
+
+
+
+
+
+        return $dataToSend;
+    }
 
 
 

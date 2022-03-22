@@ -32,9 +32,15 @@ class ControllerAtendimentos
                     self::salvarAtendimento($body);
                     break;
 
+
                 case 'carregarDadosCompletosAtendimentoById':
                     self::carregarDadosCompletosAtendimentoById($body);
                     break;
+
+                case 'listarAtendimentosClientes':
+                    self::listarAtendimentosClientes();
+                    break;
+
 
 
 
@@ -76,6 +82,17 @@ class ControllerAtendimentos
     {
 
         $consulta = AtendimentosDAO::carregarDadosCompletosAtendimentoById($body);
+
+        echo json_encode($consulta);
+    }
+
+
+    //Buscar dados completo do atendimento
+    //==========================================================================================================
+    static function  listarAtendimentosClientes()
+    {
+
+        $consulta = AtendimentosDAO::listarAtendimentosClientes();
 
         echo json_encode($consulta);
     }

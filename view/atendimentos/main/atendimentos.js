@@ -43,18 +43,23 @@ export function init() {
     //------------------------------------------------------
     btnAdicionar.addEventListener('click', function (e) {
         b.modal.abrir("Novo Atendimento");
+        
 
         // Passa o elemento Janela Modal para a função render.page 
        b.render.pageModal(adicionarUrl, urlJs);//async
         //  b.render.page(b.modal.content, adicionarUrl, urlJs);//async
 
     });
-    btnAdicionar.click()
+    // btnAdicionar.click()
 
 
 
-
-
+//Jogar para biblioteca
+    const formatarData = (data) =>{
+        let d = new Date(data);
+        // Month retorna entre 0 e 11, por isso a adição +1
+        return `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`
+    }
 
 
 
@@ -68,12 +73,16 @@ export function init() {
 
 
         //Função que lista todas a linhas de uma tabela no banco e retorna os dados
-        b.crud.listar("atendimentos", responseList => {  //async     
+        b.crud.custom("listarAtendimentosClientes", "atendimentos", "",responseList => {  //async     
 
             //Extrai os dados da tabela e faz algum tratamento caso necessário.
             const dados = responseList["data"].map(response => {
                 //Adiciona um zero a esquerda da ID
                 response.id = response.id.padStart(2, '0');
+
+                response.abertura = formatarData(response.abertura);
+
+                console.log(response.abertura);
                
                 return response;
             });
