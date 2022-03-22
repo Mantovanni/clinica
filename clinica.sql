@@ -79,7 +79,7 @@ CREATE TABLE `atendimentos` (
   `pacientes_id` int NOT NULL,
   `profissionais_id` int DEFAULT NULL,
   `usuarios_id` int NOT NULL,
-  `abertura` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `abertura` datetime DEFAULT CURRENT_TIMESTAMP,
   `fechamento` timestamp NULL DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL COMMENT 'aberto\nfechado',
   `recebido` varchar(45) DEFAULT NULL COMMENT 'sim\nnao',
@@ -94,7 +94,7 @@ CREATE TABLE `atendimentos` (
   CONSTRAINT `fk_atendimentos_1` FOREIGN KEY (`pacientes_id`) REFERENCES `pacientes` (`id`),
   CONSTRAINT `fk_atendimentos_2` FOREIGN KEY (`profissionais_id`) REFERENCES `profissionais` (`id`),
   CONSTRAINT `fk_atendimentos_6` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,7 +103,7 @@ CREATE TABLE `atendimentos` (
 
 LOCK TABLES `atendimentos` WRITE;
 /*!40000 ALTER TABLE `atendimentos` DISABLE KEYS */;
-INSERT INTO `atendimentos` VALUES (1,1,NULL,1,'2022-03-20 18:37:58',NULL,'Aberto',NULL,'2022-03-20 18:37:58','rwerwer','',''),(2,2,NULL,1,'2022-03-20 18:46:17',NULL,'Concluido',NULL,'2022-03-20 18:46:17','','',''),(3,1,NULL,1,'2022-03-20 19:37:16',NULL,'Concluido',NULL,'2022-03-20 19:37:16','asdasdasd','',''),(4,3,NULL,1,'2022-03-20 19:38:35',NULL,'Concluido',NULL,'2022-03-20 19:38:35','','',''),(5,3,NULL,1,'2022-03-21 04:25:30',NULL,'Aberto',NULL,'2022-03-21 04:25:30',NULL,NULL,NULL),(6,4,NULL,1,'2022-03-21 04:36:41',NULL,'Aberto',NULL,'2022-03-21 04:36:41','','','');
+INSERT INTO `atendimentos` VALUES (5,3,NULL,1,'2022-03-21 01:25:30',NULL,'Aberto',NULL,'2022-03-21 04:25:30','','',''),(6,4,NULL,1,'2022-03-21 01:36:41',NULL,'Aberto',NULL,'2022-03-21 04:36:41','','',''),(7,1,NULL,1,'2022-03-21 21:43:58',NULL,'Aberto',NULL,'2022-03-22 00:43:58','','',''),(8,2,NULL,1,'2022-03-21 23:29:49',NULL,'Aberto',NULL,'2022-03-22 02:29:49','','','');
 /*!40000 ALTER TABLE `atendimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,8 +123,8 @@ CREATE TABLE `atendimentos_has_procedimentos` (
   KEY `fk_atendimentos_has_procedimentos_1_idx` (`procedimentos_id`),
   KEY `fk_atendimentos_has_procedimentos_2_idx` (`atendimentos_id`),
   CONSTRAINT `fk_atendimentos_has_procedimentos_1` FOREIGN KEY (`procedimentos_id`) REFERENCES `procedimentos` (`id`),
-  CONSTRAINT `fk_atendimentos_has_procedimentos_2` FOREIGN KEY (`atendimentos_id`) REFERENCES `atendimentos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `fk_atendimentos_has_procedimentos_2` FOREIGN KEY (`atendimentos_id`) REFERENCES `atendimentos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +133,7 @@ CREATE TABLE `atendimentos_has_procedimentos` (
 
 LOCK TABLES `atendimentos_has_procedimentos` WRITE;
 /*!40000 ALTER TABLE `atendimentos_has_procedimentos` DISABLE KEYS */;
-INSERT INTO `atendimentos_has_procedimentos` VALUES (1,6,1,'1'),(2,6,2,'1');
+INSERT INTO `atendimentos_has_procedimentos` VALUES (5,7,1,'1'),(6,7,1,'1'),(7,7,2,'1'),(53,6,1,'1'),(54,6,1,'2'),(55,6,2,'1'),(67,5,2,'1'),(68,5,1,'1'),(69,5,2,'1'),(70,5,2,'1'),(71,5,2,'1'),(91,8,2,'1'),(92,8,1,'1');
 /*!40000 ALTER TABLE `atendimentos_has_procedimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -502,7 +502,7 @@ CREATE TABLE `procedimentos` (
   `nome` varchar(240) DEFAULT NULL,
   `valor` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -511,7 +511,7 @@ CREATE TABLE `procedimentos` (
 
 LOCK TABLES `procedimentos` WRITE;
 /*!40000 ALTER TABLE `procedimentos` DISABLE KEYS */;
-INSERT INTO `procedimentos` VALUES (1,'Consulta Clínica',200),(2,'Aplicação de Soro',150);
+INSERT INTO `procedimentos` VALUES (1,'Consulta Clínica',200),(2,'Aplicação de Soro',150),(3,'Sutura',180),(4,'Procedimento Teste 01',300),(5,'Procedimento Teste 02',100),(6,'Procedimento Teste 03',250);
 /*!40000 ALTER TABLE `procedimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -770,4 +770,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-21  1:52:43
+-- Dump completed on 2022-03-22  1:02:54
