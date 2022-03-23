@@ -13,6 +13,7 @@
 class Database {
 
     
+    // private static $hostname = 'localhost';
     private static $hostname = 'localhost';
     private static $username = 'manto068_admin';
     private static $password = 'manto@123';
