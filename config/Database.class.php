@@ -14,8 +14,8 @@ class Database {
 
     
     private static $hostname = 'localhost';
-    private static $username = 'admin';
-    private static $password = '123456';
+    private static $username = 'manto068_admin';
+    private static $password = 'manto@123';
     private static $database = 'manto068_clinica';
 
     public static $conn;
