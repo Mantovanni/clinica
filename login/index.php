@@ -17,7 +17,11 @@ $ControllerAuth::verificarSessaoTelaLogin();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+
+
+    <link rel="shortcut icon" href="/clinica/biblioteca/img/favicon.ico" type="image/x-icon">
+
+    <title>Sistema Clínica Facury</title>
 
     <link rel="stylesheet" href="login.css">
 
@@ -29,7 +33,7 @@ $ControllerAuth::verificarSessaoTelaLogin();
     <link rel="stylesheet" href="/clinica/biblioteca/css/layouts.css">
     <!-- <link rel="stylesheet" href="/clinica/biblioteca/css/global.css"> -->
 
-    
+
     <script src="login.js" type="module" defer="true"></script>
 </head>
 
@@ -44,7 +48,7 @@ $ControllerAuth::verificarSessaoTelaLogin();
 
 
 
-                <input type="text" id="usuario" name="usuario" class="usuario"  placeholder="Usuário" required>
+                <input type="text" id="usuario" name="usuario" class="usuario" placeholder="Usuário" required>
 
 
                 <input type="password" name="senha" class="senha" id="senha" placeholder="Senha" autocomplete="off" required>

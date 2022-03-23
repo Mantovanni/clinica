@@ -49,7 +49,7 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
 
     <link rel="shortcut icon" href="/clinica/biblioteca/img/favicon.ico" type="image/x-icon">
 
-    <title>SIC Clínica Facury</title>
+    <title>Sistema Clínica Facury</title>
 
     <!-- Regras gerais de css para todo sistema -->
     <link rel="stylesheet" href="/clinica/biblioteca/css/global.css">
