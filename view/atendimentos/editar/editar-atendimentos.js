@@ -271,11 +271,13 @@ export function init(valueInit) {
 
             //Muda um conjunto de regras no layout na DOM de acordo com o status do atendimento
             if (globalAtendimentoData.status == "Aberto") {
+                console.log(globalAtendimentoData);
                 mudarLayoutParaAtendimentoAberto(globalAtendimentoData)
 
             } else if (globalAtendimentoData.status == "Concluido") {
-
+                console.log(globalAtendimentoData);
                 mudarLayoutParaAtendimentoConcluido(globalAtendimentoData)
+                
             }
 
 
@@ -459,7 +461,7 @@ export function init(valueInit) {
                 //Muda o status na globalAtendimento para Aberto
                 globalAtendimentoData.status = "Aberto";
 
-
+                console.log(responseItemSalvo);
                 //Conjunto de alterações no layout apos abrir o atendimento
                 //Manda como parâmetro os dados do novo atendimento criado
                 mudarLayoutParaAtendimentoAberto(responseItemSalvo);
@@ -592,6 +594,7 @@ export function init(valueInit) {
     //Faz um conjunto de alterações no layout para o modo do atendimento aberto
     //=======================================================================================
     function mudarLayoutParaAtendimentoAberto(atendimentoData) {
+    
 
         //Insere a ID criada do atendimento no campo Id do form
         inpAtendimentoId.value = atendimentoData.id;
@@ -602,9 +605,12 @@ export function init(valueInit) {
 
 
 
+
         //Mudar o titulo do modal para "Atendimento 00 - Paciente Fulano de Tal"
         //--------------------------------------------------------------------------
-        tituloPage.textContent = "Atendimento - " + atendimentoData.id.padStart(4, '0');
+        //Quando a função mudarLayoutParaAtendimentoAberto() vem pelo abrir atendimento a id doa tendimento vem como
+        // inteiro, por iss usar toString()
+        tituloPage.textContent = "Atendimento - " + atendimentoData.id.toString().padStart(4, '0');
         elHeaderWindowModal.style.backgroundColor = 'green';
 
 
@@ -623,7 +629,7 @@ export function init(valueInit) {
     //=======================================================================================
     function mudarLayoutParaAtendimentoConcluido(atendimentoData) {
 
-
+        console.log(atendimentoData.id);
 
 
         //Mudar o titulo do modal para "Atendimento 00 - Paciente Fulano de Tal"
