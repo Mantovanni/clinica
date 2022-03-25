@@ -92,7 +92,7 @@ export function init() {
             b.render.lineInTable(tbody, dados, "pagamentos");
 
             //CLICK
-            // document.querySelector("#tbody-central > tr > td.w-22.cursor-pointer").click();
+            document.querySelector("#tbody-central > tr > td.w-22.cursor-pointer").click();
 
             //Insere a função de pesquisar na tabela
             //OBS. Adicionar essa função de forma automatica no futuro

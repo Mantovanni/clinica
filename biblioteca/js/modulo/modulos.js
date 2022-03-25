@@ -1,3 +1,197 @@
+
+//marcara para data
+export function maskData(inputData) {
+
+    // input.addEventListener("keyup", mask);
+    // input.addEventListener("keydown", mask);
+    inputData.addEventListener("keypress", mask);
+
+    function mask(e) {
+
+
+
+
+
+
+
+
+        var tecla = e.which;
+        if (tecla >= 47 && tecla < 58) {
+            var data = inputData.value;
+            if ((data.length == 2 || data.length == 5) && tecla != 47) {
+                data += '/';
+                inputData.value = data;
+            }
+        }
+        else
+            if (tecla == 8 || tecla == 0) return true;
+            else return false;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // let tecla = e.which;
+
+        // if (tecla >= 48 && tecla < 58) { // numeros de 0 a 9 e '/'
+        //     var data = inputData.value;
+
+        //     console.log(data);
+        //     //validar o dia do mês
+        //     console.log(data.length);
+        //     if (data.length == 2) {
+        //         if (inputData.value >= 1 && inputData.value <= 31) {
+        //             data += '/';
+        //             inputData.value = data;
+        //             return true;
+        //         }
+        //         else
+        //             return false;
+        //     }
+
+        //     //validar o mês (de 1 a 12)
+        //     if (data.length == 5) {
+        //         mes = data[3] + "" + data[4];
+        //         if (mes >= 1 && mes <= 12) {
+        //             data += '/';
+        //             inputData.value = data;
+        //             return true;
+        //         }
+        //         else
+        //             return false;
+        //     }
+
+        //     //validar o ano (de 1900 a 2100)
+        //     if (data.length == 8) {
+        //         ano = data[6] + "" + data[7];
+        //         if (ano >= 19 && ano <= 21) {
+        //             inputData.value = data;
+        //             return true;
+        //         }
+        //         else
+        //             return false;
+        //     }
+
+        // } else if (tecla == 8 || tecla == 0) // Backspace, Delete e setas direcionais(para mover o cursor, apenas para FF)
+        //     return true;
+        // else
+        //     return false;
+
+
+
+
+
+
+
+
+
+
+
+
+        // // input.addEventListener('event', e => {
+        //     console.log(e);
+        //     var kC = (document.all) ? event.keyCode : e.keyCode;
+        //     console.log(kC);
+        //     var data = input.value;
+
+        //     if( kC!=8 && kC!=46 )
+        //     {
+        //         if( data.length==2 )
+        //         {
+        //             input.value = data += '/';
+        //         }
+        //         else if( data.length==5 )
+        //         {
+        //             input.value = data += '/';
+        //         }
+        //         else
+        //             input.value = data;
+        //     }
+
+
+
+        // var mydata = '';
+        // mydata = mydata + e.target.value;
+        // if (mydata.length == 2) {
+        //     mydata = mydata + '/';
+        //     input.value = mydata;
+        // }
+        // if (mydata.length == 5) {
+        //     mydata = mydata + '/';
+        //     input.value = mydata;
+        // }
+
+
+
+        //     function mascaraData(campoData){
+        //         var data = campoData.value;
+        //         if (data.length == 2){
+        //             data = data + '/';
+        //             document.forms[0].data.value = data;
+        // return true;              
+        //         }
+        //         if (data.length == 5){
+        //             data = data + '/';
+        //             document.forms[0].data.value = data;
+        //             return true;
+        //         }
+        //    }
+
+
+
+
+
+
+
+
+
+
+    };
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // console.log("Biblioteca OK");
 //Verificar se a biblioteca está sendo encontrada
 export function verifique() {
@@ -22,7 +216,7 @@ export function verifique() {
  */
 export function selectValue(element) {
     // const select = document.querySelector(element);
-	return element.options[element.selectedIndex].value;
+    return element.options[element.selectedIndex].value;
 }
 
 //-------------------------------------------------------------------------------
@@ -36,7 +230,7 @@ export function selectAdd(select, text, value) {
 
     const option = document.createElement("option");
     option.text = text;
-    option.value = value;   
+    option.value = value;
     select.add(option);
 }
 
@@ -64,9 +258,9 @@ export function objectValue(object) {
 //==============================================================================================
 export function setIntervalCustom(callBackFunction, delay) {
 
-   
+
     //Instancia idInterval apenas na primeira vez que setIntervalCustom é declarada
-    if(!globalThis.idInterval){
+    if (!globalThis.idInterval) {
         globalThis.idInterval = []
     }
 
@@ -415,7 +609,7 @@ export function paraMoeda(valor) {
         valor = 0
     }
     valor = parseFloat(valor);
-    
+
     return valor.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
 }
 
@@ -502,17 +696,17 @@ export function paraFloat(valor) {
 // //=======================================================================================================================================================
 // //=======================================================================================================================================================
 export function findElArrayInObject(elementeArray, object, callFunction) {
-  
+
     //Busca dentro de um HTMLCollection de TH da uma linha
     Array.from(elementeArray).forEach((element) => {
 
         //Se a celula e do tipo "data-tipo='action'",ja pula direito, se nao pega os valores o 
         //object e coloca no seu respectivo lugar do  elementeArray de acordo como nome 
-        if (element.dataset.format != "action" && element.dataset.type != "action") {          
+        if (element.dataset.format != "action" && element.dataset.type != "action") {
             // console.log(element);
             for (const key in object) {
-           
-                if (key === element.dataset.name) {                  
+
+                if (key === element.dataset.name) {
                     // console.log("object");
                     // callFunction(element, object[key])//mudar pára retonar o valor do objeto diretamente
                     callFunction(element, key)
@@ -520,7 +714,7 @@ export function findElArrayInObject(elementeArray, object, callFunction) {
                     callFunction(element, key)
                 }
             };
-        } else {        
+        } else {
             callFunction(element)
         }
     });

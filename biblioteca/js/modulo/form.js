@@ -27,10 +27,10 @@ export function extractValues(form) {
             if (element.dataset.relacional == "1") {
 
             } else {
-          
-                switch (element.dataset.type) {                   
+
+                switch (element.dataset.type) {
                     case "date"://Formata a data no padrão para o banco
-                        formValues[element.name] = b.formatDataUserforISO(element.value);            
+                        formValues[element.name] = b.formatDataUserforISO(element.value);
                         break;
                     case "coin"://Formata de Moeda para Float
                         formValues[element.name] = b.paraFloat(element.value);
@@ -282,7 +282,7 @@ export function preencher(form, dataObject) {
 
 //=================================================================================================================
 /**
- * Recebe um elemento FORM e extrai  e aplica maskaras altomaticamente em seus campos de acordo a data-typo="",
+ * Recebe um elemento FORM e extrai  e aplica maskaras automaticamente em seus campos de acordo a data-typo="",
  * setado no HTml inline 
  * @param {object} form - um objeto elemento DOM do tipo Form
  */
@@ -312,6 +312,10 @@ export function mask(elemento) {
                 case "coin"://Formata de Moeda para Float
                     b.maskMoeda(element)
                     break;
+                case "date"://Formata de Moeda para Float
+                    b.maskData(element)
+                    break;
+
 
                 default:
 

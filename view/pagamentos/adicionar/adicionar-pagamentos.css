@@ -1,3 +1,7 @@
+
+
+/* Desconto */
+/* ------------------------------------------------------ */
 .faturamento .desconto_linha {
     margin-top: 20px;
 }
@@ -9,24 +13,27 @@
 
 .faturamento .desconto_nome {
     padding-top: 4px;
-    padding-right: 10px;
+    padding-right: 18px;
     justify-content: flex-end
 }
 
 
 
 
-
-
+/* Total */
+/* ------------------------------------------------------ */
 .faturamento .total_linha {
     margin-top: 20px;
 
 }
 
-.faturamento .totais {}
 
-.faturamento .totais {}
+.faturamento .total_nome {
+    /* padding-top: 4px; */
+    padding-right: 18px;
+    justify-content: flex-end
+}
 
-.faturamento .totais {}
 
-.faturamento .totais {}
+
+

@@ -603,8 +603,7 @@ export function init(valueInit) {
         //--------------------------------------------------------------------------
         btnAtendimento.textContent = "Concluir Atendimento";
 
-
-
+        
 
         //Mudar o titulo do modal para "Atendimento 00 - Paciente Fulano de Tal"
         //--------------------------------------------------------------------------
