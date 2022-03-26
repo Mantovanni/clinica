@@ -277,7 +277,7 @@ export function init(valueInit) {
             } else if (globalAtendimentoData.status == "Concluido") {
                 console.log(globalAtendimentoData);
                 mudarLayoutParaAtendimentoConcluido(globalAtendimentoData)
-                
+
             }
 
 
@@ -341,14 +341,37 @@ export function init(valueInit) {
     function validarForm() {
         let validate = true;
 
-
         if (inpNomePaciente.value == "") {
             alert("Selecione um paciente!")
             validate = false;
         }
 
+
         return validate;
     }
+
+
+
+    function validarFormConcluir() {
+
+        let validate2 = true;
+
+        // usado na função concluirAtendimento, verifica se existe algum campo de procedimento vazio
+        //--------------------------------------------------------
+        const allInpNameProcedimentos = elTbody_TableInput.querySelectorAll(`[name="nome"]`);
+        allInpNameProcedimentos.forEach(inpNameProcedimento => {
+
+            if (inpNameProcedimento.value == "") {
+                alert("Campo de procedimento em branco!")
+                validate2 = false;
+            }
+
+        });
+
+
+        return validate2;
+    }
+
 
 
 
@@ -381,12 +404,20 @@ export function init(valueInit) {
             //Ações apos selecionar um item da lista / selectedKeyData contem os dados o item
             //--------------------------------------------------------
 
+
             //Passa os dados do paciente selecionado para variável global
             pacienteSelected = selectedKeyData.selection.value;
 
 
             const pacienteData = selectedKeyData.selection.value;
             inserirDadosPaciente(pacienteData);
+
+            //Se sair o input sem selecionar um item no autocomplete limpa o campo
+            inpNomePaciente.addEventListener('focusout', resetarInvalido);
+            inpNomePaciente.addEventListener('focus', resetarInvalido);
+            function resetarInvalido(e) {
+                inpNomePaciente.value = "";
+            }
 
 
 
@@ -403,8 +434,8 @@ export function init(valueInit) {
 
         inpPacienteId.value = pacienteData.id;
         divIdade.textContent = b.formatDataForIdade(pacienteData.data_nascimento);
-        divAtendimentos.textContent = 5; //criar função para retornar o numero de atendimentos do paciente
-        divPrimeiraConsulta.textContent = 3434;
+        divAtendimentos.textContent = 1; //criar função para retornar o numero de atendimentos do paciente
+        divPrimeiraConsulta.textContent = "25/03/2022";
         divSexo.textContent = pacienteData.sexo;
 
     }
@@ -454,17 +485,34 @@ export function init(valueInit) {
             //Não é possível utilizar o crud.salvar pois é necessário pegar o id de usuário na session do php
             b.crud.custom("salvarAtendimento", "atendimentos", dataFormAtendimentos, responseItemSalvo => {//async
 
-                // Função que cria e insere a linha na tabela com os dados do formulário que foram salvos no banco e retornaram para ser tratados
-                const linhaCriada = b.render.lineInTable(tbody, responseItemSalvo, "atendimentos");
 
 
                 //Muda o status na globalAtendimento para Aberto
                 globalAtendimentoData.status = "Aberto";
 
-                console.log(responseItemSalvo);
+                // console.log(globalAtendimentoData);
                 //Conjunto de alterações no layout apos abrir o atendimento
                 //Manda como parâmetro os dados do novo atendimento criado
                 mudarLayoutParaAtendimentoAberto(responseItemSalvo);
+
+
+                //-------------------------------------------------
+                // Função que cria e insere a linha na tabela com os dados do formulário 
+                //que foram salvos no banco e retornaram para ser tratados
+                const atendimentoForInsertLineData = responseItemSalvo;
+
+            
+                atendimentoForInsertLineData.id = atendimentoForInsertLineData.id.toString().padStart(4, '0');
+                atendimentoForInsertLineData.nome = pacienteSelected.nome
+                atendimentoForInsertLineData.abertura = b.getDataAtualFormatada();
+                // atendimentoForInsertLineData.abertura = 
+
+
+                const linhaCriada = b.table.insertLineDesc(tbody, atendimentoForInsertLineData, "atendimentos");
+
+
+
+
 
             }, true).then(() => {
                 // b.modal.fechar()
@@ -504,7 +552,7 @@ export function init(valueInit) {
 
         if (validarForm(formModalAtendimento)) {
 
-           
+
 
             const formValuesAll = {};
 
@@ -527,34 +575,41 @@ export function init(valueInit) {
     // Salva e muda o Status do atendimento para Concluído
     //=======================================================================================
     function concluirAtendimento() {
-        // console.log("concluirAtendimento");
-
-        const dataFormModalAtendimento = b.form.extractValuesAll2(formModalAtendimento);
-
-        dataFormModalAtendimento.status = "Concluido";
-
-       
-        salvarAtendimento(dataFormModalAtendimento);
 
 
 
-        //Altera o status do faturamentos
-        //-------------------------------------------------------------------------------
-        //pega a id do faturamento correspondente ao atendimento
-        b.crud.listarByKey("atendimentos_id",dataFormModalAtendimento.id, "pagamentos", response =>{
 
-            const faturamentoData = {};
-            faturamentoData.id = response["data"][0].id
-            faturamentoData.status = "Pendente";
-    
-            b.crud.editar(faturamentoData, "pagamentos", response => {//async   
-                // b.modal.fechar()
-    
+        if (validarFormConcluir()) {
+
+
+
+            const dataFormModalAtendimento = b.form.extractValuesAll2(formModalAtendimento);
+
+            dataFormModalAtendimento.status = "Concluido";
+
+
+            salvarAtendimento(dataFormModalAtendimento);
+
+
+
+            //Altera o status do faturamentos
+            //-------------------------------------------------------------------------------
+            //pega a id do faturamento correspondente ao atendimento
+            b.crud.listarByKey("atendimentos_id", dataFormModalAtendimento.id, "pagamentos", response => {
+
+                const faturamentoData = {};
+                faturamentoData.id = response["data"][0].id
+                faturamentoData.status = "Pendente";
+
+                b.crud.editar(faturamentoData, "pagamentos", response => {//async   
+                    // b.modal.fechar()
+
+                })
+
             })
 
-        } )
 
-
+        }
 
     }
 
@@ -594,7 +649,7 @@ export function init(valueInit) {
     //Faz um conjunto de alterações no layout para o modo do atendimento aberto
     //=======================================================================================
     function mudarLayoutParaAtendimentoAberto(atendimentoData) {
-    
+
 
         //Insere a ID criada do atendimento no campo Id do form
         inpAtendimentoId.value = atendimentoData.id;
@@ -603,7 +658,7 @@ export function init(valueInit) {
         //--------------------------------------------------------------------------
         btnAtendimento.textContent = "Concluir Atendimento";
 
-        
+
 
         //Mudar o titulo do modal para "Atendimento 00 - Paciente Fulano de Tal"
         //--------------------------------------------------------------------------
@@ -736,6 +791,14 @@ export function init(valueInit) {
                     }
 
 
+                    //Cancela o evento de enviar o form ao da enter dentro do input
+                    inpNome.addEventListener("keypress", function (e) {
+                        if (e.which == 13) { // se pressionar enter
+                            e.preventDefault();
+                        }
+                    });
+
+
 
                 },
                 autoComplete: {
@@ -803,11 +866,15 @@ export function init(valueInit) {
             inpNome.value = "";
         }
 
+        //Cancela o evento de enviar o form ao da enter dentro do input
+        inpNome.addEventListener("keypress", function (e) {
+            if (e.which == 13) { // se pressionar enter
+                e.preventDefault();
+            }
+        });
+
+
     }
-
-
-
-
 
 
 

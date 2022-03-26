@@ -1,20 +1,49 @@
 
+/* Subtotal */
+/* ------------------------------------------------------ */
+.faturamento .subtotal_linha {
+    margin-top: 20px;
+
+}
+
+
+.faturamento .subtotal_nome {
+    padding-top: 4px;
+    padding-right: 18px;
+    justify-content: flex-end;
+    font-size: 14px;
+}
+
+
+
+.faturamento .subtotal_linha input {
+    height: 30px;
+    /* text-align: right; */
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+
+
 
 /* Desconto */
 /* ------------------------------------------------------ */
 .faturamento .desconto_linha {
-    margin-top: 20px;
+    margin-top: 12px;
 }
 
 .faturamento .desconto_linha input {
     height: 30px;
     /* text-align: right; */
+    text-align: right;
+    padding-right: 22px;
 }
 
 .faturamento .desconto_nome {
     padding-top: 4px;
     padding-right: 18px;
-    justify-content: flex-end
+    justify-content: flex-end;
+    font-size: 14px;
 }
 
 
@@ -23,17 +52,23 @@
 /* Total */
 /* ------------------------------------------------------ */
 .faturamento .total_linha {
-    margin-top: 20px;
+    margin-top: 12px;
 
 }
 
 
 .faturamento .total_nome {
-    /* padding-top: 4px; */
+    padding-top: 3px;
     padding-right: 18px;
-    justify-content: flex-end
+    justify-content: flex-end;
+    font-size: 19px;
 }
 
 
 
-
+.faturamento .total_linha input {
+    height: 30px;
+    /* text-align: right; */
+    border: 0 none;
+    font-size: 18px;
+}

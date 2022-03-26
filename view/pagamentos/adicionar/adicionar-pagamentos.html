@@ -21,16 +21,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
         <!-- ID invisível para usado quando for editar -->
         <div class="col-md-6 esconder">
             <div class="grupo-label-input">
@@ -41,7 +31,7 @@
 
 
         <!-- Id do Paciente -->
-        <input class="esconder" type="text" name="pacientes_id" id="pacientes_id">
+        <!-- <input class="esconder" type="text" name="pacientes_id" id="pacientes_id"> -->
 
 
 
@@ -50,7 +40,7 @@
         <!-- ====================================================================================================== -->
 
         <!-- //remover -->
-        <div class="">
+        <!-- <div class=""> -->
 
 
 
@@ -73,7 +63,7 @@
                             <!-- Div para para determinar onde sera listado os itens do auto complete -->
                             <div class="autoComplete_wrapper">
                                 <input type="text" name="nome" id="nome" placeholder="Nome" autocomplete="off"
-                                    data-extract="false" data-paciente_id="" data-ignore="true" required>
+                                    data-extract="false" data-paciente_id="" data-ignore="true" disabled required>
                             </div>
 
                             <span class="mensagem-validacao"></span>
@@ -170,12 +160,12 @@
 
                     <thead class="">
                         <tr>
-                            <th data-name="procedimentos_id" data-type="esconder" class="esconder"></th>
-                            <th data-name="nome" data-type="autocomplete" data-ignore="true" data-class="w-50">Nome</th>
+                            <th data-name="procedimentos_id" data-ignore="true" data-type="esconder" class="esconder"></th>
+                            <th data-name="nome" data-ignore="true" data-attr="disabled" data-class="w-50">Nome</th>
                             <!-- <th data-name="estoque_atual" data-format="coin" data-attr="disabled"
                                                 data-class="w-20" data-ignore="true">Qtd Atual.</th> -->
-                            <th data-name="quantidade" data-format="coin" data-class="w-10">Qtd.</th>
-                            <th data-name="valor" data-format="coin" data-class="w-10">Valor</th>
+                            <th data-name="quantidade" data-ignore="true" data-format="coin" data-attr="disabled" data-class="w-10">Qtd.</th>
+                            <th data-name="valor" data-ignore="true" data-format="coin" data-attr="disabled" data-class="w-10">Valor</th>
                             <!-- <th data-name="procedimentos_id">Total</th> -->
 
                             <!-- <th data-name="" data-type="action" data-class="w-5"></th> -->
@@ -193,13 +183,35 @@
             </div>
 
 
-            
+
 
             <!-- TOTAIS -->
             <!-- ====================================================================================================== -->
             <!-- 
             <div class="linha">
                  -->
+
+            <!-- Subtotal -->
+            <div class="subtotal_linha col-md-12">
+
+                <div class="col-md-7"></div>
+
+                <div class="subtotal col-md-5">
+
+                    <div class="col-md-4"></div>
+
+                    <div class="subtotal_nome col-md-4">Subtotal</div>
+
+                    <div class="subtotal_valor col-md-4">
+
+                        <input name="valor" class="input-default" id="subtotal" type="text" data-type="coin" disabled>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Desconto -->
             <div class="desconto_linha col-md-12">
 
                 <div class="col-md-7"></div>
@@ -212,7 +224,7 @@
 
                     <div class="desconto_valor col-md-4">
 
-                        <input class="input-default" type="text">
+                        <input name="desconto" class="input-default" placeholder="0,00" id="desconto" type="text" data-type="coin">
 
                     </div>
                 </div>
@@ -220,6 +232,8 @@
             </div>
 
 
+
+            <!-- Total -->
             <div class="total_linha col-md-12">
 
                 <div class="col-md-7"></div>
@@ -231,8 +245,8 @@
                     <div class="total_nome col-md-4">Total</div>
 
                     <div class="total_valor col-md-4">
-
-                        R$ 258,00
+                        <input name="valor_final" class="input-default" id="total" type="text" data-type="coin" disabled>
+                        <!-- R$ 258,00 -->
                     </div>
                 </div>
 

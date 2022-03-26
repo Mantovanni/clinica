@@ -56,7 +56,7 @@ export function init() {
 
 
 
-    //Jogar para biblioteca
+    //Jogar para biblioteca====================================={{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}
     const formatarData = (data) => {
         let d = new Date(data);
         // Month retorna entre 0 e 11, por isso a adição +1
@@ -89,10 +89,10 @@ export function init() {
 
 
             //Função que cria a tabela na DOM utilizando os dados extraídos do banco.
-            b.render.lineInTable(tbody, dados, "pagamentos");
+            b.table.insertLineNoDelete(tbody, dados, "pagamentos");
 
             //CLICK
-            document.querySelector("#tbody-central > tr > td.w-22.cursor-pointer").click();
+            // document.querySelector("#tbody-central > tr > td.w-22.cursor-pointer").click();
 
             //Insere a função de pesquisar na tabela
             //OBS. Adicionar essa função de forma automatica no futuro

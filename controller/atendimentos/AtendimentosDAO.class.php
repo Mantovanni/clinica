@@ -67,7 +67,7 @@ class AtendimentosDAO
 
         $data["id"] = mysqli_insert_id(Database::connect());
 
-    
+
 
 
 
@@ -78,8 +78,22 @@ class AtendimentosDAO
             VALUES (" . $data["id"] . ", 'Aberto');                                              
             ";
 
-            mysqli_query(Database::connect(), $query) or
+        mysqli_query(Database::connect(), $query) or
             die(mysqli_error(Database::connect()) . "\n || Query2: " . $query);
+
+
+
+
+
+        //Pegar dados do paciente
+        //===============================================================================================
+        // $query =
+        //     "SELECT ;                                              
+        // ";
+
+        // mysqli_query(Database::connect(), $query) or
+        //     die(mysqli_error(Database::connect()) . "\n || Query2: " . $query);
+
 
 
 
@@ -342,7 +356,8 @@ class AtendimentosDAO
                 atendimentos
             INNER JOIN 
                 pacientes
-            ON atendimentos.pacientes_id = pacientes.id;                                                 
+            ON atendimentos.pacientes_id = pacientes.id
+            order by atendimentos.id;                                                  
             ";
 
 

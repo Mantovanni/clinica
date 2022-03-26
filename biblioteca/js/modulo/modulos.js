@@ -1,4 +1,31 @@
 
+//Jogar para biblioteca
+export function  formatTimeStampForDataUser(data){
+    let d = new Date(data);
+    // Month retorna entre 0 e 11, por isso a adição +1
+    return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //marcara para data
 export function maskData(inputData) {
 

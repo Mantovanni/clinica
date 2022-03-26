@@ -50,7 +50,7 @@ export function init() {
         //  b.render.page(b.modal.content, adicionarUrl, urlJs);//async
 
     });
-    // btnAdicionar.click()
+    btnAdicionar.click()
 
 
 
@@ -77,8 +77,10 @@ export function init() {
 
             //Extrai os dados da tabela e faz algum tratamento caso necessário.
             const dados = responseList["data"].map(response => {
+
+                // console.log(response);
                 //Adiciona um zero a esquerda da ID
-                response.id = response.id.padStart(2, '0');
+                response.id = response.id.padStart(4, '0');
 
                 response.abertura = formatarData(response.abertura);
 
@@ -89,7 +91,7 @@ export function init() {
 
 
             //Função que cria a tabela na DOM utilizando os dados extraídos do banco.
-            b.render.lineInTableDesc(tbody, dados, "atendimentos");
+            b.table.insertLineDesc(tbody, dados, "atendimentos");
             
             //Insere a função de pesquisar na tabela
             //OBS. Adicionar essa função de forma automática no futuro

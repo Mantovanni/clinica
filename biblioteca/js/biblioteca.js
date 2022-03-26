@@ -41,6 +41,7 @@ export default {
     selectAdd : selectAdd,
     formatDataForIdade : formatDataForIdade,
     maskData : maskData,
+    formatTimeStampForDataUser : formatTimeStampForDataUser
     
    
 
@@ -52,7 +53,7 @@ export default {
 import {firstToUpperCase, fetchPost, fetchText, lerHash, inserirHash, formatDataISOforDataUser, maskQuantidade,
     clearIntervalCustom, paraMoeda, paraMoedaReal, paraFloat, setIntervalCustom, findElArrayInObject, maskMoeda,
     allFirstToUpperCase, appendMultipleNodes,findNamePropInObeject,getDataAtualFormatada,getDataAtualISO ,formatDataUserforISO,
-    htmlToElement, selectValue, objectValue, selectAdd, formatDataForIdade, maskData} 
+    htmlToElement, selectValue, objectValue, selectAdd, formatDataForIdade, maskData, formatTimeStampForDataUser} 
     from './modulo/modulos.js';
 
 

@@ -68,6 +68,91 @@ export function extractValues(form) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+//=================================================================================================================
+/**
+ * Recebe um elemento FORM extrai os nomes e valores dos seus elementos filhos(campos), trata esses valores
+ * seguindo  as regras de tipo no dataset retornando um objeto com todos os valores.
+ * @param {object} form - um objeto elemento DOM do tipo Form
+ * @return {object} formValues - retorna um novo objeto com os nomes e valores 
+ */
+ export function extractValues2(form) {
+
+
+    const formValues = {};
+
+    // Transforma o no de elementos em um array de elementos para usar foreach
+    Array.from(form).forEach(element => {
+
+
+        //Remove os elementos botoes e o dataset com valor extract = false do array de valores do form
+        // console.log(form);
+        if (element.nodeName != "BUTTON" && element.dataset.ignore !== "true") {
+
+
+            if (element.dataset.relacional == "1") {
+
+            } else {
+
+                switch (element.dataset.type) {
+                    case "date"://Formata a data no padrão para o banco
+                        formValues[element.name] = b.formatDataUserforISO(element.value);
+                        break;
+                    case "coin"://Formata de Moeda para Float
+                        formValues[element.name] = b.paraFloat(element.value);
+                        break;
+                    case "coin-real"://Formata de Moeda para Float
+                        formValues[element.name] = b.paraFloat(element.value);
+                        break;
+                    case "quantia"://Formata 
+                        formValues[element.name] = b.paraFloat(element.value);
+                        break;
+                    case "ignore"://Campo e ignorado 
+
+                        break;
+                    case "float":// Se o campo estiver vazio ""(String), converte para um numero 0 float, evita erro no DB
+                        if (element.value === "") {
+                            formValues[element.name] = 0;
+                        } else {
+                            formValues[element.name] = element.value;
+                        }
+                        break;
+                    default:
+                        formValues[element.name] = element.value;
+                        break;
+                }
+            }
+
+        }
+
+    });
+
+    return formValues;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //USADO NA FUNÇÃO TRANSFERIR
 //----------------------------------------------------------------------------------
 //Extrai os valores dos inputs do form e coloca em um objeto com os parâmetros igual
@@ -311,6 +396,11 @@ export function mask(elemento) {
             switch (element.dataset.type) {
                 case "coin"://Formata de Moeda para Float
                     b.maskMoeda(element)
+
+                    break;
+                // case "coin"://Formata de Moeda para Float
+                //     b.maskMoeda(element)
+
                     break;
                 case "date"://Formata de Moeda para Float
                     b.maskData(element)

@@ -1,7 +1,7 @@
 import b from '../../../biblioteca/js/biblioteca.js';
 
 export function init(valueInit) {
-       //VARIÁVEIS
+    //VARIÁVEIS
     //=====================================================================================================
     //=====================================================================================================
 
@@ -29,6 +29,20 @@ export function init(valueInit) {
     const btnAdicionarProcedimento = document.querySelector('#btn-adicionar_procedimento');
     const btnLimparLista = document.querySelector('#btn-limpar_lista');
     const elTbody_TableInput = document.querySelector('#table-input_tbody');
+
+
+
+
+
+
+    // Totais
+    //----------------------------------------------------------------
+    const inpSubtotal = document.querySelector('#subtotal')
+    const inpDesconto = document.querySelector('#desconto')
+    const inpTotal = document.querySelector('#total')
+
+
+
 
 
     //MASCARAS
@@ -61,7 +75,7 @@ export function init(valueInit) {
 
 
 
-console.log(valueInit);
+    // console.log(valueInit);
 
 
 
@@ -78,38 +92,89 @@ console.log(valueInit);
     //EVENTOS
     //=====================================================================================================
     //=====================================================================================================
-    //BTN - Salvar
+    //Form - Salvar
     //------------------------------------------------------
     formAdicionar.addEventListener('submit', function (e) {
         e.preventDefault();
 
         //Pega o FORM que é o target do evento submit
-        const form = e.target;
+        // const form = e.target;
 
-        if (validarForm(form)) {
-
-
-            const formFiltrado = b.form.extractValues(form);
-
-            console.log(formFiltrado);
-
-            b.crud.editar(formFiltrado, "pagamentos", response => {//async   
-                b.modal.fechar()
+        // console.log(formAdicionar);
 
 
+        // element.dataset.ignore // element.dataset.extract
+        const formFiltrado = b.form.extractValues2(formAdicionar);
 
-                response.estoque_total = b.paraMoeda(0) + " " + response.unidade;
-                response.custo = valueInit.dadosItem.custo;
+        formFiltrado.status = "Recebido";
+        formFiltrado.atendimentos_id = globalAtendimentoData.id;
 
 
-                const linhaCriada = b.render.lineInTable(valueInit.elLinhaSelecionada, response, "pagamentos");             
+        // console.log(formFiltrado);
 
-            }).then(() => {
-                b.modal.fechar()
-            });
 
+        b.crud.editar(formFiltrado, "pagamentos", response => {//async   
+            b.modal.fechar()
+
+            console.log(response);
+            // response.estoque_total = b.paraMoeda(0) + " " + response.unidade;
+            // response.custo = valueInit.dadosItem.custo;
+            const faturamentoParaLinhaData = response;
+
+            faturamentoParaLinhaData.nome = globalAtendimentoData.nome;
+            faturamentoParaLinhaData.atendimentos_id = globalAtendimentoData.id.padStart(4, '0');   
+            faturamentoParaLinhaData.abertura = b.formatTimeStampForDataUser(globalAtendimentoData.abertura);
+
+            // abertura: "2022-03-22 12:07:55"
+            // anamnese: ""
+            // atestado: ""
+            // data_nascimento: "1988-09-22"
+            // fechamento: null
+            // id: "13"
+            // nome: "Daiane Sampaio"
+            // pacientes_id: "1"
+            // profissionais_id: null
+            // recebido: null
+            // receituario: ""
+            // registro: "2022-03-22 12:07:55"
+            // sexo: "Mulher"
+            // status: "Aberto"
+            // usuarios_id: "1"
+
+
+            const linhaCriada = b.table.insertLineNoDelete(valueInit.elLinhaSelecionada, faturamentoParaLinhaData, "pagamentos");
+
+        }).then(() => {
+            b.modal.fechar()
+        });
+
+
+    });
+
+
+    //Input - Desconto
+    //------------------------------------------------------
+    inpDesconto.addEventListener('input', function (e) {
+        e.preventDefault();
+
+        calcularDesconto();
+
+    });
+
+    //Cancela o evento de enviar o form ao da enter dentro do input
+    inpDesconto.addEventListener("keypress", function (e) {
+        if (e.which == 13) { // se pressionar enter
+            e.preventDefault();
         }
     });
+
+    //Selecionar o campo ao clicar nele
+    inpDesconto.addEventListener('focus', ev => {
+        inpDesconto.select();
+    })
+
+
+
 
 
 
@@ -138,10 +203,10 @@ console.log(valueInit);
                 //Adiciona um zero a esquerda da ID
                 response.id = response.id.padStart(2, '0');
                 response.atendimentos_id = response.atendimentos_id.padStart(4, '0');
-                
+
                 response.abertura = formatarData(response.abertura);
 
-        
+
                 return response;
             });
 
@@ -216,6 +281,11 @@ console.log(valueInit);
             //Preenche os campos do atendimento com os dados do banco
             preencherCamposFaturamento(globalAtendimentoData, procedimentosDoAtendimentoData)
 
+
+            calcularSubtotal(procedimentosDoAtendimentoData);
+            calcularDesconto(procedimentosDoAtendimentoData);
+
+
         });
 
 
@@ -226,38 +296,36 @@ console.log(valueInit);
 
 
 
-  //=======================================================================================
-  function preencherCamposFaturamento(atendimentoData, procedimentosDoAtendimentoData) {
+    //=======================================================================================
+    function preencherCamposFaturamento(atendimentoData, procedimentosDoAtendimentoData) {
 
 
 
 
-    //Preenche os dados do atendimento não relacionais
-    //-------------------------------------------------------------
-    // b.form.preencher(formModalAtendimento, atendimentoData);
+        //Preenche os dados do atendimento não relacionais
+        //-------------------------------------------------------------
+        // b.form.preencher(formModalAtendimento, atendimentoData);
 
 
-    //Preenche os dados sobre o paciente na tela
-    // ------------------------------------------------------------
-    //Retorna o valor do objeto e não sua referencia
-    // const pacienteData = b.objectValue(atendimentoData);
-    // pacienteData.id = atendimentoData.pacientes_id;
+        //Preenche os dados sobre o paciente na tela
+        // ------------------------------------------------------------
+        //Retorna o valor do objeto e não sua referencia
+        // const pacienteData = b.objectValue(atendimentoData);
+        // pacienteData.id = atendimentoData.pacientes_id;
 
-    // //Campos das Divs
-    // inserirDadosPaciente(pacienteData);
-    // //Campo Nome
-    // inpNomePaciente.value = atendimentoData.nome;
-
-
-    //Preenche os Procedimentos
-    // ------------------------------------------------------------
-    preencherProcedimento(procedimentosDoAtendimentoData)
+        // //Campos das Divs
+        // inserirDadosPaciente(pacienteData);
+        // //Campo Nome
+        // inpNomePaciente.value = atendimentoData.nome;
 
 
+        //Preenche os Procedimentos
+        // ------------------------------------------------------------
+        preencherProcedimento(procedimentosDoAtendimentoData)
 
-}
 
 
+    }
 
 
 
@@ -309,13 +377,61 @@ console.log(valueInit);
 
 
                 }
-              
+
             });
 
+    }
+
+
+
+
+
+
+    //------------------------------------------------------------------------------------------
+    function calcularSubtotal(procedimentosDoAtendimentoData) {
+
+        //Pega todos os campos total do produto
+        // const inpTotalProdutoAll = document.querySelectorAll('[data-group="produto-total-input"]');
+
+
+        //Soma o valor total do produto na linha
+        // inpProdutoTotal.value = b.paraMoedaReal(b.paraFloat(inpProdutoQuantidade.value) * b.paraFloat(inpProdutoCusto.value));
+
+        // Soma todos os valores totais dos produtos para informar o custo do item
+        //     inpCusto.value = Array.from(inpTotalProdutoAll).reduce((total, element) => {
+        //         return b.paraMoedaReal(b.paraFloat(total) + b.paraFloat(element.value));
+        //     }, 0);
+        // }
+
+        // console.log(procedimentosDoAtendimentoData);
+        inpSubtotal.value = Array.from(procedimentosDoAtendimentoData).reduce((total, procedimento) => {
+            return b.paraMoedaReal(b.paraFloat(total) + b.paraFloat(procedimento.valor));
+        }, 0);
 
 
 
     }
+
+
+
+
+
+    //------------------------------------------------------------------------------------------
+    function calcularDesconto(procedimentosDoAtendimentoData) {
+
+        inpTotal.value = b.paraMoedaReal(b.paraFloat(inpSubtotal.value) - b.paraFloat(inpDesconto.value));
+
+
+    }
+
+
+
+
+
+
+
+
+
 
 
 
