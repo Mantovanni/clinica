@@ -43,3 +43,9 @@ Clinica
 3 - Arrumar Side bar para ao clicar fora do sub menu aberto fechá-lo automaticamente
 
 4- adicionar mais opções de exibição do atendimento na tela de adicionar faturamento
+
+5- Colocar os status colorido nas tabelas
+
+6- Adicionar a opção de imprimir na tela de atendimento, e em cada aba
+
+7 - Resolver como ficara a parte de profissionais, inseerir o responsavel no atendimento

@@ -453,7 +453,7 @@ export function pageModalCustom(urlPagina, urlJs, valueInit) {
 export function lineInTable(elTable, dados, nometabelaDoBanco) {//Espera receber um TBODY
 
     //---------------------------------------------------------------------------------------------
-    //Verifica se está recevendo um um objeto ou array de objetos,
+    //Verifica se está recebendo um um objeto ou array de objetos,
     //para adicionar um a muitas linhas
     let dadosArray;
     if (Array.isArray(dados)) {
@@ -470,7 +470,7 @@ export function lineInTable(elTable, dados, nometabelaDoBanco) {//Espera receber
 
 
         //Cria linha e insere a linha vazia  na tabela ou
-        //se for edição , apaga o conteudo da linha selecionada  e a reultiliza
+        //se for edição , apaga o conteudo da linha selecionada e a reutiliza
         //---------------------------------------------------------------------------------------------
         let elNovaLinha = "";
         //Sef for uma linha/TR selecionada no edit

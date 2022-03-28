@@ -471,7 +471,7 @@ class GeralDAO
         // Recria os itens relacionais 
         // -------------------------------------------------------------------------------------------------------------
 
-
+        // Unknown column '' in 'field list' || Query3: INSERT INTO atendimentos_has_procedimentos (`atendimentos_id`,``) VALUES (60,'');
 
 
 

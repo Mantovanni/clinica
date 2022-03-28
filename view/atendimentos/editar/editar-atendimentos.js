@@ -7,7 +7,7 @@ export function init(valueInit) {
     //VARIÁVEIS
     //=====================================================================================================
     //=====================================================================================================
-
+    console.log(valueInit);
     //Globais
     //========================================================================
     //Lista usado para o autocomplete
@@ -16,6 +16,7 @@ export function init(valueInit) {
     let pacienteSelected = [];
     let atendimentoAberto = false;
     let globalAtendimentoData = {};
+    let elLinhaSelecionada = {};
     // let atendimentoStatus = "Fechado";
 
 
@@ -93,8 +94,9 @@ export function init(valueInit) {
 
     //Quando entra pela opção de editar
     if (valueInit != undefined) {
-        console.log("carregarDadosCompletosAtendimentoById");
+        // console.log("carregarDadosCompletosAtendimentoById");
         carregarDadosCompletosAtendimentoById();
+        elLinhaSelecionada = valueInit.elLinhaSelecionada;
     }
 
     buscarListaDePacientes();
@@ -261,7 +263,7 @@ export function init(valueInit) {
         b.crud.custom("carregarDadosCompletosAtendimentoById", "atendimentos", data, responseList => {  //async    
 
 
-            console.log(responseList);
+            // console.log(responseList);
             //Coloca em uma variável global os dados do paciente.
             globalAtendimentoData = responseList["data"]["atendimento"];
 
@@ -271,7 +273,7 @@ export function init(valueInit) {
 
             //Muda um conjunto de regras no layout na DOM de acordo com o status do atendimento
             if (globalAtendimentoData.status == "Aberto") {
-                console.log(globalAtendimentoData);
+                // console.log(globalAtendimentoData);
                 mudarLayoutParaAtendimentoAberto(globalAtendimentoData)
 
             } else if (globalAtendimentoData.status == "Concluido") {
@@ -485,10 +487,10 @@ export function init(valueInit) {
             //Não é possível utilizar o crud.salvar pois é necessário pegar o id de usuário na session do php
             b.crud.custom("salvarAtendimento", "atendimentos", dataFormAtendimentos, responseItemSalvo => {//async
 
-
+                globalAtendimentoData = responseItemSalvo;
 
                 //Muda o status na globalAtendimento para Aberto
-                globalAtendimentoData.status = "Aberto";
+                // globalAtendimentoData.status = "Aberto";
 
                 // console.log(globalAtendimentoData);
                 //Conjunto de alterações no layout apos abrir o atendimento
@@ -501,16 +503,17 @@ export function init(valueInit) {
                 //que foram salvos no banco e retornaram para ser tratados
                 const atendimentoForInsertLineData = responseItemSalvo;
 
-            
+
                 atendimentoForInsertLineData.id = atendimentoForInsertLineData.id.toString().padStart(4, '0');
                 atendimentoForInsertLineData.nome = pacienteSelected.nome
                 atendimentoForInsertLineData.abertura = b.getDataAtualFormatada();
                 // atendimentoForInsertLineData.abertura = 
 
 
-                const linhaCriada = b.table.insertLineDesc(tbody, atendimentoForInsertLineData, "atendimentos");
+                //Retorna um array com todas as linhas criadas
+                 const linhasCriadas = b.table.insertLineDesc(tbody, atendimentoForInsertLineData, "atendimentos");
 
-
+                 elLinhaSelecionada = linhasCriadas[0];
 
 
 
@@ -547,7 +550,7 @@ export function init(valueInit) {
 
 
 
-    function salvarAtendimento(dataFormModalAtendimento) {//mudar para editarAtendimento
+    function salvarAtendimento(dataFormModalAtendimento) {//mudar para editarAtendimento/ salvarEdiçao
         //Pega o FORM que é o target do evento submit
 
         if (validarForm(formModalAtendimento)) {
@@ -561,7 +564,19 @@ export function init(valueInit) {
 
 
             b.crud.editarRelacional(formValuesAll, "atendimentos", "atendimentos_has_procedimentos", responseItemSalvo => {//async    
-                b.modal.fechar()
+                // b.modal.fechar()
+
+                // console.log(responseItemSalvo);
+                //                 console.log(globalAtendimentoData);
+
+
+
+                const atendimentoForInsertLineData = responseItemSalvo["item"];
+
+                atendimentoForInsertLineData.id = atendimentoForInsertLineData.id.toString().padStart(4, '0');
+                atendimentoForInsertLineData.nome = globalAtendimentoData.nome
+                atendimentoForInsertLineData.abertura = b.getDataAtualFormatada();//arrumar
+                const linhaCriada = b.table.insertLineDesc(elLinhaSelecionada, atendimentoForInsertLineData, "atendimentos");
 
             }).then(() => {
                 b.modal.fechar()
@@ -576,11 +591,7 @@ export function init(valueInit) {
     //=======================================================================================
     function concluirAtendimento() {
 
-
-
-
         if (validarFormConcluir()) {
-
 
 
             const dataFormModalAtendimento = b.form.extractValuesAll2(formModalAtendimento);
@@ -592,6 +603,9 @@ export function init(valueInit) {
 
 
 
+            //ADICIONAR ISSO A FUNÇÃO DE CONCLUIR DE NO DAO
+            //===============================================
+            //===============================================
             //Altera o status do faturamentos
             //-------------------------------------------------------------------------------
             //pega a id do faturamento correspondente ao atendimento
@@ -630,9 +644,19 @@ export function init(valueInit) {
         b.crud.editar(data, "atendimentos", response => {//async   
 
             globalAtendimentoData.status = "Aberto";
-
             mudarLayoutParaAtendimentoAberto(globalAtendimentoData)
 
+
+
+            //Editar linha na tabela
+            //-------------------------------------------------------------------    
+            const atendimentoForInsertLineData = globalAtendimentoData;
+            // console.log(globalAtendimentoData);
+
+            atendimentoForInsertLineData.id = atendimentoForInsertLineData.id.toString().padStart(4, '0');
+            // atendimentoForInsertLineData.nome = globalAtendimentoData.nome
+            atendimentoForInsertLineData.abertura = b.formatTimeStampForDataUser(atendimentoForInsertLineData.abertura);//arrumar
+           b.table.insertLineDesc(elLinhaSelecionada, atendimentoForInsertLineData, "atendimentos");
 
         }).then(() => {
 
@@ -683,7 +707,7 @@ export function init(valueInit) {
     //=======================================================================================
     function mudarLayoutParaAtendimentoConcluido(atendimentoData) {
 
-        console.log(atendimentoData.id);
+        // console.log(atendimentoData.id);
 
 
         //Mudar o titulo do modal para "Atendimento 00 - Paciente Fulano de Tal"
@@ -757,7 +781,7 @@ export function init(valueInit) {
     function preencherProcedimento(atendimentoData) {
 
 
-        console.log(atendimentoData);
+        // console.log(atendimentoData);
         //Formata os dados de estoque para inserir em movimentações.
         // let data = {};
         // data = atendimentoData.map(element => {
