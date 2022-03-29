@@ -434,15 +434,15 @@ export function init(valueInit) {
 
             const pacienteData = selectedKeyData.selection.value;
             inserirDadosPaciente(pacienteData);
-        
+
         });
 
-         //Se sair o input sem selecionar um item no autocomplete limpa o campo
-         inpNomePaciente.addEventListener('focusout', resetarInvalido);
-         inpNomePaciente.addEventListener('focus', resetarInvalido);
-         function resetarInvalido(e) {
-             inpNomePaciente.value = "";
-         }
+        //Se sair o input sem selecionar um item no autocomplete limpa o campo
+        inpNomePaciente.addEventListener('focusout', resetarInvalido);
+        inpNomePaciente.addEventListener('focus', resetarInvalido);
+        function resetarInvalido(e) {
+            inpNomePaciente.value = "";
+        }
     }
 
 
@@ -916,6 +916,7 @@ export function init(valueInit) {
             globalListaProcedimentosDataAsync = response["data"];
 
 
+            //Adiciona uma linha de procedimento vazio
             adicionarProcedimento(response["data"]);
         })
 
@@ -949,7 +950,11 @@ export function init(valueInit) {
         // });
 
 
-        elTbody_TableInput.innerHTML = "";
+        //Limpa os procedimentos apenas se houver procedimentos para carregar
+        // if (atendimentoData.length !== 0 ) {
+            elTbody_TableInput.innerHTML = "";
+        // }
+
 
         //insere uma linha de inputs recebendo a tabela, e os dados para o autocomplete
         b.table.insertLineInputFilled2(elTbody_TableInput,
@@ -1014,6 +1019,7 @@ export function init(valueInit) {
     //Adiciona uma linha vazia de procedimentos
     //------------------------------------------------------------------------------------
     function adicionarProcedimento(listaProcedimentos) {
+        // console.log(listaProcedimentos);
 
         //insere uma linha de inputs recebendo a tabela, e os dados para o autocomplete
         const eleNewLine = b.table.insertLineInput2(elTbody_TableInput, globalListaProcedimentosDataAsync, (selectedKeyData, linha) => {
@@ -1030,8 +1036,10 @@ export function init(valueInit) {
             linha.cells[2].firstElementChild.select();
             // dataSelecionado.event.path[3].nextElementSibling.firstElementChild.select();
         });
-
-
+        console.log(elTbody_TableInput);
+        console.log(eleNewLine);
+        console.log(tituloPage);
+        // tituloPage.appendChild(eleNewLine);
 
         const inpNome = eleNewLine.cells[1].firstElementChild.firstElementChild;
 
