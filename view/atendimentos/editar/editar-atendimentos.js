@@ -97,6 +97,10 @@ export function init(valueInit) {
 
     // valueInit.novoAtendimento = true
 
+    //Bloqueia mexer no atendimento
+    //-----------------------------------------------------
+    divTabAtendimentos.style['pointer-events'] = 'none';
+
     buscarListaDeProcedimentos();
 
     //Quando entra pela opção de editar
@@ -107,6 +111,7 @@ export function init(valueInit) {
     }
 
     buscarListaDePacientes();
+
 
 
 
@@ -177,7 +182,7 @@ export function init(valueInit) {
 
 
 
-//Botão - Imprimir Atendimento
+    //Botão - Imprimir Atendimento
     //--------------------------------------------------------------------
     btnImpAtendimento.addEventListener('click', ev => window.print())
 
@@ -423,24 +428,21 @@ export function init(valueInit) {
             //Ações apos selecionar um item da lista / selectedKeyData contem os dados o item
             //--------------------------------------------------------
 
-
             //Passa os dados do paciente selecionado para variável global
             pacienteSelected = selectedKeyData.selection.value;
 
 
             const pacienteData = selectedKeyData.selection.value;
             inserirDadosPaciente(pacienteData);
-
-            //Se sair o input sem selecionar um item no autocomplete limpa o campo
-            inpNomePaciente.addEventListener('focusout', resetarInvalido);
-            inpNomePaciente.addEventListener('focus', resetarInvalido);
-            function resetarInvalido(e) {
-                inpNomePaciente.value = "";
-            }
-
-
-
+        
         });
+
+         //Se sair o input sem selecionar um item no autocomplete limpa o campo
+         inpNomePaciente.addEventListener('focusout', resetarInvalido);
+         inpNomePaciente.addEventListener('focus', resetarInvalido);
+         function resetarInvalido(e) {
+             inpNomePaciente.value = "";
+         }
     }
 
 
@@ -528,7 +530,46 @@ export function init(valueInit) {
 
 
                 //Retorna um array com todas as linhas criadas
-                const linhasCriadas = b.table.insertLineDesc(tbody, atendimentoForInsertLineData, "atendimentos");
+                // const linhasCriadas = b.table.insertLineDesc(tbody, atendimentoForInsertLineData, "atendimentos");
+
+                const linhasCriadas = b.table.insertLineObject(tbody, {
+                    dados: atendimentoForInsertLineData, tableName: "atendimentos",
+                    afterCreateNewLine(newLineCreated, newLineData) {
+
+                        //Cria uma referência para célula Status
+                        const tdStatus = newLineCreated.querySelector('[data-name=status]');
+                        //Pega valor da célula Status
+                        const statusValue = tdStatus.textContent;
+                        // Limpa Célula do Status
+                        tdStatus.textContent = "";
+
+                        //Cria e insere div status value
+                        tdStatus.insertAdjacentHTML("afterbegin", `
+                        <div class="status_value">${statusValue}</div>
+                        `)
+
+                        //Cria uma referência para célula Status Value
+                        const divStatusValue = tdStatus.firstChild.nextElementSibling
+
+
+                        //Muda a cor de acordo com o valor do Status
+                        switch (statusValue) {
+                            case "Concluido":
+                                // divStatusValue.classList.toggle("");
+                                divStatusValue.style.backgroundColor = '#048bff';//azul
+                                break;
+                            case "Aberto":
+                                // divStatusValue.classList.toggle("");
+                                divStatusValue.style.backgroundColor = '#22e10b';//verde
+                                break;
+
+
+                        }
+
+                    }
+                });
+
+
 
                 elLinhaSelecionada = linhasCriadas[0];
 
@@ -594,7 +635,58 @@ export function init(valueInit) {
                 atendimentoForInsertLineData.id = atendimentoForInsertLineData.id.toString().padStart(4, '0');
                 atendimentoForInsertLineData.nome = globalAtendimentoData.nome
                 atendimentoForInsertLineData.abertura = b.getDataAtualFormatada();//arrumar
-                const linhaCriada = b.table.insertLineDesc(elLinhaSelecionada, atendimentoForInsertLineData, "atendimentos");
+                // const linhaCriada = b.table.insertLineObject(elLinhaSelecionada, atendimentoForInsertLineData, "atendimentos");
+
+
+                const linhasCriadas = b.table.insertLineObject(elLinhaSelecionada, {
+                    dados: atendimentoForInsertLineData, tableName: "atendimentos",
+                    afterCreateNewLine(newLineCreated, newLineData) {
+
+                        //Cria uma referência para célula Status
+                        const tdStatus = newLineCreated.querySelector('[data-name=status]');
+                        //Pega valor da célula Status
+                        const statusValue = tdStatus.textContent;
+                        // Limpa Célula do Status
+                        tdStatus.textContent = "";
+
+                        //Cria e insere div status value
+                        tdStatus.insertAdjacentHTML("afterbegin", `
+                        <div class="status_value">${statusValue}</div>
+                        `)
+
+                        //Cria uma referência para célula Status Value
+                        const divStatusValue = tdStatus.firstChild.nextElementSibling
+
+
+                        //Muda a cor de acordo com o valor do Status
+                        switch (statusValue) {
+                            case "Concluido":
+                                // divStatusValue.classList.toggle("");
+                                divStatusValue.style.backgroundColor = '#048bff';//azul
+                                break;
+                            case "Aberto":
+                                // divStatusValue.classList.toggle("");
+                                divStatusValue.style.backgroundColor = '#22e10b';//verde
+                                break;
+
+
+                        }
+
+                    }
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             }).then(() => {
                 b.modal.fechar()
@@ -675,7 +767,45 @@ export function init(valueInit) {
             atendimentoForInsertLineData.id = atendimentoForInsertLineData.id.toString().padStart(4, '0');
             // atendimentoForInsertLineData.nome = globalAtendimentoData.nome
             atendimentoForInsertLineData.abertura = b.formatTimeStampForDataUser(atendimentoForInsertLineData.abertura);//arrumar
-            b.table.insertLineDesc(elLinhaSelecionada, atendimentoForInsertLineData, "atendimentos");
+            // b.table.insertLineDesc(elLinhaSelecionada, atendimentoForInsertLineData, "atendimentos");
+
+            const linhasCriadas = b.table.insertLineObject(elLinhaSelecionada, {
+                dados: atendimentoForInsertLineData, tableName: "atendimentos",
+                afterCreateNewLine(newLineCreated, newLineData) {
+
+                    //Cria uma referência para célula Status
+                    const tdStatus = newLineCreated.querySelector('[data-name=status]');
+                    //Pega valor da célula Status
+                    const statusValue = tdStatus.textContent;
+                    // Limpa Célula do Status
+                    tdStatus.textContent = "";
+
+                    //Cria e insere div status value
+                    tdStatus.insertAdjacentHTML("afterbegin", `
+                    <div class="status_value">${statusValue}</div>
+                    `)
+
+                    //Cria uma referência para célula Status Value
+                    const divStatusValue = tdStatus.firstChild.nextElementSibling
+
+
+                    //Muda a cor de acordo com o valor do Status
+                    switch (statusValue) {
+                        case "Concluido":
+                            // divStatusValue.classList.toggle("");
+                            divStatusValue.style.backgroundColor = '#048bff';//azul
+                            break;
+                        case "Aberto":
+                            // divStatusValue.classList.toggle("");
+                            divStatusValue.style.backgroundColor = '#22e10b';//verde
+                            break;
+
+
+                    }
+
+                }
+            });
+
 
         }).then(() => {
 

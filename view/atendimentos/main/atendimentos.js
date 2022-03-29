@@ -1,4 +1,4 @@
-import  b from '../../../biblioteca/js/biblioteca.js';
+import b from '../../../biblioteca/js/biblioteca.js';
 
 
 export function init() {
@@ -43,10 +43,10 @@ export function init() {
     //------------------------------------------------------
     btnAdicionar.addEventListener('click', function (e) {
         b.modal.abrir("Novo Atendimento");
-        
+
 
         // Passa o elemento Janela Modal para a função render.page 
-       b.render.pageModal(adicionarUrl, urlJs);//async
+        b.render.pageModal(adicionarUrl, urlJs);//async
         //  b.render.page(b.modal.content, adicionarUrl, urlJs);//async
 
     });
@@ -54,11 +54,11 @@ export function init() {
 
 
 
-//Jogar para biblioteca
-    const formatarData = (data) =>{
+    //Jogar para biblioteca
+    const formatarData = (data) => {
         let d = new Date(data);
         // Month retorna entre 0 e 11, por isso a adição +1
-        return `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`
+        return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`
     }
 
 
@@ -73,7 +73,7 @@ export function init() {
 
 
         //Função que lista todas a linhas de uma tabela no banco e retorna os dados
-        b.crud.custom("listarAtendimentosClientes", "atendimentos", "",responseList => {  //async     
+        b.crud.custom("listarAtendimentosClientes", "atendimentos", "", responseList => {  //async     
 
             //Extrai os dados da tabela e faz algum tratamento caso necessário.
             const listaDeAtendimentos = responseList["data"].map(response => {
@@ -84,24 +84,57 @@ export function init() {
 
                 response.abertura = formatarData(response.abertura);
 
-               
+
                 return response;
             });
-      
+
 
 
             //Função que cria a tabela na DOM utilizando os dados extraídos do banco.
-           const linhasCriadas =  b.table.insertLineObject(tbody,{ dados : listaDeAtendimentos, tableName : "atendimentos",
-            afterCreateNewLine(newLineCreated, newLineData){
-                // console.log(newLineCreated, newLineData);
-
-
+            const linhasCriadas = b.table.insertLineObject(tbody, {
+                dados: listaDeAtendimentos, tableName: "atendimentos",
+                afterCreateNewLine(newLineCreated, newLineData) {
                 
-            }
-           });
+                    //Cria uma referência para célula Status
+                    const tdStatus = newLineCreated.querySelector('[data-name=status]');
+                    //Pega valor da célula Status
+                    const statusValue = tdStatus.textContent;
+                    // Limpa Célula do Status
+                    tdStatus.textContent = "";
 
-           console.log(linhasCriadas);
-            
+                    //Cria e insere div status value
+                    tdStatus.insertAdjacentHTML("afterbegin", `
+                    <div class="status_value">${statusValue}</div>
+                    `)
+
+                    //Cria uma referência para célula Status Value
+                    const divStatusValue = tdStatus.firstChild.nextElementSibling
+
+
+                    //Muda a cor de acordo com o valor do Status
+                    switch (statusValue) {
+                        case "Concluido":
+                            // divStatusValue.classList.toggle("");
+                            divStatusValue.style.backgroundColor = '#048bff';//azul
+                            break;
+                        case "Aberto":
+                            // divStatusValue.classList.toggle("");
+                            divStatusValue.style.backgroundColor = '#22e10b';//verde
+                            break;
+
+
+                    }
+
+                }
+            });
+
+
+
+
+
+
+            //    console.log(linhasCriadas);
+
             //Insere a função de pesquisar na tabela
             //OBS. Adicionar essa função de forma automática no futuro
             b.table.insertSearch(inpPesquisar, tbody);
