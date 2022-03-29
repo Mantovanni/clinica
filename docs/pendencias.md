@@ -32,13 +32,11 @@ isso fica em loop
 
 Clinica
 ===============================================================
-1 - Remover a coluna de ações da tela Faturamentos - está dando erro na função render
+
 
 2 - Finalizar o layout na tela do atendimento,
 
 2.1 - impedir que crie faturamento sem cliente do banco
-
-2.2 - So concluir atendimento com pelo menos 1 procedimento adicionado.
 
 3 - Arrumar Side bar para ao clicar fora do sub menu aberto fechá-lo automaticamente
 

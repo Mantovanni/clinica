@@ -51,6 +51,13 @@ export function init(valueInit) {
     const divPrimeiraConsulta = document.querySelector('#paciente-primeira_consulta')
     const divSexo = document.querySelector('#paciente-sexo')
 
+    //Procedimentos
+    //----------------------------------------------------------------
+
+    const divTabAtendimentos = document.querySelector('#tabs-atendimento')
+
+
+
 
     //Procedimentos
     //----------------------------------------------------------------
@@ -166,6 +173,16 @@ export function init(valueInit) {
         }
 
     })
+
+
+
+
+//Botão - Imprimir Atendimento
+    //--------------------------------------------------------------------
+    btnImpAtendimento.addEventListener('click', ev => window.print())
+
+
+
 
 
     //Botão - Salvar
@@ -511,9 +528,9 @@ export function init(valueInit) {
 
 
                 //Retorna um array com todas as linhas criadas
-                 const linhasCriadas = b.table.insertLineDesc(tbody, atendimentoForInsertLineData, "atendimentos");
+                const linhasCriadas = b.table.insertLineDesc(tbody, atendimentoForInsertLineData, "atendimentos");
 
-                 elLinhaSelecionada = linhasCriadas[0];
+                elLinhaSelecionada = linhasCriadas[0];
 
 
 
@@ -561,11 +578,11 @@ export function init(valueInit) {
 
             formValuesAll.item = dataFormModalAtendimento;
 
-console.log(formValuesAll);
+            // console.log(formValuesAll);
 
 
             b.crud.editarRelacional(formValuesAll, "atendimentos", "atendimentos_has_procedimentos", responseItemSalvo => {//async    
-                // b.modal.fechar()
+                b.modal.fechar()
 
                 // console.log(responseItemSalvo);
                 //                 console.log(globalAtendimentoData);
@@ -580,7 +597,7 @@ console.log(formValuesAll);
                 const linhaCriada = b.table.insertLineDesc(elLinhaSelecionada, atendimentoForInsertLineData, "atendimentos");
 
             }).then(() => {
-                // b.modal.fechar()
+                b.modal.fechar()
             });
 
         }
@@ -658,7 +675,7 @@ console.log(formValuesAll);
             atendimentoForInsertLineData.id = atendimentoForInsertLineData.id.toString().padStart(4, '0');
             // atendimentoForInsertLineData.nome = globalAtendimentoData.nome
             atendimentoForInsertLineData.abertura = b.formatTimeStampForDataUser(atendimentoForInsertLineData.abertura);//arrumar
-           b.table.insertLineDesc(elLinhaSelecionada, atendimentoForInsertLineData, "atendimentos");
+            b.table.insertLineDesc(elLinhaSelecionada, atendimentoForInsertLineData, "atendimentos");
 
         }).then(() => {
 
@@ -696,6 +713,7 @@ console.log(formValuesAll);
 
         //liberar para editar os campos do atendimento
         //--------------------------------------------------------------------------
+        divTabAtendimentos.style['pointer-events'] = 'auto';
 
         //fechar o campo de escolha do paciente
         //--------------------------------------------------------------------------
@@ -718,6 +736,9 @@ console.log(formValuesAll);
         elHeaderWindowModal.style.backgroundColor = '#2559a7';//Azul 
 
 
+        //Bloqueia para editar os campos do atendimento
+        //--------------------------------------------------------------------------
+        divTabAtendimentos.style['pointer-events'] = 'none';
 
         inpNomePaciente.disabled = "true";
 

@@ -76,7 +76,7 @@ export function init() {
         b.crud.custom("listarAtendimentosClientes", "atendimentos", "",responseList => {  //async     
 
             //Extrai os dados da tabela e faz algum tratamento caso necessário.
-            const dados = responseList["data"].map(response => {
+            const listaDeAtendimentos = responseList["data"].map(response => {
 
                 // console.log(response);
                 //Adiciona um zero a esquerda da ID
@@ -91,7 +91,16 @@ export function init() {
 
 
             //Função que cria a tabela na DOM utilizando os dados extraídos do banco.
-            b.table.insertLineDesc(tbody, dados, "atendimentos");
+           const linhasCriadas =  b.table.insertLineObject(tbody,{ dados : listaDeAtendimentos, tableName : "atendimentos",
+            afterCreateNewLine(newLineCreated, newLineData){
+                // console.log(newLineCreated, newLineData);
+
+
+                
+            }
+           });
+
+           console.log(linhasCriadas);
             
             //Insere a função de pesquisar na tabela
             //OBS. Adicionar essa função de forma automática no futuro

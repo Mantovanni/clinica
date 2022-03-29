@@ -18,7 +18,7 @@ export function fechar() {
     const modalWindowContent = modalElement.querySelector('#modal-window__content');
 
 
-    //Apos clicar em fechar desabilita a interação com o modal durante o processo de efeito de escondelo
+    //Apos clicar em fechar desabilita a interação com o modal durante o processo de efeito de esconde-lo
     // modalWindowContent.style['pointer-events'] = 'none';
     modalElement.style['pointer-events'] = 'none';
     setTimeout(() => {
@@ -30,12 +30,12 @@ export function fechar() {
 
 
     //Depois do tempo da transição de opacidade remove o display="flex ficando "display="none"
-    //e remove a opacidade 0, para quando abrir novamante ele apareça com opaciade normal 1
+    //e remove a opacidade 0, para quando abrir novamente ele apareça com opacidade normal 1
     setTimeout(() => {
         modalElement.classList.toggle("mostrar-flex", false);
         modalElement.classList.toggle("zero-opacidade", false);
 
-        //Limpa o conteudo apos esconder o modal, evita comflito com o conteudo de outros modais.
+        //Limpa o conteúdo apos esconder o modal, evita conflito com o conteúdo de outros modais.
         modalWindowContent.textContent = "";
     }, 400);
 
