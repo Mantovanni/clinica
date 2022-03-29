@@ -54,6 +54,7 @@ export function init() {
 
 
 
+
     //Jogar para biblioteca
     const formatarData = (data) => {
         let d = new Date(data);
@@ -94,7 +95,7 @@ export function init() {
             const linhasCriadas = b.table.insertLineObject(tbody, {
                 dados: listaDeAtendimentos, tableName: "atendimentos",
                 afterCreateNewLine(newLineCreated, newLineData) {
-                
+
                     //Cria uma referência para célula Status
                     const tdStatus = newLineCreated.querySelector('[data-name=status]');
                     //Pega valor da célula Status
@@ -129,7 +130,8 @@ export function init() {
             });
 
 
-
+            //CLICK TESTEg
+            // document.querySelector("#tbody-central > tr > td.w-22.cursor-pointer").click();
 
 
 

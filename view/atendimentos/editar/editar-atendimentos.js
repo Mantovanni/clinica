@@ -113,7 +113,7 @@ export function init(valueInit) {
     buscarListaDePacientes();
 
 
-
+    
 
 
 
@@ -184,7 +184,7 @@ export function init(valueInit) {
 
     //Botão - Imprimir Atendimento
     //--------------------------------------------------------------------
-    btnImpAtendimento.addEventListener('click', ev => window.print())
+    // btnImpAtendimento.addEventListener('click', ev => window.print())
 
 
 
@@ -857,6 +857,7 @@ export function init(valueInit) {
     //=======================================================================================
     function mudarLayoutParaAtendimentoConcluido(atendimentoData) {
 
+        // btnImpAtendimento.click();
         // console.log(atendimentoData.id);
 
 
