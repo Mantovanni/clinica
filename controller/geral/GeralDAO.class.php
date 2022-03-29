@@ -417,14 +417,12 @@ class GeralDAO
 
 
 
-
-
         //Atualiza a tabela principal
         //------------------------------------------------------------------------------------------------------------
         //Converte o objeto em array
         $item = (array)$data["item"]; //item é uma linha de uma tabela 
 
-        //Passa a id para ser ultilizada no WHERE e em seguida remove do array para não  ir para Query
+        //Passa a id para ser utilizada no WHERE e em seguida remove do array para não  ir para Query
         $id = $item["id"];
         $itensRelacionais = $item["itemRelacional"];
 
@@ -433,7 +431,7 @@ class GeralDAO
         unset($item["itemRelacional"]);
 
 
-        //Formata o array nesse modelo (nome` = 'Joao) e depois da um implde
+        //Formata o array nesse modelo (nome` = 'Joao) e depois da um implode
         foreach ($item as $key => $value) {
             $arrayFormatado[] = $key . "` = '" . $value;
         }
@@ -447,7 +445,7 @@ class GeralDAO
         $query .= " WHERE (`id` = " . $id  . "  ); ";
 
 
-        //Coloca o valor na proprieda id novamente, apra retornar na função
+        //Coloca o valor na propriedade id novamente, para retornar na função
         $item["id"] = $id;
         $item["itemRelacional"] =  $itensRelacionais;
 
@@ -473,7 +471,8 @@ class GeralDAO
 
         // Unknown column '' in 'field list' || Query3: INSERT INTO atendimentos_has_procedimentos (`atendimentos_id`,``) VALUES (60,'');
 
-
+        // Unknown column '' in 'field list'
+        // || Query3: INSERT INTO atendimentos_has_procedimentos (`atendimentos_id`,``) VALUES (18,'');
 
         //o campo foreign Key que faz relação com a tabela principal não e passado , deve ser criado agora
         $campoTabelaForeignKey = $tabela . "_id";

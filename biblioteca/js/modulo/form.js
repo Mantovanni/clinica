@@ -210,6 +210,7 @@ export function extractValuesAll(form) {
 
                 //Passa o valor para o objeto
                 item[element.name] = valor;
+                //  console.log(item);
                 // formValues.itensRelacionais[numero] = b.objectValue(item);
                 formValues.itensRelacionais[numero] = Object.assign({}, item);
 
@@ -240,7 +241,7 @@ export function extractValuesAll(form) {
 export function extractValuesAll2(form) {
 
     const formValues = {};
-    formValues.itemRelacional = [];
+    formValues.itemRelacional = {};
 
     let item = {};
     // Trasnforma o no de lementos em um array de elementos para usar foreach
@@ -248,12 +249,12 @@ export function extractValuesAll2(form) {
 
         // console.log(element);
         //Remove os botoes do array de valores do form
-        if (element.nodeName != "BUTTON" && element.dataset.ignore !== "true") {//element.dataset.igrnore = true, ignora so para extrair
+        if (element.nodeName != "BUTTON" && element.dataset.ignore !== "true") {//element.dataset.ignore = true, ignora so para extrair
             // if (element.nodeName != "BUTTON" && !element.dataset.extract) {
 
             let valor = "";
 
-            //Fiiltra valor-------------------------------------------------
+            //Filtra valor-------------------------------------------------
             switch (element.dataset.type) {
                 case "coin"://Formata de Moeda para Float
                     valor = b.paraFloat(element.value);
@@ -285,13 +286,18 @@ export function extractValuesAll2(form) {
 
             //Armazena valor-----------------------------------------------------------
             if (element.dataset.relacional) {
+                console.log(element.dataset.relacional);
+
 
                 const numero = element.dataset.relacional;
+              
 
                 //Passa o valor para o objeto
                 item[element.name] = valor;
+                //   console.log(item);
                 // formValues.itemRelacional[numero] = b.objectValue(item);
                 formValues.itemRelacional[numero] = Object.assign({}, item);
+                // formValues.itemRelacional[6] = {element.name : valor};
 
 
 
@@ -304,6 +310,9 @@ export function extractValuesAll2(form) {
         }
 
     });
+
+
+
 
     return formValues;
 

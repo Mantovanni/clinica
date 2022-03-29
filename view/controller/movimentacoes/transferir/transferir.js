@@ -90,7 +90,7 @@ export function init(dataInit) {
 
 
 
-
+console.log(formValuesAll);
 
         //========================================================================
         b.crud.custom2({

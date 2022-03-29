@@ -7,7 +7,7 @@ export function init(valueInit) {
     //VARIÁVEIS
     //=====================================================================================================
     //=====================================================================================================
-    console.log(valueInit);
+    // console.log(valueInit);
     //Globais
     //========================================================================
     //Lista usado para o autocomplete
@@ -277,7 +277,7 @@ export function init(valueInit) {
                 mudarLayoutParaAtendimentoAberto(globalAtendimentoData)
 
             } else if (globalAtendimentoData.status == "Concluido") {
-                console.log(globalAtendimentoData);
+                // console.log(globalAtendimentoData);
                 mudarLayoutParaAtendimentoConcluido(globalAtendimentoData)
 
             }
@@ -561,6 +561,7 @@ export function init(valueInit) {
 
             formValuesAll.item = dataFormModalAtendimento;
 
+console.log(formValuesAll);
 
 
             b.crud.editarRelacional(formValuesAll, "atendimentos", "atendimentos_has_procedimentos", responseItemSalvo => {//async    
@@ -579,7 +580,7 @@ export function init(valueInit) {
                 const linhaCriada = b.table.insertLineDesc(elLinhaSelecionada, atendimentoForInsertLineData, "atendimentos");
 
             }).then(() => {
-                b.modal.fechar()
+                // b.modal.fechar()
             });
 
         }
@@ -606,10 +607,11 @@ export function init(valueInit) {
             //ADICIONAR ISSO A FUNÇÃO DE CONCLUIR DE NO DAO
             //===============================================
             //===============================================
-            //Altera o status do faturamentos
+            //Alterar o status do Faturamento
             //-------------------------------------------------------------------------------
             //pega a id do faturamento correspondente ao atendimento
             b.crud.listarByKey("atendimentos_id", dataFormModalAtendimento.id, "pagamentos", response => {
+
 
                 const faturamentoData = {};
                 faturamentoData.id = response["data"][0].id

@@ -64,6 +64,7 @@ export function init(valueInit) {
 
             const formValues = extractValuesRelacional(b.form.extractValues(form));
 
+console.log(formValues);
 
 
             b.crud.editarRelacional(formValues, "itens", "itens_has_produtos", responseItemSalvo => {//async                  
