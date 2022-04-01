@@ -94,7 +94,7 @@ CREATE TABLE `atendimentos` (
   CONSTRAINT `fk_atendimentos_1` FOREIGN KEY (`pacientes_id`) REFERENCES `pacientes` (`id`),
   CONSTRAINT `fk_atendimentos_2` FOREIGN KEY (`profissionais_id`) REFERENCES `profissionais` (`id`),
   CONSTRAINT `fk_atendimentos_6` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,7 +103,7 @@ CREATE TABLE `atendimentos` (
 
 LOCK TABLES `atendimentos` WRITE;
 /*!40000 ALTER TABLE `atendimentos` DISABLE KEYS */;
-INSERT INTO `atendimentos` VALUES (5,3,NULL,1,'2022-03-21 01:25:30',NULL,'Aberto',NULL,'2022-03-21 04:25:30','','',''),(6,4,NULL,1,'2022-03-21 01:36:41',NULL,'Aberto',NULL,'2022-03-21 04:36:41','','',''),(7,1,NULL,1,'2022-03-21 21:43:58',NULL,'Aberto',NULL,'2022-03-22 00:43:58','','',''),(8,2,NULL,1,'2022-03-21 23:29:49',NULL,'Aberto',NULL,'2022-03-22 02:29:49','','',''),(9,3,NULL,1,'2022-03-22 11:59:05',NULL,'Aberto',NULL,'2022-03-22 14:59:05','','',''),(13,1,NULL,1,'2022-03-22 12:07:55',NULL,'Concluido',NULL,'2022-03-22 15:07:55','','',''),(14,6,NULL,1,'2022-03-22 16:20:27',NULL,'Aberto',NULL,'2022-03-22 19:20:27','dfgdfg','dgfdfg',''),(15,7,NULL,1,'2022-03-22 16:27:08',NULL,'Aberto',NULL,'2022-03-22 19:27:08','werveson com dores lombares , devido carne de tatu','','');
+INSERT INTO `atendimentos` VALUES (82,2,NULL,1,'2022-03-29 12:59:50',NULL,'Concluido',NULL,'2022-03-29 15:59:50','','',''),(84,3,NULL,1,'2022-03-29 13:22:56',NULL,'Concluido',NULL,'2022-03-29 16:22:56','','',''),(85,4,NULL,1,'2022-03-29 16:27:31',NULL,'Aberto',NULL,'2022-03-29 19:27:31','','','');
 /*!40000 ALTER TABLE `atendimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +124,7 @@ CREATE TABLE `atendimentos_has_procedimentos` (
   KEY `fk_atendimentos_has_procedimentos_2_idx` (`atendimentos_id`),
   CONSTRAINT `fk_atendimentos_has_procedimentos_1` FOREIGN KEY (`procedimentos_id`) REFERENCES `procedimentos` (`id`),
   CONSTRAINT `fk_atendimentos_has_procedimentos_2` FOREIGN KEY (`atendimentos_id`) REFERENCES `atendimentos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=212 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +133,7 @@ CREATE TABLE `atendimentos_has_procedimentos` (
 
 LOCK TABLES `atendimentos_has_procedimentos` WRITE;
 /*!40000 ALTER TABLE `atendimentos_has_procedimentos` DISABLE KEYS */;
-INSERT INTO `atendimentos_has_procedimentos` VALUES (5,7,1,'1'),(6,7,1,'1'),(7,7,2,'1'),(53,6,1,'1'),(54,6,1,'2'),(55,6,2,'1'),(67,5,2,'1'),(68,5,1,'1'),(69,5,2,'1'),(70,5,2,'1'),(71,5,2,'1'),(91,8,2,'1'),(92,8,1,'1'),(93,9,1,'1'),(94,13,1,'1'),(99,14,8,'1'),(100,14,1,'1'),(106,15,1,'1'),(107,15,3,'1'),(108,15,4,'1');
+INSERT INTO `atendimentos_has_procedimentos` VALUES (207,84,2,'1'),(208,84,3,'1'),(209,82,1,'1'),(210,82,3,'1'),(211,85,3,'1');
 /*!40000 ALTER TABLE `atendimentos_has_procedimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -508,8 +508,8 @@ CREATE TABLE `pagamentos` (
   `registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `fk_pagamentos_atendimentos1_idx` (`atendimentos_id`),
-  CONSTRAINT `fk_pagamentos_atendimentos1` FOREIGN KEY (`atendimentos_id`) REFERENCES `atendimentos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `fk_pagamentos_atendimentos1` FOREIGN KEY (`atendimentos_id`) REFERENCES `atendimentos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -518,7 +518,7 @@ CREATE TABLE `pagamentos` (
 
 LOCK TABLES `pagamentos` WRITE;
 /*!40000 ALTER TABLE `pagamentos` DISABLE KEYS */;
-INSERT INTO `pagamentos` VALUES (1,13,NULL,NULL,NULL,'Pendente',NULL,'2022-03-22 15:07:55'),(2,14,NULL,NULL,NULL,'Pendente',NULL,'2022-03-22 19:20:27'),(3,15,NULL,NULL,NULL,'Aberto',NULL,'2022-03-22 19:27:08');
+INSERT INTO `pagamentos` VALUES (70,82,380,100,280,'Recebido',NULL,'2022-03-29 15:59:50'),(72,84,NULL,NULL,NULL,'Pendente',NULL,'2022-03-29 16:22:56'),(73,85,NULL,NULL,NULL,'Pendente',NULL,'2022-03-29 19:27:31');
 /*!40000 ALTER TABLE `pagamentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -544,7 +544,7 @@ CREATE TABLE `procedimentos` (
 
 LOCK TABLES `procedimentos` WRITE;
 /*!40000 ALTER TABLE `procedimentos` DISABLE KEYS */;
-INSERT INTO `procedimentos` VALUES (1,'Consulta Clínica',200,NULL),(2,'Aplicação de Soro',150,NULL),(3,'Sutura',180,NULL),(4,'Procedimento Teste 01',300,NULL),(5,'Procedimento Teste 02',100,NULL),(6,'Procedimento Teste 03',250,NULL),(7,'Teste 04',150,'dadsadgh'),(8,'Aplicação de Remedio',200,'');
+INSERT INTO `procedimentos` VALUES (1,'Consulta Clínica',200,NULL),(2,'Aplicação de Soro',150,NULL),(3,'Sutura',180,NULL),(4,'Procedimento Teste 01',300,NULL),(5,'Procedimento Teste 02',100,''),(6,'Procedimento Teste 03',250,NULL),(7,'Teste 04',150,'dadsadgh'),(8,'Aplicação de Remedio',200,'');
 /*!40000 ALTER TABLE `procedimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -804,4 +804,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-22 17:49:51
+-- Dump completed on 2022-04-01 17:48:31
