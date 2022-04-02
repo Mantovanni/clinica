@@ -184,7 +184,7 @@ export function init(valueInit) {
 
     //Botão - Imprimir Atendimento
     //--------------------------------------------------------------------
-    // btnImpAtendimento.addEventListener('click', ev => window.print())
+    btnImpAtendimento.addEventListener('click', ev => window.print())
 
 
 
