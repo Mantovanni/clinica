@@ -69,7 +69,7 @@ export function init(valueInit) {
     carregarDadosCompletosAtendimentoById();
 
 
-    tituloPage.textContent = "Faturar Atendimento - " + valueInit.dadosItem.atendimentos_id.padStart(4, '0');
+    tituloPage.textContent = "Faturar Atendimento - " + valueInit.dadosItem.id.padStart(4, '0');
     b.form.preencher(formAdicionar, valueInit.dadosItem);
 
 
@@ -94,59 +94,10 @@ export function init(valueInit) {
     //=====================================================================================================
     //Form - Salvar
     //------------------------------------------------------
-    formAdicionar.addEventListener('submit', function (e) {
+    formAdicionar.addEventListener('submit', function (e) {//passar conteúdo para uma função especifica
         e.preventDefault();
 
-        //Pega o FORM que é o target do evento submit
-        // const form = e.target;
-
-        // console.log(formAdicionar);
-
-
-        // element.dataset.ignore // element.dataset.extract
-        const formFiltrado = b.form.extractValues2(formAdicionar);
-
-        formFiltrado.status = "Recebido";
-        formFiltrado.atendimentos_id = globalAtendimentoData.id;
-
-
-        // console.log(formFiltrado);
-
-
-        b.crud.editar(formFiltrado, "pagamentos", response => {//async   
-            b.modal.fechar()
-
-            console.log(response);
-            // response.estoque_total = b.paraMoeda(0) + " " + response.unidade;
-            // response.custo = valueInit.dadosItem.custo;
-            const faturamentoParaLinhaData = response;
-
-            faturamentoParaLinhaData.nome = globalAtendimentoData.nome;
-            faturamentoParaLinhaData.atendimentos_id = globalAtendimentoData.id.padStart(4, '0');   
-            faturamentoParaLinhaData.abertura = b.formatTimeStampForDataUser(globalAtendimentoData.abertura);
-
-            // abertura: "2022-03-22 12:07:55"
-            // anamnese: ""
-            // atestado: ""
-            // data_nascimento: "1988-09-22"
-            // fechamento: null
-            // id: "13"
-            // nome: "Daiane Sampaio"
-            // pacientes_id: "1"
-            // profissionais_id: null
-            // recebido: null
-            // receituario: ""
-            // registro: "2022-03-22 12:07:55"
-            // sexo: "Mulher"
-            // status: "Aberto"
-            // usuarios_id: "1"
-
-
-            const linhaCriada = b.table.insertLineNoDelete(valueInit.elLinhaSelecionada, faturamentoParaLinhaData, "pagamentos");
-
-        }).then(() => {
-            b.modal.fechar()
-        });
+        confirmarPagamento()
 
 
     });
@@ -190,31 +141,30 @@ export function init(valueInit) {
     //=====================================================================================================
 
 
-    //Carregar Tabela - Faturamentos
-    //==================================================================================================
-    function buscarFaturamentoDetalhadoById() {
+    // //Carregar Tabela - Faturamentos
+    // //==================================================================================================
+    // function buscarFaturamentoDetalhadoById() {
 
 
-        //Função que lista todas a linhas de uma tabela no banco e retorna os dados
-        b.crud.custom("listarFaturamentoDetalhado", "pagamentos", "", responseList => {  //async     
+    //     //Função que lista todas a linhas de uma tabela no banco e retorna os dados
+    //     b.crud.custom("listarFaturamentoDetalhado", "pagamentos", "", responseList => {  //async     
 
-            //Extrai os dados da tabela e faz algum tratamento caso necessário.
-            const dados = responseList["data"].map(response => {
-                //Adiciona um zero a esquerda da ID
-                response.id = response.id.padStart(2, '0');
-                response.atendimentos_id = response.atendimentos_id.padStart(4, '0');
+    //         //Extrai os dados da tabela e faz algum tratamento caso necessário.
+    //         const dados = responseList["data"].map(response => {
+    //             //Adiciona um zero a esquerda da ID
+    //             response.id = response.id.padStart(2, '0');
+    //             response.id = response.atendimentos_id.padStart(4, '0');
 
-                response.abertura = formatarData(response.abertura);
-
-
-                return response;
-            });
+    //             response.abertura = formatarData(response.abertura);
 
 
-        });
+    //             return response;
+    //         });
 
-    }
 
+    //     });
+
+    // }
 
 
 
@@ -236,6 +186,65 @@ export function init(valueInit) {
 
 
 
+    //Insere uma transação altera o status_pagamento da tabela pagamentos
+    //=======================================================================================
+    function confirmarPagamento(params) {
+        //Pega o FORM que é o target do evento submit
+
+
+        //Trata os valores para ser inderidos no banco
+        //---------------------------------------------------------------------------
+        const formFiltrado = {};
+
+        //atendimentos
+        //--------------------------------
+        formFiltrado.atendimentos = {};
+        formFiltrado.atendimentos.id = globalAtendimentoData.id;
+        formFiltrado.atendimentos.status_pagamento = "Recebido";
+
+
+        //transacoes
+        //--------------------------------      
+        formFiltrado.transacoes = b.form.extractValues2(formAdicionar);
+
+        formFiltrado.transacoes.atendimentos_id = globalAtendimentoData.id;
+        formFiltrado.transacoes.status = "Recebido";
+        formFiltrado.transacoes.descricao = "Atendimento " + globalAtendimentoData.id.padStart(4, '0');
+        formFiltrado.transacoes.tipo = "Recebido";
+        formFiltrado.transacoes.forma_de_pagamento = "Dinheiro"; //adicionar na tela de faturar
+        formFiltrado.transacoes.operacao = "Atendimento";
+   
+
+
+        //Função para inserir no banco
+        b.crud.custom("confirmarPagamento", "atendimentos", formFiltrado, response => {//async   
+            b.modal.fechar()
+
+            console.log(response);
+            // response.estoque_total = b.paraMoeda(0) + " " + response.unidade;
+            // response.custo = valueInit.dadosItem.custo;
+            const faturamentoParaLinhaData = response;
+
+            faturamentoParaLinhaData.nome = globalAtendimentoData.nome;
+            faturamentoParaLinhaData.id = globalAtendimentoData.id.padStart(4, '0');
+            faturamentoParaLinhaData.abertura = b.formatTimeStampForDataUser(globalAtendimentoData.abertura);
+            faturamentoParaLinhaData.status_pagamento = response.atendimentos.status_pagamento;
+
+
+
+            const linhaCriada = b.table.insertLineNoDelete(valueInit.elLinhaSelecionada, faturamentoParaLinhaData, "pagamentos");
+
+        }).then(() => {
+            b.modal.fechar()
+        });
+
+    }
+
+
+
+
+
+
 
 
 
@@ -252,7 +261,7 @@ export function init(valueInit) {
 
         const data = {};
         //Pega a id passada por parâmetro pela função que cria a linha na tabela
-        data.id = valueInit.dadosItem.atendimentos_id;
+        data.id = valueInit.dadosItem.id;
 
 
         //Função que busca no banco todos os dados daquele atendimentos nas tabelas relacionadas

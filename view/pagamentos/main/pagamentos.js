@@ -72,13 +72,14 @@ export function init() {
 
 
         //Função que lista todas a linhas de uma tabela no banco e retorna os dados
-        b.crud.listarByKey("status", "Concluido", "atendimentos", responseList => {  //async     
+        b.crud.custom("listarAtendimentosConcluidos", "atendimentos", "", responseList => {  //async     
 
+            // console.log(responseList["data"]);
             //Extrai os dados da tabela e faz algum tratamento caso necessário.
             const dados = responseList["data"].map(response => {
                 //Adiciona um zero a esquerda da ID
-                response.id = response.id.padStart(2, '0');
-                response.atendimentos_id = response.atendimentos_id.padStart(4, '0');
+                response.id = response.id.padStart(4, '0');
+                // response.atendimentos_id = response.atendimentos_id.padStart(4, '0');
                 
                 response.abertura = formatarData(response.abertura);
 
@@ -92,7 +93,7 @@ export function init() {
             b.table.insertLineNoDelete(tbody, dados, "pagamentos");
 
             //CLICK
-            // document.querySelector("#tbody-central > tr > td.w-22.cursor-pointer").click();
+            document.querySelector("#tbody-central > tr > td.cursor-pointer").click();
 
             //Insere a função de pesquisar na tabela
             //OBS. Adicionar essa função de forma automatica no futuro

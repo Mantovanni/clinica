@@ -337,6 +337,12 @@ class AtendimentosDAO
 
 
 
+
+
+
+
+
+
     // Lista dados atendimentos com pacientes
     //===========================================================================================================
     static function listarAtendimentosClientes()
@@ -390,9 +396,9 @@ class AtendimentosDAO
     //==============================================================================================================
 
 
-    // Lista dados atendimentos com pacientes
+    // Lista todos os dados dos atendimentos que foram concluídos
     //===========================================================================================================
-    static function listarAtendimentosConcluidos()
+    static function listarAtendimentosConcluidos() //mudar para listarAtendimentosClinetesConcluidos
     {
 
         // $data = (array)$body->data;
@@ -410,6 +416,7 @@ class AtendimentosDAO
             INNER JOIN 
                 pacientes
             ON atendimentos.pacientes_id = pacientes.id
+            WHERE atendimentos.status = 'Concluido'
             order by atendimentos.id;                                                  
             ";
 
@@ -430,6 +437,93 @@ class AtendimentosDAO
 
         return $dataToSend;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Pagamentos
+    //==============================================================================================================
+    //==============================================================================================================
+
+    //confirmarPagamento
+    //====================================================================================================
+    static function  confirmarPagamento($body)
+    {
+// print_r($body);
+        //
+        $data = (array)$body->data;
+
+        $data["atendimentos"] = (array)$data["atendimentos"];
+        $data["transacoes"] = (array)$data["transacoes"];
+        // $data = (array)$body->data;
+
+
+
+        //Abre e Referencia a conexão
+        $connection = Database::connect();
+        //inicia um ponto que a partir daqui se algo der errado em algum ponto no sql  retorna todas as ações.
+        mysqli_begin_transaction($connection);
+
+
+
+
+        //Editando status_pagamentos de atendimentos
+        //--------------------------------------------------------------------------------
+        $query =
+            "UPDATE `atendimentos` 
+        SET `status_pagamento` = 'Recebido' 
+        WHERE (`id` = " . $data["atendimentos"]["id"] . " );                                          
+        ";
+
+        mysqli_query($connection, $query) or die(mysqli_error($connection) . "\n || Query1: " . $query);
+
+
+
+
+        //Inserindo uma de operação = "atendimento" na tabela de trasacoes
+        //--------------------------------------------------------------------------------
+        $query  = "INSERT INTO transacoes";
+        // implode keys do $array...
+        $query .= " (`" . implode("`, `", array_keys($data["transacoes"])) . "`)";
+        // implode values do $array...
+        $query .= " VALUES ('" . implode("', '", $data["transacoes"]) . "') ";
+
+        mysqli_query($connection, $query) or die(mysqli_error($connection) . "\n || Query2: " . $query);
+        $data["transacoes"]["id"] = mysqli_insert_id(Database::connect());
+
+
+        mysqli_commit($connection);
+
+        return $data;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

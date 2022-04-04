@@ -45,6 +45,11 @@ class ControllerAtendimentos
                     self::listarAtendimentosConcluidos();
                     break;
 
+                case 'confirmarPagamento':
+                    self::confirmarPagamento($body);
+                    break;
+
+
 
 
                 default;
@@ -100,12 +105,22 @@ class ControllerAtendimentos
         echo json_encode($consulta);
     }
 
-      //Buscar dados completo do atendimento
+    //Buscar dados completo do atendimento
     //==========================================================================================================
     static function  listarAtendimentosConcluidos()
     {
 
         $consulta = AtendimentosDAO::listarAtendimentosConcluidos();
+
+        echo json_encode($consulta);
+    }
+
+        //Buscar dados completo do atendimento
+    //==========================================================================================================
+    static function  confirmarPagamento($body)
+    {
+
+        $consulta = AtendimentosDAO::confirmarPagamento($body);
 
         echo json_encode($consulta);
     }

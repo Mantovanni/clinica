@@ -1087,6 +1087,7 @@ export function insertLineInputFilled(elTable, params) {//Espera receber um TBOD
        * @param {string} nometabelaDoBanco Nome da tabela no banco, para as funções de excluir e editar
        * @returns {HTMLTableElement} Retorna a referencia para a linha criada
        */
+      //Sera a função principal de inserir linhas, recebe parâmetros como objetos
 export function insertLineObject(elTable, params, dados, nometabelaDoBanco, afterDelete) {//Espera receber um TBODY
 
     //---------------------------------------------------------------------------------------------
@@ -1645,7 +1646,9 @@ export function insertLineNoDelete(elTable, dados, nometabelaDoBanco, afterDelet
             //---------------------------------------------------------------------------------------------
             // const botaoEditar = linhaElemento.querySelector('.editar-linha');
             //Coloca um evento para edição na celula de name=nome
-            const eleCellNome = elNovaLinha.querySelector(`[data-name="nome"]`);
+            // const eleCellNome = elNovaLinha.querySelector(`[data-name="nome"]`);
+            // console.log(elNovaLinha);
+            const eleCellNome = elNovaLinha.querySelector(`[data-edit="true"]`);
             // console.log(eleCellNome);
             eleCellNome.classList.add("cursor-pointer")
             eleCellNome.addEventListener('click', function (e) {
