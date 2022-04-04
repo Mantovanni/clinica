@@ -87,6 +87,8 @@ CREATE TABLE `atendimentos` (
   `anamnese` varchar(245) DEFAULT NULL,
   `atestado` varchar(245) DEFAULT NULL,
   `receituario` varchar(245) DEFAULT NULL,
+  `status_pagamento` varchar(45) DEFAULT NULL,
+  `data_pagamento` timestamp NULL DEFAULT NULL COMMENT 'Aberto\nPendente\nRecebido\n\n',
   PRIMARY KEY (`id`),
   KEY `fk_atendimentos_1_idx` (`pacientes_id`),
   KEY `fk_atendimentos_2_idx` (`profissionais_id`),
@@ -103,7 +105,7 @@ CREATE TABLE `atendimentos` (
 
 LOCK TABLES `atendimentos` WRITE;
 /*!40000 ALTER TABLE `atendimentos` DISABLE KEYS */;
-INSERT INTO `atendimentos` VALUES (82,2,NULL,1,'2022-03-29 12:59:50',NULL,'Concluido',NULL,'2022-03-29 15:59:50','','',''),(84,3,NULL,1,'2022-03-29 13:22:56',NULL,'Concluido',NULL,'2022-03-29 16:22:56','','',''),(85,4,NULL,1,'2022-03-29 16:27:31',NULL,'Aberto',NULL,'2022-03-29 19:27:31','','','');
+INSERT INTO `atendimentos` VALUES (82,2,NULL,1,'2022-03-29 12:59:50',NULL,'Concluido',NULL,'2022-03-29 15:59:50','','','','Recebido',NULL),(84,3,NULL,1,'2022-03-29 13:22:56',NULL,'Concluido',NULL,'2022-03-29 16:22:56','','','','Recebido',NULL),(85,4,NULL,1,'2022-03-29 16:27:31',NULL,'Aberto',NULL,'2022-03-29 19:27:31','','','',NULL,NULL);
 /*!40000 ALTER TABLE `atendimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -662,6 +664,49 @@ INSERT INTO `profissionais` VALUES (1,'Samuel Facury','Homem','02331178577','198
 UNLOCK TABLES;
 
 --
+-- Table structure for table `transacoes`
+--
+
+DROP TABLE IF EXISTS `transacoes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `transacoes` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `atendimentos_id` int DEFAULT NULL,
+  `usuarios_id` int DEFAULT NULL,
+  `descricao` varchar(245) DEFAULT NULL,
+  `tipo` varchar(45) DEFAULT NULL COMMENT 'Receita / Entrada\nDispesa / Saida',
+  `valor` double DEFAULT NULL,
+  `desconto` double DEFAULT NULL,
+  `categoria` varchar(45) DEFAULT NULL,
+  `total` double DEFAULT NULL,
+  `forma_de_pagamento` varchar(45) DEFAULT NULL COMMENT 'A Vista\nParcelada',
+  `vencimento` datetime DEFAULT CURRENT_TIMESTAMP,
+  `tipo_multiplas` varchar(45) DEFAULT NULL COMMENT 'Parcelada\nRepetida\nUnitaria / Simples\n',
+  `id_multiplas` int DEFAULT NULL,
+  `data_pagamento` datetime DEFAULT CURRENT_TIMESTAMP,
+  `status` varchar(45) DEFAULT NULL COMMENT 'Pago\nPendente\n',
+  `operacao` varchar(45) DEFAULT NULL COMMENT 'Manual\nAtendimento - Quando for atendimento, colocar Atendimento na categoria automaticamente.\n',
+  `registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `fk_trancacoes_usuarios1_idx` (`usuarios_id`),
+  KEY `fk_trancacoes_atendimentos1_idx` (`atendimentos_id`),
+  CONSTRAINT `fk_trancacoes_atendimentos1` FOREIGN KEY (`atendimentos_id`) REFERENCES `atendimentos` (`id`),
+  CONSTRAINT `fk_trancacoes_usuarios1` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transacoes`
+--
+
+LOCK TABLES `transacoes` WRITE;
+/*!40000 ALTER TABLE `transacoes` DISABLE KEYS */;
+INSERT INTO `transacoes` VALUES (82,82,NULL,'Atendimento 0082','Recebido',380,10,NULL,370,'Dinheiro','2022-04-04 20:33:05',NULL,NULL,'2022-04-04 20:33:05','Recebido','Atendimento','2022-04-04 23:33:05'),(83,82,NULL,'Atendimento 0082','Recebido',380,0,NULL,380,'Dinheiro','2022-04-04 20:44:46',NULL,NULL,'2022-04-04 20:44:46','Recebido','Atendimento','2022-04-04 23:44:46'),(84,82,NULL,'Atendimento 0082','Recebido',380,20,NULL,360,'Dinheiro','2022-04-04 20:45:12',NULL,NULL,'2022-04-04 20:45:12','Recebido','Atendimento','2022-04-04 23:45:12'),(85,82,NULL,'Atendimento 0082','Recebido',380,0.04,NULL,379.96,'Dinheiro','2022-04-04 20:49:58',NULL,NULL,'2022-04-04 20:49:58','Recebido','Atendimento','2022-04-04 23:49:58'),(86,82,NULL,'Atendimento 0082','Recebido',380,0,NULL,380,'Dinheiro','2022-04-04 20:53:06',NULL,NULL,'2022-04-04 20:53:06','Recebido','Atendimento','2022-04-04 23:53:06'),(87,82,NULL,'Atendimento 0082','Recebido',380,0,NULL,380,'Dinheiro','2022-04-04 20:53:27',NULL,NULL,'2022-04-04 20:53:27','Recebido','Atendimento','2022-04-04 23:53:27'),(88,82,NULL,'Atendimento 0082','Recebido',380,0,NULL,380,'Dinheiro','2022-04-04 20:55:02',NULL,NULL,'2022-04-04 20:55:02','Recebido','Atendimento','2022-04-04 23:55:02'),(89,82,NULL,'Atendimento 0082','Recebido',380,0,NULL,380,'Dinheiro','2022-04-04 20:57:20',NULL,NULL,'2022-04-04 20:57:20','Recebido','Atendimento','2022-04-04 23:57:20'),(90,84,NULL,'Atendimento 0084','Recebido',330,0,NULL,330,'Dinheiro','2022-04-04 20:57:23',NULL,NULL,'2022-04-04 20:57:23','Recebido','Atendimento','2022-04-04 23:57:23');
+/*!40000 ALTER TABLE `transacoes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `usuarios`
 --
 
@@ -804,4 +849,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-01 17:48:31
+-- Dump completed on 2022-04-04 20:58:16
