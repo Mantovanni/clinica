@@ -1,0 +1,271 @@
+<form class="form-geral faturamento" id="form-modal">
+
+
+    <div class="form__main">
+
+
+        <button type="reset" class="btn-fechar-modal" id="btn-fechar-modal" data-class='fechar-modal'>X</button>
+
+        <!-- ID invisível para o editar -->
+        <div class="col-md-6 esconder">
+            <div class="grupo-label-input">
+                <label for="adicionar-id" class="label-adicionar-id">Id</label>
+                <input type="text" name="id" id="adicionar-id" autocomplete="off" data-type="text">
+            </div>
+        </div>
+
+
+        <!-- CAMPOS -->
+        <!-- ============================================================================================================ -->
+        <!-- ============================================================================================================ -->
+
+
+
+        <!-- ID invisível para usado quando for editar -->
+        <div class="col-md-6 esconder">
+            <div class="grupo-label-input">
+                <label for="atendimento_id" class="label-adicionar-id">Id</label>
+                <input type="text" name="id" id="atendimento_id" autocomplete="off" data-type="text">
+            </div>
+        </div>
+
+
+        <!-- Id do Paciente -->
+        <!-- <input class="esconder" type="text" name="pacientes_id" id="pacientes_id"> -->
+
+
+
+        <!-- CAMPOS -->
+        <!-- ====================================================================================================== -->
+        <!-- ====================================================================================================== -->
+
+        <!-- //remover -->
+        <!-- <div class=""> -->
+
+
+
+            <!-- Linha 01 - Pacientes -->
+            <!--------------------------------------------------------------------------------------------------->
+            <div class="c-atend_line1">
+
+
+                <!-- Dados do paciente -->
+                <!----------------------------------------------------------------------------->
+                <div class="c-atend__paciente ">
+
+
+
+                    <!-- Paciente Input -->
+                    <div class="c-atend__paciente-nome">
+                        <div class="grupo-label-input">
+                            <label for="nome">Paciente</label>
+
+                            <!-- Div para para determinar onde sera listado os itens do auto complete -->
+                            <div class="autoComplete_wrapper">
+                                <input type="text" name="nome" id="nome" placeholder="Nome" autocomplete="off"
+                                    data-extract="false" data-paciente_id="" data-ignore="true" disabled required>
+                            </div>
+
+                            <span class="mensagem-validacao"></span>
+                        </div>
+                    </div>
+
+
+                    <!-- Paciente Dados -->
+                    <div class="c-atend__paciente-dados ">
+
+                        <div class="c-atend__paciente-dados_line1 col-md-12">
+
+                            <!-- Idade -->
+                            <div class="c-atend__paciente-dados-idade col-md-6">
+                                <div class="paciente-dados_propriedade">
+                                    Idade:
+                                </div>
+                                <div class="paciente-dados_valor" id="paciente-idade">
+
+                                </div>
+                            </div>
+
+                            <!-- Atendimentos -->
+                            <div class="c-atend__paciente-dados-atendimentos col-md-6">
+                                <div class="paciente-dados_propriedade">
+                                    Atendimentos:
+                                </div>
+                                <div class="paciente-dados_valor" id="paciente-atendimentos">
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="c-atend__paciente-dados_line2 col-md-12">
+
+                            <!-- Primeira Consulta -->
+                            <div class="c-atend__paciente-dados-primeira col-md-6">
+                                <div class="paciente-dados_propriedade">
+                                    Primeira Consulta:
+                                </div>
+                                <div class="paciente-dados_valor" id="paciente-primeira_consulta">
+
+                                </div>
+                            </div>
+
+                            <!-- Sexo -->
+                            <div class="c-atend__paciente-dados-sexo col-md-6">
+                                <div class="paciente-dados_propriedade">
+                                    Sexo:
+                                </div>
+                                <div class="paciente-dados_valor" id="paciente-sexo">
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- Botões a direita -->
+                <!------------------------------------------------------------------------------>
+                <div class="c-atend__buttons">
+
+
+                    <!-- <button class="btn-blue" id="btn-atendimento">Abrir Atendimento</button>
+         
+                    <button class="btn-blue" id="btn-imp-atendimento">Imprimir Atendimento</button> -->
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+            <!-- TABLE INPUT Procedimentos-->
+            <!-- //==================================================================================================================== -->
+            <div class="table-input">
+
+                <div class="table-input_titulo">
+                    <span class="table-input_titulo-texto">Procedimentos</span>
+                </div>
+
+
+
+                <table class="table-input_tabela">
+
+                    <thead class="">
+                        <tr>
+                            <th data-name="procedimentos_id" data-ignore="true" data-type="esconder" class="esconder"></th>
+                            <th data-name="nome" data-ignore="true" data-attr="disabled" data-class="w-50">Nome</th>
+                            <!-- <th data-name="estoque_atual" data-format="coin" data-attr="disabled"
+                                                data-class="w-20" data-ignore="true">Qtd Atual.</th> -->
+                            <th data-name="quantidade" data-ignore="true" data-format="coin" data-attr="disabled" data-class="w-10">Qtd.</th>
+                            <th data-name="valor" data-ignore="true" data-format="coin" data-attr="disabled" data-class="w-10">Valor</th>
+                            <!-- <th data-name="procedimentos_id">Total</th> -->
+
+                            <!-- <th data-name="" data-type="action" data-class="w-5"></th> -->
+                        </tr>
+                    </thead>
+
+
+                    <tbody class="table-input_tbody" id="table-input_tbody">
+                        <!-- Linhas geradas aqui -->
+                    </tbody>
+
+
+                </table>
+
+            </div>
+
+
+
+
+            <!-- TOTAIS -->
+            <!-- ====================================================================================================== -->
+            <!-- 
+            <div class="linha">
+                 -->
+
+            <!-- Subtotal -->
+            <div class="subtotal_linha col-md-12">
+
+                <div class="col-md-7"></div>
+
+                <div class="subtotal col-md-5">
+
+                    <div class="col-md-4"></div>
+
+                    <div class="subtotal_nome col-md-4">Subtotal</div>
+
+                    <div class="subtotal_valor col-md-4">
+
+                        <input name="valor" class="input-default" id="subtotal" type="text" data-type="coin" disabled>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Desconto -->
+            <div class="desconto_linha col-md-12">
+
+                <div class="col-md-7"></div>
+
+                <div class="desconto col-md-5">
+
+                    <div class="col-md-4"></div>
+
+                    <div class="desconto_nome col-md-4">Desconto</div>
+
+                    <div class="desconto_valor col-md-4">
+
+                        <input name="desconto" class="input-default" placeholder="0,00" id="desconto" type="text" data-type="coin">
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <!-- Total -->
+            <div class="total_linha col-md-12">
+
+                <div class="col-md-7"></div>
+
+                <div class="total col-md-5">
+
+                    <div class="col-md-4"></div>
+
+                    <div class="total_nome col-md-4">Total</div>
+
+                    <div class="total_valor col-md-4">
+                        <input name="valor_final" class="input-default" id="total" type="text" data-type="coin" disabled>
+                        <!-- R$ 258,00 -->
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+            <!-- ================================================================================================= -->
+            <div class="form__footer">
+
+                <!-- <button type="reset" class="btn-cancelar" id="btn-cancelar-modal"
+                data-class='fechar-modal'>Cancelar</button> -->
+                <button type="submit" class="btn-salvar" id="btn-salvar-modal">Confirmar</button>
+            </div>
+
+
+</form>

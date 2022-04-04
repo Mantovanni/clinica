@@ -41,6 +41,9 @@ class ControllerAtendimentos
                     self::listarAtendimentosClientes();
                     break;
 
+                case 'listarAtendimentosConcluidos':
+                    self::listarAtendimentosConcluidos();
+                    break;
 
 
 
@@ -93,6 +96,16 @@ class ControllerAtendimentos
     {
 
         $consulta = AtendimentosDAO::listarAtendimentosClientes();
+
+        echo json_encode($consulta);
+    }
+
+      //Buscar dados completo do atendimento
+    //==========================================================================================================
+    static function  listarAtendimentosConcluidos()
+    {
+
+        $consulta = AtendimentosDAO::listarAtendimentosConcluidos();
 
         echo json_encode($consulta);
     }

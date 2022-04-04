@@ -72,7 +72,7 @@ export function init() {
 
 
         //Função que lista todas a linhas de uma tabela no banco e retorna os dados
-        b.crud.listarByKey("status", "Concluido", "atendimentos", responseList => {  //async     
+        b.crud.custom("listarFaturamentoDetalhado", "pagamentos", "", responseList => {  //async     
 
             //Extrai os dados da tabela e faz algum tratamento caso necessário.
             const dados = responseList["data"].map(response => {

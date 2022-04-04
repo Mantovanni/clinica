@@ -385,6 +385,52 @@ class AtendimentosDAO
 
 
 
+    //FATURAMENTO
+    //==============================================================================================================
+    //==============================================================================================================
+
+
+    // Lista dados atendimentos com pacientes
+    //===========================================================================================================
+    static function listarAtendimentosConcluidos()
+    {
+
+        // $data = (array)$body->data;
+
+        $dataToSend["data"] = array(); //Nao esta sendo usado, quando uma consulta nao retorna nada pra nao dar erro
+
+        $query =
+            "SELECT 
+                atendimentos.*,
+                pacientes.nome,
+                pacientes.data_nascimento,
+                pacientes.sexo
+            FROM 
+                atendimentos
+            INNER JOIN 
+                pacientes
+            ON atendimentos.pacientes_id = pacientes.id
+            order by atendimentos.id;                                                  
+            ";
+
+
+        $resultado = mysqli_query(Database::connect(), $query) or
+            die(mysqli_error(Database::connect()) . "\n || Query: " . $query);
+
+
+
+        while ($linha = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+
+            $dataToSend["data"][] = $linha;
+        }
+
+
+
+
+
+        return $dataToSend;
+    }
+
 
 
 
