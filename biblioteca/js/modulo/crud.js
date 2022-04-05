@@ -52,7 +52,7 @@ export function deletar(id, tabela, functionResponse) {
                 return false;
             } else {
                 // b.modal.alert("sucesso",  b.firstToUpperCase(tabela.slice(0, -1)) + " - Excluido(a) com sucesso");
-                b.modal.alert("sucesso",   "Item excluido com sucesso.");
+                b.modal.alert("sucesso", "Item excluido com sucesso.");
                 functionResponse(response);
                 return true;
             }
@@ -104,7 +104,7 @@ export function salvar(data, tabelaDbNome, functionResponse) {
                 b.modal.alert("erro", "Permissão negada.");
                 return false;
             } else {
-                b.modal.alert("sucesso",  b.firstToUpperCase(tabelaDbNome.slice(0, -1)) + "Salvo(a) com sucesso!");
+                b.modal.alert("sucesso", b.firstToUpperCase(tabelaDbNome.slice(0, -1)) + "Salvo(a) com sucesso!");
                 functionResponse(response);//Retorno o item salvo e sua id no banco 
                 return true;
             }
@@ -143,7 +143,7 @@ export function editar(data, tabelaDbNome, functionResponse) {
             metodo: "editar",
             tabela: tabelaDbNome,
             data: data
-        }, response => {            
+        }, response => {
             b.modal.alert("sucesso", b.firstToUpperCase(tabelaDbNome.slice(0, -1)) + " - Editado com sucesso!");
             functionResponse(response);
 
@@ -309,22 +309,31 @@ export function custom(metodo, controllerName, data, functionResponse, alert) {
         }, response => {
             //    console.log("a");
             //Se a requisição deu certo exibe a mensagem depois faz uma interação com os valores.
-             //ATENÇÃO
+            //ATENÇÃO
 
-             if (alert) {
-                b.modal.alert("sucesso",  "Ação realizada com sucesso!");
-            } 
+            //  if (alert) {
+            //     b.modal.alert("sucesso",  "Ação realizada com sucesso!");
+            // } 
 
             // if (alert) {
             //     b.modal.alert("sucesso", alert);
             // }else{
             //     b.modal.alert("sucesso", "Ação realizada com sucesso!");
             // }
-            
 
-           
+            if (alert) {
+
+
+                if (alert.message) {
+                    b.modal.alert("sucesso", alert.message);
+                } else {
+                    b.modal.alert("sucesso", "Ação realizada com sucesso!");
+                }
+
+
+            }
+
             functionResponse(response);
-
 
 
             // console.log(response);
@@ -378,17 +387,17 @@ export function custom2(parametros) {
     return fetchCrud(`../controller/${parametros.controller.nome}/Controller${b.firstToUpperCase(parametros.controller.nome)}.class.php`,
         {
             metodo: parametros.controller.metodo,
-            modo : parametros.controller.modo,
+            modo: parametros.controller.modo,
             data: parametros.controller.data
         }, response => {
             //    console.log("a");
             //Se a requisição deu certo exibe a mensagem depois faz uma interação com os valores.
             if (parametros.alert) {
-               
 
-                if(parametros.alert.message){
+
+                if (parametros.alert.message) {
                     b.modal.alert("sucesso", parametros.alert.message);
-                }else{
+                } else {
                     b.modal.alert("sucesso", "Ação realizada com sucesso!");
                 }
 

@@ -42,8 +42,19 @@ Clinica
 
 4- adicionar mais opções de exibição do atendimento na tela de adicionar faturamento
 
-5- Colocar os status colorido nas tabelas
 
 6- Adicionar a opção de imprimir na tela de atendimento, e em cada aba
 
-7 - Resolver como ficara a parte de profissionais, inseerir o responsavel no atendimento
+7 - Resolver como ficara a parte de profissionais, inserir o responsavel no atendimento
+
+
+
+
+--------------------
+Colocar status colorido na tabela de Faturentos/Pagamentos
+
+Arrumar função formatTimeStampForDataUser para exibir os 0 nas datassem ter dois digitos
+
+criar uma opção de cancelar atendimento
+
+so liberar edição de valores de transições que nao forem do tipo atendimento,

@@ -19,8 +19,8 @@ export function init(valueInit) {
 
     //Formulário
     //--------------------------------------
-    const formAdicionar = document.querySelector('#form-modal');//Formulario Adicionar
-
+    const formModalPagamento = document.querySelector('#form-modal');//Formulario Adicionar
+    const btnConfirmar = document.querySelector('#btn-salvar-modal')
 
 
 
@@ -47,7 +47,7 @@ export function init(valueInit) {
 
     //MASCARAS
     //==========================================================================================
-    b.form.mask(formAdicionar);
+    b.form.mask(formModalPagamento);
 
 
 
@@ -66,11 +66,11 @@ export function init(valueInit) {
     //=====================================================================================================
     //=====================================================================================================
 
-    carregarDadosCompletosAtendimentoById();
+    listarAtendimentosProcedimentosTrasacoesById();
 
 
-    tituloPage.textContent = "Faturar Atendimento - " + valueInit.dadosItem.id.padStart(4, '0');
-    b.form.preencher(formAdicionar, valueInit.dadosItem);
+    tituloPage.textContent = "Atendimento - " + valueInit.dadosItem.id.padStart(4, '0');
+    b.form.preencher(formModalPagamento, valueInit.dadosItem);
 
 
 
@@ -94,7 +94,7 @@ export function init(valueInit) {
     //=====================================================================================================
     //Form - Salvar
     //------------------------------------------------------
-    formAdicionar.addEventListener('submit', function (e) {//passar conteúdo para uma função especifica
+    formModalPagamento.addEventListener('submit', function (e) {//passar conteúdo para uma função especifica
         e.preventDefault();
 
         confirmarPagamento()
@@ -205,7 +205,7 @@ export function init(valueInit) {
 
         //transacoes
         //--------------------------------      
-        formFiltrado.transacoes = b.form.extractValues2(formAdicionar);
+        formFiltrado.transacoes = b.form.extractValues2(formModalPagamento);
 
         formFiltrado.transacoes.atendimentos_id = globalAtendimentoData.id;
         formFiltrado.transacoes.status = "Recebido";
@@ -213,7 +213,7 @@ export function init(valueInit) {
         formFiltrado.transacoes.tipo = "Recebido";
         formFiltrado.transacoes.forma_de_pagamento = "Dinheiro"; //adicionar na tela de faturar
         formFiltrado.transacoes.operacao = "Atendimento";
-   
+
 
 
         //Função para inserir no banco
@@ -234,7 +234,8 @@ export function init(valueInit) {
 
             const linhaCriada = b.table.insertLineNoDelete(valueInit.elLinhaSelecionada, faturamentoParaLinhaData, "pagamentos");
 
-        }).then(() => {
+        }, { message: "Atendimento - " + globalAtendimentoData.id.padStart(4, '0') + " recebido." }
+        ).then(() => {
             b.modal.fechar()
         });
 
@@ -257,7 +258,7 @@ export function init(valueInit) {
     //Busca no banco todos os dados do atendimento
     //=======================================================================================
     //buscarDadosCompletosDoAtendimentoById
-    function carregarDadosCompletosAtendimentoById() {
+    function listarAtendimentosProcedimentosTrasacoesById() {
 
         const data = {};
         //Pega a id passada por parâmetro pela função que cria a linha na tabela
@@ -265,10 +266,11 @@ export function init(valueInit) {
 
 
         //Função que busca no banco todos os dados daquele atendimentos nas tabelas relacionadas
-        b.crud.custom("carregarDadosCompletosAtendimentoById", "atendimentos", data, responseList => {  //async    
+        //Busca tambem o valor doa atendimento
+        b.crud.custom("listarAtendimentosProcedimentosTrasacoesById", "atendimentos", data, responseList => {  //async    
 
 
-            console.log(responseList);
+            // console.log(responseList);
             //Coloca em uma variável global os dados do paciente.
             globalAtendimentoData = responseList["data"]["atendimento"];
 
@@ -284,8 +286,8 @@ export function init(valueInit) {
 
             //     mudarLayoutParaAtendimentoConcluido(globalAtendimentoData)
             // }
-
-
+console.log(globalAtendimentoData);
+            mudarLayoutStatusPendente(globalAtendimentoData)
 
             //Preenche os campos do atendimento com os dados do banco
             preencherCamposFaturamento(globalAtendimentoData, procedimentosDoAtendimentoData)
@@ -302,6 +304,40 @@ export function init(valueInit) {
 
 
 
+//=======================================================================================
+    function mudarLayoutStatusPendente(globalAtendimentoData) {
+        // console.log(globalAtendimentoData);
+
+
+        //Se o pagamento esta pedente mostra o botão para confirmar pagamento
+        if(globalAtendimentoData.status_pagamento == "Pendente"){
+
+            // console.log("object");
+            // btnConfirmar.style.display = "none";
+            // btnConfirmar.classList.add("mostrar");
+            btnConfirmar.classList.toggle("esconder")
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -313,7 +349,7 @@ export function init(valueInit) {
 
         //Preenche os dados do atendimento não relacionais
         //-------------------------------------------------------------
-        // b.form.preencher(formModalAtendimento, atendimentoData);
+        b.form.preencher(formModalPagamento, atendimentoData);
 
 
         //Preenche os dados sobre o paciente na tela

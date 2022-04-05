@@ -1551,8 +1551,11 @@ export function insertLineNoDelete(elTable, dados, nometabelaDoBanco, afterDelet
             //Cria uma linha para manipular
             elNovaLinha = document.createElement("tr")
             //Insere a linha na tabela
-            elTable.appendChild(elNovaLinha);
+            // elTable.appendChild(elNovaLinha);
             // <tr class="tabela-item-linha" data-item-id="${responseItemSalvo.id}">
+
+            //Insere linha no top da tabela- Decrescente
+            elTable.insertBefore(elNovaLinha, elTable.firstChild);
         }
 
         elNovaLinha.dataset.id = dadosItem.id;

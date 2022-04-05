@@ -635,7 +635,6 @@ export function init(valueInit) {
                 atendimentoForInsertLineData.id = atendimentoForInsertLineData.id.toString().padStart(4, '0');
                 atendimentoForInsertLineData.nome = globalAtendimentoData.nome
                 atendimentoForInsertLineData.abertura = b.getDataAtualFormatada();//arrumar
-                // atendimentoForInsertLineData.status_pagamento = "Pendente";//arrumar
                 // const linhaCriada = b.table.insertLineObject(elLinhaSelecionada, atendimentoForInsertLineData, "atendimentos");
 
 
@@ -708,7 +707,6 @@ export function init(valueInit) {
             const dataFormModalAtendimento = b.form.extractValuesAll2(formModalAtendimento);
 
             dataFormModalAtendimento.status = "Concluido";
-            dataFormModalAtendimento.status_pagamento = "Pendente";
 
 
             salvarAtendimento(dataFormModalAtendimento);
@@ -721,19 +719,19 @@ export function init(valueInit) {
             //Alterar o status do Faturamento
             //-------------------------------------------------------------------------------
             //pega a id do faturamento correspondente ao atendimento
-            // b.crud.listarByKey("atendimentos_id", dataFormModalAtendimento.id, "pagamentos", response => {
+            b.crud.listarByKey("atendimentos_id", dataFormModalAtendimento.id, "pagamentos", response => {
 
 
-            //     const faturamentoData = {};
-            //     faturamentoData.id = response["data"][0].id
-            //     faturamentoData.status = "Pendente";
+                const faturamentoData = {};
+                faturamentoData.id = response["data"][0].id
+                faturamentoData.status = "Pendente";
 
-            //     b.crud.editar(faturamentoData, "pagamentos", response => {//async   
-            //         // b.modal.fechar()
+                b.crud.editar(faturamentoData, "pagamentos", response => {//async   
+                    // b.modal.fechar()
 
-            //     })
+                })
 
-            // })
+            })
 
 
         }

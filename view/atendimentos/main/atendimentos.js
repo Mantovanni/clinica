@@ -131,7 +131,7 @@ export function init() {
 
 
             //CLICK TESTEg
-            document.querySelector("#tbody-central > tr > td.w-22.cursor-pointer").click();
+            // document.querySelector("#tbody-central > tr > td.w-22.cursor-pointer").click();
 
 
 

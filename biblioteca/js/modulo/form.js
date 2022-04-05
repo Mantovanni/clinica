@@ -93,7 +93,7 @@ export function extractValues(form) {
 
     // Transforma o no de elementos em um array de elementos para usar foreach
     Array.from(form).forEach(element => {
-console.log(element);
+// console.log(element);
 
         //Remove os elementos botoes e o dataset com valor extract = false do array de valores do form
         // console.log(form);

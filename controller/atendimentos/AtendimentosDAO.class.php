@@ -73,13 +73,13 @@ class AtendimentosDAO
 
         //Cria o Faturamento com (status = Aberto) relacionado ao atendimento 
         //===============================================================================================
-        $query =
-            "INSERT INTO pagamentos (`atendimentos_id`, `status`) 
-            VALUES (" . $data["id"] . ", 'Aberto');                                              
-            ";
+        // $query =
+        //     "INSERT INTO pagamentos (`atendimentos_id`, `status`) 
+        //     VALUES (" . $data["id"] . ", 'Aberto');                                              
+        //     ";
 
-        mysqli_query(Database::connect(), $query) or
-            die(mysqli_error(Database::connect()) . "\n || Query2: " . $query);
+        // mysqli_query(Database::connect(), $query) or
+        //     die(mysqli_error(Database::connect()) . "\n || Query2: " . $query);
 
 
 
@@ -276,6 +276,89 @@ class AtendimentosDAO
 
 
 
+        // lista de procedimentos
+        //=================================================================================================
+
+        //Caso não aja procedimentos, passa um vazio para evitar erro nas funções do JS
+        $dataToSend["data"]["procedimentos"] = array();
+
+        $query =
+            "SELECT 
+                atendimentos_has_procedimentos.*,
+                procedimentos.nome,
+                procedimentos.valor
+            
+            FROM 
+                atendimentos
+            INNER JOIN atendimentos_has_procedimentos ON atendimentos.id = atendimentos_has_procedimentos.atendimentos_id
+            INNER JOIN procedimentos ON procedimentos.id = atendimentos_has_procedimentos.procedimentos_id                        
+            WHERE atendimentos.id = " . $data["id"] . ";                                                 
+            ";
+
+
+        $resultado = mysqli_query(Database::connect(), $query) or
+            die(mysqli_error(Database::connect()) . "\n || Query2: " . $query);
+
+
+
+        while ($linha = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+
+            $dataToSend["data"]["procedimentos"][] = $linha;
+        }
+
+
+        return $dataToSend;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    // Busca no banco todos os dados daquele atendimentos nas tabelas relacionadas
+    //===========================================================================================================
+    static function listarAtendimentosProcedimentosTrasacoesById($body)
+    {
+
+        $data = (array)$body->data;
+
+        $dataToSend["data"] = array(); //Nao esta sendo usado, quando uma consulta nao retorna nada pra nao dar erro
+
+        $query =
+            "SELECT 
+                atendimentos.*,
+                pacientes.nome,
+                pacientes.data_nascimento,
+                pacientes.sexo,
+                transacoes.valor,
+                ifnull(transacoes.desconto, 0) as desconto,
+                transacoes.total
+            
+            FROM 
+                atendimentos        
+            INNER JOIN pacientes ON atendimentos.pacientes_id = pacientes.id
+            LEFT JOIN transacoes ON transacoes.atendimentos_id = atendimentos.id                     
+            WHERE atendimentos.id = " . $data["id"] . ";                                                 
+            ";
+           
+       
+
+
+        $resultado = mysqli_query(Database::connect(), $query) or
+            die(mysqli_error(Database::connect()) . "\n || Query: " . $query);
+
+
+
+        while ($linha = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+
+            $dataToSend["data"]["atendimento"] = $linha;
+        }
+
 
 
         // lista de procedimentos
@@ -309,10 +392,6 @@ class AtendimentosDAO
         }
 
 
-
-
-
-
         return $dataToSend;
     }
 
@@ -330,6 +409,25 @@ class AtendimentosDAO
 
 
 
+
+
+
+
+
+
+//     SELECT 
+//     atendimentos.*,
+//     pacientes.nome,
+//     pacientes.data_nascimento,
+//     pacientes.sexo,
+//     transacoes.valor,
+//     transacoes.desconto,
+//     transacoes.total
+// FROM 
+//     atendimentos
+// INNER JOIN pacientes ON atendimentos.pacientes_id = pacientes.id
+// INNER JOIN transacoes ON transacoes.atendimentos_id = atendimentos.id
+// WHERE atendimentos.id = 90
 
 
 

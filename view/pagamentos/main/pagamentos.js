@@ -57,11 +57,11 @@ export function init() {
 
 
     //Jogar para biblioteca====================================={{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}
-    const formatarData = (data) => {
-        let d = new Date(data);
-        // Month retorna entre 0 e 11, por isso a adição +1
-        return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`
-    }
+    // const formatarData = (data) => {
+    //     let d = new Date(data);
+    //     // Month retorna entre 0 e 11, por isso a adição +1
+    //     return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`
+    // }
     //FUNÇÕES
     //=====================================================================================================
     //=====================================================================================================
@@ -81,7 +81,7 @@ export function init() {
                 response.id = response.id.padStart(4, '0');
                 // response.atendimentos_id = response.atendimentos_id.padStart(4, '0');
                 
-                response.abertura = formatarData(response.abertura);
+                response.abertura = b.formatTimeStampForDataUser(response.abertura);
 
         
                 return response;

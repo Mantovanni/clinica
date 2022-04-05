@@ -37,6 +37,11 @@ class ControllerAtendimentos
                     self::carregarDadosCompletosAtendimentoById($body);
                     break;
 
+                case 'listarAtendimentosProcedimentosTrasacoesById':
+                    self::listarAtendimentosProcedimentosTrasacoesById($body);
+                    break;
+
+
                 case 'listarAtendimentosClientes':
                     self::listarAtendimentosClientes();
                     break;
@@ -94,6 +99,16 @@ class ControllerAtendimentos
         echo json_encode($consulta);
     }
 
+       //Buscar dados completo do atendimento
+    //==========================================================================================================
+    static function  listarAtendimentosProcedimentosTrasacoesById($body)
+    {
+
+        $consulta = AtendimentosDAO::listarAtendimentosProcedimentosTrasacoesById($body);
+
+        echo json_encode($consulta);
+    }
+
 
     //Buscar dados completo do atendimento
     //==========================================================================================================
@@ -115,7 +130,7 @@ class ControllerAtendimentos
         echo json_encode($consulta);
     }
 
-        //Buscar dados completo do atendimento
+    //Buscar dados completo do atendimento
     //==========================================================================================================
     static function  confirmarPagamento($body)
     {
