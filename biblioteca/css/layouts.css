@@ -41,6 +41,10 @@
 @import '../../view/pagamentos/adicionar/adicionar-pagamentos.css';
 
 
+/* transacoes -----------------------------------------------*/
+@import '../../view/transacoes/main/transacoes.css';
+@import '../../view/transacoes/adicionar/adicionar-transacoes.css';
+
 
 
 

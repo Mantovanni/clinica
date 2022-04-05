@@ -1,7 +1,7 @@
 import b from '../../../biblioteca/js/biblioteca.js';
 
 export function init(valueInit) {
-       //VARIÁVEIS
+    //VARIÁVEIS
     //=====================================================================================================
     //=====================================================================================================
 
@@ -10,7 +10,14 @@ export function init(valueInit) {
 
     //Elements DOM
     //----------------------------------------------------------
+    const tbody = document.querySelector('#tbody-central');//Tabela Central
     const tituloPage = document.querySelector('#modal-window__title-texto');
+
+    const selectStatus = document.querySelector('#status');
+    const inpDataPagamento = document.querySelector('#data_pagamento')
+
+
+
 
 
 
@@ -32,29 +39,11 @@ export function init(valueInit) {
 
 
 
-
-
-
-
-
-
     //INIT / INICIAR
     //=====================================================================================================
     //=====================================================================================================
-    tituloPage.textContent = "Editar Paciente";
+    // tituloPage.textContent = "Editar Paciente";
     b.form.preencher(formAdicionar, valueInit.dadosItem);
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -64,38 +53,61 @@ export function init(valueInit) {
     //EVENTOS
     //=====================================================================================================
     //=====================================================================================================
-    //BTN - Salvar
+    //Form - Adicionar / Novo
     //------------------------------------------------------
     formAdicionar.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        //Pega o FORM que é o target do evento submit
-        const form = e.target;
+        //Envia o elemento form com todos os seus inputs para função salvarForm
 
-        if (validarForm(form)) {
-
-
-            const formFiltrado = b.form.extractValues(form);
-
-            console.log(formFiltrado);
-
-            b.crud.editar(formFiltrado, "procedimentos", response => {//async   
-                b.modal.fechar()
-
-
-
-                response.estoque_total = b.paraMoeda(0) + " " + response.unidade;
-                response.custo = valueInit.dadosItem.custo;
-
-
-                const linhaCriada = b.render.lineInTable(valueInit.elLinhaSelecionada, response, "procedimentos");             
-
-            }).then(() => {
-                b.modal.fechar()
-            });
-
+        if (valueInit.metodo == "Salvar") {
+            salvarForm(e.target);
+        } else if (valueInit.metodo == "Editar") {
+            editarForm(e.target);
         }
+
+
     });
+
+
+    //Select - Status
+    //------------------------------------------------------
+    selectStatus.addEventListener('change', function (e) {
+        e.preventDefault();
+
+        // console.log(e.target.value);
+
+        if (e.target.value == "Pago") {
+            inpDataPagamento.removeAttribute("disabled");
+
+            //Pega data de hoje
+            const today = new Date().toISOString().split('T')[0];//hoje
+            //Insere um limite máximo de data no campo
+            inpDataPagamento.setAttribute('max', today);
+            //Coloca a data atual
+            inpDataPagamento.value = today;
+
+
+            inpDataPagamento.dataset.ignore = "false";
+
+
+
+            console.log(inpDataPagamento.value);
+
+        } else if (e.target.value == "Pendente") {
+            inpDataPagamento.setAttribute("disabled", true);
+
+            inpDataPagamento.value = "";
+            // console.log(inpDataPagamento.value);
+
+            //Se for pendente ignora o campo de data de pagamento
+            inpDataPagamento.dataset.ignore = "true";
+        }
+
+
+    });
+
+
 
 
 
@@ -123,6 +135,87 @@ export function init(valueInit) {
 
         return validate;
     }
+
+
+
+    //Salva os dados do formulário no banco de dados
+    //=======================================================================================
+    function salvarForm(form) {
+
+        if (validarForm(form)) {
+
+
+            const formData = b.form.extractValues2(form);
+            formData.tipo = valueInit.dadosItem.tipo;
+            // console.log(formData);
+
+
+
+            //Response contem o elemento salvo junto de sua ID criada no banco
+            b.crud.salvar(formData, "transacoes", responseItemSalvo => {//async
+                b.modal.fechar();
+
+
+                // console.log(responseItemSalvo.id);
+
+                //Adicionar zero a esquerda //corrigir erro
+                //  responseItemSalvo.id = responseItemSalvo.id.padStart(2, '0');
+
+
+                // Função que cria e insere a linha na tabela com os dados do formulário que foram salvos no banco e retornaram para ser tratados
+                const linhaCriada = b.render.lineInTableDesc(tbody, responseItemSalvo, "transacoes");
+
+
+            }, true).then(() => {
+                b.modal.fechar()
+            });
+
+        }
+    }
+
+
+
+
+
+
+    //Editar os dados do formulário no banco de dados
+    //=======================================================================================
+    function editarForm(form) {
+
+        if (validarForm(form)) {
+
+
+            const formData = b.form.extractValues2(form);
+            formData.tipo = valueInit.dadosItem.tipo;
+            // console.log(formData);
+
+
+
+            //Response contem o elemento salvo junto de sua ID criada no banco
+            b.crud.editar(formData, "transacoes", responseItemSalvo => {//async
+                b.modal.fechar();
+
+
+                // console.log(responseItemSalvo.id);
+
+                //Adicionar zero a esquerda //corrigir erro
+                //  responseItemSalvo.id = responseItemSalvo.id.padStart(2, '0');
+
+
+                // Função que cria e insere a linha na tabela com os dados do formulário que foram salvos no banco e retornaram para ser tratados
+                const linhaCriada = b.render.lineInTable(valueInit.elLinhaSelecionada, responseItemSalvo, "transacoes");
+
+
+            }, true).then(() => {
+                b.modal.fechar()
+            });
+
+        }
+    }
+
+
+
+
 
 
 

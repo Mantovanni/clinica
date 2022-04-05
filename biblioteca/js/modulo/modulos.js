@@ -863,7 +863,8 @@ export function getDataAtualISO() {
     return todayDate;
 }
 
-
+// new Date().toLocaleDateString(); - data atual padrão 22/09/1988
+// new Date().toLocaleTimeString(); - hora atual padrão 22:56:48
 
 //Formatar data=======================================================================================
 function formatDate(date) {

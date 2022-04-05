@@ -604,7 +604,8 @@ export function lineInTable(elTable, dados, nometabelaDoBanco) {//Espera receber
                         "modal",
                         {
                             dadosItem: dadosItem,
-                            elLinhaSelecionada: e.target.parentNode
+                            elLinhaSelecionada: e.target.parentNode,
+                            metodo : "Editar"
                         }
 
                     );//assync
@@ -811,7 +812,8 @@ export function lineInTable(elTable, dados, nometabelaDoBanco) {//Espera receber
                         "modal",
                         {
                             dadosItem: dadosItem,
-                            elLinhaSelecionada: e.target.parentNode
+                            elLinhaSelecionada: e.target.parentNode,
+                            metodo : "Editar"
                         }
 
                     );//assync
@@ -1244,7 +1246,8 @@ export function lineInTable2(elTable, dados, nometabelaDoBanco) {//Espera recebe
                     "modal",
                     {
                         dadosItem: dadosItem,
-                        elLinhaSelecionada: e.target.parentNode
+                        elLinhaSelecionada: e.target.parentNode,
+                        metodo : "Editar"
                     }
 
                 );//assync

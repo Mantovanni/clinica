@@ -1087,7 +1087,7 @@ export function insertLineInputFilled(elTable, params) {//Espera receber um TBOD
        * @param {string} nometabelaDoBanco Nome da tabela no banco, para as funções de excluir e editar
        * @returns {HTMLTableElement} Retorna a referencia para a linha criada
        */
-      //Sera a função principal de inserir linhas, recebe parâmetros como objetos
+//Sera a função principal de inserir linhas, recebe parâmetros como objetos
 export function insertLineObject(elTable, params, dados, nometabelaDoBanco, afterDelete) {//Espera receber um TBODY
 
     //---------------------------------------------------------------------------------------------
@@ -1169,10 +1169,20 @@ export function insertLineObject(elTable, params, dados, nometabelaDoBanco, afte
                     // html += `<td data-name="${key}">${b.paraMoeda(dadosItem[key])}</td>`;
                     break;
 
+
                 default:
-                    elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
-                    data-name="${key}">${dadosItem[key]}</td>`);
+                    // elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
+                    // data-name="${key}">${dadosItem[key]}</td>`);
                     // html += `<td data-name="${key}">${dadosItem[key]}</td>`;
+
+
+                    if (element.dataset.edit == "true") {
+                        elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
+                        data-name="${key}"  data-edit="true">${dadosItem[key]}</td>`);
+                    } else {
+                        elNovaLinha.insertAdjacentHTML("beforeend", `<td class="${element.dataset.class}" 
+                        data-name="${key}">${dadosItem[key]}</td>`);
+                    }
                     break;
             }
 
@@ -1211,7 +1221,9 @@ export function insertLineObject(elTable, params, dados, nometabelaDoBanco, afte
             //---------------------------------------------------------------------------------------------
             // const botaoEditar = linhaElemento.querySelector('.editar-linha');
             //Coloca um evento para edição na celula de name=nome
-            const eleCellNome = elNovaLinha.querySelector(`[data-name="nome"]`);
+            // const eleCellNome = elNovaLinha.querySelector(`[data-name="nome"]`);
+            // console.log(elNovaLinha);
+            const eleCellNome = elNovaLinha.querySelector(`[data-edit="true"]`);
             eleCellNome.classList.add("cursor-pointer")
             eleCellNome.addEventListener('click', function (e) {
 
@@ -1460,7 +1472,8 @@ export function insertLine(elTable, dados, nometabelaDoBanco, afterDelete) {//Es
                     "modal",
                     {
                         dadosItem: dadosItem,
-                        elLinhaSelecionada: e.target.parentNode
+                        elLinhaSelecionada: e.target.parentNode,
+                        metodo: "Editar"
                     }
 
                 );//assync
@@ -1667,7 +1680,8 @@ export function insertLineNoDelete(elTable, dados, nometabelaDoBanco, afterDelet
                     "modal",
                     {
                         dadosItem: dadosItem,
-                        elLinhaSelecionada: e.target.parentNode
+                        elLinhaSelecionada: e.target.parentNode,
+                        metodo: "Editar"
                     }
 
                 );//assync
@@ -1899,7 +1913,9 @@ export function insertLineDesc(elTable, dados, nometabelaDoBanco, afterDelete) {
                         "modal",
                         {
                             dadosItem: dadosItem,
-                            elLinhaSelecionada: e.target.parentNode
+                            elLinhaSelecionada: e.target.parentNode,
+                            metodo: "Editar"
+
                         }
 
                     );//assync
@@ -2107,7 +2123,8 @@ export function insertMultipleLinesDesc(elTable, dados, nometabelaDoBanco) {//Es
                     "modal",
                     {
                         dadosItem: dadosItem,
-                        elLinhaSelecionada: e.target.parentNode
+                        elLinhaSelecionada: e.target.parentNode,
+                        metodo: "Editar"
                     }
 
                 );//assync

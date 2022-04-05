@@ -52,7 +52,7 @@ export function init(valueInit) {
     //=====================================================================================================
     //=====================================================================================================
     // tituloPage.textContent = "Adicionar Pacientes";
-
+    console.log(valueInit);
 
 
 
@@ -151,7 +151,10 @@ export function init(valueInit) {
 
             
             const formData  = b.form.extractValues2(form);
-            console.log(formData);
+            formData.tipo = "Despesa"
+            // console.log(formData);
+
+
 
             //Response contem o elemento salvo junto de sua ID criada no banco
             b.crud.salvar(formData, "transacoes", responseItemSalvo => {//async

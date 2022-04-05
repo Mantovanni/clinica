@@ -200,7 +200,7 @@ export function init(valueInit) {
         //--------------------------------
         formFiltrado.atendimentos = {};
         formFiltrado.atendimentos.id = globalAtendimentoData.id;
-        formFiltrado.atendimentos.status_pagamento = "Recebido";
+        formFiltrado.atendimentos.status_pagamento = "Pago";
 
 
         //transacoes
@@ -208,12 +208,16 @@ export function init(valueInit) {
         formFiltrado.transacoes = b.form.extractValues2(formModalPagamento);
 
         formFiltrado.transacoes.atendimentos_id = globalAtendimentoData.id;
-        formFiltrado.transacoes.status = "Recebido";
+        formFiltrado.transacoes.status = "Pago";
         formFiltrado.transacoes.descricao = "Atendimento - " + globalAtendimentoData.id.padStart(4, '0');
         formFiltrado.transacoes.tipo = "Receita";
         formFiltrado.transacoes.forma_de_pagamento = "Dinheiro"; //adicionar na tela de faturar
         formFiltrado.transacoes.categoria = "Atendimento";
         formFiltrado.transacoes.operacao = "Atendimento";
+        formFiltrado.transacoes.data_pagamento = b.getDataAtualISO();
+        formFiltrado.transacoes.vencimento = b.getDataAtualISO();
+        // formFiltrado.transacoes.hora_pagamento = "Atendimento";
+
 
 
 
@@ -235,7 +239,7 @@ export function init(valueInit) {
 
             const linhaCriada = b.table.insertLineNoDelete(valueInit.elLinhaSelecionada, faturamentoParaLinhaData, "pagamentos");
 
-        }, { message: "Atendimento - " + globalAtendimentoData.id.padStart(4, '0') + " recebido." }
+        }, { message: "Atendimento - " + globalAtendimentoData.id.padStart(4, '0') + " pago." }
         ).then(() => {
             b.modal.fechar()
         });
