@@ -209,9 +209,10 @@ export function init(valueInit) {
 
         formFiltrado.transacoes.atendimentos_id = globalAtendimentoData.id;
         formFiltrado.transacoes.status = "Recebido";
-        formFiltrado.transacoes.descricao = "Atendimento " + globalAtendimentoData.id.padStart(4, '0');
-        formFiltrado.transacoes.tipo = "Recebido";
+        formFiltrado.transacoes.descricao = "Atendimento - " + globalAtendimentoData.id.padStart(4, '0');
+        formFiltrado.transacoes.tipo = "Receita";
         formFiltrado.transacoes.forma_de_pagamento = "Dinheiro"; //adicionar na tela de faturar
+        formFiltrado.transacoes.categoria = "Atendimento";
         formFiltrado.transacoes.operacao = "Atendimento";
 
 

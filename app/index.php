@@ -279,7 +279,69 @@ if ($_SERVER['SERVER_NAME'] !== "localhost" && $_SERVER['SERVER_NAME'] !== "192.
 
 
 
+
+                <!-- Sub MENU Financeiro-------------------------------------------------------------------- -->
+                <!-- ==================================================================================================== -->
+                <a id="financeiro-menu" data-url="">
+                    <i class="svg-mais"></i>
+                    <span>Financeiro ... </span>
+                </a>
+
+                <ul class="submenu" data-submenu="financeiro-menu">
+
+
+                    <li>
+                        <!-- Transacoes -->
+                        <!----------------------------------------------------------------------->
+                        <a href="#/transacoes" id="transacoes-menu" data-url="transacoes" class="menu-option">
+                            <i class="svg-usuarios"></i>
+                            <span>Transacões</span>
+                        </a>
+                    </li>
+
+
+
+                    <li>
+                        <!-- Receitas -->
+                        <!----------------------------------------------------------------------->
+                        <a href="#/receitas" id="receitas-menu" data-url="receitas" class="menu-option">
+                            <i class="svg-dashboard2"></i>
+                            <span>Receitas</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <!-- Despesas -->
+                        <!----------------------------------------------------------------------->
+                        <a href="#/despesas" id="despesas-menu" data-url="despesas" class="menu-option">
+                            <!-- <i class="svg-bolsa-mais"></i> -->
+                            <i class="svg-pill"></i>
+                            <span>Despesas</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <!-- Sub MENU Cadastros-------------------------------------------------------------------- -->
+                <!-- ==================================================================================================== -->
                 <a id="cafe-menu" data-url="cafe/cafes">
                     <i class="svg-mais"></i>
                     <span>Cadastros ...</span>

@@ -1,0 +1,139 @@
+<form class="form-geral" id="form-modal">
+
+
+    <div class="form__main">
+
+
+        <button type="reset" class="btn-fechar-modal" id="btn-fechar-modal" data-class='fechar-modal'>X</button>
+
+        <!-- ID invisível para o editar -->
+        <div class="col-md-6 esconder">
+            <div class="grupo-label-input">
+                <label for="adicionar-id" class="label-adicionar-id">Id</label>
+                <input type="text" name="id" id="adicionar-id" autocomplete="off" data-type="text">
+            </div>
+        </div>
+
+
+        <!-- CAMPOS -->
+        <!-- ============================================================================================================ -->
+        <!-- ============================================================================================================ -->
+
+
+        <!-- Linha 01 -->
+        <!--------------------------------------------------------------------------------------------------->
+        <div class="col-md-12">
+            <div class="col-md-5">
+                <div class="grupo-label-input">
+                    <label for="descricao">Descrição</label>
+                    <input type="text" name="descricao" id="descricao" placeholder="Descrição" autocomplete="off" required>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="grupo-label-input">
+                    <label for="total">total R$</label>
+                    <input type="text" name="total" id="total" placeholder="R$ 0,00" autocomplete="off" data-type="coin" required>            
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="grupo-label-input">
+                    <label for="categoria">Categoria</label>
+                    <input type="text" name="categoria" id="categoria" placeholder="Categoria" autocomplete="off" >
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+    
+        </div>
+      
+
+
+
+
+
+
+
+        <!-- Linha 02 -->
+        <!--------------------------------------------------------------------------------------------------->
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <div class="grupo-label-input">
+                    <label for="forma_de_pagamento">Forma de Pagamento</label>
+                    <select id="forma_de_pagamento" name="forma_de_pagamento" required>
+                        <option value="">-</option>
+                        <option value="Dinheiro">Dinheiro</option>                        
+                        <option value="Cartão de Crédito">Cartão de Crédito</option>
+                        <option value="Cartão de Débito">Cartão de Débito</option>
+                        <option value="Pix">Pix</option>
+                    </select>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+          
+            <div class="col-md-3">
+                <div class="grupo-label-input">
+                    <label for="vencimento">Vencimento</label>
+                    <input type="date" name="vencimento" id="vencimento" placeholder="00/00/0000"
+                        autocomplete="off" data-type="date"  required>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="grupo-label-input">
+                    <label for="status">Status</label>
+                    <select id="status" name="status" required>
+                        <!-- <option value="">-</option> -->
+                        <option value="Pendente">Pendente</option>
+                        <option value="Pago">Pago</option>
+                    </select>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="grupo-label-input">
+                    <label for="data_pagamento">Pagamento</label>
+                    <input type="date" name="data_pagamento" id="data_pagamento" placeholder="00/00/0000"
+                        autocomplete="off" data-type="date" data-ignore="true" disabled>
+                    <span class="mensagem-validacao"></span>
+                </div>
+            </div>
+
+          
+
+    
+        </div>
+
+
+
+
+        <!-- linha --------------------------------------------------------------------------------------- -->
+
+        <!-- <div class="col-md-6">
+            <div class="grupo-label-input">
+                <label for="">Categoria</label>
+                <select id="categoria" name="categoria">
+                    <option value="">-</option>
+                </select>
+                <span class="mensagem-validacao"></span>
+            </div>
+        </div>
+
+    </div> -->
+
+
+        <!-- ================================================================================================= -->
+        <div class="form__footer">
+
+            <!-- <button type="reset" class="btn-cancelar" id="btn-cancelar-modal"
+                data-class='fechar-modal'>Cancelar</button> -->
+            <button type="submit" class="btn-blue" id="btn-salvar-modal">Confirmar</button>
+        </div>
+
+
+</form>

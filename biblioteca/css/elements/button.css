@@ -83,9 +83,52 @@
 }
 
 .btn-blue:active {
-    background-color:rgb(37, 119, 167);
-    font-size: 13px;
+    background-color:rgb(16, 75, 109);
+    /* font-size: 13px; */
 }
+
+
+
+
+/* BUTTON VERMELHO -----------------------------------------------------------------------------*/
+.btn-vermelho {
+ 
+    padding: 6px 10px;
+    background-color: rgb(167, 37, 37);
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    outline-style: none;
+    box-shadow: 2px 2px 5px -3px black;
+ 
+}
+
+.btn-vermelho:hover {
+    background-color: rgba(187, 24, 24, 0.842);
+}
+
+.btn-vermelho:active {
+    background-color:rgb(109, 2, 2);
+    /* font-size: 13px; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -120,10 +163,6 @@
     background-color:rgb(37, 119, 167);
     font-size: 15px;
 }
-
-
-
-
 
 
 

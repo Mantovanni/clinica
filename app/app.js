@@ -36,14 +36,17 @@ function sub(params) {
         submenu.classList.toggle("submenu-show");
     })
 
-    const menu2 = sidebar.querySelector("#rouparia-menu");
-    const submenu2 = sidebar.querySelector("[data-submenu='rouparia-menu']");
+
+    //Financeiro
+    //======================================================
+    const menu2 = sidebar.querySelector("#financeiro-menu");
+    const submenu2 = sidebar.querySelector("[data-submenu='financeiro-menu']");
 
 
-    // menu2.addEventListener('click', ev => {
-    //     console.log("object");
-    //     submenu2.classList.toggle("submenu-show");
-    // })
+    menu2.addEventListener('click', ev => {
+        console.log("object");
+        submenu2.classList.toggle("submenu-show");
+    })
     
 }
 

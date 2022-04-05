@@ -1,6 +1,6 @@
 
 //Jogar para biblioteca
-export function  formatTimeStampForDataUser(data){
+export function formatTimeStampForDataUser(data) {
     let d = new Date(data);
     // Month retorna entre 0 e 11, por isso a adição +1
     return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`
@@ -241,7 +241,7 @@ export function verifique() {
  * Pega o valor da option atua selecionado no elemento select 
  * @return {string} Valor da option.
  */
-export function selectValue(element) {
+export function selectValue(element) { //mudar nome para selectedOptionValue
     // const select = document.querySelector(element);
     return element.options[element.selectedIndex].value;
 }
@@ -837,11 +837,16 @@ export function formatDataISOforDataUser(data) {
 export function formatDataUserforISO(data) {
     let dataFormatada = data;
 
-    if (data != null) {
-        dataFormatada = dataFormatada.split("/");
-        dataFormatada = dataFormatada[2] + "-" + dataFormatada[1] + "-" + dataFormatada[0];
-    } else {
-        console.warn("Valor recebido de data é nulo");
+
+    //Regra para ignorar a formatação caso receba uma data no Padra ISO
+    if (!data.includes("-")) {
+
+        if (data != null) {
+            dataFormatada = dataFormatada.split("/");
+            dataFormatada = dataFormatada[2] + "-" + dataFormatada[1] + "-" + dataFormatada[0];
+        } else {
+            console.warn("Valor recebido de data é nulo");
+        }
     }
 
 
