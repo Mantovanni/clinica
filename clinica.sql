@@ -96,7 +96,7 @@ CREATE TABLE `atendimentos` (
   CONSTRAINT `fk_atendimentos_1` FOREIGN KEY (`pacientes_id`) REFERENCES `pacientes` (`id`),
   CONSTRAINT `fk_atendimentos_2` FOREIGN KEY (`profissionais_id`) REFERENCES `profissionais` (`id`),
   CONSTRAINT `fk_atendimentos_6` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,7 +105,7 @@ CREATE TABLE `atendimentos` (
 
 LOCK TABLES `atendimentos` WRITE;
 /*!40000 ALTER TABLE `atendimentos` DISABLE KEYS */;
-INSERT INTO `atendimentos` VALUES (85,4,NULL,1,'2022-03-29 16:27:31',NULL,'Aberto',NULL,'2022-03-29 19:27:31','','','',NULL,NULL),(90,2,NULL,1,'2022-04-05 01:15:21',NULL,'Concluido',NULL,'2022-04-05 04:15:21','','','','Recebido',NULL),(91,3,NULL,1,'2022-04-05 02:26:05',NULL,'Concluido',NULL,'2022-04-05 05:26:05','','','','Recebido',NULL);
+INSERT INTO `atendimentos` VALUES (87,3,NULL,1,'2022-04-05 11:23:31',NULL,'Concluido',NULL,'2022-04-05 14:23:31','','','','Recebido',NULL);
 /*!40000 ALTER TABLE `atendimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +126,7 @@ CREATE TABLE `atendimentos_has_procedimentos` (
   KEY `fk_atendimentos_has_procedimentos_2_idx` (`atendimentos_id`),
   CONSTRAINT `fk_atendimentos_has_procedimentos_1` FOREIGN KEY (`procedimentos_id`) REFERENCES `procedimentos` (`id`),
   CONSTRAINT `fk_atendimentos_has_procedimentos_2` FOREIGN KEY (`atendimentos_id`) REFERENCES `atendimentos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=220 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=215 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,7 +135,7 @@ CREATE TABLE `atendimentos_has_procedimentos` (
 
 LOCK TABLES `atendimentos_has_procedimentos` WRITE;
 /*!40000 ALTER TABLE `atendimentos_has_procedimentos` DISABLE KEYS */;
-INSERT INTO `atendimentos_has_procedimentos` VALUES (211,85,3,'1'),(217,90,1,'1'),(218,90,8,'1'),(219,91,3,'1');
+INSERT INTO `atendimentos_has_procedimentos` VALUES (214,87,2,'1');
 /*!40000 ALTER TABLE `atendimentos_has_procedimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -511,7 +511,7 @@ CREATE TABLE `pagamentos` (
   PRIMARY KEY (`id`),
   KEY `fk_pagamentos_atendimentos1_idx` (`atendimentos_id`),
   CONSTRAINT `fk_pagamentos_atendimentos1` FOREIGN KEY (`atendimentos_id`) REFERENCES `atendimentos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -520,7 +520,6 @@ CREATE TABLE `pagamentos` (
 
 LOCK TABLES `pagamentos` WRITE;
 /*!40000 ALTER TABLE `pagamentos` DISABLE KEYS */;
-INSERT INTO `pagamentos` VALUES (73,85,NULL,NULL,NULL,'Pendente',NULL,'2022-03-29 19:27:31');
 /*!40000 ALTER TABLE `pagamentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -650,7 +649,7 @@ CREATE TABLE `profissionais` (
   `numero` varchar(45) DEFAULT NULL,
   `situacao` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -659,7 +658,7 @@ CREATE TABLE `profissionais` (
 
 LOCK TABLES `profissionais` WRITE;
 /*!40000 ALTER TABLE `profissionais` DISABLE KEYS */;
-INSERT INTO `profissionais` VALUES (1,'Samuel Facury','Homem','02331178577','1988-09-22','Medico','4564646','','','','','ativo'),(3,'Enfermeira Teste','Mulher','02565987599','1988-09-22','Enfermeira','45456','','','','','ativo'),(4,'teste','Homem','','1950-10-10','','','','','','','ativo');
+INSERT INTO `profissionais` VALUES (1,'Samuel Facury','Homem','02331178577','1988-09-22','Medico','4564646','','','','','ativo'),(3,'Enfermeira Teste','Mulher','02565987599','1988-09-22','Enfermeira','45456','','','','','ativo');
 /*!40000 ALTER TABLE `profissionais` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -681,10 +680,11 @@ CREATE TABLE `transacoes` (
   `categoria` varchar(45) DEFAULT NULL,
   `total` double DEFAULT NULL,
   `forma_de_pagamento` varchar(45) DEFAULT NULL COMMENT 'A Vista\nParcelada',
-  `vencimento` datetime DEFAULT CURRENT_TIMESTAMP,
+  `vencimento` date DEFAULT NULL,
   `tipo_multiplas` varchar(45) DEFAULT NULL COMMENT 'Parcelada\nRepetida\nUnitaria / Simples\n',
   `id_multiplas` int DEFAULT NULL,
-  `data_pagamento` datetime DEFAULT CURRENT_TIMESTAMP,
+  `data_pagamento` date DEFAULT NULL,
+  `hora_pagamento` time DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL COMMENT 'Pago\nPendente\n',
   `operacao` varchar(45) DEFAULT NULL COMMENT 'Manual\nAtendimento - Quando for atendimento, colocar Atendimento na categoria automaticamente.\n',
   `registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -693,7 +693,7 @@ CREATE TABLE `transacoes` (
   KEY `fk_trancacoes_atendimentos1_idx` (`atendimentos_id`),
   CONSTRAINT `fk_trancacoes_atendimentos1` FOREIGN KEY (`atendimentos_id`) REFERENCES `atendimentos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_trancacoes_usuarios1` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -702,7 +702,7 @@ CREATE TABLE `transacoes` (
 
 LOCK TABLES `transacoes` WRITE;
 /*!40000 ALTER TABLE `transacoes` DISABLE KEYS */;
-INSERT INTO `transacoes` VALUES (100,90,NULL,'Atendimento 0090','Receita',400,50,'Atendimento',350,'Dinheiro','2022-04-05 01:34:09',NULL,NULL,'2022-04-05 01:34:09','Recebido','Atendimento','2022-04-05 04:34:09'),(101,91,NULL,'Atendimento 0091','Receita',180,0,'Atendimento',180,'Dinheiro','2022-04-05 03:22:46',NULL,NULL,'2022-04-05 03:22:46','Recebido','Atendimento','2022-04-05 06:22:46'),(102,NULL,NULL,'teste',NULL,NULL,NULL,'',2,'Dinheiro','2022-04-22 00:00:00',NULL,NULL,'2022-04-05 06:11:56','Pendente',NULL,'2022-04-05 09:11:56');
+INSERT INTO `transacoes` VALUES (95,87,NULL,'Atendimento - 0087','Receita',150,0,'Atendimento',150,'Dinheiro','2022-04-05',NULL,NULL,'2022-04-05',NULL,'Pago','Atendimento','2022-04-05 14:38:55'),(96,NULL,NULL,'Atendimento - 0087','Despesa',NULL,NULL,'Atendimento',150,'Dinheiro','2022-04-05',NULL,NULL,NULL,NULL,'Pendente',NULL,'2022-04-05 14:42:13'),(97,NULL,NULL,'asad','Despesa',NULL,NULL,'sadsa',45.45,'Cartão de Débito','2022-04-02',NULL,NULL,'2022-04-05',NULL,'Pago',NULL,'2022-04-05 14:42:49'),(98,NULL,NULL,'sadas','Despesa',NULL,NULL,'df',50,'Pix','2022-04-20',NULL,NULL,'2022-04-05',NULL,'Pendente',NULL,'2022-04-05 14:43:01'),(99,NULL,NULL,'asd','Despesa',NULL,NULL,'dsad',500,'Cartão de Crédito','2022-04-20',NULL,NULL,NULL,NULL,'Pendente',NULL,'2022-04-05 14:43:15'),(100,NULL,NULL,'sdfsdf','Despesa',NULL,NULL,'',0.43,'Cartão de Débito','2022-04-06',NULL,NULL,NULL,NULL,'Pendente',NULL,'2022-04-05 14:43:34'),(101,NULL,NULL,'sfsdfasdd','Receita',NULL,NULL,'adssad',60,'Cartão de Débito','2022-04-20',NULL,NULL,'2022-04-05',NULL,'Pago',NULL,'2022-04-05 15:10:20'),(102,NULL,NULL,'dfgh','Despesa',NULL,NULL,'',600,'Cartão de Débito','2022-04-22',NULL,NULL,'2022-04-05',NULL,'Pago',NULL,'2022-04-05 15:12:00'),(103,NULL,NULL,'sdfg','Receita',NULL,NULL,'',0.45,'Cartão de Débito','2022-04-16',NULL,NULL,'2022-04-05',NULL,'Pago',NULL,'2022-04-05 15:12:13');
 /*!40000 ALTER TABLE `transacoes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -849,4 +849,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-05  7:38:20
+-- Dump completed on 2022-04-05 16:38:22
